@@ -1,0 +1,20 @@
+#对插件的相关修改
+
+##taglist.vim
+
+function! s:Tlist_Refresh_Folds()
+     if g:Tlist_Show_One_File
+        return
+    endif
+
+    let winnum = bufwinnr(g:TagList_title)
+    if winnum == -1
+        return
+    endif
+
+对这个函数添加了
+if g:Tlist_Show_One_File
+    return
+endif
+
+可以防止： function <SNR>70_Tlist_Refresh_Folds 时发生错误

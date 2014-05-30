@@ -1,0 +1,280 @@
+# sort according to https://github.com/necolas/idiomatic-css
+
+# vars
+snippet ts "transparent" w
+transparent
+endsnippet
+
+
+# position
+# ========
+
+# pos
+snippet pos "postion" b
+position: $0
+endsnippet
+
+snippet posr "position relative" b
+position: relative
+endsnippet
+
+snippet posa "position absolute" b
+position: absolute
+endsnippet
+
+snippet posf "position fixed" b
+position: fixed
+endsnippet
+
+# locate
+snippet t "top" b
+top: $0
+endsnippet
+
+snippet r "right" b
+right: $0
+endsnippet
+
+snippet b "bottom" b
+bottom: $0
+endsnippet
+
+snippet l "left" b
+left: $0
+endsnippet
+
+
+snippet z "z-index" b
+z-index: $0
+endsnippet
+
+
+# display
+# =======
+
+# display
+snippet d "display" b
+display: $0
+endsnippet
+
+snippet dn "display none" b
+display: none
+endsnippet
+
+snippet di "display inline" b
+display: inline
+endsnippet
+
+snippet db "display block" b
+display: block
+endsnippet
+
+snippet dib "display inline-block" b
+display: inline-block
+endsnippet
+
+snippet dibb "display inline-block with ie67 support" b
+display: inline-block
+*display: inline
+*zoom: 1
+endsnippet
+
+# overflow
+snippet ov "overflow" b
+overflow: ${1:scroll}
+endsnippet
+
+snippet ovh "overflow" b
+overflow: hidden
+endsnippet
+
+# size
+snippet h "height" b
+height: $0
+endsnippet
+
+snippet w "width" b
+width: $0
+endsnippet
+
+snippet mh "min-height" b
+min-height: $0
+endsnippet
+
+snippet mw "min-width" b
+min-width: $0
+endsnippet
+
+# float
+snippet fl "float left" b
+float: left
+endsnippet
+
+snippet fr "float right" b
+float: right
+endsnippet
+
+# clearfix(nib)
+snippet cl "clearfix" b
+clearfix()
+endsnippet
+
+
+# margin
+snippet m "margin" b
+margin: $0
+endsnippet
+
+snippet mt "margin-top" b
+margin-top: $0
+endsnippet
+
+snippet mr "margin-right" b
+margin-right: $0
+endsnippet
+
+snippet mb "margin-bottom" b
+margin-bottom: $0
+endsnippet
+
+snippet ml "margin-left" b
+margin-left: $0
+endsnippet
+
+# padding
+snippet p "padding" b
+padding: $0
+endsnippet
+
+snippet pt "padding-top" b
+padding-top: $0
+endsnippet
+
+snippet pr "padding-right" b
+padding-right: $0
+endsnippet
+
+snippet pb "padding-bottom" b
+padding-bottom: $0
+endsnippet
+
+snippet pl "padding-left" b
+padding-left: $0
+endsnippet
+
+# border
+snippet bd "border" b
+border: 1px ${4:solid} ${3:#${2:FFF}}
+endsnippet
+
+snippet bdt "border-top" b
+border-top: 1px ${4:solid} ${3:#${2:FFF}}
+endsnippet
+
+snippet bdr "border-right" b
+border-right: 1px ${4:solid} ${3:#${2:FFF}}
+endsnippet
+
+snippet bdb "border-bottom" b
+border-bottom: 1px ${4:solid} ${3:#${2:FFF}}
+endsnippet
+
+snippet bdl "border-left" b
+border-left: 1px ${4:solid} ${3:#${2:FFF}}
+endsnippet
+
+snippet bdc "border-color" b
+border-color: ${2:#${1:FFF}}
+endsnippet
+
+
+# text
+# ====
+snippet lh "line-height" b
+line-height: ${0:1.5}
+endsnippet
+
+snippet c "clolor" b
+color: ${0:#${1:FFF}}
+endsnippet
+
+snippet fz "font-size" b
+font-size: $0
+endsnippet
+
+# weight
+snippet fw "font-weight" b
+font-weight: ${1:normal}
+endsnippet
+
+snippet fwb "font-weight bold" b
+font-weight: bold
+endsnippet
+
+# text align
+snippet ta "text-align" b
+text-align: ${1:left}
+endsnippet
+
+snippet tac "text-align center" b
+text-align: center
+endsnippet
+
+# text decoration
+snippet td "text-decoration" b
+text-decoration: ${1:underline}
+endsnippet
+
+snippet tdn "text-decoration none" b
+text-decoration: none
+endsnippet
+
+# vertical align
+snippet va "vertical-align" b
+vertical-align: ${1:top}
+endsnippet
+
+snippet vam "vertical-align" b
+vertical-align: middle
+endsnippet
+
+# text other
+snippet ls "letter-spacing" b
+letter-spacing: $0
+endsnippet
+
+
+# box
+# ===
+
+# background
+snippet bg "background" b
+background: ${0:#${1:FFF}}
+endsnippet
+
+snippet bgc "background color" b
+background-color: ${0:#${1:FFF}}
+endsnippet
+
+snippet bgu "background image" b
+background: url("$1") ${2:no-repeat} $3
+endsnippet
+
+snippet bgi "background image" b
+background-image: ${1:url("$2")} $0
+endsnippet
+
+snippet bgg "background gradient" b
+background: linear-gradient(top, $1, $2)
+endsnippet
+
+snippet bgp "background position" b
+background-position: $0
+endsnippet
+
+# CSS3(nib)
+# =========
+snippet br "border-radius" b
+border-radius: ${0:2px}
+endsnippet
+

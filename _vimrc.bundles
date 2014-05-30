@@ -1,0 +1,161 @@
+"call vundle#rc()
+" 下面这里可以规定bundle的安装路径
+" call vundle#rc('$VIM/vimfiles/bundle/')
+
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle
+" required! 
+Plugin 'gmarik/vundle'
+
+Plugin 'thoughtbot/vim-rspec'
+
+Plugin 'comments.vim'
+Plugin 'rspec.vim'
+
+Plugin 'tpope/vim-bundler'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'tpope/vim-haml'
+Plugin 'tpope/vim-rails'
+Plugin 'nathanaelkane/vim-indent-guides'
+
+" 语法查错
+Bundle 'scrooloose/syntastic'
+
+" 快速打开文件的功能
+Bundle 'ctrlp.vim'
+
+Plugin 'terryma/vim-expand-region'
+
+
+Plugin 'ack.vim'
+
+" 文件管理器
+Plugin 'scrooloose/nerdtree'
+
+" 快捷注释
+Plugin 'scrooloose/nerdcommenter'
+
+Bundle 'jelera/vim-javascript-syntax'
+Bundle 'briancollins/vim-jst'
+Bundle 'plasticboy/vim-markdown'
+Bundle 'slim-template/vim-slim'
+Bundle 'sudo.vim'
+Bundle 'xml.vim'
+Plugin 'elzr/vim-json'
+Plugin 'majutsushi/tagbar'
+
+Plugin 'tpope/vim-surround'
+
+"Git
+Plugin 'tpope/vim-fugitive'
+
+"HTML/JS混排缩进改善
+Bundle 'pangloss/vim-javascript'
+
+" 代码补全
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle 'honza/vim-snippets'
+Plugin 'garbas/vim-snipmate'
+
+" 内置的文件浏览器已经够了
+" Bundle 'winmanager'
+Bundle 'taglist.vim'
+
+
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+"
+" Bundle 'pangloss/vim-javascript'
+" Bundle 'Townk/vim-autoclose'
+" Bundle 'hail2u/vim-css3-syntax'
+" Bundle 'mattn/webapi-vim'
+" Bundle 'bufexplorer.zip'
+" Plugin 'vim-sneak'
+" Plugin 'ludovicchabant/vim-lawrencium'
+" Plugin 'mhinz/vim-signify'
+" Plugin 'tpope/vim-sleuth'
+Plugin 'godlygeek/tabular'
+
+
+
+" 智能打开浏览器
+Plugin 'tyru/open-browser.vim'
+
+" 平滑滚动插件
+" Plugin 'yonchu/accelerated-smooth-scroll'
+
+" 这个只在Mac上,刷新
+" Bundle 'mkitt/browser-refresh.vim'
+
+" live html
+" Plugin 'visualHtml'
+
+" 读取大文件
+" Plugin 'LargeFile'
+
+Plugin 'molokai'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'flazz/vim-colorschemes'
+" writer
+Plugin 'junegunn/goyo.vim'
+
+" http://blog.163.com/lgh_2002/blog/static/440175262010613105148657/
+Plugin 'ervandew/supertab'
+" Plugin 'Shougo/neocomplcache.vim' "不兼容另外一个自动完成
+
+
+" 以下三个都是增强状态栏的，vim-powerline < powerline < vim-airline
+" Bundle 'Lokaltog/vim-powerline'
+" Bundle 'Lokaltog/powerline'
+Bundle 'bling/vim-airline'
+
+" 快速移动，替换f,这个还没有完全弄懂
+if v:version > 703
+    Plugin 'Lokaltog/vim-easymotion'
+endif
+
+" 列出当前buffer的窗口
+Plugin 'bufexplorer.zip'
+
+Plugin 'MarcWeber/vim-addon-manager-known-repositories'
+
+" 输入体验
+Plugin 'dart-lang/dart-vim-plugin'
+
+"适配jade
+Plugin 'digitaltoad/vim-jade'
+
+
+
+" 编程环境
+" PHP
+" php genner
+Plugin 'phpvim'
+Plugin 'php.vim-html-enhanced'
+" 增加对php的兼容
+Plugin 'StanAngeloff/php.vim'
+" 匹配
+" Plugin 'shawncplus/phpcomplete.vim'
+
+" Web : HTML CSS 
+" Plugin 'ZenCoding.vim'
+" 原来的zen coding
+Plugin 'mattn/emmet-vim'
+Plugin 'skammer/vim-css-color'
+
+" Ruby
+Plugin 'vim-ruby/vim-ruby'
+
+"对txt文件列目录
+Plugin 'TxtBrowser'
+
+"python
+"检查python的代码错误
+Plugin 'pyflakes.vim'
+Plugin 'python.vim'
+
+
+call vundle#end()            " required

@@ -1,0 +1,17 @@
+
+" Toggle Menu and Toolbar F2隐藏菜单栏，工具栏
+map <silent> <F2> :if &guioptions =~# 'T' <Bar>
+        \set guioptions-=T <Bar>
+        \set guioptions-=m <bar>
+    \else <Bar>
+        \set guioptions+=T <Bar>
+        \set guioptions+=m <Bar>
+    \endif<CR>
+
+" 2~ Ctrl+C 复制到系统粘贴版 
+map <c-c> "+yw
+imap <c-c> <ESC>"+yw
+vmap <c-c> "+y
+
+
+
