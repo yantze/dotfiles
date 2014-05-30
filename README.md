@@ -12,10 +12,11 @@ vim支持7.2+版本以上，对于最新版本，配置会有更多的特性
 ###然后
 使用本配置有两个方法：
 
-下载zip文件:[下载地址]()
+下载zip文件:[下载地址](https://github.com/yantze/.config/archive/master.zip)
 拷贝到vim的windows安装目录下
 比如：E:\Program Files\vim
 拷贝后文件的列表应该是这样：
+```
 +---vim74
 +---vimfiles
 +---script
@@ -23,10 +24,12 @@ vim支持7.2+版本以上，对于最新版本，配置会有更多的特性
 +---_gvimrc
 +---_vimrc.bundles
 \---pluginchange_log.txt
+```
 
 拷贝到*nix的个人目录下
 比如~/.config
 文件列表应该是这样：
+```
 +---vimfiles
 +---misc
 +---pluginchange_log.txt
@@ -35,6 +38,7 @@ vim支持7.2+版本以上，对于最新版本，配置会有更多的特性
 +---_gvimrc
 +---_vimrc
 \---_vimrc.bundles
+```
 
 
 直接使用github克隆
