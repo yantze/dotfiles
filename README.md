@@ -1,9 +1,9 @@
-##说明
+##VIM使用说明
 
 ###安装
 这个软件需要先安装vim最新版本
 windows安装gvim
-[官网vim7.4](ftp://ftp.vim.org/pub/vim/pc/gvim74.exe)
+官网vim7.4: ftp://ftp.vim.org/pub/vim/pc/gvim74.exe
 
 *nix(unix,linux)安装vim
 默认都安装了vim,但版本不一定高
@@ -43,7 +43,7 @@ vim支持7.2+版本以上，对于最新版本，配置会有更多的特性
 
 直接使用github克隆
 如果安装了git可以使用
-git clone https://github.com/yantze/.config.git 
+    git clone https://github.com/yantze/.config.git 
 可以获得相应的文件然后根据上面的文件再配置
 
 ###接下来

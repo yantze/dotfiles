@@ -73,7 +73,12 @@ else
 endif
 
 if v:version > 703
-    set relativenumber           " 开启相对行号
+    " 开启相对行号
+    set relativenumber
+
+    " 替换原来的查找，可以同时显示多个查找关键字
+    map  / <Plug>(easymotion-sn)
+    omap / <Plug>(easymotion-tn)
 endif
 
 
@@ -485,9 +490,6 @@ let Tlist_File_Fold_Auto_Close = 1             " 自动折叠
 let g:indent_guides_enable_on_vim_startup = 1  " 默认关闭
 let g:indent_guides_guide_size            = 1  " 指定对齐线的尺寸
 
-" 替换原来的查找，可以同时显示多个查找关键字
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
 
 " These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
 " Without these mappings, `n` & `N` works fine. (These mappings just provide

@@ -57,3 +57,12 @@
     ui = auto
 [push]
     default = upstream
+[http]
+	proxy = http://172.31.195.32:8081
+	sslverify = false
+	postBuffer = 24288000
+[https]
+	proxy = http://172.31.195.32:8081
+	sslverify = false
+[credential]
+	helper = store
