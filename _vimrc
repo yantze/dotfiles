@@ -3,7 +3,7 @@ if(has("win32") || has("win64"))
     let g:isWIN = 1
 else
     " 兼容windows的环境变量$VIM
-    let $VIM = $HOME."/.config"
+    let $VIM = $HOME."/.vim"
     let g:isWIN = 0
 endif
 
@@ -30,7 +30,7 @@ endif
 " 清除不再使用的插件:PluginClean,
 " 列出所有插件:PluginList
 " 查找插件:PluginSearch
-"
+
 
 " 设置着色模式和字体
 " 使用GUI界面时的设置
@@ -61,6 +61,8 @@ if g:isWIN
         "set guifont=Monaco:h15
         "set guifont=Source\ Code\ Pro\ Regular:h15
         set guifont=Source\ Code\ Pro\:h13
+    else
+        colorscheme ir_black
 
     endif
 else
@@ -441,7 +443,7 @@ map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
-" 兼容tmux的快捷键
+" 切换窗口光标，兼容tmux的快捷键
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -475,7 +477,27 @@ nmap gb <Plug>(openbrowser-smart-search)
 " Open URI selected word or search.
 vmap gb <Plug>(openbrowser-smart-search)
 
-
+" 配置高亮括号 kien/rainbow_parentheses.vim
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
 "自定义关联文件类型
 au BufNewFile,BufRead *.less set filetype=css
 au BufNewFile,BufRead *.phtml set filetype=php
@@ -519,6 +541,11 @@ map  N <Plug>(easymotion-prev)
 "ga 转换光标下的内容为多进制
 ":e $MYVIMRC 快速打开配置文件,$MYGVIMRC
 "inoremap  <c-]> <c-x><c-]> "ctags 补全快捷键
+" :set notextmode  去掉^M这个符号
+" :set paste  这个可以解决在linux下面有些字母会被执行
+" :set nopaster
+" :set pastetoggle
+" 如果碰到输入不了*号键，可以先按Ctrl+v，再输入想要输入的特殊符号
 "
 "
 " =========
@@ -552,6 +579,9 @@ au BufEnter *.txt,*.log,*.ini setlocal ft=txt
 
 autocmd BufReadPre * if getfsize(expand("%")) > 10000000 | syntax off | endif
 
+" Go 自动调用goimport添加删除模块
+autocmd BufWritePre *.go :Fmt
+
 "let g:snippets_dir="$VIM/vimfiles/resource/vim-snippets/" "代码片段的
 "
 
@@ -562,3 +592,7 @@ autocmd BufReadPre * if getfsize(expand("%")) > 10000000 | syntax off | endif
 "http://blog.jobbole.com/44891/
 "
 "
+" 设置打开javascript配色
+au BufRead,BufNewFile *.js set filetype=javascript
+"文件扩展名识别
+au BufRead,BufNewFile *.js set syntax=jquery

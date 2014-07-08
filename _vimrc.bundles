@@ -38,7 +38,6 @@ Plugin 'scrooloose/nerdtree'
 " 快捷注释
 Plugin 'scrooloose/nerdcommenter'
 
-Bundle 'jelera/vim-javascript-syntax'
 Bundle 'briancollins/vim-jst'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'slim-template/vim-slim'
@@ -55,7 +54,10 @@ Plugin 'tpope/vim-fugitive'
 "HTML/JS混排缩进改善
 Bundle 'pangloss/vim-javascript'
 
-" 代码补全
+Bundle 'jelera/vim-javascript-syntax'
+Plugin 'javascript.vim'
+
+" 代码补全/snippets
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 Bundle 'honza/vim-snippets'
@@ -131,6 +133,33 @@ Plugin 'digitaltoad/vim-jade'
 
 
 " 编程环境
+" javascript
+" Syntax file for jQuery
+Plugin 'jQuery'
+" A simple javascript indent script, support OOP, jquery
+Plugin 'Simple-Javascript-Indenter'
+
+" 对javascript整体上的改进
+" Plugin 'maksimr/vim-jsbeautify'
+" Plugin 'einars/js-beautify'
+
+"GO
+" goland的多种vim功能/安装
+Plugin 'cespare/vim-golang'
+" go get github.com/bradfitz/goimports
+" 需要添加let g:gofmt_command = "goimports" 可以使用下面的功能
+" 让任何Go文件保存前，调用goimports对该文件排版并插入/删除相应的import语句。
+
+" 这个是go的自动补全插件需要先安装下面这个
+" go get github.com/nsf/gocode
+"设置CTRL+J补全
+" inoremap <c-j> <c-x><c-o>
+"去掉预览窗口preview和设置longest
+" set completeopt=menu,longest
+Plugin 'undx/vim-gocode'
+" Plugin 'Blackrush/vim-gocode'
+
+
 " PHP
 " php genner
 Plugin 'phpvim'
@@ -145,6 +174,8 @@ Plugin 'StanAngeloff/php.vim'
 " 原来的zen coding
 Plugin 'mattn/emmet-vim'
 Plugin 'skammer/vim-css-color'
+" 给原来的括号加上高亮
+" Plugin 'kien/rainbow_parentheses.vim'
 
 " Ruby
 Plugin 'vim-ruby/vim-ruby'
@@ -153,9 +184,10 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'TxtBrowser'
 
 "python
-"检查python的代码错误
-Plugin 'pyflakes.vim'
+Plugin 'fs111/pydoc.vim'
 Plugin 'python.vim'
+"检查python的代码错误,编译需要'+python'
+" Plugin 'pyflakes.vim'
 
 
 call vundle#end()            " required
