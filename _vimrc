@@ -21,7 +21,8 @@ endif
 set nocompatible               " be iMproved
 filetype off                   " required!
 if filereadable(expand("$VIM/_vimrc.bundles"))
-   set rtp+=$VIM/vimfiles/bundle/vundle/  "添加vendle环境变量
+   "set rtp+=$VIM/vimfiles/bundle/vundle/  "添加vendle环境变量
+   set rtp+=$VIM/bundle/Vundle.vim  "添加vendle环境变量
    source $VIM/_vimrc.bundles
 endif
 " 安装新的插件 :PluginInstall 
@@ -86,7 +87,6 @@ endif
 
 
 
-filetype plugin indent on
 
 "set my leader
 let mapleader=","
@@ -579,8 +579,7 @@ au BufEnter *.txt,*.log,*.ini setlocal ft=txt
 
 autocmd BufReadPre * if getfsize(expand("%")) > 10000000 | syntax off | endif
 
-" Go 自动调用goimport添加删除模块
-autocmd BufWritePre *.go :Fmt
+
 
 "let g:snippets_dir="$VIM/vimfiles/resource/vim-snippets/" "代码片段的
 "

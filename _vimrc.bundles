@@ -52,10 +52,10 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 
 "HTML/JS混排缩进改善
-Bundle 'pangloss/vim-javascript'
-
-Bundle 'jelera/vim-javascript-syntax'
 Plugin 'javascript.vim'
+Plugin 'pangloss/vim-javascript'
+
+Plugin 'jelera/vim-javascript-syntax'
 
 " 代码补全/snippets
 Bundle "MarcWeber/vim-addon-mw-utils"
@@ -152,12 +152,14 @@ Plugin 'cespare/vim-golang'
 
 " 这个是go的自动补全插件需要先安装下面这个
 " go get github.com/nsf/gocode
-"设置CTRL+J补全
-" inoremap <c-j> <c-x><c-o>
-"去掉预览窗口preview和设置longest
-" set completeopt=menu,longest
 Plugin 'undx/vim-gocode'
-" Plugin 'Blackrush/vim-gocode'
+
+" Go 自动调用goimport添加删除模块
+autocmd BufWritePre *.go :Fmt
+"去掉预览窗口preview和设置longest
+set completeopt=longest,menu
+"设置CTRL+J补全
+inoremap <c-;> <c-x><c-o>
 
 
 " PHP
