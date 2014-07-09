@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+gawk -f ~/tools/translate-cli/translate.awk $@
