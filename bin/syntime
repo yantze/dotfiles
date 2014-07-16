@@ -1,3 +1,5 @@
 #!/usr/bin/env sh
 
-date -s "2014-07-14 0:37:00"
+# date -s "2014-07-14 0:37:00"
+
+sudo ntpdate us.pool.ntp.org

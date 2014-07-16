@@ -1,5 +1,6 @@
 [user]
-    name  = yantze_wess_vm
+    # name  = yantze_wess_vm
+    name  = yantze
     email = yantze@126.com
 [alias]
     b  = branch -vv

@@ -80,14 +80,27 @@ PHP_HOME="/usr/local/php"
 
 ###GO###
 GO_HOME="/usr/local/go"
-export GO_ROOT=$HOME/go
+GOROOT=$HOME/go
+export GOPATH=$HOME/go
+
+###python###
+PYTHON2_HOME="/usr/local/python/2.7"
+PYTHON3_HOME="/usr/local/python/3.4"
+
+###scala###
+SCALA_HOME="/usr/local/scala"
+
 
 
 PATH="$PHP_HOME/bin:/usr/local/bin:/bin:/usr/bin:$HOME/bin:$HOME/.dotfiles/bin:/usr/local/sbin:/usr/sbin:/sbin"
-PATH=$PATH:$JAVA_HOME/bin:$NODE_HOME/bin:$GO_HOME/bin:$GOROOT/bin
+PATH=$PATH:$JAVA_HOME/bin:$NODE_HOME/bin:$GO_HOME/bin:$GOROOT/bin:$PYTHON2_HOME/bin:$PYTHON3_HOME/bin:$SCALA_HOME/bin
 
 export PATH
 
+###配置c编译
+# export CPATH="/usr/bin/gcc"
+# export LIBRARY_PATH="/usr/lib:/usr/lib64:/usr/local/lib:/usr/local/lib64"
+# export C_INCLUDE_PATH="/usr/include:/usr/local/include"
 
 # # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -112,6 +125,7 @@ fi
 
 
 # Created by newuser for 4.3.10
+alias rm='rm -i'
 alias vi='vim'
 alias javac="javac -J-Dfile.encoding=utf8"
 alias grep="grep --color=auto"
@@ -138,3 +152,9 @@ export EDITOR='vim'
 echo "THE BEST YANTZE TO BE ZHI"
 
 export cenhdp='root@172.31.195.136'
+
+
+###C###
+go_libs="-lm"
+go_flags="-g -Wall -include allheads.h -O3"
+alias go_c="c99 -xc '-' $go_libs $go_flags"
