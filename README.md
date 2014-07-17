@@ -2,11 +2,15 @@
 
 ###安装
 这个软件需要先安装vim最新版本
+
 windows安装gvim
+
 官网vim7.4: ftp://ftp.vim.org/pub/vim/pc/gvim74.exe
 
 *nix(unix,linux)安装vim
+
 默认都安装了vim,但版本不一定高
+
 vim支持7.2+版本以上，对于最新版本，配置会有更多的特性
 
 ###然后
@@ -14,7 +18,9 @@ vim支持7.2+版本以上，对于最新版本，配置会有更多的特性
 
 下载zip文件:[下载地址](https://github.com/yantze/vimrc/archive/master.zip)
 拷贝到vim的windows安装目录下
+
 比如：E:\Program Files\vim
+
 拷贝后文件的列表应该是这样：
 ```
 +---vim74
