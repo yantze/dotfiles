@@ -82,6 +82,12 @@ if v:version > 703
     " 替换原来的查找，可以同时显示多个查找关键字
     map  / <Plug>(easymotion-sn)
     omap / <Plug>(easymotion-tn)
+
+    " These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
+    " Without these mappings, `n` & `N` works fine. (These mappings just provide
+    " different highlight method and have some other features )
+    map  n <Plug>(easymotion-next)
+    map  N <Plug>(easymotion-prev)
 endif
 
 
@@ -128,6 +134,15 @@ func! RemoveTabs()
     end
 endfunc
 
+" 这个函数是我用来整理loveacc博客的资料
+func! RemoveSong()
+    :%s/　//g
+    :%s/\[.*//g
+    :%s/...EP//g
+    :%s/...Single//g
+    :%s/\s–\s/\r/g
+endfunc
+map <leader>rs <ESC>:call RemoveSong()<CR>
 
 " =======
 " 自定义快捷键
@@ -468,9 +483,14 @@ nmap <Leader><Space> :Goyo<CR>
 " 打开airline的扩展tab buffer exploer功能
 let g:airline#extensions#tabline#enabled = 1
 
+" determine whether bufferline will overwrite customization variables
+let g:airline#extensions#bufferline#overwrite_variables = 1
+
 " AirLine彩色状态栏
 let g:airline_theme = 'badwolf'                " 设置主题
 
+" configure the title text for quickfix buffers
+let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'
 
 " Open URI under cursor or search.--go brower
 nmap gb <Plug>(openbrowser-smart-search)
@@ -513,11 +533,6 @@ let g:indent_guides_enable_on_vim_startup = 1  " 默认关闭
 let g:indent_guides_guide_size            = 1  " 指定对齐线的尺寸
 
 
-" These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
-" Without these mappings, `n` & `N` works fine. (These mappings just provide
-" different highlight method and have some other features )
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
 
 " <leader>a 排列归类
 " <leader>ci 注释+// 可toggle
@@ -528,6 +543,7 @@ map  N <Plug>(easymotion-prev)
 "gb 打开或者搜索光标下的内容 这个好像有时候会失效
 " <leader>g/f 搜索和查找
 ":retab 对当前文档重新替换tab为空格
+"用Ctrl+v Tab也可以产生原生的Tab
 "f  查找当前行的字符
 "Ctrl+p 打开文件列表Ctrl+jk来选择文件
 " <leader>be打开当前所有buffer的列表<leader>bs,<leader>bv
@@ -546,21 +562,45 @@ map  N <Plug>(easymotion-prev)
 " :set nopaster
 " :set pastetoggle
 " 如果碰到输入不了*号键，可以先按Ctrl+v，再输入想要输入的特殊符号
+" gCtrl+g 统计字数
+"
+" manpageview phpfunctionname
 "
 "
 " =========
 " PHP
 " =========
 "只有在是PHP文件时，才启用PHP补全
-au FileType php call AddPHPFuncList()
-function AddPHPFuncList()
-    set dictionary-=/home/feiyan/tools/vim/funclist.txt dictionary+=/home/feiyan/tools/vim/funclist.txt
-    set complete-=k complete+=k
-endfunction
+" au FileType php call AddPHPFuncList()
+" function AddPHPFuncList()
+    " set dictionary-=/home/feiyan/tools/vim/funclist.txt dictionary+=/home/feiyan/tools/vim/funclist.txt
+    " set complete-=k complete+=k
+" endfunction
 
 autocmd FileType php setlocal dict+=$VIM/vimfiles/resource/php.dict
-autocmd BufRead,BufNewFile *.js set ft=javascript syntax=jquery
 
+" ==============
+" Syntastic: php
+" ==============
+let g:syntastic_check_on_open=0
+
+" ===php===
+" 要让vim支持php/js的错误查询，先安装syntastic插件
+" 然后用php对应的版本pear install PHP_CodeSniffer-2.0.0a2
+" shell测试：phpcs index.php
+"在打开文件的时候检查
+"phpcs，tab 4个空格，编码参考使用CodeIgniter风格
+let g:syntastic_phpcs_conf = "--tab-width=4 --standard=Zend"
+" let g:syntastic_phpcs_conf = "--tab-width=4 --standard=CodeIgniter"
+"
+let g:phpqa_messdetector_ruleset = ''
+let g:phpqa_messdetector_cmd = '/usr/bin/phpmd'
+let g:phpqa_messdetector_autorun = 0
+"
+" ===js===
+" 需要用nodejs下的包安装工具npm安装npm install -g jshint
+" shell测试：jshint -version
+"
 
 " ==============
 " web : html css 
@@ -579,19 +619,25 @@ au BufEnter *.txt,*.log,*.ini setlocal ft=txt
 
 autocmd BufReadPre * if getfsize(expand("%")) > 10000000 | syntax off | endif
 
-
-
 "let g:snippets_dir="$VIM/vimfiles/resource/vim-snippets/" "代码片段的
 "
+autocmd BufRead,BufNewFile *.js set filetype=javascript syntax=jquery
 
 
 " TODO
 "
-"对我而言，Syntastic 最大的作用就是校验 JavaScript 代码。我通过配置 Syntastic 使用代码质量检查工具 JSHint 来检查代码错误，同时控制代码质量。
-"http://blog.jobbole.com/44891/
 "
 "
-" 设置打开javascript配色
-au BufRead,BufNewFile *.js set filetype=javascript
-"文件扩展名识别
-au BufRead,BufNewFile *.js set syntax=jquery
+
+
+" function! RunPhpcs()
+    " let l:filename=@%
+    " let l:phpcs_output=system('phpcs --report=csv --standard=YMC '.l:filename)
+    " let l:phpcs_list=split(l:phpcs_output, "\n")
+    " unlet l:phpcs_list[0]
+    " cexpr l:phpcs_list
+    " cwindow
+    " endfunction
+
+    " set errorformat+=\"%f\"\\,%l\\,%c\\,%t%*[a-zA-Z]\\,\"%m\"
+" command! Phpcs execute RunPhpcs()

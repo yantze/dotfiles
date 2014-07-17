@@ -1,8 +1,3 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/home/yantze/.config/vimfiles/bundle'
-let g:netrw_dirhist_2='/home/yantze/.vim'
-let g:netrw_dirhist_3='/home/yantze/dotfiles/vimrc/script'
-let g:netrw_dirhist_4='/home/yantze/.gem'
-let g:netrw_dirhist_5='/home/yantze/dotfiles/bin'
-let g:netrw_dirhist_6='/home/yantze/.dotfiles/vimrc/vimfiles/bundle'
+let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_1='/etc/httpd/conf/sites-enabled'
