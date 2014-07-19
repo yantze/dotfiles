@@ -18,8 +18,8 @@ endif
 
 
 " 添加vundle插件管理
-set nocompatible               " be iMproved
-filetype off                   " required!
+set nocompatible               " 设置不与之前版本兼容 be iMproved
+filetype off                   " 检测文件类型 required!
 if filereadable(expand("$VIM/_vimrc.bundles"))
    "set rtp+=$VIM/vimfiles/bundle/vundle/  "添加vendle环境变量
    set rtp+=$VIM/bundle/Vundle.vim  "添加vendle环境变量
@@ -31,6 +31,16 @@ endif
 " 清除不再使用的插件:PluginClean,
 " 列出所有插件:PluginList
 " 查找插件:PluginSearch
+
+
+syntax enable                " 打开语法高亮
+syntax on                    " 开启文件类型侦测
+filetype indent on           " 针对不同的文件类型采用不同的缩进格式
+filetype plugin on           " 针对不同的文件类型加载对应的插件
+filetype plugin indent on    " 启用自动补全
+set ic                       "忽略大小写查找
+set visualbell t_vb=         "关闭visual bell/声音
+au GuiEnter * set t_vb=      "关闭beep/屏闪
 
 
 " 设置着色模式和字体
@@ -311,14 +321,6 @@ set fileformats=unix
 
 
 
-syntax enable                " 打开语法高亮
-syntax on                    " 开启文件类型侦测
-filetype indent on           " 针对不同的文件类型采用不同的缩进格式
-filetype plugin on           " 针对不同的文件类型加载对应的插件
-filetype plugin indent on    " 启用自动补全
-set ic                       "忽略大小写查找
-set visualbell t_vb=         "关闭visual bell/声音
-au GuiEnter * set t_vb=      "关闭beep/屏闪
 
 " 设定文件浏览器目录为当前目录  
 set bsdir=buffer  
@@ -627,6 +629,11 @@ autocmd BufRead,BufNewFile *.js set filetype=javascript syntax=jquery
 " TODO
 "
 "
+"vim 插件调试
+"检测插件加载时间
+"vim --startuptime 'time.txt'
+"检测vim在干什么 vim filename -V > savefilename
+"
 "
 
 
@@ -641,3 +648,25 @@ autocmd BufRead,BufNewFile *.js set filetype=javascript syntax=jquery
 
     " set errorformat+=\"%f\"\\,%l\\,%c\\,%t%*[a-zA-Z]\\,\"%m\"
 " command! Phpcs execute RunPhpcs()
+
+" c/c++环境开发IDE
+" c开发介绍：http://blog.csdn.net/bokee/article/details/6633193
+" generate ctags
+nmap <silent><leader>ct :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <cr><cr>:echo 'generate ctags done'<cr>
+" ctags的使用
+" 用ctrl+]和Ctrl+t跳转定义和放回
+" 生成cscope
+nmap <leader>gc :!cscope -Rbq -f path/cs.out <CR><CR>:echo 'generate cscope done'<cr>
+" cscope的使用
+" <leader>f
+" s: Find this C symbol
+" g: Find this definition
+" d: Find functions called by this function
+" c: Find functions calling this function
+" t: Find this text string
+" e: Find this egrep pattern
+" f: Find this file
+" i: Find files #including this file
+" 使用taglist <leader>tl
+" 在. -> :: 等地方可以自动补全
+

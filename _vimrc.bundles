@@ -190,7 +190,8 @@ nnoremap <buffer> <C-p> :call pdv#DocumentWithSnip()<CR>
 " Plugin 'ZenCoding.vim'
 " 原来的zen coding
 Plugin 'mattn/emmet-vim'
-Plugin 'skammer/vim-css-color'
+" 每次打开php都要很久，暂时关闭
+" Plugin 'skammer/vim-css-color'
 " 给原来的括号加上高亮
 " Plugin 'kien/rainbow_parentheses.vim'
 
@@ -205,6 +206,13 @@ Plugin 'fs111/pydoc.vim'
 Plugin 'python.vim'
 "检查python的代码错误,编译需要'+python'
 " Plugin 'pyflakes.vim'
+"
+" c
+" cscope 
+" Plugin 'brookhong/cscope.vim'
+Plugin 'liuyug/cscope.vim'
+" 自动补全引用库中的内容，包括'->','.','::'
+Plugin 'OmniCppComplete'
 
 
 call vundle#end()            " required
