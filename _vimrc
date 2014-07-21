@@ -565,6 +565,7 @@ let g:indent_guides_guide_size            = 1  " 指定对齐线的尺寸
 " :set pastetoggle
 " 如果碰到输入不了*号键，可以先按Ctrl+v，再输入想要输入的特殊符号
 " gCtrl+g 统计字数
+" Ctrl+x, Ctrl+f 补全当前要输入的路径
 "
 " manpageview phpfunctionname
 "
@@ -592,7 +593,7 @@ let g:syntastic_check_on_open=0
 " shell测试：phpcs index.php
 "在打开文件的时候检查
 "phpcs，tab 4个空格，编码参考使用CodeIgniter风格
-let g:syntastic_phpcs_conf = "--tab-width=4 --standard=Zend"
+let g:syntastic_phpcs_conf = "--tab-width=4 "
 " let g:syntastic_phpcs_conf = "--tab-width=4 --standard=CodeIgniter"
 "
 let g:phpqa_messdetector_ruleset = ''
@@ -656,7 +657,7 @@ nmap <silent><leader>ct :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <cr><
 " ctags的使用
 " 用ctrl+]和Ctrl+t跳转定义和放回
 " 生成cscope
-nmap <leader>gc :!cscope -Rbq -f path/cs.out <CR><CR>:echo 'generate cscope done'<cr>
+nmap <leader>gc :!cscope -Rbq -f cscope/cs.out <CR><CR>:echo 'generate cscope done'<cr>
 " cscope的使用
 " <leader>f
 " s: Find this C symbol
@@ -670,3 +671,9 @@ nmap <leader>gc :!cscope -Rbq -f path/cs.out <CR><CR>:echo 'generate cscope done
 " 使用taglist <leader>tl
 " 在. -> :: 等地方可以自动补全
 
+" PHP 环境开发
+" CTRL+P给函数做注释
+"
+"
+"
+"
