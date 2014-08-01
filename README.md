@@ -112,6 +112,7 @@ Ctrl+h/j/k/l            在gvim下切换多窗口
 [vimfiles](https://github.com/coderhwz/vimfiles)
 [dotfiles](https://github.com/luin/dotfiles)
 [vimrc](https://github.com/rhyzx/vimrc)
+[dotvim](https://github.com/lilydjwg/dotvim)
 
 同时有一些技巧：
 [Seven habits of effective text editing](http://www.moolenaar.net/habits.html) vim主要作者写的

@@ -8,7 +8,8 @@ call vundle#begin()
 
 " let Vundle manage Vundle
 " required! 
-Plugin 'gmarik/vundle'
+" Plugin 'gmarik/Vundle.vim'
+" Plugin 'bundle/Vundle.vim'
 
 Plugin 'thoughtbot/vim-rspec'
 
@@ -31,7 +32,6 @@ Bundle 'ctrlp.vim'
 Plugin 'terryma/vim-expand-region'
 
 
-Plugin 'ack.vim'
 
 " 文件管理器
 Plugin 'scrooloose/nerdtree'
@@ -168,7 +168,7 @@ inoremap <c-;> <c-x><c-o>
 " PHP
 " php genner
 Plugin 'phpvim'
-Plugin 'php.vim-html-enhanced'
+" Plugin 'php.vim-html-enhanced'
 " 增加对php的兼容
 Plugin 'StanAngeloff/php.vim'
 " 匹配
@@ -192,6 +192,8 @@ nnoremap <buffer> <C-p> :call pdv#DocumentWithSnip()<CR>
 Plugin 'mattn/emmet-vim'
 " 每次打开php都要很久，暂时关闭
 " Plugin 'skammer/vim-css-color'
+" 这个是vimcsscolor的替代
+Plugin 'lilydjwg/colorizer'
 " 给原来的括号加上高亮
 " Plugin 'kien/rainbow_parentheses.vim'
 
@@ -214,5 +216,13 @@ Plugin 'liuyug/cscope.vim'
 " 自动补全引用库中的内容，包括'->','.','::'
 Plugin 'OmniCppComplete'
 
+"
+" Plugin 'ack.vim'
+" ag.vim
+Plugin 'rking/ag.vim'
+
+" vim post wordpress: vimpress
+" Plugin 'pentie/VimRepress'
+" Plugin 'VimRepress'
 
 call vundle#end()            " required

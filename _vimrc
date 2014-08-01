@@ -43,6 +43,7 @@ set visualbell t_vb=         "关闭visual bell/声音
 au GuiEnter * set t_vb=      "关闭beep/屏闪
 
 
+
 " 设置着色模式和字体
 " 使用GUI界面时的设置
 if g:isWIN
@@ -80,8 +81,16 @@ else
     if g:isGUI
         set guifont=Monaco\ 11
     else
-        colorscheme ir_black
-        "set guifont=Monaco\ 11
+        " colorscheme ir_black
+        " colorscheme grb256
+        colorscheme vt_tmux
+        "
+        " set background=dark
+        " let g:solarized_termtrans =0
+        " let g:solarized_termcolors=256
+        " colorscheme solarized
+        " colorscheme BusyBee
+        " set guifont=Monaco\ 11
     endif
 endif
 
@@ -567,7 +576,9 @@ let g:indent_guides_guide_size            = 1  " 指定对齐线的尺寸
 " gCtrl+g 统计字数
 " Ctrl+x, Ctrl+f 补全当前要输入的路径
 "
+"
 " manpageview phpfunctionname
+" 可以使用快捷键K查询
 "
 "
 " =========
@@ -593,8 +604,11 @@ let g:syntastic_check_on_open=0
 " shell测试：phpcs index.php
 "在打开文件的时候检查
 "phpcs，tab 4个空格，编码参考使用CodeIgniter风格
-let g:syntastic_phpcs_conf = "--tab-width=4 "
+" let g:syntastic_phpcs_conf = "--tab-width=3 --standard=Zend"
 " let g:syntastic_phpcs_conf = "--tab-width=4 --standard=CodeIgniter"
+" 也可以在cli中执行下面的命令
+" phpcs --config-set default_standard Zend  
+" 如果怕被phpcs提示的错误吓倒，可以把Zend改成none,这样就只会提示一些常见的错误
 "
 let g:phpqa_messdetector_ruleset = ''
 let g:phpqa_messdetector_cmd = '/usr/bin/phpmd'
@@ -653,7 +667,7 @@ autocmd BufRead,BufNewFile *.js set filetype=javascript syntax=jquery
 " c/c++环境开发IDE
 " c开发介绍：http://blog.csdn.net/bokee/article/details/6633193
 " generate ctags
-nmap <silent><leader>ct :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <cr><cr>:echo 'generate ctags done'<cr>
+nmap <silent><leader>gt :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <cr><cr>:echo 'generate ctags done'<cr>
 " ctags的使用
 " 用ctrl+]和Ctrl+t跳转定义和放回
 " 生成cscope
@@ -677,3 +691,17 @@ nmap <leader>gc :!cscope -Rbq -f cscope/cs.out <CR><CR>:echo 'generate cscope do
 "
 "
 "
+map ; :
+
+
+" ag.vim 的配置
+let g:agprg = 'ag --nogroup --nocolor --column'
+
+
+" tips
+" 从vim暂时的切换到Console
+" 暂停vim方式:Ctrl+z, jobs, fg
+" 使用vim的sh命令启动新console :sh
+" 使用!bash启动一个console
+" 直接执行!命令
+
