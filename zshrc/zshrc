@@ -96,8 +96,8 @@ ANT_HOME="/usr/local/ant"
 
 
 
-PATH="$PHP_HOME/bin:/usr/local/bin:/bin:/usr/bin:$HOME/bin:$HOME/.dotfiles/bin:/usr/local/sbin:/usr/sbin:/sbin"
-PATH=$PATH:$JAVA_HOME/bin:$NODE_HOME/bin:$GO_HOME/bin:$GOROOT/bin:$PYTHON2_HOME/bin:$PYTHON3_HOME/bin:$SCALA_HOME/bin:$ANT_HOME/bin
+PATH="$PYTHON2_HOME/bin:$PYTHON3_HOME/bin:$PHP_HOME/bin:/usr/local/bin:/bin:/usr/bin:$HOME/bin:$HOME/.dotfiles/bin:/usr/local/sbin:/usr/sbin:/sbin"
+PATH=$PATH:$JAVA_HOME/bin:$NODE_HOME/bin:$GO_HOME/bin:$GOROOT/bin:$SCALA_HOME/bin:$ANT_HOME/bin
 
 export PATH
 
@@ -129,26 +129,10 @@ fi
 
 
 # Created by newuser for 4.3.10
-alias rm='rm -i'
-alias vi='vim'
-alias javac="javac -J-Dfile.encoding=utf8"
-alias grep="grep --color=auto"
-alias -s txt=vi #在shell里面直接输入txt文件，直接用vim打开
-alias -s gz='tar -xzvf'
-alias -s tgz='tar -xzvf'
-alias -s zip='unzip'
-alias -s bz2='tar -xjvf'
-alias tf="tail -f"
-alias cls='clear'
-alias ps='ps -ef'
-#alias sp='~/tools/.sp.sh'
-alias sp='~/soft/sh-toolkits-lib/sp.sh'
-alias get='sh ~/soft/sh-toolkits-lib/sp.sh'
-#设置窗口的名字为best
-alias t='tmux attach || tmux new -s hi'
-alias ngtop='ngxtop -l /usr/local/nginx/logs/access.log'
+if [ -f ~/.dotfiles/zshrc/zsh_aliases ]; then
+    . ~/.dotfiles/zshrc/zsh_aliases
+fi
 
-alias daili='export all_proxy=172.31.195.32:8081'
 
 export EDITOR='vim'
 # set -o vi #设置shell快捷键的默认器
@@ -162,3 +146,4 @@ export cenhdp='root@172.31.195.136'
 go_libs="-lm"
 go_flags="-g -Wall -include allheads.h -O3"
 alias go_c="c99 -xc '-' $go_libs $go_flags"
+

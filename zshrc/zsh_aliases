@@ -1,0 +1,28 @@
+alias rm='rm -i'
+alias vi='vim'
+alias javac="javac -J-Dfile.encoding=utf8"
+alias grep="grep --color=auto"
+alias -s txt=vi #在shell里面直接输入txt文件，直接用vim打开
+alias -s gz='tar -xzvf'
+alias -s tgz='tar -xzvf'
+alias -s zip='unzip'
+alias -s bz2='tar -xjvf'
+alias tf="tail -f"
+alias cls='clear'
+alias ps='ps -ef'
+#alias sp='~/tools/.sp.sh'
+alias sp='~/soft/sh-toolkits-lib/sp.sh'
+alias get='sh ~/soft/sh-toolkits-lib/sp.sh'
+#设置窗口的名字为best
+alias t='tmux -2 -u attach || tmux -2 -u new-session -s hi'
+alias ngtop='ngxtop -l /usr/local/nginx/logs/access.log'
+alias cmake='cmake28'
+alias ccmake='ccmake28'
+
+alias p='trash-put'
+
+
+
+#pp/po in zsh has already set
+# alias pp='pushd'
+# alias po='popd'
