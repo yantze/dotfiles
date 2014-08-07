@@ -7,7 +7,7 @@
     bd = branch -d
     ba = branch -a
     br = branch -r
-    
+
     c  = commit -am
     cm = commit -m
     ca = commit --amend
@@ -53,7 +53,7 @@
 [core]
     autocrlf = input
     editor = vim
-    excludesfile = ~/.config/gitignore_global
+    excludesfile = ~/.dotfiles/git/_global_ignore
 [color]
     ui = auto
 [push]
