@@ -25,8 +25,8 @@ if filereadable(expand("$VIM/_vimrc.bundles"))
    set rtp+=$VIM/bundle/Vundle.vim  "添加vendle环境变量
    source $VIM/_vimrc.bundles
 endif
-" 安装新的插件 :PluginInstall 
-" 在命令行运行 vim +PluginInstall +qall 
+" 安装新的插件 :PluginInstall
+" 在命令行运行 vim +PluginInstall +qall
 " 更新插件:PluginUpdate
 " 清除不再使用的插件:PluginClean,
 " 列出所有插件:PluginList
@@ -48,8 +48,8 @@ au GuiEnter * set t_vb=      "关闭beep/屏闪
 " 使用GUI界面时的设置
 if g:isWIN
     if g:isGUI
-        "启动gvim时窗口的大小  
-        "set lines=42 columns=170  
+        "启动gvim时窗口的大小
+        "set lines=42 columns=170
         " 启动时自动最大化窗口
         au GUIEnter * simalt ~x
 
@@ -65,11 +65,11 @@ if g:isWIN
 
         set cursorline            " 突出显示当前行
 
-        "set colortheme molokai autumn blackboard asu1dark busybee tomorrow 
+        "set colortheme molokai autumn blackboard asu1dark busybee tomorrow
         colorscheme solarized
 
         "set font
-        "set guifont=Consolas:h12  
+        "set guifont=Consolas:h12
         "set guifont=Monaco:h15
         "set guifont=Source\ Code\ Pro\ Regular:h15
         set guifont=Source\ Code\ Pro\:h13
@@ -331,14 +331,14 @@ set fileformats=unix
 
 
 
-" 设定文件浏览器目录为当前目录  
-set bsdir=buffer  
-" 设置编码  
-set enc=utf-8  
-" 设置文件编码  
-set fenc=utf-8  
-" 设置文件编码检测类型及支持格式  
-set fencs=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936  
+" 设定文件浏览器目录为当前目录
+set bsdir=buffer
+" 设置编码
+set enc=utf-8
+" 设置文件编码
+set fenc=utf-8
+" 设置文件编码检测类型及支持格式
+set fencs=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 
 
 
@@ -371,7 +371,7 @@ xnoremap <silent> <C-j>  :m'>+<CR>gv=gv
 let NERDSpaceDelims = 1                        " 自动添加前置空格
 let NERDTreeQuitOnOpen = 1
 let NERDChristmasTree=1
-let g:NERDTreeWinSize = 18 
+let g:NERDTreeWinSize = 18
 map <leader>f :NERDTreeToggle<CR>
 
 
@@ -447,7 +447,7 @@ autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
 "set powerline
-set laststatus=2 
+set laststatus=2
 "set guifont=Powerline
 "set font=Source\ Code\ Pro\:h15
 set nocompatible
@@ -475,7 +475,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" Goyo writer faver 
+" Goyo writer faver
 function! s:goyo_before()
   silent !tmux set status off
   set noshowmode
@@ -607,7 +607,7 @@ let g:syntastic_check_on_open=0
 " let g:syntastic_phpcs_conf = "--tab-width=3 --standard=Zend"
 " let g:syntastic_phpcs_conf = "--tab-width=4 --standard=CodeIgniter"
 " 也可以在cli中执行下面的命令
-" phpcs --config-set default_standard Zend  
+" phpcs --config-set default_standard Zend
 " 如果怕被phpcs提示的错误吓倒，可以把Zend改成none,这样就只会提示一些常见的错误
 "
 let g:phpqa_messdetector_ruleset = ''
@@ -620,7 +620,7 @@ let g:phpqa_messdetector_autorun = 0
 "
 
 " ==============
-" web : html css 
+" web : html css
 " ==============
 " 只能在特定的文件里面才载入，默认是全局
 let g:user_emmet_install_global = 0
@@ -705,3 +705,29 @@ let g:agprg = 'ag --nogroup --nocolor --column'
 " 使用!bash启动一个console
 " 直接执行!命令
 
+" For Mac
+"
+" noremap <silent> <M-up> <C-W>+
+" noremap <silent> <M-down> <C-W>-
+"
+" fix some unexpectly bugs
+"
+" http://vim.1045645.n5.nabble.com/Mapping-meta-key-within-tmux-td5716437.html
+" Fix screen's key bindings.
+   " if &term == "screen"
+       " These work from my HP keyboard in PuTTY on Windows XP.
+       " map <Esc>[D   <S-Left>
+       " map <Esc>[C   <S-Right>
+       " map <Esc>[11~ <F1>
+       " map <Esc>[12~ <F2>
+       " map <Esc>[13~ <F3>
+       " map <Esc>[14~ <F4>
+       " map <Esc>[15~ <F5>
+       " map <Esc>[16~ <F6>
+       " map <Esc>[17~ <F7>
+       " map <Esc>[18~ <F8>
+       " map <Esc>[19~ <F9>
+       " map <Esc>[21~ <F10
+       " map <Esc>[23~ <F11>
+       " map <Esc>[24~ <F12>
+   " endif

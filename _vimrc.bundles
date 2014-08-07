@@ -209,14 +209,14 @@ Plugin 'python.vim'
 "检查python的代码错误,编译需要'+python'
 " Plugin 'pyflakes.vim'
 "
-" c
+"C
 " cscope 
 " Plugin 'brookhong/cscope.vim'
 Plugin 'liuyug/cscope.vim'
 " 自动补全引用库中的内容，包括'->','.','::'
 Plugin 'OmniCppComplete'
 
-"
+"grep
 " Plugin 'ack.vim'
 " ag.vim
 Plugin 'rking/ag.vim'
