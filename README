@@ -32,6 +32,12 @@ su www -c 'php xxx.php' //命令下行指定用户组来执行命令
 usermod -a -G groupA user //添加用户到用户组
 od -c file / od file //显示文件内容，如果没有c显示其它进制
 
+ifconfig
+ifconfig -a //显示所有网卡接口
+ifconfig eth0 down //禁用eth0网卡
+ifconfig eth0 up//启用eth0网卡
+ifdown eth0; ifup eth0; //同上
+
 route
 如果你有两个以上的网卡，那么很不幸的是默认网关是内部网，现在需要删除默认的再添加自己设定的默认
 ip route del default
@@ -244,3 +250,8 @@ w           #show all window(Select from interactive list of windows)
 #cheatsheet:https://gist.github.com/MohamedAlaa/2961058#file-tmux-cheatsheet-markdown
 
 bind-key F1 set-window-option force-width 81
+
+较少使用的命令
+shred - overwrite a file to hide its contents, and optionally delete it
+python -m SimpleHTTPServer 8888 & //python 2+
+python -m http.server 8888 & //python 3+
