@@ -43,7 +43,7 @@ fi
 # much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Uncomment following line if you want to  shown in the command execution time stamp 
+# Uncomment following line if you want to  shown in the command execution time stamp
 # in the history command output. The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|
 # yyyy-mm-dd
 # HIST_STAMPS="mm/dd/yyyy"
@@ -71,33 +71,44 @@ export JAVA_HOME=/usr/java/jdk1.8.0_05
 export JRE_HOME=$JAVA_HOME/jre
 CLASSPATH=./:$JAVA_HOME/lib:$JRE_HOME/lib:$JRE_HOME/lib/tools.jar
 export CLASSPATH
+PATH="$JAVA_HOME/bin:$PATH"
 
 
 ###NODE###
 NODE_HOME="/usr/local/node"
+PATH="$NODE_HOME/bin:$PATH"
 
 ###PHP###
 PHP_HOME="/usr/local/php"
+PATH="$PHP_HOME/bin:$PATH"
 
 ###GO###
 GO_HOME="/usr/local/go"
 GOROOT=$HOME/go
 export GOPATH=$HOME/go
+PATH="$GO_HOME/bin:$GOROOT/bin:$PATH"
 
 ###python###
 PYTHON2_HOME="/usr/local/python/2.7"
 PYTHON3_HOME="/usr/local/python/3.4"
+PATH="$PYTHON2_HOME/bin:$PATH"
+PATH="$PYTHON3_HOME/bin:$PATH"
 
 ###scala###
 SCALA_HOME="/usr/local/scala"
+PATH="$SCALA_HOME/bin:$PATH"
 
 ###ANT###
 ANT_HOME="/usr/local/ant"
+PATH="$ANT_HOME/bin:$PATH"
+
+###linuxbrew###
+LINUXBREW="$HOME/.linuxbrew"
+export LD_LIBRARY_PATH=$LINUXBRE/lib:$LD_LIBRARY_PATH
+PATH="$LINUXBREW/bin:$PATH"
 
 
-
-PATH="$PYTHON2_HOME/bin:$PYTHON3_HOME/bin:$PHP_HOME/bin:/usr/local/bin:/bin:/usr/bin:$HOME/bin:$HOME/.dotfiles/bin:/usr/local/sbin:/usr/sbin:/sbin"
-PATH=$PATH:$JAVA_HOME/bin:$NODE_HOME/bin:$GO_HOME/bin:$GOROOT/bin:$SCALA_HOME/bin:$ANT_HOME/bin
+PATH="$PATH:/usr/local/bin:/bin:/usr/bin:$HOME/bin:/usr/local/sbin:/usr/sbin:/sbin"
 
 export PATH
 

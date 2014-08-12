@@ -75,6 +75,12 @@ xz -dk //要解压的文件，k保留源文件
 tar 解压指定文件
 tar zxvf package.tar.gz -C new_dir
 
+grep MemTotal /proc/meminfo
+grep MemFree /proc/meminfo # 查看空闲内存量
+
+id username  #显示用户信息
+last # 查看用户登录日志
+
 在putty下
 alt+.
 在vim下
@@ -135,6 +141,7 @@ bison是GUN版的语法分析器，yacc是Berkeley版的语法分析器，两者
 
 
 
+
 zsh使用技巧
 ..  快速向上跳 ‘...’顶目录
 ls * 或者ls -l * 都是可以递归显示
@@ -158,6 +165,9 @@ su root
 # yum install python-pip python-devel
 # pip-python install glances
 more info:http://www.vpsee.com/2013/07/a-new-system-monitoring-tool-glances-installation-and-usage/
+
+sysstat
+iostat #这个软件中包含了这个软件
 
 日志监控软件
 iostat
