@@ -265,3 +265,8 @@ bind-key F1 set-window-option force-width 81
 shred - overwrite a file to hide its contents, and optionally delete it
 python -m SimpleHTTPServer 8888 & //python 2+
 python -m http.server 8888 & //python 3+
+gpg -c file件加密
+gpg file.gpg件解密
+
+有一个命令参考比较齐全，之后再消化一下
+http://www.pixelbeat.org/cmdline_zh_CN.html
