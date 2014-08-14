@@ -1,18 +1,50 @@
-" 判断操作系统类型
-if(has("win32") || has("win64"))
-    let g:isWIN = 1
-else
-    " 兼容windows的环境变量$VIM
-    let $VIM = $HOME."/.vim"
-    let g:isWIN = 0
-endif
+" introduce
+" author: yantze
+" date:2014-08-14
 
-" 判断是否处于GUI界面
-if has("gui_running")
-    let g:isGUI = 1
-else
-    let g:isGUI = 0
-endif
+" Environment {
+
+    " Identify platform {
+        silent function! OSX()
+            return has('macunix')
+        endfunction
+        silent function! LINUX()
+            return has('unix') && !has('macunix') && !has('win32unix')
+        endfunction
+        silent function! WINDOWS()
+            return  (has('win16') || has('win32') || has('win64'))
+        endfunction
+    " }
+
+    " Basics {
+        set nocompatible        " Must be first line
+        if !WINDOWS()
+            set shell=/bin/sh
+        endif
+    " }
+
+    " Windows Compatible {
+        " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
+        " across (heterogeneous) systems easier.
+        if WINDOWS()
+            let g:isWIN = 1
+            " set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+        else
+            " 兼容windows的环境变量$VIM
+            let $VIM = $HOME."/.vim"
+            let g:isWIN = 0
+        endif
+    " }
+
+    " 判断是否处于GUI界面
+    if has("gui_running")
+        let g:isGUI = 1
+    else
+        let g:isGUI = 0
+    endif
+
+" }
+
 
 
 
