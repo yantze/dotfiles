@@ -79,7 +79,8 @@ if g:isWIN
     endif
 else
     if g:isGUI
-        set guifont=Monaco\ 11
+        "set guifont=Monaco\ 11
+        set guifont=YaHei\ Consolas\ Hybrid:h13
     else
         " colorscheme ir_black
         " colorscheme grb256
@@ -353,7 +354,7 @@ let g:vim_markdown_folding_disabled = 0
 " tabs
 map <leader>tn :tabnew<cr>
 map <leader>te :tabedit
-map <leader>tc :tabclose<cr>
+" map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
 
 " Line(s) move up/down

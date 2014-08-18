@@ -12,7 +12,7 @@ ln -sf "$dir/_vimrc" ~/.vimrc
 ln -sf "$dir/vimfiles" ~/.vim
 
 #install vundle plugin
-if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
+if [ ! -d ~/.vim/bundle/Vundle.vim/autoload ]; then
     git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 fi
 
