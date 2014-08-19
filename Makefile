@@ -10,8 +10,7 @@ master=git://github.com/yantze/dotfiles.git
 dest=~/.dotfiles
 ohmyzsh=git://github.com/robbyrussell/oh-my-zsh.git
 
-all: install
-install: download zsh vim
+all: install-all
 
 install-vim: download vim
 install-zsh: download ohmyzsh zsh
