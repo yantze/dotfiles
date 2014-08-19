@@ -8,12 +8,13 @@
 
 master=git://github.com/yantze/dotfiles.git
 dest=~/.dotfiles
-ohmyzsh=git://github.com/robbyrussell/oh-my-zsh.git
+ohmyzsh=https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
+autojump=git://github.com/joelthelion/autojump.git
 
 all: install-all
 
 install-vim: download vim
-install-zsh: download ohmyzsh zsh
+install-zsh: download ohmyzsh autojump zsh
 install-all: download zsh vim git tmux
 
 download:
@@ -25,7 +26,12 @@ zsh:
 	ln -fs $(dest)/zshrc/zshrc ~/.zshrc
 
 ohmyzsh:
-	wget -O - https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+	wget -O - $(ohmyzsh) | sh
+
+autojump:
+	git clone $(autojump) ~/.autojump
+	cd .autojump && ./install.py
+
 
 vim:
 	@$(dest)/vimrc/script/link-rc.sh
