@@ -91,8 +91,8 @@ PATH="$GO_HOME/bin:$GOROOT/bin:$PATH"
 ###python###
 PYTHON2_HOME="/usr/local/python/2.7"
 PYTHON3_HOME="/usr/local/python/3.4"
-PATH="$PYTHON2_HOME/bin:$PATH"
 PATH="$PYTHON3_HOME/bin:$PATH"
+PATH="$PYTHON2_HOME/bin:$PATH"
 
 ###scala###
 SCALA_HOME="/usr/local/scala"
@@ -108,7 +108,7 @@ export LD_LIBRARY_PATH=$LINUXBRE/lib:$LD_LIBRARY_PATH
 PATH="$LINUXBREW/bin:$PATH"
 
 
-PATH="$PATH:/usr/local/bin:/bin:/usr/bin:$HOME/bin:/usr/local/sbin:/usr/sbin:/sbin"
+# PATH="$PATH:/usr/local/bin:/bin:/usr/bin:$HOME/bin:/usr/local/sbin:/usr/sbin:/sbin"
 
 export PATH
 
