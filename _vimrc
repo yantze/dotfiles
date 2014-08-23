@@ -49,7 +49,8 @@
 set nocompatible               " 设置不与之前版本兼容 be iMproved
 filetype off                   " 检测文件类型 required!
 if filereadable(expand("$VIM/_vimrc.bundles"))
-   set rtp+=$VIM/vimfiles/bundle/vundle/  "添加vendle环境变量
+   " set rtp+=$VIM/vimfiles/bundle/vundle/  "添加vendle环境变量
+   set rtp+=$VIM/bundle/Vundle.vim  "添加vendle环境变量
    source $VIM/_vimrc.bundles
 endif
 " 安装新的插件 :PluginInstall
@@ -760,4 +761,5 @@ let g:agprg = 'ag --nogroup --nocolor --column'
        " map <Esc>[24~ <F12>
    " endif
 
-source $VIM/config/pyrc
+" deploy python
+source $VIM/rc/py
