@@ -10,6 +10,7 @@ alias -s bz2='tar -xjvf'
 alias tf="tail -f"
 alias cls='clear'
 alias ps='ps -ef'
+alias q='exit'
 #alias sp='~/tools/.sp.sh'
 alias sp='~/soft/sh-toolkits-lib/sp.sh'
 alias get='sh ~/soft/sh-toolkits-lib/sp.sh'
@@ -22,6 +23,8 @@ alias hd='od -Ax -tx1z -v' #方便的十六进制输出。 (用法举例: • hd
 alias realpath='readlink -f'  #显示符号链接指向的真实路径((用法举例: • realpath ~/../$USER)
 
 alias p='trash-put'
+alias pl='trash-list'
+alias rsyn='rsync -arvuzp'
 
 
 
