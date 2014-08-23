@@ -1,4 +1,5 @@
 alias rm='rm -i'
+alias l.='ls -d .* --color=auto'
 alias vi='vim'
 alias javac="javac -J-Dfile.encoding=utf8"
 alias grep="grep --color=auto"
@@ -25,6 +26,7 @@ alias realpath='readlink -f'  #显示符号链接指向的真实路径((用法�
 alias p='trash-put'
 alias pl='trash-list'
 alias rsyn='rsync -arvuzp'
+alias proxy='export http_proxy="http://vastiny:8087"'
 
 
 
