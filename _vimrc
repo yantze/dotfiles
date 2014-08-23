@@ -18,20 +18,16 @@
 
     " Basics {
         set nocompatible        " Must be first line
-        if !WINDOWS()
-            set shell=/bin/sh
-        endif
     " }
 
     " Windows Compatible {
-        " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
-        " across (heterogeneous) systems easier.
         if WINDOWS()
             let g:isWIN = 1
             " set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
         else
             " 兼容windows的环境变量$VIM
             let $VIM = $HOME."/.vim"
+            set shell=/bin/sh
             let g:isWIN = 0
         endif
     " }
@@ -53,8 +49,7 @@
 set nocompatible               " 设置不与之前版本兼容 be iMproved
 filetype off                   " 检测文件类型 required!
 if filereadable(expand("$VIM/_vimrc.bundles"))
-   "set rtp+=$VIM/vimfiles/bundle/vundle/  "添加vendle环境变量
-   set rtp+=$VIM/bundle/Vundle.vim  "添加vendle环境变量
+   set rtp+=$VIM/vimfiles/bundle/vundle/  "添加vendle环境变量
    source $VIM/_vimrc.bundles
 endif
 " 安装新的插件 :PluginInstall
@@ -73,6 +68,19 @@ filetype plugin indent on    " 启用自动补全
 set ic                       "忽略大小写查找
 set visualbell t_vb=         "关闭visual bell/声音
 au GuiEnter * set t_vb=      "关闭beep/屏闪
+
+" file
+" 设定换行符
+set fileformats=unix
+" 设定文件浏览器目录为当前目录
+set bsdir=buffer
+" 设置编码
+set enc=utf-8
+" 设置文件编码
+set fenc=utf-8
+" 设置文件编码检测类型及支持格式
+set fencs=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+
 
 
 
@@ -107,6 +115,8 @@ if g:isWIN
         set guifont=Source\ Code\ Pro\:h13
     else
         colorscheme ir_black
+        " 兼容windows下cmd的gb2312
+        set enc=cp936
 
     endif
 else
@@ -324,7 +334,7 @@ set ruler                    " 右下角显示光标位置的状态行
 set incsearch                " 开启实时搜索功能
 set hlsearch                 " 开启高亮显示结果
 set nowrapscan               " 搜索到文件两端时不重新搜索
-set nocompatible             " 关闭兼容模式
+" set nocompatible             " 关闭兼容模式
 set hidden                   " 允许在有未保存的修改时切换缓冲区
 set autochdir                " 设定文件浏览器目录为当前目录
 set foldmethod=syntax        " 选择代码折叠类型
@@ -358,20 +368,6 @@ set lbr       "不在单词中间断行
 set fo+=mB    "打开断行模块对亚洲语言支持
 " set lsp=0     "设置行间距
 "
-set fileformats=unix
-
-
-
-
-" 设定文件浏览器目录为当前目录
-set bsdir=buffer
-" 设置编码
-set enc=utf-8
-" 设置文件编码
-set fenc=utf-8
-" 设置文件编码检测类型及支持格式
-set fencs=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
-
 
 
 " set 折叠
@@ -763,3 +759,5 @@ let g:agprg = 'ag --nogroup --nocolor --column'
        " map <Esc>[23~ <F11>
        " map <Esc>[24~ <F12>
    " endif
+
+source $VIM/config/pyrc
