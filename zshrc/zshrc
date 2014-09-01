@@ -170,4 +170,3 @@ export cenhdp='root@172.31.195.136'
 go_libs="-lm"
 go_flags="-g -Wall -include allheads.h -O3"
 alias go_c="c99 -xc '-' $go_libs $go_flags"
-

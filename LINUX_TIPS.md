@@ -140,14 +140,12 @@ lex=flex / yacc / bison
 bison是GUN版的语法分析器，yacc是Berkeley版的语法分析器，两者实现功能类似，可能会有微小的语义差别
 
 
+curl
+curl -u "yantze" -d '{"scopes":["public_repo"]}' https://api.github.com/users/yantze\?callback\=haha
+curl -u "yantze" -H "Accept: application/vnd.github.v3.text+json"  https://api.github.com/users/yantze
+curl -i/-I -u "username":"password"
 
 
-zsh使用技巧
-..  快速向上跳 ‘...’顶目录
-ls * 或者ls -l * 都是可以递归显示
-j 曾今访问过的目录名 这个功能需要安装autojump
-alt+l 直接执行上一次执行的内容
-直接输入目录可以进入
 
 ssh使用技巧
 ssh-keygen 生成id_rsa,id_rsa.pub
@@ -208,36 +206,19 @@ mount -t tmpfs tmpfs /tmpram -o size=512m  //创建ramdisk
 rouchdb #一个json格式的nosql数据库
 fail2ban
 
+zsh使用技巧
+..  快速向上跳 ‘...’顶目录
+ls * 或者ls -l * 都是可以递归显示
+j 曾今访问过的目录名 这个功能需要安装autojump
+alt+l 直接执行上一次执行的内容
+直接输入目录可以进入
+
 dirs 的命令
 d  //d is an alias for dirs -v | head -10
 po //popd , popd is pop dir
 pp //pushd , put the current dir 
+在zsh中输入d命令下面的数字，可以直接进入
 
-
-docker
-docker pull centos:latest
-docker images centos
-docker run -i -t centos /bin/bash //也可以使用docker run -it centos /bin/bash
-docker ps -a //列出所有的使用过的container
-sudo usermod -a -G docker $USER  //添加当前用户到docker用户组中,这样可以用当前用户而不是root操作docker
-docker start container-id
-docker attach container-id // 运行上面这两条命令可以打开之前关闭的docker实例
-
-docker run --rm -i -t -p 80:80 nginx  //启动docker/nginx,把内置的80端口映射到本机的80端口
-
-docker 进阶
-docker程序化
-docker -d run centos:latest /bin/sh -c "while true; do echo hello world; sleep 1; done"
-#在后台运行这个containner
-docker logs containerid/names
-#查看后台出现的内容
-docker stop containerid/names
-#停止后台运行的程序
-
-docker -d -P run centos python web.py
-#后台运行，并且映射所有端口到本地
-docker logs -f containerid/names
-#动态显示输出内容
 
 
 
