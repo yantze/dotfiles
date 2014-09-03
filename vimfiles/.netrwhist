@@ -1,11 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/etc/httpd/conf/sites-enabled'
-let g:netrw_dirhist_2='/home/yantze/.vim'
-let g:netrw_dirhist_3='/home/yantze/test/lwip-contrib'
-let g:netrw_dirhist_4='/home/yantze/.dotfiles'
-let g:netrw_dirhist_5='/var/www/html/p'
-let g:netrw_dirhist_6='/home/yantze/.vim'
-let g:netrw_dirhist_7='/var/www/html/test/examples/errors'
-let g:netrw_dirhist_8='/var/www/html/html/layout/respon/3'
-let g:netrw_dirhist_9='/home/yantze/dl/gcc-4.9.1/INSTALL'
+let g:netrw_dirhist_cnt =0
