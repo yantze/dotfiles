@@ -81,6 +81,12 @@ else
     if g:isGUI
         "set guifont=Monaco\ 11
         set guifont=YaHei\ Consolas\ Hybrid:h13
+        set background=dark
+        colorscheme solarized
+        set lines=38 columns=140
+        let g:solarized_termtrans =0
+        let g:solarized_termcolors=256
+
     else
         " colorscheme ir_black
         " colorscheme grb256
