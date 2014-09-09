@@ -134,6 +134,8 @@ fuser //列出当前打开的文件和socket
 ag keychar  //直接查看当前目录下包含keychar的字符
 grep -r "some_text" /path/to/dir //递归查找grep的目录
 grep -w "name" test.txt  //查找完整的字符串
+grep pattern files
+grep -r pattern dir
 rsync -arvuzp --chmod=g+rx -e "ssh -p 22333" ./db.txt 172.31.195.91:/home/yantze/test/
 
 lex=flex / yacc / bison
