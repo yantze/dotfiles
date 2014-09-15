@@ -8,8 +8,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle
 " required! 
-" Plugin 'gmarik/Vundle.vim'
-" Plugin 'bundle/Vundle.vim'
+Plugin 'gmarik/Vundle.vim'
 
 Plugin 'thoughtbot/vim-rspec'
 
@@ -26,8 +25,6 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Bundle 'scrooloose/syntastic'
 "校验JavaScript。JSHint 来检查代码错误，同时控制代码质量。
 
-" 快速打开文件的功能
-Bundle 'ctrlp.vim'
 
 Plugin 'terryma/vim-expand-region'
 
@@ -59,6 +56,13 @@ Bundle 'jelera/vim-javascript-syntax'
 Plugin 'lukaszb/vim-web-indent'
 " vim-web-indent包含了javascript.vim 和html.vim
 " Plugin 'javascript.vim'
+
+" sass highlight
+Bundle 'JulesWang/css.vim'
+Bundle 'cakebaker/scss-syntax.vim'
+
+" support css word with -
+set iskeyword+=-
 
 " 代码补全/snippets
 Bundle "MarcWeber/vim-addon-mw-utils"
@@ -179,9 +183,9 @@ Plugin 'tobyS/vmustache'
 Plugin 'SirVer/ultisnips'
 " phpdocument generate
 "pdv需要安装 "tobyS/vmustache模板引擎
-Plugin 'tobyS/pdv'
-let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
-nnoremap <buffer> <C-p> :call pdv#DocumentWithSnip()<CR>
+" Plugin 'tobyS/pdv'
+" let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
+" nnoremap <buffer> <C-p> :call pdv#DocumentWithSnip()<CR>
 
 "php debuger
 " Plugin 'vim-scripts/DBGp-X-client'
@@ -216,13 +220,34 @@ Plugin 'liuyug/cscope.vim'
 " 自动补全引用库中的内容，包括'->','.','::'
 Plugin 'OmniCppComplete'
 
-"grep
+" Find & Search
 " Plugin 'ack.vim'
-" ag.vim
+" let g:ackprg = 'ag --nogroup --nocolor --column'
 Plugin 'rking/ag.vim'
+let g:agprg="ag --column"
+
+" 快速打开文件的功能
+" Bundle 'ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+map <leader>b :CtrlPBuffer<CR>
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.png,*.gif,*.jpeg,.DS_Store  " MacOSX/Linux
 
 " vim post wordpress: vimpress
 " Plugin 'pentie/VimRepress'
 " Plugin 'VimRepress'
 
+" vim 7.4 backspace fix
+" set backspace=indent,eol,start
+
 call vundle#end()            " required
+
+" NOTE:
+" ag.vim: You must, of course, install ag / the_silver_searcher
+" :Ag [options] {pattern} [{directory}]
+" :Ag '\\\#define foo'
+" e    to open file and close the quickfix window
+" o    to open (same as enter)
+" go   to preview file (open but maintain focus on ag.vim results)

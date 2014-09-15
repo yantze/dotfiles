@@ -48,11 +48,12 @@
 " 添加vundle插件管理
 set nocompatible               " 设置不与之前版本兼容 be iMproved
 filetype off                   " 检测文件类型 required!
+" set rtp+=$VIM/bundle/Vundle.vim  "添加vendle环境变量
 if filereadable(expand("$VIM/_vimrc.bundles"))
-   " set rtp+=$VIM/vimfiles/bundle/vundle/  "添加vendle环境变量
-   set rtp+=$VIM/bundle/Vundle.vim  "添加vendle环境变量
+   set rtp+=$VIM/vimfiles/bundle/Vundle.vim  "添加vendle环境变量
    source $VIM/_vimrc.bundles
 endif
+"you can put it in tmpfs:/dev/shm/.dotfiles/vimrc/vimfiles/bundle/Vundle.vim
 " 安装新的插件 :PluginInstall
 " 在命令行运行 vim +PluginInstall +qall
 " 更新插件:PluginUpdate
@@ -148,8 +149,8 @@ if v:version > 703
     " These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
     " Without these mappings, `n` & `N` works fine. (These mappings just provide
     " different highlight method and have some other features )
-    map  n <Plug>(easymotion-next)
-    map  N <Plug>(easymotion-prev)
+    " map  n <Plug>(easymotion-next)
+    " map  N <Plug>(easymotion-prev)
 endif
 
 
@@ -159,6 +160,8 @@ endif
 "set my leader
 let mapleader=","
 let g:mapleader=","
+"set : to ;
+map ; :
 
 
 
@@ -422,17 +425,6 @@ map <leader>f :NERDTreeToggle<CR>
   \  },
   \}
 
-"set CtrlP
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 2
-"use in  edit
-"imap <C-A> <C-C><c-p>
-" 打开buffer列表
-:map <leader>b :CtrlPBuffer<CR>
-
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.png,*.gif,*.jpeg,.DS_Store  " MacOSX/Linux
-let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 
 "scss,sass
 au BufRead,BufNewFile *.scss set filetype=scss
@@ -472,9 +464,6 @@ let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
 
-" code search
-let g:ackprg = 'ag --nogroup --nocolor --column'
-
 "set powerline
 set laststatus=2
 "set guifont=Powerline
@@ -493,10 +482,10 @@ imap <F3> <C-O>:set invpaste paste?<CR>
 set pastetoggle=<F3>
 
 " RSpec.vim mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
+" map <Leader>t :call RunCurrentSpecFile()<CR>
+" map <Leader>s :call RunNearestSpec()<CR>
+" map <Leader>l :call RunLastSpec()<CR>
+" map <Leader>a :call RunAllSpecs()<CR>
 
 " 切换窗口光标，兼容tmux的快捷键
 nnoremap <C-h> <C-w>h
@@ -722,12 +711,6 @@ nmap <leader>gc :!cscope -Rbq -f cscope/cs.out <CR><CR>:echo 'generate cscope do
 "
 "
 "
-map ; :
-
-
-" ag.vim 的配置
-let g:agprg = 'ag --nogroup --nocolor --column'
-
 
 " tips
 " 从vim暂时的切换到Console
@@ -764,4 +747,37 @@ let g:agprg = 'ag --nogroup --nocolor --column'
    " endif
 
 " deploy python
-source $VIM/rc/py
+" source $VIM/rc/py
+
+if WINDOWS()
+    let g:hexoProjectPath="D:\\Work\\GitHub\\hexo"
+else
+    let g:hexoProjectPath="~/hexo/"
+endif
+fun! OpenHexoProjPath()
+    execute "cd " . g:hexoProjectPath
+endfun
+function! OpenHexoPost(...)
+    call OpenHexoProjPath()
+
+    let filename = "source/_posts/" . a:1 . ".md"
+    execute "e " . filename
+endfunction
+function! NewHexoPost(...)
+    call OpenHexoProjPath()
+
+    let filename = a:1
+    execute "!hexo new " . filename
+
+    call OpenHexoPost(a:1)
+endfunction
+command -nargs=+ HexoOpen :call OpenHexoPost("<args>")
+command -nargs=+ HexoNew :call NewHexoPost("<args>")
+" :HexoNew artical-name
+" :HexoOpen artical-name
+
+" map <leader>ag :Ag
+" cnoreabbrev ag Ag
+" cabbrev ag Ag
+" there use special tech
+cabbrev ag <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'Ag' : 'ag')<CR>
