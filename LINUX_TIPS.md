@@ -1,5 +1,13 @@
 linux 详细的使用说明
 
+##常用技能
+* vim
+- CtrlP
+- ag
+
+* linux
+- 在要代理的软件前面加上 proxy
+
 TODO
 phabricator 这个软件没有完成,dirctory定位到/home/yantze/phabricator/phabricator/webboot,打开phabricator系统的ip地址，提示无权限
 如果成功解决，打开url：http://www.phabricator.com/docs/phabricator/article/Configuring_Accounts_and_Registration.html
@@ -22,6 +30,7 @@ paste 1.txt 2.txt 按Tab合并两个文件
 cut -d: -f1 /etc/passwd | head -2 //打印第一列前两行
 cut -c2- //删除空格
 cp /your/path/to/file.list{,.20121106} //备份文件
+cp -af file tofile //用原来文档的用户名
 Ctrl+x Ctrl+e //编辑当前的命令到编辑器，可以在zshrc中export EDITOR='vim'
 echo $'\x41'  //输出A
 echo "`ls -l`" || echo `ls -l` //shell用IFS定义的分隔符来分隔字符串，包括、n，所以再传给echo就是，"line 1" "line 2"
@@ -148,6 +157,21 @@ curl -u "yantze" -H "Accept: application/vnd.github.v3.text+json"  https://api.g
 curl -i/-I -u "username":"password"
 
 
+zsh使用技巧
+..  快速向上跳 ‘...’顶目录
+ls * 或者ls -l * 都是可以递归显示
+j 曾今访问过的目录名 这个功能需要安装autojump
+alt+l 直接执行上一次执行的内容
+直接输入目录可以进入
+zsh 的补全，所有待补全项都可以通过键盘方向键或者 <Ctrl-n/p/f/b> 来选择
+聰明的目錄補全 cd /u/p/w/p/s/m/w/s/j<TAB>
+快速目录切换 zsh 会记住你每一次切换的路径，然后通过 1 来切换到你上一次访问的路径，2 切换到上上次……一直到 9，还可以通过 d 查看目录访问历史
+osx:
+man-preview 通过 preview 程序查看一个命令的手册，例如 man-preview git  (需要給oh-my-zsh
+中添加參數 osx)
+quick-look 快速预览文件
+pfd 返回当前 finder 打开的文件夹的路径
+cdf 切换到当前 finder 所在的目录
 
 ssh使用技巧
 ssh-keygen 生成id_rsa,id_rsa.pub
@@ -253,3 +277,6 @@ gpg file.gpg件解密
 
 有一个命令参考比较齐全，之后再消化一下
 http://www.pixelbeat.org/cmdline_zh_CN.html
+
+killall
+killadd5

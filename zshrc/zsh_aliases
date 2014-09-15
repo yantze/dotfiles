@@ -1,3 +1,4 @@
+###require
 alias rm='rm -i'
 alias l.='ls -d .* --color=auto'
 alias vi='vim'
@@ -17,16 +18,24 @@ alias sp='~/soft/sh-toolkits-lib/sp.sh'
 alias get='sh ~/soft/sh-toolkits-lib/sp.sh'
 #设置窗口的名字为best
 alias t='tmux -2 -u attach || tmux -2 -u new-session -s hi'
-alias ngtop='ngxtop -l /usr/local/nginx/logs/access.log'
-alias cmake='cmake28'
-alias ccmake='ccmake28'
+#新建一個有名字的窗口
+alias tn='tmux -2 -u new-session -s'
+#附上一個有名字的窗口
+alias ta='tmux attach -t'
 alias hd='od -Ax -tx1z -v' #方便的十六进制输出。 (用法举例: • hd /proc/self/cmdline | less)
 alias realpath='readlink -f'  #显示符号链接指向的真实路径((用法举例: • realpath ~/../$USER)
 
+###
 alias p='trash-put'
 alias pl='trash-list'
 alias rsyn='rsync -arvuzp'
-alias proxy='export http_proxy="http://vastiny:8087"'
+alias proxy_local='http_proxy="http://vastiny:8087";'
+
+
+###
+alias ngtop='ngxtop -l /usr/local/nginx/logs/access.log'
+alias cmake='cmake28'
+alias ccmake='ccmake28'
 
 
 

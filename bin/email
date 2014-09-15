@@ -1,0 +1,4 @@
+#!/bin/env sh
+
+curl -k -d "api_user=postmaster@vastiny.sendcloud.org&api_key=xPQq5h3sQKuDnUmB&to=yantze@126.com&from=yantze@vastiny.com&fromname=yantze&subject=$1&html=$2" https://sendcloud.sohu.com/webapi/mail.send.xml
+##
