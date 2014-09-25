@@ -133,3 +133,4 @@ manviewpage有很多用法，用在php中是从php.net中查找相关的内容
 这个插件在linux或者mac cli下运行
 因为需要安装text browser软件links或者elinks、links2也可以
 
+
