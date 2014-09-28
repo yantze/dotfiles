@@ -7,26 +7,53 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle
-" required! 
+" required!
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'thoughtbot/vim-rspec'
+" multiple cursors
+Plugin 'terryma/vim-multiple-cursors'
+
+" for ruby
+" Plugin 'thoughtbot/vim-rspec'
+" Plugin 'rspec.vim'
+" Plugin 'Keithbsmiley/rspec.vim'
+" Plugin 'tpope/vim-rails'
 
 Plugin 'comments.vim'
-Plugin 'rspec.vim'
 
 Plugin 'tpope/vim-bundler'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'tpope/vim-haml'
-Plugin 'tpope/vim-rails'
+" Plugin 'kchmck/vim-coffee-script'
+" Plugin 'tpope/vim-haml'
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'terryma/vim-expand-region'
+
 
 " 语法查错
-Bundle 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 "校验JavaScript。JSHint 来检查代码错误，同时控制代码质量。
 
+" fuzzy compolier
+Plugin 'Valloric/YouCompleteMe'
 
-Plugin 'terryma/vim-expand-region'
+
+" http://blog.163.com/lgh_2002/blog/static/440175262010613105148657/
+" Plugin 'ervandew/supertab'
+" Plugin 'Shougo/neocomplcache.vim' "不兼容另外一个自动完成
+
+"C
+" cscope 
+" Plugin 'brookhong/cscope.vim'
+" Plugin 'liuyug/cscope.vim'
+" 自动补全引用库中的内容，包括'->','.','::'
+" Plugin 'OmniCppComplete'
+
+" 代码补全/snippets
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle 'honza/vim-snippets'
+Plugin 'garbas/vim-snipmate'
+
+
 
 
 
@@ -64,18 +91,12 @@ Bundle 'cakebaker/scss-syntax.vim'
 " support css word with -
 set iskeyword+=-
 
-" 代码补全/snippets
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle 'honza/vim-snippets'
-Plugin 'garbas/vim-snipmate'
-
 " 内置的文件浏览器已经够了
 " Bundle 'winmanager'
 Bundle 'taglist.vim'
 
 
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 "
 " Bundle 'pangloss/vim-javascript'
 " Bundle 'Townk/vim-autoclose'
@@ -110,11 +131,6 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'flazz/vim-colorschemes'
 " writer
 Plugin 'junegunn/goyo.vim'
-
-" http://blog.163.com/lgh_2002/blog/static/440175262010613105148657/
-Plugin 'ervandew/supertab'
-" Plugin 'Shougo/neocomplcache.vim' "不兼容另外一个自动完成
-
 
 " 以下三个都是增强状态栏的，vim-powerline < powerline < vim-airline
 " Bundle 'Lokaltog/vim-powerline'
@@ -179,6 +195,8 @@ Plugin 'StanAngeloff/php.vim'
 " Plugin 'shawncplus/phpcomplete.vim'
 " 模板引擎
 Plugin 'tobyS/vmustache'
+
+
 " snip综合解决方案
 Plugin 'SirVer/ultisnips'
 " phpdocument generate
@@ -213,12 +231,6 @@ Plugin 'python.vim'
 "检查python的代码错误,编译需要'+python'
 " Plugin 'pyflakes.vim'
 "
-"C
-" cscope 
-" Plugin 'brookhong/cscope.vim'
-Plugin 'liuyug/cscope.vim'
-" 自动补全引用库中的内容，包括'->','.','::'
-Plugin 'OmniCppComplete'
 
 " Find & Search
 " Plugin 'ack.vim'

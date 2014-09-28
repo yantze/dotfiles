@@ -48,7 +48,6 @@
 " 添加vundle插件管理
 set nocompatible               " 设置不与之前版本兼容 be iMproved
 filetype off                   " 检测文件类型 required!
-" set rtp+=$VIM/bundle/Vundle.vim  "添加vendle环境变量
 if filereadable(expand("$VIM/_vimrc.bundles"))
    set rtp+=$VIM/vimfiles/bundle/Vundle.vim  "添加vendle环境变量
    source $VIM/_vimrc.bundles
@@ -788,3 +787,26 @@ command -nargs=+ HexoNew :call NewHexoPost("<args>")
 " cabbrev ag Ag
 " there use special tech
 cabbrev ag <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'Ag' : 'ag')<CR>
+
+
+" You Complete Me
+"competeble with UltraSnips
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
+" let g:ycm_global_ycm_extra_conf     = '$VIM/rc/ycm_extra_conf.py'
+" let g:ycm_extra_conf_vim_data       = ['&filetype', 'g:syntastic_c_compiler_options', 'g:syntastic_cpp_compiler_options']
+
+let g:ycm_filetype_blacklist = {
+    \ 'notes' : 1,
+    \ 'markdown' : 1,
+    \ 'text' : 1,
+    \ 'gitcommit': 1,
+    \ 'mail': 1,
+\}
+
+let g:ycm_error_symbol = '>>'
+let g:ycm_warning_symbol = '>*'
+" offer like ctags: declara, define and multi
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>

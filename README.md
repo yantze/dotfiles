@@ -1,19 +1,19 @@
 ##VIM使用说明
+###常用命令-比较强大且要记住的功能
 
-###安装
-这个软件需要先安装vim最新版本
+####Key
+Ctrp+P      快速查找当前文件夹下所有子目录的文件
+:ag         查找当前目录下的所有文件的关键字
+,gg         使用YCM的快速查找定义
 
-windows安装gvim
 
-官网vim7.4: ftp://ftp.vim.org/pub/vim/pc/gvim74.exe
+####Tips
+c/c++/objc/objc++ 可以使用YCM
 
-*nix(unix,linux)安装vim
 
-默认都安装了vim,但版本不一定高
 
-vim支持7.2+版本以上，对于最新版本，配置会有更多的特性
+###VIMRC的配置方法
 
-###然后
 使用本配置有两个方法：
 
 下载zip文件:[下载地址](https://github.com/yantze/vimrc/archive/master.zip)
@@ -51,9 +51,9 @@ vim支持7.2+版本以上，对于最新版本，配置会有更多的特性
 如果安装了git可以使用
     git clone https://github.com/yantze/vimrc.git 
 可以获得相应的文件然后根据上面的文件再配置
+配置完成
 
 ###接下来
-现在就可以用了，have enjoy!
 如果是初学者，要学会这几个技巧
 vim有很多的‘模式’，在normal模式下
 jkhl: 这四个键分别代表：下上左右
