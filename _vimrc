@@ -693,11 +693,11 @@ autocmd BufRead,BufNewFile *.js set filetype=javascript syntax=jquery
 " c/c++环境开发IDE
 " c开发介绍：http://blog.csdn.net/bokee/article/details/6633193
 " generate ctags
-nmap <silent><leader>gt :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <cr><cr>:echo 'generate ctags done'<cr>
+" nmap <silent><leader>gt :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <cr><cr>:echo 'generate ctags done'<cr>
 " ctags的使用
 " 用ctrl+]和Ctrl+t跳转定义和放回
 " 生成cscope
-nmap <leader>gc :!cscope -Rbq -f cscope/cs.out <CR><CR>:echo 'generate cscope done'<cr>
+" nmap <leader>gc :!cscope -Rbq -f cscope/cs.out <CR><CR>:echo 'generate cscope done'<cr>
 " cscope的使用
 " <leader>f
 " s: Find this C symbol
@@ -793,9 +793,8 @@ cabbrev ag <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'Ag' : 'ag')<CR>
 "competeble with UltraSnips
 let g:ycm_key_list_select_completion=[]
 let g:ycm_key_list_previous_completion=[]
-" let g:ycm_global_ycm_extra_conf     = '$VIM/rc/ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = $VIM . '/rc/ycm_extra_conf.py'
 " let g:ycm_extra_conf_vim_data       = ['&filetype', 'g:syntastic_c_compiler_options', 'g:syntastic_cpp_compiler_options']
-
 let g:ycm_filetype_blacklist = {
     \ 'notes' : 1,
     \ 'markdown' : 1,
@@ -803,10 +802,14 @@ let g:ycm_filetype_blacklist = {
     \ 'gitcommit': 1,
     \ 'mail': 1,
 \}
-
 let g:ycm_error_symbol = '>>'
 let g:ycm_warning_symbol = '>*'
+let g:ycm_collect_identifiers_from_tags_files = 1
 " offer like ctags: declara, define and multi
-nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+" nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" tComment - inherit the nerdcomment shortkey
+map <leader>ci <Plug>TComment-<Leader>__
+map <leader>cm <Plug>TComment-<Leader>_b

@@ -19,8 +19,6 @@ Plugin 'terryma/vim-multiple-cursors'
 " Plugin 'Keithbsmiley/rspec.vim'
 " Plugin 'tpope/vim-rails'
 
-Plugin 'comments.vim'
-
 Plugin 'tpope/vim-bundler'
 " Plugin 'kchmck/vim-coffee-script'
 " Plugin 'tpope/vim-haml'
@@ -47,12 +45,26 @@ Plugin 'Valloric/YouCompleteMe'
 " 自动补全引用库中的内容，包括'->','.','::'
 " Plugin 'OmniCppComplete'
 
+" snip综合解决方案
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+" Trigger configuration. Do not use <tab> if you use YouCompleteMe.
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " 代码补全/snippets
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle 'honza/vim-snippets'
-Plugin 'garbas/vim-snipmate'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+" Plugin 'garbas/vim-snipmate'
 
+
+" 快捷注释
+" comments.vim 用c-c/c-x做注释
+" Plugin 'comments.vim'
+" 用<leader>ci/cm做注释
+" Plugin 'scrooloose/nerdcommenter'
+" 这个更智能一些
+Plugin 'tomtom/tcomment_vim'
 
 
 
@@ -60,8 +72,6 @@ Plugin 'garbas/vim-snipmate'
 " 文件管理器
 Plugin 'scrooloose/nerdtree'
 
-" 快捷注释
-Plugin 'scrooloose/nerdcommenter'
 
 Bundle 'briancollins/vim-jst'
 Bundle 'plasticboy/vim-markdown'
@@ -197,8 +207,6 @@ Plugin 'StanAngeloff/php.vim'
 Plugin 'tobyS/vmustache'
 
 
-" snip综合解决方案
-Plugin 'SirVer/ultisnips'
 " phpdocument generate
 "pdv需要安装 "tobyS/vmustache模板引擎
 " Plugin 'tobyS/pdv'
