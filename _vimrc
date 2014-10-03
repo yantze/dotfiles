@@ -41,6 +41,19 @@
 
 " }
 
+" Adapter with putty because of putty only support the 7 character
+if $TERM == 'screen'
+    "from: http://vim.wikia.com/wiki/Get_Alt_key_to_work_in_terminal
+    set <m-j>=j
+    set <m-h>=h
+    set <m-k>=k
+    set <m-l>=l
+    "from: https://groups.google.com/forum/#!topic/vim_use/uKOmY-mHo_k
+    "below set <esc> wait the next key millionstime
+    set timeout timeoutlen=3000 ttimeoutlen=100
+endif
+" the ^[ is an Esc char that comes before the 'a'
+" In most default configs, ^[a may be typed by pressing first <C-v>, then <M-a>
 
 
 
@@ -287,14 +300,14 @@ imap <leader>th <ESC>:set nonumber<CR>:set norelativenumber<CR><ESC>:TOhtml<CR><
 nmap <leader>th <ESC>:set nonumber<CR>:set norelativenumber<CR><ESC>:TOhtml<CR><ESC>:w %:r.html<CR><ESC>:q<CR>:set number<CR>:set relativenumber<CR>
 vmap <leader>th <ESC>:set nonumber<CR>:set norelativenumber<CR><ESC>:TOhtml<CR><ESC>:w %:r.html<CR><ESC>:q<CR>:set number<CR>:set relativenumber<CR>
 
-" 格式化输出
+" F                   格式化输出
 map F :%s/{/{\r/g <CR> :%s/}/}\r/g <CR>  :%s/;/;\r/g <CR> gg=G
 
 " move lines up or down (command - D)
-nmap <D-j> mz:m+<cr>`z
-nmap <D-k> mz:m-2<cr>`z
-vmap <D-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <D-k> :m'<-2<cr>`>my`<mzgv`yo`z
+nmap <m-j> mz:m+<cr>`z
+nmap <m-k> mz:m-2<cr>`z
+vmap <m-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <m-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 " Tab move lines left or right (c-Ctrl,s-Shift)
 "nmap    <c-tab>     v>
@@ -333,7 +346,9 @@ autocmd FileType ruby compiler ruby
 " if not file start too
 " autocmd vimenter * if !argc() | NERDTree | endif
 " when no file colse nerdtree
- autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+let NERDTreeIgnore = ['\.pyc$','\.sock$']
+
 
 set backspace=2              " 设置退格键可用
 set autoindent               " 自动对齐
@@ -347,7 +362,7 @@ set nowrapscan               " 搜索到文件两端时不重新搜索
 " set nocompatible             " 关闭兼容模式
 set hidden                   " 允许在有未保存的修改时切换缓冲区
 set autochdir                " 设定文件浏览器目录为当前目录
-set foldmethod=syntax        " 选择代码折叠类型
+set foldmethod=marker         " 选择代码折叠类型
 set foldlevel=100            " 禁止自动折叠
 set laststatus=2             " 开启状态栏信息
 set cmdheight=2              " 命令行的高度，默认为1，这里设为2
@@ -379,11 +394,6 @@ set fo+=mB    "打开断行模块对亚洲语言支持
 " set lsp=0     "设置行间距
 "
 
-
-" set 折叠
-set foldmethod=indent
-" 打开文件默认不折叠
-set foldlevelstart=99
 
 let g:vim_markdown_folding_disabled = 0
 
@@ -446,9 +456,6 @@ map <leader>cf :CoffeeCompile watch vert<cr>
 
 "let skim use slim syntax
 au BufRead,BufNewFile *.skim set filetype=slim
-
-"ctags
-set tags+=~/gitdb/rails/tags
 
 "auto completed
 " Disable AutoComplPop.
@@ -587,11 +594,13 @@ let g:indent_guides_guide_size            = 1  " 指定对齐线的尺寸
 " gd 找到定义
 " :e $m<tab> 自动扩展到:e $MYVIMRC 然后打开_vimrc
 " <c-y>,  扩展htmlcss的文件
+" :Sw 给sudo权限保存
+" :DiffSaved 比较当前修改了什么
 "
 "少用
+"zz 把当前行移到屏幕中间
 "ga 转换光标下的内容为多进制
 ":e $MYVIMRC 快速打开配置文件,$MYGVIMRC
-"inoremap  <c-]> <c-x><c-]> "ctags 补全快捷键
 " :set notextmode  去掉^M这个符号
 " :set paste  这个可以解决在linux下面有些字母会被执行
 " :set nopaster
@@ -616,11 +625,23 @@ let g:indent_guides_guide_size            = 1  " 指定对齐线的尺寸
 " endfunction
 
 autocmd FileType php setlocal dict+=$VIM/vimfiles/resource/php.dict
+" 除了使用Tab这个补全的方式，还可以使用Ctrl+x，Ctrl+o来补全上面文件的内置函数
+
+" function! RunPhpcs()
+    " let l:filename=@%
+    " let l:phpcs_output=system('phpcs --report=csv --standard=YMC '.l:filename)
+    " let l:phpcs_list=split(l:phpcs_output, "\n")
+    " unlet l:phpcs_list[0]
+    " cexpr l:phpcs_list
+    " cwindow
+    " endfunction
+
+    " set errorformat+=\"%f\"\\,%l\\,%c\\,%t%*[a-zA-Z]\\,\"%m\"
+" command! Phpcs execute RunPhpcs()
 
 " ==============
 " Syntastic: php
 " ==============
-let g:syntastic_check_on_open=0
 
 " ===php===
 " 要让vim支持php/js的错误查询，先安装syntastic插件
@@ -637,6 +658,7 @@ let g:syntastic_check_on_open=0
 let g:phpqa_messdetector_ruleset = ''
 let g:phpqa_messdetector_cmd = '/usr/bin/phpmd'
 let g:phpqa_messdetector_autorun = 0
+
 "
 " ===js===
 " 需要用nodejs下的包安装工具npm安装npm install -g jshint
@@ -660,8 +682,6 @@ au BufEnter *.txt,*.log,*.ini setlocal ft=txt
 
 autocmd BufReadPre * if getfsize(expand("%")) > 10000000 | syntax off | endif
 
-"let g:snippets_dir="$VIM/vimfiles/resource/vim-snippets/" "代码片段的
-"
 autocmd BufRead,BufNewFile *.js set filetype=javascript syntax=jquery
 
 
@@ -677,25 +697,14 @@ autocmd BufRead,BufNewFile *.js set filetype=javascript syntax=jquery
 "
 "
 
-
-" function! RunPhpcs()
-    " let l:filename=@%
-    " let l:phpcs_output=system('phpcs --report=csv --standard=YMC '.l:filename)
-    " let l:phpcs_list=split(l:phpcs_output, "\n")
-    " unlet l:phpcs_list[0]
-    " cexpr l:phpcs_list
-    " cwindow
-    " endfunction
-
-    " set errorformat+=\"%f\"\\,%l\\,%c\\,%t%*[a-zA-Z]\\,\"%m\"
-" command! Phpcs execute RunPhpcs()
-
 " c/c++环境开发IDE
 " c开发介绍：http://blog.csdn.net/bokee/article/details/6633193
-" generate ctags
-" nmap <silent><leader>gt :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <cr><cr>:echo 'generate ctags done'<cr>
-" ctags的使用
-" 用ctrl+]和Ctrl+t跳转定义和放回
+" Ctags
+"inoremap  <c-]> <c-x><c-]> "ctags 补全快捷键
+" 用ctrl+]和Ctrl+t跳转定义和返回
+nmap <silent><leader>mt :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <cr><cr>:echo 'Generate Ctags Done'<cr>
+" nmap <leader>mt <ESC>:!ctags -R --languages=
+" set tags+=~/gitdb/rails/tags
 " 生成cscope
 " nmap <leader>gc :!cscope -Rbq -f cscope/cs.out <CR><CR>:echo 'generate cscope done'<cr>
 " cscope的使用
@@ -711,9 +720,6 @@ autocmd BufRead,BufNewFile *.js set filetype=javascript syntax=jquery
 " 使用taglist <leader>tl
 " 在. -> :: 等地方可以自动补全
 
-" PHP 环境开发
-" CTRL+P给函数做注释
-"
 "
 "
 "
@@ -788,13 +794,32 @@ command -nargs=+ HexoNew :call NewHexoPost("<args>")
 " there use special tech
 cabbrev ag <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'Ag' : 'ag')<CR>
 
+" Syntastic
+let g:syntastic_check_on_open        = 0
+let g:syntastic_enable_signs         = 1
+let g:syntastic_error_symbol         = '!!'
+let g:syntastic_style_error_symbol   = '!¡'
+let g:syntastic_warning_symbol       = '??'
+let g:syntastic_style_warning_symbol = '?¿'
+
+let c_no_curly_error = 1
+
+let g:syntastic_c_checker          = "clang"
+let g:syntastic_c_compiler_options = "-std=c11"
+
+let g:syntastic_cpp_checker          = "clang++"
+let g:syntastic_cpp_compiler_options = "-std=c++11"
+
+let g:syntastic_mode_map = { 'mode': 'active',
+                           \ 'passive_filetypes': ['elixir', 'javascript'] }
 
 " You Complete Me
 "competeble with UltraSnips
-let g:ycm_key_list_select_completion=[]
-let g:ycm_key_list_previous_completion=[]
-let g:ycm_global_ycm_extra_conf = $VIM . '/rc/ycm_extra_conf.py'
-" let g:ycm_extra_conf_vim_data       = ['&filetype', 'g:syntastic_c_compiler_options', 'g:syntastic_cpp_compiler_options']
+let g:ycm_key_list_select_completion   = []
+let g:ycm_key_list_previous_completion = []
+let g:ycm_global_ycm_extra_conf        = $VIM . '/rc/ycm_extra_conf.py'
+" 下里的filetype主要是和上面的syntastic对应，用于使用clang编译的情况
+let g:ycm_extra_conf_vim_data          = ['&filetype', 'g:syntastic_c_compiler_options', 'g:syntastic_cpp_compiler_options']
 let g:ycm_filetype_blacklist = {
     \ 'notes' : 1,
     \ 'markdown' : 1,
@@ -802,10 +827,10 @@ let g:ycm_filetype_blacklist = {
     \ 'gitcommit': 1,
     \ 'mail': 1,
 \}
-let g:ycm_error_symbol = '>>'
+let g:ycm_error_symbol   = '>>'
 let g:ycm_warning_symbol = '>*'
 let g:ycm_collect_identifiers_from_tags_files = 1
-" offer like ctags: declara, define and multi
+" offer like ctags: declara, define and multi, only support c/cpp
 " nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 " nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
@@ -813,3 +838,183 @@ nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " tComment - inherit the nerdcomment shortkey
 map <leader>ci <Plug>TComment-<Leader>__
 map <leader>cm <Plug>TComment-<Leader>_b
+
+
+" ======= 编译 && 运行 && 模板 ======= "
+
+" 编译并运行
+func! Compile_Run_Code()
+    exec "w"
+    if &filetype == "c"
+        if g:isWIN
+            exec "!gcc -Wall -std=c11 -o %:r %:t && %:r.exe"
+        else
+            exec "!clang -Wall -std=c11 -o %:r %:t && ./%:r"
+        endif
+    elseif &filetype == "cpp"
+        if g:isWIN
+            exec "!g++ -Wall -std=c++11 -o %:r %:t && %:r.exe"
+        else
+            exec "!clang++ -Wall -std=c++11 -o %:r %:t && ./%:r"
+        endif
+    elseif &filetype == "d"
+        if g:isWIN
+            exec "!dmd -wi %:t && %:r.exe"
+        else
+            exec "!dmd -wi %:t && ./%:r"
+        endif
+    elseif &filetype == "go"
+        exec "!go run %:t"
+    elseif &filetype == "rust"
+        if g:isWIN
+            exec "!rustc %:t && %:r.exe"
+        else
+            exec "!rustc %:t && ./%:r"
+        endif
+    elseif &filetype == "java"
+        exec "!javac %:t && java %:r"
+    elseif &filetype == "groovy"
+        exec "!groovy %:t"
+    elseif &filetype == "scala"
+        exec "!scala %:t"
+    elseif &filetype == "clojure"
+        exec "!clojure -i %:t"
+    elseif &filetype == "cs"
+        if g:isWIN
+            exec "!csc %:t && %:r.exe"
+        else
+            exec "!mono-csc %:t && ./%:r.exe"
+        endif
+    elseif &filetype == "fsharp"
+        if g:isWIN
+            exec "!fsc %:t && %:r.exe"
+        else
+            exec "!fsharpc %:t && ./%:r.exe"
+        endif
+    elseif &filetype == "scheme" || &filetype == "racket"
+        exec "!racket -fi %:t"
+    elseif &filetype == "lisp"
+        exec "!sbcl --load %:t"
+    elseif &filetype == "ocaml"
+        if g:isWIN
+            exec "!ocamlc -o %:r.exe %:t && %:r.exe"
+        else
+            exec "!ocamlc -o %:r %:t && ./%:r"
+        endif
+    elseif &filetype == "haskell"
+        if g:isWIN
+            exec "!ghc -o %:r %:t && %:r.exe"
+        else
+            exec "!ghc -o %:r %:t && ./%:r"
+        endif
+    elseif &filetype == "lua"
+        exec "!lua %:t"
+    elseif &filetype == "perl"
+        exec "!perl %:t"
+    elseif &filetype == "php"
+        exec "!php %:t"
+    elseif &filetype == "python"
+        exec "!python %:t"
+    elseif &filetype == "ruby"
+        exec "!ruby %:t"
+    elseif &filetype == "elixir"
+        exec "!elixir %:t"
+    elseif &filetype == "julia"
+        exec "!julia %:t"
+    elseif &filetype == "dart"
+        exec "!dart %:t"
+    elseif &filetype == "haxe"
+        exec "!haxe -main %:r --interp"
+    elseif &filetype == "r"
+        exec "!Rscript %:t"
+    elseif &filetype == "coffee"
+        exec "!coffee -c %:t && node %:r.js"
+    elseif &filetype == "ls"
+        exec "!lsc -c %:t && node %:r.js"
+    elseif &filetype == "typescript"
+        exec "!tsc %:t && node %:r.js"
+    elseif &filetype == "javascript"
+        exec "!node %:t"
+    elseif &filetype == "sh"
+        exec "!bash %:t"
+    endif
+endfunc
+
+" \R         一键保存、编译、运行
+imap <leader>R <ESC>:call Compile_Run_Code()<CR>
+nmap <leader>R :call Compile_Run_Code()<CR>
+vmap <leader>R <ESC>:call Compile_Run_Code()<CR>
+
+
+" CtrlP
+" nnoremap <Leader>t :CtrlP getcwd()<CR>
+" nnoremap <Leader>f :CtrlPClearAllCaches<CR>
+" nnoremap <Leader>b :CtrlPBuffer<CR>
+" nnoremap <Leader>j :CtrlP ~/<CR>
+" nnoremap <Leader>p :CtrlP<CR>
+
+" command! -nargs=* -complete=function Call exec 'call '.<f-args>
+" command! Q q
+" command! -bang Q q<bang>
+" command! Qall qall
+" command! -bang Qall qall<bang>
+" command! W w
+" command! -nargs=1 -complete=file E e <args>
+" command! -bang -nargs=1 -complete=file E e<bang> <args>
+" command! -nargs=1 -complete=tag Tag tag <args>
+"
+" Save a file that requires sudoing even when
+" you opened it as a normal user.
+command! Sw w !sudo tee % > /dev/null
+" Show difference between modified buffer and original file
+command! DiffSaved call s:DiffWithSaved()
+
+command! Bw call CleanClose(1,0)
+command! Bq call CleanClose(0,0)
+command! -bang Bw call CleanClose(1,1)
+command! -bang Bq call CleanClose(0,1)
+
+
+"{{{ Functions
+
+"{{{ Diff current unsaved file
+function! s:DiffWithSaved()
+    let filetype=&ft
+    diffthis
+    vnew | r # | normal! 1Gdd
+    diffthis
+    exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+endfunction
+"}}}
+"/*{{{*/ Clean close
+function! CleanClose(tosave,bang)
+    if a:bang == 1
+        let bng = "!"
+    else
+        let bng = ""
+    endif
+    if (a:tosave == 1)
+        w!
+    endif
+    let todelbufNr = bufnr("%")
+    let newbufNr = bufnr("#")
+    if ((newbufNr != -1) && (newbufNr != todelbufNr) && buflisted(newbufNr))
+        exe "b".newbufNr
+    else
+        exe "bnext".bng
+    endif
+
+    if (bufnr("%") == todelbufNr)
+        new
+    endif
+    exe "bd".bng.todelbufNr
+endfunction
+"/*}}}*/
+"}}}
+
+
+" au BufRead *vimrc setl foldmethod=marker
+" set foldenable
+" 打开文件不折叠
+" set foldlevelstart=99
+

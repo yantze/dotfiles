@@ -10,6 +10,15 @@ call vundle#begin()
 " required!
 Plugin 'gmarik/Vundle.vim'
 
+" Syntax
+
+" 语法查错
+Plugin 'scrooloose/syntastic'
+"校验JavaScript。JSHint 来检查代码错误，同时控制代码质量。
+
+
+" Plugin
+
 " multiple cursors
 Plugin 'terryma/vim-multiple-cursors'
 
@@ -26,10 +35,6 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'terryma/vim-expand-region'
 
 
-" 语法查错
-Plugin 'scrooloose/syntastic'
-"校验JavaScript。JSHint 来检查代码错误，同时控制代码质量。
-
 " fuzzy compolier
 Plugin 'Valloric/YouCompleteMe'
 
@@ -39,7 +44,7 @@ Plugin 'Valloric/YouCompleteMe'
 " Plugin 'Shougo/neocomplcache.vim' "不兼容另外一个自动完成
 
 "C
-" cscope 
+" cscope
 " Plugin 'brookhong/cscope.vim'
 " Plugin 'liuyug/cscope.vim'
 " 自动补全引用库中的内容，包括'->','.','::'
@@ -48,13 +53,16 @@ Plugin 'Valloric/YouCompleteMe'
 " snip综合解决方案
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-" Trigger configuration. Do not use <tab> if you use YouCompleteMe.
+" let g:snippets_dir="$VIM/vimfiles/resource/vim-snippets/" "添加新的片段
+" Trigger configuration. if comflict then change the <tab>
+" let g:UltiSnipsUsePythonVersion = 2
 " let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<c-b>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" let g:UltiSnipsJumpForwardTrigger="<c-j>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 " 代码补全/snippets
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
+" UltiSnips is a drop-in replacement for snipMate
 " Plugin 'garbas/vim-snipmate'
 
 
@@ -63,7 +71,7 @@ Bundle 'tomtom/tlib_vim'
 " Plugin 'comments.vim'
 " 用<leader>ci/cm做注释
 " Plugin 'scrooloose/nerdcommenter'
-" 这个更智能一些
+" 这个更智能一些,我的配置里面快捷键inhert了nerdcommenter
 Plugin 'tomtom/tcomment_vim'
 
 
@@ -85,6 +93,8 @@ Plugin 'tpope/vim-surround'
 
 "Git
 Plugin 'tpope/vim-fugitive'
+"Fugitive (Git) in status line
+set statusline=%{exists(\"*fugitive#statusline\")?\"branch:\ \".fugitive#statusline():\"\"}\ %F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]
 
 "HTML/JS混排缩进改善
 " Bundle 'pangloss/vim-javascript'
@@ -136,10 +146,28 @@ Plugin 'tyru/open-browser.vim'
 " 读取大文件
 " Plugin 'LargeFile'
 
+" Color
 Plugin 'molokai'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'flazz/vim-colorschemes'
-" writer
+" Rainbows default for lisp,scheme and clojure
+Plugin 'amdt/vim-niji'
+let g:niji_matching_filetypes = ['lisp', 'scheme', 'clojure', 'php', 'ruby', 'python']
+" let g:niji_darkblood_colours = [
+"     \ ['255', '255'],
+"     \ ['253', '253'],
+"     \ ['251', '251'],
+"     \ ['249', '249'],
+"     \ ['247', '247'],
+"     \ ['245', '245'],
+"     \ ['243', '243'],
+"     \ ['241', '241'],
+"     \ ['239', '239'],
+"     \ ['237', '237'],
+"     \ ['235', '235'],
+"     \]
+
+" For Writer
 Plugin 'junegunn/goyo.vim'
 
 " 以下三个都是增强状态栏的，vim-powerline < powerline < vim-airline
@@ -152,8 +180,8 @@ if v:version > 703
     Plugin 'Lokaltog/vim-easymotion'
 endif
 
-" 列出当前buffer的窗口
-Plugin 'bufexplorer.zip'
+" 列出当前buffer列表的窗口,可以同过lru等排序快速找到文件
+" Plugin 'bufexplorer.zip'
 
 Plugin 'MarcWeber/vim-addon-manager-known-repositories'
 
@@ -216,7 +244,7 @@ Plugin 'tobyS/vmustache'
 "php debuger
 " Plugin 'vim-scripts/DBGp-X-client'
 
-" Web : HTML CSS 
+" Web : HTML CSS
 " Plugin 'ZenCoding.vim'
 " 原来的zen coding
 Plugin 'mattn/emmet-vim'

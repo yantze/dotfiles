@@ -1229,3 +1229,10 @@ oding`是横扫各大小编辑器的快速编码插件，其使用类`CSS`选择
 `a`：链接标签
 更多用法可以查看":help emmet"
 本文修改于：https://github.com/ruchee/backup2/blob/master/code/linux/vim/zencoding.wiki
+
+
+主要的一些查询功能
+:verbose map <所要查找的快捷键>
+:echo $TERM
+:verbose set term?
+:set termcap
