@@ -40,6 +40,7 @@ uptime //查看计算机登陆信息，负载均衡等
 su www -c 'php xxx.php' //命令下行指定用户组来执行命令
 usermod -a -G groupA user //添加用户到用户组
 od -c file / od file //显示文件内容，如果没有c显示其它进制
+fc //这个是可以在命令行输入文字到vim中编辑的内置命令
 
 ifconfig
 ifconfig -a //显示所有网卡接口
@@ -218,6 +219,7 @@ find /etc -name "passwd*" -exec grep "root" {} \;
 find . -name "*.log" -exec mv {} .. \;
 find . -name "*.log" -exec cp {} test3 \;
 find . -depth; 这个可以不让find输出文件夹
+find . -name "*.log" print0 | xargs -0 cat | wc -l
 
 sshfs
 sshfs -o allow_other root@192.168.9.109:/opt /opt/s109 #挂载(如配上ssh key可完全自动化)
