@@ -8,10 +8,12 @@ Ctrp+P          快速查找当前文件夹下所有子目录的文件
 ,gd             使用YCM的快速查找定义,类似vs中的F12
 ,ci             注释当前行/可选中
 ,cm             块注释/可选中
-key<Tab>        UltiSnip And YCM 可以自动补全，u对py，ycm对c好一些,<c-j/k>上下选择下一个瞄准位
+key<Tab>        UltiSnip And YCM 可以自动补全，UltiSnip对py，ycm对c好一些
+                <c-j/k>上下选择下一个瞄准位
 <c-n><c-j/k>    用<c-n>当前选中的行，用<c-j/k>来移动行的位置(vim-multipe-cursors)
 <m-j/k>         用alt/command+j/k移动当前行的位置(功能同上)
-<c-n>           不停的选中<c-n>,可以执行多光标编辑, <c-p>回到前一个,<c-x>放弃当前这个光标到下一个
+<c-n>           不停的选中<c-n>,可以执行多光标编辑
+                <c-p>回到前一个,<c-x>放弃当前这个光标到下一个
                 其中i,a,I,A可以在insert模式，c,s可以在normal模式，c是清除当前选中的文字
                 有个小bug,就是在多光标选中模式下，要先按i或者a这个键，再按I/A
 ,mt             生成每个语言的ctags文件，可以通过ctrl+]跳转和ctrl+t返回
@@ -23,7 +25,8 @@ key<Tab>        UltiSnip And YCM 可以自动补全，u对py，ycm对c好一些,
 c/c++/objc/objc++   可以使用YCM
 路径补全            可以使用YCM
 各个语言的补全      看~/.vim/snippets
-ctags               可以自行在c/php等头文件建立ctags文件，c比如/usr/local/include, php比如pear的包管理中
+ctags               可以自行在c/php等头文件建立ctags文件
+                    c比如/usr/local/include, php比如pear的包管理中
 ```
 
 ####Snip
