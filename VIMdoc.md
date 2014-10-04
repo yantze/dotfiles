@@ -1200,6 +1200,24 @@ m{a-zA-Z} 用标记 {a-zA-Z} 记录当前位置
 `>           至 (前次) 可视区域的结尾
 `.          至当前文件最后被改动的位置
 
+we can bookmark locations in the buffer
+m<letter> sets mark named  <letter> at
+current location
+`<letter> jumps precisely to that mark
+‘<letter> jumps to the line with the mark
+lowercase letter: mark is local to the buffer
+uppercase letter: mark is global, your buffer will
+be switched to the file with the mark
+:marks shows you your current marks
+
+marks are very handy for changing text
+set a mark (let’s say  ma )
+then you can do:
+d`a - delete text from cursor to mark a
+c`a - change text from cursor to mark a
+=’a - reformat lines from current one to the one
+with mark a
+
 
 插件详细介绍
 emmet(zen coding)
@@ -1236,3 +1254,5 @@ oding`是横扫各大小编辑器的快速编码插件，其使用类`CSS`选择
 :echo $TERM
 :verbose set term?
 :set termcap
+使用Ctrl-v来查看一些按钮的原来的代码
+

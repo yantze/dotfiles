@@ -17,6 +17,7 @@ key<Tab>        UltiSnip And YCM 可以自动补全，UltiSnip对py，ycm对c好
                 其中i,a,I,A可以在insert模式，c,s可以在normal模式，c是清除当前选中的文字
                 有个小bug,就是在多光标选中模式下，要先按i或者a这个键，再按I/A
 ,mt             生成每个语言的ctags文件，可以通过ctrl+]跳转和ctrl+t返回
++/-             +可以扩大选择区域/-相反
 ```
 
 

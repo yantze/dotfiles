@@ -6,34 +6,20 @@ call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle
-" required!
+" let Vundle manage Vundle Required!
 Plugin 'gmarik/Vundle.vim'
 
-" Syntax
+    " Syntax
 
 " 语法查错
 Plugin 'scrooloose/syntastic'
 "校验JavaScript。JSHint 来检查代码错误，同时控制代码质量。
 
+" DBGP Debug
+" http://blog.joncairns.com/2012/08/vdebug-a-dbgp-debugger-client-for-vim-supporting-php-python-perl-and-ruby/
+Plugin 'joonty/vdebug'
 
 " Plugin
-
-" multiple cursors
-Plugin 'terryma/vim-multiple-cursors'
-
-" for ruby
-" Plugin 'thoughtbot/vim-rspec'
-" Plugin 'rspec.vim'
-" Plugin 'Keithbsmiley/rspec.vim'
-" Plugin 'tpope/vim-rails'
-
-Plugin 'tpope/vim-bundler'
-" Plugin 'kchmck/vim-coffee-script'
-" Plugin 'tpope/vim-haml'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'terryma/vim-expand-region'
-
 
 " fuzzy compolier
 Plugin 'Valloric/YouCompleteMe'
@@ -41,9 +27,9 @@ Plugin 'Valloric/YouCompleteMe'
 
 " http://blog.163.com/lgh_2002/blog/static/440175262010613105148657/
 " Plugin 'ervandew/supertab'
-" Plugin 'Shougo/neocomplcache.vim' "不兼容另外一个自动完成
+" Plugin 'Shougo/neocomplcache.vim' "不兼容另外一个自动完成ycm
 
-"C
+" C自动补全
 " cscope
 " Plugin 'brookhong/cscope.vim'
 " Plugin 'liuyug/cscope.vim'
@@ -60,8 +46,8 @@ Plugin 'honza/vim-snippets'
 " let g:UltiSnipsJumpForwardTrigger="<c-j>"
 " let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 " 代码补全/snippets
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
 " UltiSnips is a drop-in replacement for snipMate
 " Plugin 'garbas/vim-snipmate'
 
@@ -77,28 +63,53 @@ Plugin 'tomtom/tcomment_vim'
 
 
 
+
 " 文件管理器
 Plugin 'scrooloose/nerdtree'
-
-
-Bundle 'briancollins/vim-jst'
-Bundle 'plasticboy/vim-markdown'
-Bundle 'slim-template/vim-slim'
-Bundle 'sudo.vim'
-Bundle 'xml.vim'
-Plugin 'elzr/vim-json'
+" tagbar is like the taglist
 Plugin 'majutsushi/tagbar'
-
+" multiple cursors
+Plugin 'terryma/vim-multiple-cursors'
+" 会出现缩进一条一条的颜色
+Plugin 'nathanaelkane/vim-indent-guides'
+" Press + to expand the visual selection and _ to shrink it.
+Plugin 'terryma/vim-expand-region'
+" quoting/parenthesizing made simple, there have many shortkey
 Plugin 'tpope/vim-surround'
+" 按等号或者其它符号对齐
+Plugin 'godlygeek/tabular'
 
-"Git
+" Plugin 'kchmck/vim-coffee-script'
+" Plugin 'tpope/vim-haml'
+
+" 内置的文件浏览器已经够了
+" Bundle 'winmanager'
+Bundle 'taglist.vim'
+
+
+
+" 集成了md的语法和颜色配置,里面的toc功能不可用
+Plugin 'plasticboy/vim-markdown'
+" 这个没有多少用，用本配置的:Sw可以直接保存
+" Plugin 'sudo.vim'
+" helps editing xml (and [x]html, sgml, xslt) files
+Plugin 'othree/xml.vim'
+" A filetype plugin for VIM to help edit XML files
+Plugin 'sukima/xmledit'
+Plugin 'tpope/vim-ragtag'
+Plugin 'elzr/vim-json'
+
+
+" Git
 Plugin 'tpope/vim-fugitive'
 "Fugitive (Git) in status line
 set statusline=%{exists(\"*fugitive#statusline\")?\"branch:\ \".fugitive#statusline():\"\"}\ %F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]
 
-"HTML/JS混排缩进改善
-" Bundle 'pangloss/vim-javascript'
 
+" Web
+
+"HTML/JS混排缩进改善
+" Plugin 'pangloss/vim-javascript'
 Bundle 'jelera/vim-javascript-syntax'
 Plugin 'lukaszb/vim-web-indent'
 " vim-web-indent包含了javascript.vim 和html.vim
@@ -108,13 +119,11 @@ Plugin 'lukaszb/vim-web-indent'
 Bundle 'JulesWang/css.vim'
 Bundle 'cakebaker/scss-syntax.vim'
 
+"适配jade
+Plugin 'digitaltoad/vim-jade'
+
 " support css word with -
 set iskeyword+=-
-
-" 内置的文件浏览器已经够了
-" Bundle 'winmanager'
-Bundle 'taglist.vim'
-
 
 " Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 "
@@ -127,21 +136,20 @@ Bundle 'taglist.vim'
 " Plugin 'ludovicchabant/vim-lawrencium'
 " Plugin 'mhinz/vim-signify'
 " Plugin 'tpope/vim-sleuth'
-Plugin 'godlygeek/tabular'
 
 
 
 " 智能打开浏览器
 Plugin 'tyru/open-browser.vim'
+" 同上，这个只在Mac上,刷新
+" Bundle 'mkitt/browser-refresh.vim'
 
 " 平滑滚动插件
 " Plugin 'yonchu/accelerated-smooth-scroll'
 
-" 这个只在Mac上,刷新
-" Bundle 'mkitt/browser-refresh.vim'
-
-" live html
+" markdown live html, so hard to set to give up
 " Plugin 'visualHtml'
+
 
 " 读取大文件
 " Plugin 'LargeFile'
@@ -175,21 +183,10 @@ Plugin 'junegunn/goyo.vim'
 " Bundle 'Lokaltog/powerline'
 Bundle 'bling/vim-airline'
 
-" 快速移动，替换f,这个还没有完全弄懂
-if v:version > 703
-    Plugin 'Lokaltog/vim-easymotion'
-endif
-
-" 列出当前buffer列表的窗口,可以同过lru等排序快速找到文件
-" Plugin 'bufexplorer.zip'
-
 Plugin 'MarcWeber/vim-addon-manager-known-repositories'
 
 " 输入体验
 Plugin 'dart-lang/dart-vim-plugin'
-
-"适配jade
-Plugin 'digitaltoad/vim-jade'
 
 
 
@@ -222,6 +219,18 @@ set completeopt=longest,menu
 "设置CTRL+J补全
 inoremap <c-;> <c-x><c-o>
 
+" Ruby
+" Plugin 'thoughtbot/vim-rspec'
+" Plugin 'rspec.vim'
+" Plugin 'Keithbsmiley/rspec.vim'
+" Plugin 'tpope/vim-rails'
+" ruby package manage
+" Plugin 'tpope/vim-bundler'
+" A vim plugin for highlighting and indenting JST/EJS syntax. Based on the eruby syntax from vim-ruby.
+" Plugin 'briancollins/vim-jst'
+" Slim is a template language for ruby or ROR whose goal is reduce the syntax to the essential parts without becoming cryptic.
+" Plugin 'slim-template/vim-slim'
+
 
 " PHP
 " php genner
@@ -233,7 +242,9 @@ Plugin 'StanAngeloff/php.vim'
 " Plugin 'shawncplus/phpcomplete.vim'
 " 模板引擎
 Plugin 'tobyS/vmustache'
-
+" php debuger
+" https://brookhong.github.io/2014/09/27/dbgpavim-cn.html
+" Plugin 'brookhong/DBGPavim' "dbgpavim继承自DBGp-X-client'
 
 " phpdocument generate
 "pdv需要安装 "tobyS/vmustache模板引擎
@@ -241,8 +252,6 @@ Plugin 'tobyS/vmustache'
 " let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
 " nnoremap <buffer> <C-p> :call pdv#DocumentWithSnip()<CR>
 
-"php debuger
-" Plugin 'vim-scripts/DBGp-X-client'
 
 " Web : HTML CSS
 " Plugin 'ZenCoding.vim'
@@ -258,7 +267,7 @@ Plugin 'lilydjwg/colorizer'
 " Ruby
 Plugin 'vim-ruby/vim-ruby'
 
-"对txt文件列目录
+"对txt文件列目录 dep:taglist.vim
 Plugin 'TxtBrowser'
 
 "python
@@ -282,6 +291,14 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 map <leader>b :CtrlPBuffer<CR>
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.png,*.gif,*.jpeg,.DS_Store  " MacOSX/Linux
+
+" 快速移动，替换f,这个还没有完全弄懂
+if v:version > 703
+    Plugin 'Lokaltog/vim-easymotion'
+endif
+
+" 列出当前buffer列表的窗口,可以同过lru等排序快速找到文件
+" Plugin 'bufexplorer.zip'
 
 " vim post wordpress: vimpress
 " Plugin 'pentie/VimRepress'

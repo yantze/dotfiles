@@ -31,3 +31,7 @@ if g:Tlist_Show_One_File
 endif
 
 可以防止： function <SNR>70_Tlist_Refresh_Folds 时发生错误
+
+txtbrowser.vim +45
+给<leader>g改成了<leader>gb
+
