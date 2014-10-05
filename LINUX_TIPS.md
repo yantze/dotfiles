@@ -253,6 +253,7 @@ q num       #select a panel in window
 x           #kill one panel in window
 [           #surface upon window
 w           #show all window(Select from interactive list of windows)
+tmux list-sessions  #list all sessions
 #cheatsheet:https://gist.github.com/MohamedAlaa/2961058#file-tmux-cheatsheet-markdown
 
 bind-key F1 set-window-option force-width 81
