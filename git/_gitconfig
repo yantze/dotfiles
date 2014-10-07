@@ -1,6 +1,6 @@
 [user]
-    # name  = yantze_wess_vm
-    name  = yantze
+    name  = yantze_wess_vm
+    ; name  = yantze
     email = yantze@126.com
 [alias]
     b  = branch -vv
@@ -60,12 +60,13 @@
     default = upstream
 [http]
     ; proxy = http://172.16.15.144:8087
-    #proxy = http://192.168.137.1:8081
-    sslverify = false
+    ; proxy = http://192.168.137.1:8087
+    ; proxy = http://yantze:zxcvbn@loc-x.pcnt.in:34567
+    ; sslverify = false
     postBuffer = 24288000
 [https]
-    #proxy = http://172.31.195.32:8081
-    #proxy = http://192.168.137.1:8081
+    #proxy = http://172.31.195.32:8086
+    #proxy = http://192.168.137.1:8086
     sslverify = false
 [credential]
     helper = store

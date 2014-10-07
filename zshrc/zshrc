@@ -64,7 +64,7 @@ export LC_ALL=
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git gem zsh-syntax-highlighting pod osx ruby python)
+plugins=(git zsh-syntax-highlighting pod osx ruby gem python)
 
 # ZSH-SYNTAX-HIGHLIGHTING
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
@@ -162,8 +162,6 @@ export EDITOR='vim'
 # set -o vi #设置shell快捷键的默认器
 
 echo "THE BEST YANTZE TO BE ZHI"
-
-export cenhdp='root@172.31.195.136'
 
 #for docker_mac
 export DOCKER_HOST=tcp://localhost:4243

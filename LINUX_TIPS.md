@@ -1,5 +1,13 @@
 linux 详细的使用说明
 
+##常用技能
+* vim
+- CtrlP
+- ag
+
+* linux
+- 在要代理的软件前面加上 proxy
+
 TODO
 phabricator 这个软件没有完成,dirctory定位到/home/yantze/phabricator/phabricator/webboot,打开phabricator系统的ip地址，提示无权限
 如果成功解决，打开url：http://www.phabricator.com/docs/phabricator/article/Configuring_Accounts_and_Registration.html
@@ -22,6 +30,7 @@ paste 1.txt 2.txt 按Tab合并两个文件
 cut -d: -f1 /etc/passwd | head -2 //打印第一列前两行
 cut -c2- //删除空格
 cp /your/path/to/file.list{,.20121106} //备份文件
+cp -af file tofile //用原来文档的用户名
 Ctrl+x Ctrl+e //编辑当前的命令到编辑器，可以在zshrc中export EDITOR='vim'
 echo $'\x41'  //输出A
 echo "`ls -l`" || echo `ls -l` //shell用IFS定义的分隔符来分隔字符串，包括、n，所以再传给echo就是，"line 1" "line 2"
@@ -31,6 +40,7 @@ uptime //查看计算机登陆信息，负载均衡等
 su www -c 'php xxx.php' //命令下行指定用户组来执行命令
 usermod -a -G groupA user //添加用户到用户组
 od -c file / od file //显示文件内容，如果没有c显示其它进制
+fc //这个是可以在命令行输入文字到vim中编辑的内置命令
 
 ifconfig
 ifconfig -a //显示所有网卡接口
@@ -134,6 +144,8 @@ fuser //列出当前打开的文件和socket
 ag keychar  //直接查看当前目录下包含keychar的字符
 grep -r "some_text" /path/to/dir //递归查找grep的目录
 grep -w "name" test.txt  //查找完整的字符串
+grep pattern files
+grep -r pattern dir
 rsync -arvuzp --chmod=g+rx -e "ssh -p 22333" ./db.txt 172.31.195.91:/home/yantze/test/
 
 lex=flex / yacc / bison
@@ -207,6 +219,7 @@ find /etc -name "passwd*" -exec grep "root" {} \;
 find . -name "*.log" -exec mv {} .. \;
 find . -name "*.log" -exec cp {} test3 \;
 find . -depth; 这个可以不让find输出文件夹
+find . -name "*.log" print0 | xargs -0 cat | wc -l
 
 sshfs
 sshfs -o allow_other root@192.168.9.109:/opt /opt/s109 #挂载(如配上ssh key可完全自动化)
@@ -267,3 +280,6 @@ gpg file.gpg件解密
 
 有一个命令参考比较齐全，之后再消化一下
 http://www.pixelbeat.org/cmdline_zh_CN.html
+
+killall
+killadd5
