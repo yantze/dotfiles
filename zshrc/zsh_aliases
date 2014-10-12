@@ -20,6 +20,7 @@ alias get='sh ~/soft/sh-toolkits-lib/sp.sh'
 alias t='tmux -2 -u attach || tmux -2 -u new-session -s hi'
 #新建一個有名字的窗口
 alias tn='tmux -2 -u new-session -s'
+alias tl='tmux list-sessions'
 #附上一個有名字的窗口
 alias ta='tmux attach -t'
 alias hd='od -Ax -tx1z -v' #方便的十六进制输出。 (用法举例: • hd /proc/self/cmdline | less)
@@ -41,6 +42,8 @@ alias ngtop='ngxtop -l /usr/local/nginx/logs/access.log'
 alias macvim='/Applications/MacVim.app/Contents/MacOS/MacVim'
 alias v='/Applications/MacVim.app/Contents/MacOS/Vim'
 
+alias nasm='yasm'
+# the yasm is a rewrite interface for nasm
 
 
 
