@@ -118,6 +118,9 @@ gd                      找到光标下的标签定义
 Ctrl+Tab/Ctrl+Shift+Tab 切换vim标签
 Ctrl+w,v/h              在gvim下创建多窗口
 Ctrl+h/j/k/l            在gvim下切换多窗口
+]p                      和p的功能差不多，但是它会自动调整被粘贴的文本的缩进去适应当前代码的位置。试一下！
+K                       在Man里面查找光标当前所在处的词。
+Ctrl+X,Ctrl+O           自动补全,ycm占用Ctrl+n/p
 
 
 初入门的你，以后坑肯定会遇到这两个东西 <leader>和<buffer>

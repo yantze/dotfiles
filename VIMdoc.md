@@ -1218,6 +1218,24 @@ c`a - change text from cursor to mark a
 =’a - reformat lines from current one to the one
 with mark a
 
+let’s say you jump somewhere
+how do you go back?
+`` moves you between the last two locations
+you can set  ` (the context mark) explicitly:
+    m`, jump elsewhere, then come back with ``
+tip:  CTRL-O and  CTRL-I move between
+positions in the full jump history, but can’t be
+used as motions
+‘. and  `. - jump to the line or exact location of
+the last modification
+
+
+#### insert
+gi - incredibly handy
+goes to Insert mode where you left it last time
+scenario: edit something, exit Insert, go look at
+something else, then  gi back to restart editing
+
 
 插件详细介绍
 emmet(zen coding)

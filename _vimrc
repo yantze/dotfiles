@@ -2,7 +2,7 @@
 " Author: yantze
 " Last Modified:2014-10-14
 
-" 下面的两行，配置基本保持不变,一般不需要修改,所以折叠
+" 下面的两行，配置基本保持不变,一般不需要修改,所以折叠,可以用za打开
 " the two line fold is not often change,so fold it
 " Environment {{{
 
@@ -270,7 +270,7 @@ set ic                       "忽略大小写查找
 set visualbell t_vb=         "关闭visual bell/声音
 au GuiEnter * set t_vb=      "关闭beep/屏闪
 
-" file
+" 文件配置
 " 设定换行符
 set fileformats=unix
 " 设定文件浏览器目录为当前目录
@@ -364,7 +364,7 @@ set smartindent              " 智能自动缩进
 set nu!                      " 显示行号
 " set mouse=a                  " 启用鼠标
 set ruler                    " 右下角显示光标位置的状态行
-set incsearch                " 开启实时搜索功能
+set incsearch                " 开启实时搜索功能,查询时非常方便，如要查找book单词，当输入到/b时，会自动找到第一个b开头的单词，当输入到/bo时，会自动找到第一个bo开头的单词
 set hlsearch                 " 开启高亮显示结果
 set nowrapscan               " 搜索到文件两端时不重新搜索
 " set nocompatible             " 关闭兼容模式
@@ -401,8 +401,6 @@ set expandtab                " 将Tab自动转化成空格 [需要输入真正�
 set lbr       "不在单词中间断行
 set fo+=mB    "打开断行模块对亚洲语言支持
 " set lsp=0     "设置行间距
-
-
 
 
 
@@ -494,10 +492,10 @@ vmap <leader>rt <ESC>:call RemoveTabs()<CR>
 " \rl
 nmap <leader>rl :so ~/.vimrc<CR>
 
-" \rcr                 一键替换全部Tab为空格
+" \r<cr>                 一键替换全部Tab为空格
 " imap <leader>rcr <ESC>:%s/\r//g<CR>
-nmap <leader>rcr :%s/\r//g<CR>
-vmap <leader>rcr <ESC>:%s/\r//g<CR>
+nmap <leader>r<cr> :%s/\r//g<CR>
+vmap <leader>r<cr> <ESC>:%s/\r//g<CR>
 
 " \th                 一键生成与当前编辑文件同名的HTML文件 [不输出行号]
 " imap <leader>th <ESC>:set nonumber<CR>:set norelativenumber<CR><ESC>:TOhtml<CR><ESC>:w %:r.html<CR><ESC>:q<CR>:set number<CR>:set relativenumber<CR>
@@ -661,28 +659,25 @@ set pastetoggle=<F3>
 " map <Leader>l :call RunLastSpec()<CR>
 " map <Leader>a :call RunAllSpecs()<CR>
 
-" 切换窗口光标，兼容tmux的快捷键
+" 切换窗口光标
+" switch window
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-"switch window
 "nnoremap <leader>w <C-W>w
 
 " Goyo:the only writer
-" Goyo writer faver
 function! s:goyo_before()
   silent !tmux set status off
   set noshowmode
   set noshowcmd
 endfunction
-
 function! s:goyo_after()
   silent !tmux set status on
   set showmode
   set showcmd
 endfunction
-
 let g:goyo_callbacks = [function('s:goyo_before'), function('s:goyo_after')]
 nmap <Leader><Space> :Goyo<CR>
 
@@ -783,13 +778,11 @@ let g:indent_guides_guide_size            = 1  " 指定对齐线的尺寸
 " PHP
 " =========
 "只有在是PHP文件时，才启用PHP补全
-" au FileType php call AddPHPFuncList()
 " function AddPHPFuncList()
-    " set dictionary-=/home/feiyan/tools/vim/funclist.txt dictionary+=/home/feiyan/tools/vim/funclist.txt
-    " set complete-=k complete+=k
+"     set dictionary+= "$HOME/.vim/vimfiles/resource/func.php.dict"
+"     set complete-=k complete+=k
 " endfunction
-
-autocmd FileType php setlocal dict+=$VIM/vimfiles/resource/php.dict
+" autocmd FileType php call AddPHPFuncList()
 " 除了使用Tab这个补全的方式，还可以使用Ctrl+x，Ctrl+o来补全上面文件的内置函数
 
 " function! RunPhpcs()
