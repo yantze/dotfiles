@@ -272,7 +272,7 @@ au GuiEnter * set t_vb=      "关闭beep/屏闪
 
 " 文件配置
 " 设定换行符
-set fileformats=unix
+" set fileformats=unix
 " 设定文件浏览器目录为当前目录
 set bsdir=buffer
 " 设置编码
