@@ -1,0 +1,7 @@
+# change the ... = '../../'
+# copy the centos file to file
+#
+alias swift=$(xcrun -f swift)
+alias swiftc=$(xcrun -f swiftc)
+# Generate LLVM bytecode
+# swiftc -emit-bc hello.swift -o hello.bc
