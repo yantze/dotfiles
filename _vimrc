@@ -1,9 +1,12 @@
 " Info
 " Author: yantze
-" Last Modified:2014-10-14
+" Last Change:2014-10-14
+
+" the package location:
+" $VIM/_vimrc.bundles
 
 " 下面的两行，配置基本保持不变,一般不需要修改,所以折叠,可以用za打开
-" the two line fold is not often change,so fold it
+" two lines below folded because of not often changing
 " Environment {{{
 
     " Identify platform {
@@ -164,14 +167,16 @@ func! Compile_Run_Code()
     exec "w"
     if &filetype == "c"
         if g:isWIN
-            exec "!gcc -Wall -std=c11 -o %:r %:t && %:r.exe"
+            exec !gcc -Wall -std=c11 -o %:r %:t && %:r.exe"
         else
             exec "!clang -Wall -std=c11 -o %:r %:t && ./%:r"
+            " exec "!gcc -Wall -o %:r %:t && ./%:r"
         endif
     elseif &filetype == "cpp"
         if g:isWIN
             exec "!g++ -Wall -std=c++11 -o %:r %:t && %:r.exe"
         else
+            " exec "!g++ -Wall -std=c++11 -o %:r %:t && ./%:r"
             exec "!clang++ -Wall -std=c++11 -o %:r %:t && ./%:r"
         endif
     elseif &filetype == "d"
@@ -258,9 +263,6 @@ func! Compile_Run_Code()
 endfunc
 " }}}
 
-" the package location:
-" $VIM/_vimrc.bundles
-
 syntax enable                " 打开语法高亮
 syntax on                    " 开启文件类型侦测
 filetype indent on           " 针对不同的文件类型采用不同的缩进格式
@@ -272,7 +274,7 @@ au GuiEnter * set t_vb=      "关闭beep/屏闪
 
 " 文件配置
 " 设定换行符
-set fileformats=unix
+" set fileformats=unix
 " 设定文件浏览器目录为当前目录
 set bsdir=buffer
 " 设置编码
@@ -332,7 +334,7 @@ else
         " colorscheme ir_black
         " colorscheme grb256
         colorscheme vt_tmux
-        "
+
         " set background=dark
         " let g:solarized_termtrans =0
         " let g:solarized_termcolors=256
@@ -567,8 +569,8 @@ map <leader>fl :NERDTreeToggle<CR>
 
 
 " tComment - inherit the NERD_commenter shortkey
-map <leader>ci <Plug>TComment-<Leader>__
-map <leader>cm <Plug>TComment-<Leader>_b
+map <leader>ci <Plug>TComment_<Leader>__
+map <leader>cm <Plug>TComment_<Leader>_b
 " NERD_commenter      注释处理插件
 " let loaded_nerd_tree = 1
 " let NERDSpaceDelims = 1                        " 自动添加前置空格
@@ -778,11 +780,15 @@ let g:indent_guides_guide_size            = 1  " 指定对齐线的尺寸
 " PHP
 " =========
 "只有在是PHP文件时，才启用PHP补全
-" function AddPHPFuncList()
-"     set dictionary+= "$HOME/.vim/vimfiles/resource/func.php.dict"
-"     set complete-=k complete+=k
-" endfunction
-" autocmd FileType php call AddPHPFuncList()
+function AddPHPFuncList()
+    set dictionary+=$HOME/.vim/vimfiles/resource/php-offical.dict
+    set complete-=k complete+=k
+endfunction
+autocmd FileType php call AddPHPFuncList()
+
+" set tags+=~/.vim/vimfiles/resource/tags-php
+
+" autocmd FileType php setlocal omnifunc=phpcomplete#CompleteTags
 " 除了使用Tab这个补全的方式，还可以使用Ctrl+x，Ctrl+o来补全上面文件的内置函数
 
 " function! RunPhpcs()
@@ -989,8 +995,9 @@ let g:ycm_filetype_blacklist = {
     \ 'mail': 1,
 \}
 let g:ycm_error_symbol   = '>>'
-let g:ycm_warning_symbol = '>*'
+let g:ycm_warning_symbol = '>!'
 let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
 " offer like ctags: declara, define and multi, only support c/cpp
 " nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 " nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
@@ -1001,7 +1008,7 @@ nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " CtrlP
 " nnoremap <Leader>t :CtrlP getcwd()<CR>
 " nnoremap <Leader>f :CtrlPClearAllCaches<CR>
-" nnoremap <Leader>b :CtrlPBuffer<CR>
+nnoremap <Leader>bf :CtrlPBuffer<CR>
 " nnoremap <Leader>j :CtrlP ~/<CR>
 " nnoremap <Leader>p :CtrlP<CR>
 

@@ -22,6 +22,7 @@ Plugin 'joonty/vdebug'
 " Plugin
 
 " fuzzy compolier
+"ycm=clang_complete +AutoComplPop +Supertab +neocomplcache +Syntastic(类似功能,仅仅针对c/c++/obj-c代码)
 Plugin 'Valloric/YouCompleteMe'
 
 
@@ -296,6 +297,8 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.png,*.gif,*.jpeg,.DS_Store  " M
 if v:version > 703
     Plugin 'Lokaltog/vim-easymotion'
 endif
+" 在()、""、甚至HTML标签之间快速跳转；
+Plugin 'matchit.zip'
 
 " 列出当前buffer列表的窗口,可以同过lru等排序快速找到文件
 " Plugin 'bufexplorer.zip'

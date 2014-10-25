@@ -166,3 +166,6 @@ manviewpage有很多用法，用在php中是从php.net中查找相关的内容
 因为需要安装text browser软件links或者elinks、links2也可以
 
 
+
+#提取函数名
+find ./php.5.3 -type f -name "*.h" -o -name "*.c" | xargs grep -E "PHP_FUNCTION|ZEND_FUNCTION" | sed -ie "s/.*_FUNCTION(//g;s/)//g" | sort | uniq > functions.txt
