@@ -1,7 +1,7 @@
 ###require
 alias rm='rm -i'
 alias l.='ls -d .* --color=auto'
-alias vi='vim'
+alias vi='/usr/bin/vim'
 alias javac="javac -J-Dfile.encoding=utf8"
 alias grep="grep --color=auto"
 alias -s txt=vi #在shell里面直接输入txt文件，直接用vim打开
@@ -11,7 +11,6 @@ alias -s zip='unzip'
 alias -s bz2='tar -xjvf'
 alias tf="tail -f"
 alias cls='clear'
-alias ps='ps -ef'
 alias q='exit'
 #alias sp='~/tools/.sp.sh'
 alias sp='~/soft/sh-toolkits-lib/sp.sh'
@@ -27,8 +26,8 @@ alias hd='od -Ax -tx1z -v' #方便的十六进制输出。 (用法举例: • hd
 alias realpath='readlink -f'  #显示符号链接指向的真实路径((用法举例: • realpath ~/../$USER)
 
 ###
-alias p='trash-put'
-alias pl='trash-list'
+alias put='trash-put'
+alias putl='trash-list'
 alias rsyn='rsync -arvuzp'
 alias proxy_local='http_proxy="http://vastiny:8087";'
 
@@ -38,9 +37,6 @@ alias ngtop='ngxtop -l /usr/local/nginx/logs/access.log'
 # if linux-centos6.7
 # alias cmake='cmake28'
 # alias ccmake='ccmake28'
-# if mac
-alias macvim='/Applications/MacVim.app/Contents/MacOS/MacVim'
-alias v='/Applications/MacVim.app/Contents/MacOS/Vim'
 
 alias nasm='yasm'
 # the yasm is a rewrite interface for nasm

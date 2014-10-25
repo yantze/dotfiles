@@ -6,7 +6,7 @@
 #yum install tmux
 
 
-master=git://github.com/yantze/dotfiles.git
+dotfiles=git://github.com/yantze/dotfiles.git
 dest=~/.dotfiles
 ohmyzsh=https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
 autojump=git://github.com/joelthelion/autojump.git
@@ -19,11 +19,11 @@ install-all: download zsh vim git tmux
 
 download:
 	@rm -rf $(dest)
-	git clone $(master) $(dest)
+	git clone $(dotfiles) $(dest)
 	cd $(dest) && git submodule update --init
 
 zsh:
-	ln -fs $(dest)/zshrc/zshrc ~/.zshrc
+	ln -s $(dest)/zshrc/zshrc ~/.zshrc
 
 ohmyzsh:
 	wget -O - $(ohmyzsh) | sh

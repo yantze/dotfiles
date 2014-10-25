@@ -21,8 +21,8 @@ export GOPATH=$HOME/go
 PATH="$GO_HOME/bin:$GOROOT/bin:$PATH"
 
 ###python###
-PYTHON2_HOME="/usr/local/python/2.7"
 PYTHON3_HOME="/usr/local/python/3.4"
+PYTHON2_HOME="/usr/local/python/2.7"
 PATH="$PYTHON3_HOME/bin:$PATH"
 PATH="$PYTHON2_HOME/bin:$PATH"
 
@@ -87,9 +87,12 @@ export EDITOR='vim'
 
 echo "THE BEST YANTZE TO BE ZHI"
 
-#for docker_mac
+#if mac
 if { [ `uname` = "Darwin" ] } then
     export DOCKER_HOST=tcp://localhost:4243
+    alias macvim='/Applications/MacVim.app/Contents/MacOS/MacVim'
+    alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
+
 fi
 
 
