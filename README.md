@@ -41,48 +41,7 @@ class
 
 
 
-###VIMRC的配置方法
-
-使用本配置有两个方法：
-
-下载zip文件:[下载地址](https://github.com/yantze/vimrc/archive/master.zip)
-拷贝到vim的windows安装目录下
-
-比如：E:\Program Files\vim
-
-拷贝后文件的列表应该是这样：
-```
-+---vim74
-+---vimfiles
-+---script
-+---_vimrc
-+---_gvimrc
-+---_vimrc.bundles
-\---pluginchange_log.txt
-```
-
-拷贝到*nix的个人目录下
-比如~/vimrc
-文件列表应该是这样：
-```
-+---vimfiles
-+---misc
-+---pluginchange_log.txt
-+---README.md
-+---script
-+---_gvimrc
-+---_vimrc
-\---_vimrc.bundles
-```
-
-
-直接使用github克隆
-如果安装了git可以使用
-    git clone https://github.com/yantze/vimrc.git 
-可以获得相应的文件然后根据上面的文件再配置
-配置完成
-
-###接下来
+###vim学习
 如果是初学者，要学会这几个技巧
 vim有很多的‘模式’，在normal模式下
 jkhl: 这四个键分别代表：下上左右
@@ -109,7 +68,7 @@ jkhl: 这四个键分别代表：下上左右
 :.,+3s/x/b              在前行和当前行后面的三行，替换x为b
 :%s/x/b                 在所有行替换x为b
 :set notextmode         这个可以去掉^M这个符号
-:set pastetoggle        可以解决在linux命令行复制内容的时候，内容被识别为vim操作和乱序缩进
+:set pastetoggle        可以解决在linux命令行复制内容的时候，内容被识别为vim操作和乱序缩进,我的配置设置快捷键为F3
 
 f                       查找当前行的字符
 gb                      go browser，光标下如果是url链接，自动用默认浏览器打开链接，如果是选中的字符串，就用浏览器搜索
@@ -121,6 +80,11 @@ Ctrl+h/j/k/l            在gvim下切换多窗口
 ]p                      和p的功能差不多，但是它会自动调整被粘贴的文本的缩进去适应当前代码的位置。试一下！
 K                       在Man里面查找光标当前所在处的词。
 Ctrl+X,Ctrl+O           自动补全,ycm占用Ctrl+n/p
+
+
+###一些不常用但是实用的设置
+:set display=uhex       这个是用来查看^@这种不可显示的字符，自动转换这些字符为hex进制，也可以ga查看当前光标的进制
+,16                     转换当前文件为16进制，,r16为恢复，只有十六进制部分修改才有用
 
 
 初入门的你，以后坑肯定会遇到这两个东西 <leader>和<buffer>
