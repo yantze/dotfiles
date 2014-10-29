@@ -140,6 +140,7 @@ ntpdate cn.pool.ntp.org //更新时间
 make 2>&1 | tee make.log //可以直接显示保
 lsof //列出当前正在使用的文件
 fuser //列出当前打开的文件和socket
+md5sum filename //计算文件的大小
 
 ag keychar  //直接查看当前目录下包含keychar的字符
 grep -r "some_text" /path/to/dir //递归查找grep的目录
@@ -220,6 +221,7 @@ find . -name "*.log" -exec mv {} .. \;
 find . -name "*.log" -exec cp {} test3 \;
 find . -depth; 这个可以不让find输出文件夹
 find . -name "*.log" print0 | xargs -0 cat | wc -l
+find . -perm /u+x -type f -exec rm {} \;  //删除可执行文件
 
 sshfs
 sshfs -o allow_other root@192.168.9.109:/opt /opt/s109 #挂载(如配上ssh key可完全自动化)
@@ -228,6 +230,37 @@ fusermount -u /opt/s109 #卸载
 也可以用umount /opt/s109 来卸载
 mount -o remount,rw /
 mount -t tmpfs tmpfs /tmpram -o size=512m  //创建ramdisk
+
+dd
+备份/dev/hdb全盘数据，并利用gzip工具进行压缩，保存到指定路径
+    dd if=/dev/hdb | gzip> /root/image.gz
+将压缩的备份文件恢复到指定盘
+    gzip -dc /root/image.gz | dd f=/dev/hdb
+备份磁盘开始的512个字节大小的MBR 主引导记录信息到指定文件
+    dd if=/dev/hda f=/root/image count=1 bs=512   默认从硬盘0柱面0磁道1扇区读取512个字节
+    count=1指仅拷贝一个块；bs=512指块大小为512个字节。
+    恢复：dd if=/root/image f=/dev/hda
+修复硬盘：                 自初始化硬盘
+    dd if=/dev/sda f=/dev/sda  SCSI硬盘 或dd if=/dev/hda f=/dev/hda   IDE
+BLOCKS单位:b=512, c=1, k=1024, w=2, xm=number m
+跳过一段以后才输出 seek=BLOCKS 
+跳过一段以后才输入 skip=BLOCKS 
+eg:dd if=fork.c of=i.iso count=20 bs=2c
+讲的是从fork.c中提取20个2char，写到文件i.iso中
+eg:dd if=fork.c of=i.iso count=20 bs=2c seek=2c skip=2c
+讲的是从fork.c中先偏移读取指针2char，提取20个2char，再放弃输出2char，然后输出18char到i.iso文件中
+eg:dd if=/dev/zero of=2g.img seek=1000 count=1 bs=1M
+这条命令输出后，结果是占用了1M磁盘空间，但是用ll显示，是1001M的文件
+
+
+dev
+/dev/urandom
+/dev/zero
+
+二进制 text2bin test2hex
+hexdump
+xxd
+
 
 
 本机使用的软件
@@ -283,3 +316,6 @@ http://www.pixelbeat.org/cmdline_zh_CN.html
 
 killall
 killadd5
+
+要安装的软件
+yum install bind-utils
