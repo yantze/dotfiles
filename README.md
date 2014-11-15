@@ -1,5 +1,5 @@
 ##VIM使用说明
-###常用命令-比较强大且要记住的功能
+###常用命令-强大且要记住的功能(适用于本vim配置)
 
 ####Key
 ```
@@ -58,6 +58,7 @@ jkhl: 这四个键分别代表：下上左右
 
 
 ###一些常用快捷键说明
+```
 /xxx                    查找xxx字符串
 ,ci                     注释选定行(自动识别文件类型后添加注释)
 ,n/,p                   切换buffer的标签(因为vim的一个窗口里面有多个buffer)
@@ -80,14 +81,17 @@ Ctrl+h/j/k/l            在gvim下切换多窗口
 ]p                      和p的功能差不多，但是它会自动调整被粘贴的文本的缩进去适应当前代码的位置。试一下！
 K                       在Man里面查找光标当前所在处的词。
 Ctrl+X,Ctrl+O           自动补全,ycm占用Ctrl+n/p
+```
 
 
 ###一些不常用但是实用的设置
+```
 :set display=uhex       这个是用来查看^@这种不可显示的字符，自动转换这些字符为hex进制，也可以ga查看当前光标的进制
 ,16                     转换当前文件为16进制，,r16为恢复，只有十六进制部分修改才有用
+```
 
 
-初入门的你，以后坑肯定会遇到这两个东西 <leader>和<buffer>
+初入门的你，以后肯定会遇到这两个东西 <leader>和<buffer>
 <leader>默认是一个按钮，指的是反斜杠'\'，不过我在配置中设置成了',',减少小指的负担。
 <buffer>其实就是你当前下面的buffer而已。
 
@@ -125,11 +129,16 @@ Ctrl+X,Ctrl+O           自动补全,ycm占用Ctrl+n/p
 比如我其中一个插件manviewpage.vba就是用这个方法
 
 manviewpage有很多用法，用在php中是从php.net中查找相关的内容
+
 在vim窗口下，:Man glob就可以查看关于glob的相关语法和示例
+
 这个插件在linux或者mac cli下运行
+
 因为需要安装text browser软件links或者elinks、links2也可以
 
 
 
 #提取函数名
+```bash
 find ./php.5.3 -type f -name "*.h" -o -name "*.c" | xargs grep -E "PHP_FUNCTION|ZEND_FUNCTION" | sed -ie "s/.*_FUNCTION(//g;s/)//g" | sort | uniq > functions.txt
+```
