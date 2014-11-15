@@ -60,7 +60,9 @@
     default = upstream
 [http]
     ; proxy = http://172.16.15.144:8087
+    ; proxy = http://172.18.18.33:808
     ; proxy = http://192.168.17.72:808
+    ; proxy = http://172.31.195.75:8087
     ; proxy = http://192.168.137.1:808
     ; proxy = http://yantze:zxcvbn@loc-x.pcnt.in:34567
     ; sslverify = false

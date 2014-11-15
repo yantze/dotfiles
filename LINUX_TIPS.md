@@ -41,6 +41,7 @@ su www -c 'php xxx.php' //命令下行指定用户组来执行命令
 usermod -a -G groupA user //添加用户到用户组
 od -c file / od file //显示文件内容，如果没有c显示其它进制
 fc //这个是可以在命令行输入文字到vim中编辑的内置命令
+time command // 这个可以查看当前命令执行的时间
 
 ifconfig
 ifconfig -a //显示所有网卡接口
@@ -141,6 +142,7 @@ make 2>&1 | tee make.log //可以直接显示保
 lsof //列出当前正在使用的文件
 fuser //列出当前打开的文件和socket
 md5sum filename //计算文件的大小
+sha... // 哈希值，sha<tab>可以查看所有的hash值
 
 ag keychar  //直接查看当前目录下包含keychar的字符
 grep -r "some_text" /path/to/dir //递归查找grep的目录
@@ -315,6 +317,7 @@ gpg file.gpg件解密
 http://www.pixelbeat.org/cmdline_zh_CN.html
 
 killall
+killall -TERM mysqld #关闭mysql进程
 killadd5
 
 要安装的软件
