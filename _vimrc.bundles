@@ -51,6 +51,9 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 " UltiSnips is a drop-in replacement for snipMate
 " Plugin 'garbas/vim-snipmate'
+"
+" javascript 补全
+Plugin 'marijnh/tern_for_vim'
 
 
 " 快捷注释

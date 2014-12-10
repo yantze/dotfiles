@@ -25,6 +25,7 @@ key<Tab>        UltiSnip And YCM 可以自动补全，UltiSnip对py，ycm对c好
 ```
 c/c++/objc/objc++   可以使用YCM
 路径补全            可以使用YCM
+光标定位            <c-o/i>上下选择前一次后一次光标位.
 各个语言的补全      看~/.vim/snippets
 ctags               可以自行在c/php等头文件建立ctags文件
                     c比如/usr/local/include, php比如pear的包管理中

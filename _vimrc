@@ -286,7 +286,6 @@ set fencs=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 
 
 
-
 " 设置着色模式和字体
 " 使用GUI界面时的设置
 if g:isWIN
@@ -351,7 +350,6 @@ if v:version > 703
     " 替换原来的查找，可以同时显示多个查找关键字(Easymotion)
     map  / <Plug>(easymotion-sn)
     omap / <Plug>(easymotion-tn)
-
 endif
 
 " 基本设置
@@ -722,19 +720,21 @@ let g:rbpt_colorpairs = [
     \ ]
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
+
 "自定义关联文件类型
 au BufNewFile,BufRead *.less set filetype=css
 au BufNewFile,BufRead *.phtml set filetype=php
 
-":Tlist              调用TagList
+" Indent_guides       显示对齐线
+let g:indent_guides_enable_on_vim_startup = 1  " 默认关闭
+let g:indent_guides_guide_size            = 1  " 指定对齐线的尺寸
+
+
+":Tlist               调用TagList
 let Tlist_Show_One_File        = 1             " 只显示当前文件的tags
 let Tlist_Exit_OnlyWindow      = 1             " 如果Taglist窗口是最后一个窗口则退出Vim
 let Tlist_Use_Right_Window     = 1             " 在右侧窗口中显示
 let Tlist_File_Fold_Auto_Close = 1             " 自动折叠
-
-" Indent_guides       显示对齐线
-let g:indent_guides_enable_on_vim_startup = 1  " 默认关闭
-let g:indent_guides_guide_size            = 1  " 指定对齐线的尺寸
 
 
 
@@ -774,6 +774,8 @@ let g:indent_guides_guide_size            = 1  " 指定对齐线的尺寸
 "
 " manpageview phpfunctionname
 " 可以使用快捷键K查询
+" 说明，比如你在centos里面装了man-pages，当你用K查询的时候，自动会弹出man 你光
+" 标下面的词
 "
 "
 " =========
@@ -786,7 +788,7 @@ function AddPHPFuncList()
 endfunction
 autocmd FileType php call AddPHPFuncList()
 
-" set tags+=~/.vim/vimfiles/resource/tags-php
+" set tags+= ~/.vim/vimfiles/resource/tags-php
 
 " autocmd FileType php setlocal omnifunc=phpcomplete#CompleteTags
 " 除了使用Tab这个补全的方式，还可以使用Ctrl+x，Ctrl+o来补全上面文件的内置函数
@@ -1037,3 +1039,71 @@ command! -bang Bq call CleanClose(0,1)
 au BufRead *vimrc setl foldmethod=marker foldlevel=0
 " set foldenable
 " set foldlevelstart=99
+
+
+let g:iswindows=1
+autocmd BufEnter * lcd %:p:h
+map <F12> :call Do_CsTag()<CR>
+nmap <C-@>s :cs find s <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+nmap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>c :cs find c <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+nmap <C-@>t :cs find t <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+nmap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>:copen<CR>
+nmap <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>:copen<CR>
+nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+function Do_CsTag()
+    let dir = getcwd()
+    if filereadable("tags")
+        if(g:iswindows==1)
+            let tagsdeleted=delete(dir."\\"."tags")
+        else
+            let tagsdeleted=delete("./"."tags")
+        endif
+        if(tagsdeleted!=0)
+            echohl WarningMsg | echo "Fail to do tags! I cannot delete the tags" | echohl None
+            return
+        endif
+    endif
+    if has("cscope")
+        silent! execute "cs kill -1"
+    endif
+    if filereadable("cscope.files")
+        if(g:iswindows==1)
+            let csfilesdeleted=delete(dir."\\"."cscope.files")
+        else
+            let csfilesdeleted=delete("./"."cscope.files")
+        endif
+        if(csfilesdeleted!=0)
+            echohl WarningMsg | echo "Fail to do cscope! I cannot delete the cscope.files" | echohl None
+            return
+        endif
+    endif
+    if filereadable("cscope.out")
+        if(g:iswindows==1)
+            let csoutdeleted=delete(dir."\\"."cscope.out")
+        else
+            let csoutdeleted=delete("./"."cscope.out")
+        endif
+        if(csoutdeleted!=0)
+            echohl WarningMsg | echo "Fail to do cscope! I cannot delete the cscope.out" | echohl None
+            return
+        endif
+    endif
+    if(executable('ctags'))
+        "silent! execute "!ctags -R --c-types=+p --fields=+S *"
+        silent! execute "!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q ."
+    endif
+    if(executable('cscope') && has("cscope") )
+        if(g:iswindows!=1)
+            silent! execute "!find . -name '*.h' -o -name '*.c' -o -name '*.cpp' -o -name '*.java' -o -name '*.cs' > cscope.files"
+        else
+            silent! execute "!dir /s/b *.c,*.cpp,*.h,*.java,*.cs >> cscope.files"
+        endif
+        silent! execute "!cscope -b"
+        execute "normal :"
+        if filereadable("cscope.out")
+            execute "cs add cscope.out"
+        endif
+    endif
+endfunction
