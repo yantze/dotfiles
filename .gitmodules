@@ -4,3 +4,9 @@
 [submodule "vim"]
 	path = vimrc
 	url = https://github.com/yantze/vimrc.git
+[submodule "module/z"]
+	path = module/z
+	url = https://github.com/rupa/z.git
+[submodule "module/cheat"]
+	path = module/cheat
+	url = https://github.com/chrisallenlane/cheat.git
