@@ -91,6 +91,9 @@ grep MemFree /proc/meminfo # 查看空闲内存量
 
 id username  #显示用户信息
 last # 查看用户登录日志
+passwd -l accountName #锁定一个特定用户
+passwd -u accountName #解锁一个被锁定的账号
+#被锁定的用户仅对root用户仍然可见。这个锁定是通过将加密过的密码替换成（！）来实现的
 
 在putty下
 alt+.
@@ -170,6 +173,7 @@ alt+l 直接执行上一次执行的内容
 zsh 的补全，所有待补全项都可以通过键盘方向键或者 <Ctrl-n/p/f/b> 来选择
 聰明的目錄補全 cd /u/p/w/p/s/m/w/s/j<TAB>
 快速目录切换 zsh 会记住你每一次切换的路径，然后通过 1 来切换到你上一次访问的路径，2 切换到上上次……一直到 9，还可以通过 d 查看目录访问历史
+自动历史目录: cd -<TAB>, 可以看到当前命令行中的历史目录
 osx:
 man-preview 通过 preview 程序查看一个命令的手册，例如 man-preview git  (需要給oh-my-zsh
 中添加參數 osx)
@@ -224,6 +228,7 @@ find . -name "*.log" -exec cp {} test3 \;
 find . -depth; 这个可以不让find输出文件夹
 find . -name "*.log" print0 | xargs -0 cat | wc -l
 find . -perm /u+x -type f -exec rm {} \;  //删除可执行文件
+find . -perm /u+x -maxdepth 1 -type f -exec ag xxx {} \;  //查找当前目录的文件
 
 sshfs
 sshfs -o allow_other root@192.168.9.109:/opt /opt/s109 #挂载(如配上ssh key可完全自动化)
@@ -321,4 +326,17 @@ killall -TERM mysqld #关闭mysql进程
 killadd5
 
 要安装的软件
-yum install bind-utils
+bind-utils:包含dig, nslookup等网络工具
+man-pages man-pages-zh-CN:kernel源代码等手册
+
+常见的日志位置
+/var/log/message      – 记录系统日志或当前活动日志。
+/var/log/auth.log     – 身份认证日志。
+/var/log/kern.log     – 内核日志。
+/var/log/cron.log     – Crond 日志 (cron 任务).
+/var/log/maillog      – 邮件服务器日志。
+/var/log/boot.log     – 系统启动日志。
+/var/log/mysqld.log   – MySQL数据库服务器日志。
+/var/log/secure       – 认证日志。
+/var/log/wtmp or wtmp – 登录日志。
+/var/log/yum.log      – Yum 日志。

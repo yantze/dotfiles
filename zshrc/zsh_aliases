@@ -5,6 +5,7 @@ alias vi='/usr/bin/vim'
 alias javac="javac -J-Dfile.encoding=utf8"
 alias grep="grep --color=auto"
 alias -s txt=vi #在shell里面直接输入txt文件，直接用vim打开
+alias -s tex=vim
 alias -s gz='tar -xzvf'
 alias -s tgz='tar -xzvf'
 alias -s zip='unzip'
@@ -15,13 +16,17 @@ alias q='exit'
 #alias sp='~/tools/.sp.sh'
 alias sp='~/soft/sh-toolkits-lib/sp.sh'
 alias get='sh ~/soft/sh-toolkits-lib/sp.sh'
-#设置窗口的名字为best
+# tmux
+#设置窗口的名字为hi
 alias t='tmux -2 -u attach || tmux -2 -u new-session -s hi'
 #新建一個有名字的窗口
-alias tn='tmux -2 -u new-session -s'
-alias tl='tmux list-sessions'
+alias tmn='tmux -2 -u new-session -s'
+# alias tmn='tmux new -s $(basename $(pwd))'
+alias tml='tmux list-sessions'
 #附上一個有名字的窗口
-alias ta='tmux attach -t'
+# alias ta='tmux attach -t'
+alias tma='tmux attach -d -t'
+
 alias hd='od -Ax -tx1z -v' #方便的十六进制输出。 (用法举例: • hd /proc/self/cmdline | less)
 alias realpath='readlink -f'  #显示符号链接指向的真实路径((用法举例: • realpath ~/../$USER)
 

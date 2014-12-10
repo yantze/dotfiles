@@ -1,3 +1,14 @@
+# zsh's alias
+if [ -f ~/.dotfiles/zshrc/zsh_aliases ]; then
+    . ~/.dotfiles/zshrc/zsh_aliases
+fi
+
+#history max num
+export HISTSIZE=10000
+#history max save
+export SAVEHIST=10000
+export EDITOR=vim
+
 
 ###JAVA###
 export JAVA_HOME=/usr/java/jdk1.8.0_05
@@ -42,6 +53,10 @@ PATH="$LINUXBREW/bin:$PATH"
 
 # PATH="$PATH:/usr/local/bin:/bin:/usr/bin:$HOME/bin:/usr/local/sbin:/usr/sbin:/sbin"
 
+# Git for SAE
+export GIT_FOR_SAE_ROOT=~/tools/git_svn_sae/ #此处就是你刚刚放置clone下来的项目路径
+PATH="$GIT_FOR_SAE_ROOT:$PATH"
+
 export PATH
 
 ###配置c编译
@@ -76,12 +91,6 @@ if { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
 fi
 
 
-# zsh's alias
-if [ -f ~/.dotfiles/zshrc/zsh_aliases ]; then
-    . ~/.dotfiles/zshrc/zsh_aliases
-fi
-
-
 export EDITOR='vim'
 # set -o vi #设置shell快捷键的默认器
 
@@ -94,6 +103,15 @@ if { [ `uname` = "Darwin" ] } then
     alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 
 fi
+
+###path PATH###
+# Set the list of directories that Zsh searches for programs.
+# /opt/homebrew-cask/Caskroom/postgres/latest/Postgres.app/Contents/MacOS/bin  #for mac
+# path=(
+#   /usr/local/{bin,sbin}
+#   /usr/local/heroku/bin
+#   $path
+# )
 
 
 ###C###

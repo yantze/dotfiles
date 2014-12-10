@@ -42,8 +42,17 @@ iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 # Save settings
  /sbin/service iptables save
 
-# List rules
- iptables -L -v
+# List rules -L(List ruleset) -v(verbose) -n(numeric) -line-numbers
+ iptables -L -v -n -line-numbers
+
+# list INPUT ruleset
+ iptables -L INPUT
+
+# delete rule no.5 from INPUT chain, use line-numbers
+ iptables -D INPUT 5
+
+# insert or append rule to INPUT chain in between 4 and 5 ruleset
+ iptables -I INPUT 5 -s ipaddress -j DROP
 
 # ref from: http://wiki.centos.org/HowTos/Network/IPTables
 this image may useful [Packet filtering in IPTables](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Security_Guide/images/iptables_small.png)

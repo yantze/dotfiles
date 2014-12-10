@@ -1,3 +1,5 @@
+# zpreztorc's history file is ~/.zhistory not ~/.zsh_history
+# you can you `history 0` to display all command
 # change the ... = '../../'
 # copy the centos file to file
 #
@@ -5,3 +7,5 @@ alias swift=$(xcrun -f swift)
 alias swiftc=$(xcrun -f swiftc)
 # Generate LLVM bytecode
 # swiftc -emit-bc hello.swift -o hello.bc
+
+
