@@ -29,6 +29,12 @@ redis:like memcached but more.
 
 
 
+###zsh-completions install guide
+#####Include the directory in your $fpath, for example by adding in ~/.zshrc:
+fpath=(path/to/zsh-completions/src $fpath)
+
+#####You may have to force rebuild zcompdump:
+rm -f ~/.zcompdump; compinit
 
 
 
