@@ -13,3 +13,6 @@
 [submodule "module/prezto"]
 	path = module/prezto
 	url = https://github.com/sorin-ionescu/prezto.git
+[submodule "module/zsh-completions"]
+	path = module/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions
