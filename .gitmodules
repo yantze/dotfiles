@@ -10,3 +10,6 @@
 [submodule "module/cheat"]
 	path = module/cheat
 	url = https://github.com/chrisallenlane/cheat.git
+[submodule "module/prezto"]
+	path = module/prezto
+	url = https://github.com/sorin-ionescu/prezto.git
