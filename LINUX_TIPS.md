@@ -217,6 +217,11 @@ which #查找当前path里面的可执行文件
 type file #如果用whereis找不到可以先看看文件类型
 nm  #查看.o文件中调用了哪些程序
 
+history
+HISTFILE stores the path to the history file
+HISTSIZE stores the maximum number of events to save in the internal history
+SAVEHIST stores the maximum number of events to save in the history file
+
 find http://www.cnblogs.com/peida/archive/2012/11/14/2769248.html
 常用find：
 find . -type f -exec ls -l {} \;
@@ -308,6 +313,7 @@ x           #kill one panel in window
 w           #show all window(Select from interactive list of windows)
 tmux list-sessions  #list all sessions
 #cheatsheet:https://gist.github.com/MohamedAlaa/2961058#file-tmux-cheatsheet-markdown
+#use space to enter visual model in ctrl+a ] condition
 
 bind-key F1 set-window-option force-width 81
 
@@ -325,9 +331,6 @@ killall
 killall -TERM mysqld #关闭mysql进程
 killadd5
 
-要安装的软件
-bind-utils:包含dig, nslookup等网络工具
-man-pages man-pages-zh-CN:kernel源代码等手册
 
 常见的日志位置
 /var/log/message      – 记录系统日志或当前活动日志。

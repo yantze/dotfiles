@@ -8,6 +8,8 @@ export HISTSIZE=10000
 #history max save
 export SAVEHIST=10000
 export EDITOR=vim
+# set -o vi #设置shell快捷键的默认器
+
 
 
 ###JAVA###
@@ -90,9 +92,6 @@ if { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
     # export PS1="%{$fg[cyan]%}%c$(git_prompt_info) %(!.%{$fg_bold[red]%}#.%{$fg_bold[red]%}❯)%{$reset_color%}"
 fi
 
-
-export EDITOR='vim'
-# set -o vi #设置shell快捷键的默认器
 
 echo "THE BEST YANTZE TO BE ZHI"
 
