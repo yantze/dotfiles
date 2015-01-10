@@ -18,6 +18,7 @@ key<Tab>        UltiSnip And YCM 可以自动补全，UltiSnip对py，ycm对c好
                 有个小bug,就是在多光标选中模式下，要先按i或者a这个键，再按I/A
 ,mt             生成每个语言的ctags文件，可以通过ctrl+]跳转和ctrl+t返回
 +/-             +可以扩大选择区域/-相反
+,bb /,b<custom> 按等于号对其或者自定义符号对齐
 ```
 
 
