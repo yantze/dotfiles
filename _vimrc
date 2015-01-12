@@ -538,6 +538,12 @@ imap <leader>R <ESC>:call Compile_Run_Code()<CR>
 nmap <leader>R :call Compile_Run_Code()<CR>
 vmap <leader>R <ESC>:call Compile_Run_Code()<CR>
 
+" \rsl       执行选中行命令
+" run the select line in bash
+vmap <leader>rsl <esc>:'<,'>:w !sh <CR>
+" run the select line output result
+vmap <leader>rso <esc>:'<,'>!sh <CR>
+" FYI: omitting :w will replace the selection with the command's output.
 
 " tabs
 map <leader>tn :tabnew<cr>
@@ -1107,3 +1113,4 @@ function Do_CsTag()
         endif
     endif
 endfunction
+

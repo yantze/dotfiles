@@ -1274,3 +1274,13 @@ oding`是横扫各大小编辑器的快速编码插件，其使用类`CSS`选择
 :set termcap
 使用Ctrl-v来查看一些按钮的原来的代码
 
+##一些片段
+
+####配置里面<leader>rsl不同的实现方法
+#####执行选中行命令
+" function RunTheSelectLinesInSystem() range
+"     echo system('echo '.shellescape(join(getline(a:firstline, a:lastline), "\n")).'| sh ')
+" endfunction
+" com -range=% -nargs=0 RCurLine :<line1>,<line2>call RunTheSelectLinesInSystem()
+" you can use the method :'<,'>RCurLine
+
