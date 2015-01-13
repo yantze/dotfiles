@@ -1284,3 +1284,5 @@ oding`是横扫各大小编辑器的快速编码插件，其使用类`CSS`选择
 " com -range=% -nargs=0 RCurLine :<line1>,<line2>call RunTheSelectLinesInSystem()
 " you can use the method :'<,'>RCurLine
 
+#####sed method
+!!sed s/<search>/<replace>/<num>

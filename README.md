@@ -1,4 +1,6 @@
 ##VIM使用说明
+拿到副本后，执行 vimrc/script/link-rc.sh 安装
+
 ###常用命令-强大且要记住的功能(适用于本vim配置)
 
 ####Key
@@ -18,7 +20,7 @@ key<Tab>        UltiSnip And YCM 可以自动补全，UltiSnip对py，ycm对c好
                 有个小bug,就是在多光标选中模式下，要先按i或者a这个键，再按I/A
 ,mt             生成每个语言的ctags文件，可以通过ctrl+]跳转和ctrl+t返回
 +/-             +可以扩大选择区域/-相反
-,bb /,b<custom> 按等于号对其或者自定义符号对齐
+,bb /,bn<type char> 按等于号对其或者自定义符号对齐
 ```
 
 
@@ -33,12 +35,14 @@ ctags               可以自行在c/php等头文件建立ctags文件
 ```
 
 ####Snip
+一旦你输入下面的字符，按Tab键自动补全
 ```
 #!
 class
+html5
 ```
 
-####For PHP
+####PHP补全
 可以使用Ctrl+x,Ctrl+o来补全内容
 
 
@@ -66,14 +70,14 @@ jkhl: 这四个键分别代表：下上左右
 ,n/,p                   切换buffer的标签(因为vim的一个窗口里面有多个buffer)
 10G                     数字10和大写的G，跳到第十行
 
-:s/x/b                  用"#"注释当前行
+:s/^/#                  用"#"注释当前行 ,":s/<search>/<replace>"
+:%s/x/b                 在所有行替换x为b,":%s/<search>/<replace>"
 :2,50s/x/b              在2~50行替换x为b
 :.,+3s/x/b              在前行和当前行后面的三行，替换x为b
-:%s/x/b                 在所有行替换x为b
 :set notextmode         这个可以去掉^M这个符号
-:set pastetoggle        可以解决在linux命令行复制内容的时候，内容被识别为vim操作和乱序缩进,我的配置设置快捷键为F3
+:set pastetoggle        可以解决在linux命令行复制内容的时候，内容被识别为vim操作和乱序缩进,在我的配置中快捷键为F3
 
-f                       查找当前行的字符
+f<char>                       查找当前行的字符
 gb                      go browser，光标下如果是url链接，自动用默认浏览器打开链接，如果是选中的字符串，就用浏览器搜索
 gf                      如果光标下是一个文件链接，则可以用vim自动打开这个文件
 gd                      找到光标下的标签定义
@@ -121,6 +125,7 @@ Ctrl+X,Ctrl+O           自动补全,ycm占用Ctrl+n/p
 
 
 
+###一些说明
 如果有vba的vim插件,需要用vimball方式安装
 用vim打开vba格式的文件，输入
 :so %
@@ -138,9 +143,11 @@ manviewpage有很多用法，用在php中是从php.net中查找相关的内容
 
 因为需要安装text browser软件links或者elinks、links2也可以
 
+默认关闭编译YCM，如果需要开启，确保安装了python-dev和gcc4.4.1+后，请自行取消script/link-rc.sh中的注释
 
 
-#提取函数名
+
+###提取php函数名
 ```bash
 find ./php.5.3 -type f -name "*.h" -o -name "*.c" | xargs grep -E "PHP_FUNCTION|ZEND_FUNCTION" | sed -ie "s/.*_FUNCTION(//g;s/)//g" | sort | uniq > functions.txt
 ```

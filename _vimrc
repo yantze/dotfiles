@@ -74,8 +74,10 @@
         set nocompatible               " 设置不与之前版本兼容 be iMproved
         filetype off                   " 检测文件类型 required!
         if filereadable(expand("$VIM/_vimrc.bundles"))
-           set rtp+=$VIM/vimfiles/bundle/Vundle.vim  "添加vendle环境变量
-           source $VIM/_vimrc.bundles
+            if filereadable(expand("$VIM/bundle/Vundle.vim/README.md"))
+                set rtp+=$VIM/bundle/Vundle.vim  "添加vendle环境变量
+                source $VIM/_vimrc.bundles
+            endif
         endif
         " you can put it in tmpfs:/dev/shm/.dotfiles/vimrc/vimfiles/bundle/Vundle.vim
         " 安装新的插件 :PluginInstall
@@ -287,31 +289,31 @@ set fencs=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 
 
 " 设置着色模式和字体
-" 使用GUI界面时的设置
 if g:isWIN
+    " 使用GUI界面时的设置
     if g:isGUI
-        "启动gvim时窗口的大小
-        "set lines=42 columns=170
+        " 启动gvim时窗口的大小
+        " set lines=42 columns=170
         " 启动时自动最大化窗口
         au GUIEnter * simalt ~x
 
-        "winpos 20 20             " 指定窗口出现的位置，坐标原点在屏幕左上角
-        "set lines=20 columns=90  " 指定窗口大小，lines为高度，columns为宽度
+        " winpos 20 20             " 指定窗口出现的位置，坐标原点在屏幕左上角
+        " set lines=20 columns=90  " 指定窗口大小，lines为高度，columns为宽度
         set guioptions+=c        " 使用字符提示框
         set guioptions-=m        " 隐藏菜单栏
         set guioptions-=T        " 隐藏工具栏
-        "set guioptions-=L        " 隐藏左侧滚动条
-        "set guioptions-=r        " 隐藏右侧滚动条
-        "set guioptions-=b        " 隐藏底部滚动条
-        "set showtabline=1        " 隐藏Tab栏
+        " set guioptions-=L        " 隐藏左侧滚动条
+        " set guioptions-=r        " 隐藏右侧滚动条
+        " set guioptions-=b        " 隐藏底部滚动条
+        " set showtabline=1        " 隐藏Tab栏
 
-        "set colortheme molokai autumn blackboard asu1dark busybee tomorrow
+        " set colortheme molokai autumn blackboard asu1dark busybee tomorrow
         colorscheme solarized
 
-        "set font
-        "set guifont=Consolas:h12
-        "set guifont=Monaco:h15
-        "set guifont=Source\ Code\ Pro\ Regular:h15
+        " set font
+        " set guifont=Consolas:h12
+        " set guifont=Monaco:h15
+        " set guifont=Source\ Code\ Pro\ Regular:h15
         set guifont=Source\ Code\ Pro\:h13
     else
         colorscheme ir_black
@@ -353,9 +355,9 @@ if v:version > 703
 endif
 
 " 基本设置
-"set my leader
+" set my leader
 let mapleader=","
-"set : to ;
+" map : to ;
 map ; :
 
 set backspace=2              " 设置退格键可用
