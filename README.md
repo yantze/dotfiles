@@ -1,5 +1,5 @@
 ##VIM使用说明
-拿到副本后，执行 vimrc/script/link-rc.sh 安装
+拿到副本后，在linux和mac执行 vimrc/script/install_rc.sh 安装
 
 ###常用命令-强大且要记住的功能(适用于本vim配置)
 
