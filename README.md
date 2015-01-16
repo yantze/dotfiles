@@ -118,11 +118,8 @@ Ctrl+X,Ctrl+O           自动补全,ycm占用Ctrl+n/p
 
 我也参考了很多的vim配置:
 [vimfiles](https://github.com/coderhwz/vimfiles)
-
 [dotfiles](https://github.com/luin/dotfiles)
-
 [vimrc](https://github.com/rhyzx/vimrc)
-
 [dotvim](https://github.com/lilydjwg/dotvim)
 
 同时有一些技巧：
