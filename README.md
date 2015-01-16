@@ -7,7 +7,7 @@
 ```
 Ctrp+P          快速查找当前文件夹下所有子目录的文件
 :ag             查找当前目录下的所有文件的关键字
-,gd             使用YCM的快速查找定义,类似vs中的F12
+,gd             使用YCM的快速查找头文件定义,类似vs中的F12
 ,ci             注释当前行/可选中
 ,cm             块注释/可选中
 key<Tab>        UltiSnip And YCM 可以自动补全，UltiSnip对py，ycm对c好一些
@@ -75,17 +75,19 @@ jkhl: 这四个键分别代表：下上左右
 :2,50s/x/b              在2~50行替换x为b
 :.,+3s/x/b              在前行和当前行后面的三行，替换x为b
 :set notextmode         这个可以去掉^M这个符号
-:set pastetoggle        可以解决在linux命令行复制内容的时候，内容被识别为vim操作和乱序缩进,在我的配置中快捷键为F3
+:set pastetoggle        可以解决在linux命令行复制内容的时候，
+                        内容被识别为vim操作和乱序缩进,在我的配置中快捷键为F3
 
-f<char>                       查找当前行的字符
-gb                      go browser，光标下如果是url链接，自动用默认浏览器打开链接，如果是选中的字符串，就用浏览器搜索
+f<char>                 查找当前行的字符
+gb                      go browser，光标下如果是url链接，自动用默认浏览器打开链接，
+                        如果是选中的字符串，就用浏览器搜索
 gf                      如果光标下是一个文件链接，则可以用vim自动打开这个文件
 gd                      找到光标下的标签定义
 Ctrl+Tab/Ctrl+Shift+Tab 切换vim标签
 Ctrl+w,v/h              在gvim下创建多窗口
 Ctrl+h/j/k/l            在gvim下切换多窗口
-]p                      和p的功能差不多，但是它会自动调整被粘贴的文本的缩进去适应当前代码的位置。试一下！
-K                       在Man里面查找光标当前所在处的词。
+]p                      和p的功能差不多，但是它会自动调整被粘贴的文本的缩进去适应当前代码的位置
+K                       在Man里面查找光标当前所在处的词
 Ctrl+X,Ctrl+O           自动补全,ycm占用Ctrl+n/p
 ```
 
@@ -116,8 +118,11 @@ Ctrl+X,Ctrl+O           自动补全,ycm占用Ctrl+n/p
 
 我也参考了很多的vim配置:
 [vimfiles](https://github.com/coderhwz/vimfiles)
+
 [dotfiles](https://github.com/luin/dotfiles)
+
 [vimrc](https://github.com/rhyzx/vimrc)
+
 [dotvim](https://github.com/lilydjwg/dotvim)
 
 同时有一些技巧：
@@ -126,6 +131,7 @@ Ctrl+X,Ctrl+O           自动补全,ycm占用Ctrl+n/p
 
 
 ###一些说明
+```
 如果有vba的vim插件,需要用vimball方式安装
 用vim打开vba格式的文件，输入
 :so %
@@ -144,6 +150,7 @@ manviewpage有很多用法，用在php中是从php.net中查找相关的内容
 因为需要安装text browser软件links或者elinks、links2也可以
 
 默认关闭编译YCM，如果需要开启，确保安装了python-dev和gcc4.4.1+后，请自行取消script/link-rc.sh中的注释
+```
 
 
 
