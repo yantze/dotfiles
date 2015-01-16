@@ -1286,3 +1286,16 @@ oding`是横扫各大小编辑器的快速编码插件，其使用类`CSS`选择
 
 #####sed method
 !!sed s/<search>/<replace>/<num>
+
+#####get some lines out or in
+To read in from file-name.txt into the current buffer
+:read file-name.txt
+
+To append the range of line 1 to line 300 from the current buffer to file-to-append.txt
+:1,300write >> file-to-append.txt
+
+You can also use marks instead of line numbers such as the visual marks
+:'<,'>write >> file-to-append.txt
+
+Or can write some line to a new file
+:1,300w file.txt

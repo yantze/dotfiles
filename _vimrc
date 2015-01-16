@@ -67,6 +67,12 @@
         "     map <Esc>[23~ <F11>
         "     map <Esc>[24~ <F12>
         " endif
+
+        " if &term=="xterm"
+        "     set t_Co=8
+        "     set t_Sb=[4%dm
+        "     set t_Sf=[3%dm
+        " endif
     " }
 
     " Package manager{
@@ -88,10 +94,13 @@
         " 查找插件:PluginSearch
 
     " }
+
     " Basic {
         "set powerline
         "set guifont=Powerline
         "set font=Source\ Code\ Pro\:h15
+        " Uncomment the following to have Vim jump to the last position when reopening a file
+        au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
     " }
 
     " 判断是否处于GUI界面
@@ -385,6 +394,8 @@ set list                     " 显示特殊字符，其中Tab使用高亮竖线�
 set listchars=tab:\|\ ,trail:. "设置tab/尾部字符用什么填充
 set t_Co=256                 " 设置文字可以显示多少种颜色
 set cursorline               " 突出显示当前行
+" set viminfo='20,\"50       " read/write a .viminfo file, don't store more than 50 lines of registers
+set history=50               " keep 50 lines of command line history
 
 
 " Tab
