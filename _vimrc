@@ -131,15 +131,6 @@ func! RemoveTabs()
     end
 endfunc
 
-" 这个函数是我用来整理loveacc博客的资料
-func! RemoveSong()
-    :%s/　//g
-    :%s/\[.*//g
-    :%s/...EP//g
-    :%s/...Single//g
-    :%s/\s–\s/\r/g
-endfunc
-
 " Diff current unsaved file
 function! s:DiffWithSaved()
     let filetype=&ft
@@ -373,15 +364,10 @@ set backspace=2              " 设置退格键可用
 set autoindent               " 自动对齐
 set smartindent              " 智能自动缩进
 set nu!                      " 显示行号
-" set mouse=a                  " 启用鼠标
 set ruler                    " 右下角显示光标位置的状态行
-set incsearch                " 开启实时搜索功能,查询时非常方便，如要查找book单词，当输入到/b时，会自动找到第一个b开头的单词，当输入到/bo时，会自动找到第一个bo开头的单词
-set hlsearch                 " 开启高亮显示结果
-set nowrapscan               " 搜索到文件两端时不重新搜索
-" set nocompatible             " 关闭兼容模式
 set hidden                   " 允许在有未保存的修改时切换缓冲区
 set autochdir                " 设定文件浏览器目录为当前目录
-set foldmethod=marker         " 选择代码折叠类型
+set foldmethod=marker        " 选择代码折叠类型
 set foldlevel=100            " 禁止自动折叠 also same: set [no]foldenable
 set laststatus=2             " 开启状态栏信息
 set cmdheight=2              " 命令行的高度，默认为1，这里设为2
@@ -394,26 +380,31 @@ set list                     " 显示特殊字符，其中Tab使用高亮竖线�
 set listchars=tab:\|\ ,trail:. "设置tab/尾部字符用什么填充
 set t_Co=256                 " 设置文字可以显示多少种颜色
 set cursorline               " 突出显示当前行
-" set viminfo='20,\"50       " read/write a .viminfo file, don't store more than 50 lines of registers
 set history=50               " keep 50 lines of command line history
+set incsearch                " 开启实时搜索功能,查询时非常方便，如要查找book单词，当输入到/b时，会自动找到第一个b开头的单词，当输入到/bo时，会自动找到第一个bo开头的单词
+set hlsearch                 " 开启高亮显示结果
+set nowrapscan               " 搜索到文件两端时不重新搜索
+set lbr                      "不在单词中间断行(linebreak)
+" set nowrap                   " 设置不自动换行
+" set tw=78                    "超过80个字符就折行(textwrap)
+" set mouse=a                  " 启用鼠标
+" set viminfo='20,\"50         " read/write a .viminfo file, don't store more than 50 lines of registers
 
 
 " Tab
 set tabstop=4
 set cindent shiftwidth=4
 "set autoindent shiftwidth=4
-"set ts=4 sw=4 et  "ts=tabstop=4 sw=shiftwidth=4 et=expandtab
-set smarttab                 "在行首按TAB将加入sw个空格，否则加入ts个空格;按Backspace可以删除4个空格
-" set ambiwidth=double  "如果全角字符不能识别一般用这个
-set ai!                      " 设置自动缩进
 set expandtab                " 将Tab自动转化成空格 [需要输入真正的Tab键时，使用 Ctrl+V + Tab]
 " 详细的tab设置：http://blog.chinaunix.net/uid-24774106-id-3396220.html
-" set showmatch               " 显示括号配对情况
-" set nowrap                  " 设置不自动换行
-" set tw=78     "超过80个字符就折行
-set lbr       "不在单词中间断行
-set fo+=mB    "打开断行模块对亚洲语言支持
-" set lsp=0     "设置行间距
+"set ts=4 sw=4 et  "也可以一行写完:ts=tabstop=4 sw=shiftwidth=4 et=expandtab
+set smarttab                 "在行首按TAB将加入sw个空格，否则加入ts个空格;按Backspace可以删除4个空格
+
+" set ambiwidth=double         "如果全角字符不能识别一般用这个(自动用宽字符显示)
+set fo+=mB                   "打开断行模块对亚洲语言支持
+set ai!                      " 设置自动缩进
+" set showmatch                " 显示括号配对情况
+" set lsp=0                    "设置行间距
 
 
 
@@ -435,9 +426,6 @@ set fo+=mB    "打开断行模块对亚洲语言支持
 " 用两个<CR>可以隐藏执行命令后出现的提示信息"
 " map F :call FormatCode() <CR><CR>
 " map <silent>F 也可以隐藏
-
-" 去掉我从从lovecc歌曲清单里面的冗余信息
-map <leader>rs <ESC>:call RemoveSong()<CR>
 
 " Ctrl + H            光标移当前行行首
 imap <c-h> <ESC>I
@@ -686,7 +674,7 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 "nnoremap <leader>w <C-W>w
 
-" Goyo:the only writer
+" Goyo:the pure writer
 function! s:goyo_before()
   silent !tmux set status off
   set noshowmode
@@ -758,28 +746,17 @@ let Tlist_File_Fold_Auto_Close = 1             " 自动折叠
 
 
 " <leader>a 排列归类
-" <leader>ci 注释+// 可toggle
-" <leader>cm 注释+/**/
-"bn/bp 切换buffer
 "tabn/tabp 切换tab
 "tn 创建新窗口
-"gb 打开或者搜索光标下的内容 这个好像有时候会失效
 " <leader>g/f 搜索和查找
 ":retab 对当前文档重新替换tab为空格
-"用Ctrl+v Tab也可以产生原生的Tab
-"f  查找当前行的字符
-"Ctrl+p 打开文件列表Ctrl+jk来选择文件
+"用Ctrl+v Tab可以产生原生的Tab
 " <leader>be打开当前所有buffer的列表<leader>bs,<leader>bv
 " <leader>Space 打开Goyo编写环境
-" gf 如果是路径可以打开这个文件
-" gd 找到定义
 " :e $m<tab> 自动扩展到:e $MYVIMRC 然后打开_vimrc
 " <c-y>,  扩展htmlcss的文件
-" :Sw 给sudo权限保存
-" :DiffSaved 比较当前修改了什么
 "
 "少用
-"zz 把当前行移到屏幕中间
 "ga 转换光标下的内容为多进制
 ":e $MYVIMRC 快速打开配置文件,$MYGVIMRC
 " :set notextmode  去掉^M这个符号
@@ -936,14 +913,11 @@ nmap <silent><leader>mt :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <cr><
 " 暂停vim方式:Ctrl+z, jobs, fg
 " 使用vim的sh命令启动新console :sh
 " 使用!bash启动一个console
-" 直接执行!命令
+" 直接执行:!命令
 
 " For Mac
-"
 " noremap <silent> <M-up> <C-W>+
 " noremap <silent> <M-down> <C-W>-
-"
-" fix some unexpectly bugs
 "
 
 " deploy python
@@ -976,10 +950,8 @@ nmap <silent><leader>mt :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <cr><
 " :HexoNew artical-name
 " :HexoOpen artical-name
 
-" map <leader>ag :Ag
-" cnoreabbrev ag Ag
-" cabbrev ag Ag
 " there use special tech
+" cnoreabbrev ag Ag
 cabbrev ag <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'Ag' : 'ag')<CR>
 
 " Syntastic

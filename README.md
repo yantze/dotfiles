@@ -1,11 +1,12 @@
 ##VIM使用说明
 拿到副本后，在linux和mac执行 vimrc/script/install_rc.sh 安装
+windows请看目录下的install_guide.txt
 
 ###常用命令-强大且要记住的功能(适用于本vim配置)
 
 ####Key
 ```
-Ctrp+P          快速查找当前文件夹下所有子目录的文件
+Ctrl+P          快速查找当前文件夹下所有子目录的文件,ctrl+j/k上下选择文件
 :ag             查找当前目录下的所有文件的关键字
 ,gd             使用YCM的快速查找头文件定义,类似vs中的F12
 ,ci             注释当前行/可选中
@@ -21,6 +22,8 @@ key<Tab>        UltiSnip And YCM 可以自动补全，UltiSnip对py，ycm对c好
 ,mt             生成每个语言的ctags文件，可以通过ctrl+]跳转和ctrl+t返回
 +/-             +可以扩大选择区域/-相反
 ,bb /,bn<type char> 按等于号对其或者自定义符号对齐
+:Sw             当需要root权限保存时，不用重新打开
+:DiffSaved      比较在保存文件之后修改了什么那些内容
 ```
 
 
@@ -80,8 +83,8 @@ jkhl: 这四个键分别代表：下上左右
 
 f<char>                 查找当前行的字符
 gb                      go browser，光标下如果是url链接，自动用默认浏览器打开链接，
-                        如果是选中的字符串，就用浏览器搜索
-gf                      如果光标下是一个文件链接，则可以用vim自动打开这个文件
+                        如果是选中的字符串，就用浏览器搜索, ,gb是另外一个插件提供的同样功能
+gf                      如果光标下是一个文件路径，则可以用vim自动打开这个文件
 gd                      找到光标下的标签定义
 Ctrl+Tab/Ctrl+Shift+Tab 切换vim标签
 Ctrl+w,v/h              在gvim下创建多窗口
@@ -89,6 +92,7 @@ Ctrl+h/j/k/l            在gvim下切换多窗口
 ]p                      和p的功能差不多，但是它会自动调整被粘贴的文本的缩进去适应当前代码的位置
 K                       在Man里面查找光标当前所在处的词
 Ctrl+X,Ctrl+O           自动补全,ycm占用Ctrl+n/p
+zz                      把当前行移到屏幕中间
 ```
 
 

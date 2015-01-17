@@ -1299,3 +1299,21 @@ You can also use marks instead of line numbers such as the visual marks
 
 Or can write some line to a new file
 :1,300w file.txt
+
+#####row control
+刪除包含有空格組成的空行： g/^\s*$/d
+删除空白行： g/^$/d
+删除以#开头的： s/^#.*$//g
+删除以空格或tab開頭到結尾的空行 g/^[ |\t]*$/d
+在行头加注释： s/^/#/g
+:n,$s/string/sky/g 替换第n行开始到最后一行中每一行所有string为sky
+删除以//的开头的注释行： cat a2.C | grep -v '//' > a3.C
+g/pattern/d 是找到pattern, 删之
+v/pattern/d 是找到非pattern,删之
+
+#####row sort
+排序并删除重复行 :sort u
+
+
+###参考
+http://www.richardzhong.com/category/vim/
