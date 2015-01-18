@@ -24,26 +24,10 @@ key<Tab>        UltiSnip And YCM 可以自动补全，UltiSnip对py，ycm对c好
 ,bb /,bn<type char> 按等于号对其或者自定义符号对齐
 :Sw             当需要root权限保存时，不用重新打开
 :DiffSaved      比较在保存文件之后修改了什么那些内容
+:Man glob       查看linux关于glob的man文档(only linux/mac)
+:Man glob.php   查看从php.net中访问glob的相关语法和示例(only linux/mac)
 ```
 
-
-####Tips
-```
-c/c++/objc/objc++   可以使用YCM
-路径补全            可以使用YCM
-光标定位            <c-o/i>上下选择前一次后一次光标位.
-各个语言的补全      看~/.vim/snippets
-ctags               可以自行在c/php等头文件建立ctags文件
-                    c比如/usr/local/include, php比如pear的包管理中
-```
-
-####Snip
-一旦你输入下面的字符，按Tab键自动补全
-```
-#!
-class
-html5
-```
 
 ####PHP补全
 可以使用Ctrl+x,Ctrl+o来补全内容
@@ -100,6 +84,25 @@ zz                      把当前行移到屏幕中间
 ```
 :set display=uhex       这个是用来查看^@这种不可显示的字符，自动转换这些字符为hex进制，也可以ga查看当前光标的进制
 ,16                     转换当前文件为16进制，,r16为恢复，只有十六进制部分修改才有用
+:vert command           垂直打开command中的命令,示例 :vert h manpageview
+```
+
+####Tips
+```
+c/c++/objc/objc++   可以使用YCM
+路径补全            可以使用YCM
+光标定位            <c-o/i>上下选择前一次后一次光标位.
+各个语言的补全      看~/.vim/snippets
+ctags               可以自行在c/php等头文件建立ctags文件
+                    c比如/usr/local/include, php比如pear的包管理中
+```
+
+####Snip
+一旦你输入下面的字符，按Tab键自动补全
+```
+#!
+class
+html5
 ```
 
 
@@ -133,24 +136,10 @@ zz                      把当前行移到屏幕中间
 
 ###一些说明
 ```
-如果有vba的vim插件,需要用vimball方式安装
-用vim打开vba格式的文件，输入
-:so %
-即可安装，然后:q退出。
-删除插件也很方便，直接在vim里输入
-:RmVimball 插件名
+manpageview需要安装text browser软件links,elinks、links2也可以
 
-比如我其中一个插件manviewpage.vba就是用这个方法
-
-manviewpage有很多用法，用在php中是从php.net中查找相关的内容
-
-在vim窗口下，:Man glob就可以查看关于glob的相关语法和示例
-
-这个插件在linux或者mac cli下运行
-
-因为需要安装text browser软件links或者elinks、links2也可以
-
-默认关闭编译YCM，如果需要开启，确保安装了python-dev和gcc4.4.1+后，请自行取消script/link-rc.sh中的注释
+默认关闭编译YCM，如果需要开启，确保安装了python-dev和gcc4.4.1+后,
+请自行取消script/install_rc.sh中的注释
 ```
 
 
