@@ -101,6 +101,15 @@
         "set font=Source\ Code\ Pro\:h15
         " Uncomment the following to have Vim jump to the last position when reopening a file
         au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+        if has('clipboard')
+            if has('unnamedplus')  " When possible use + register for copy-paste
+                set clipboard=unnamed,unnamedplus
+            else         " On mac and Windows, use * register for copy-paste
+                set clipboard=unnamed
+            endif
+        endif
+
     " }
 
     " 判断是否处于GUI界面
@@ -275,16 +284,14 @@ set visualbell t_vb=         "关闭visual bell/声音
 au GuiEnter * set t_vb=      "关闭beep/屏闪
 
 " 文件配置
-" 设定换行符
-" set fileformats=unix
-" 设定文件浏览器目录为当前目录
-set bsdir=buffer
-" 设置编码
-set enc=utf-8
-" 设置文件编码
-set fenc=utf-8
-" 设置文件编码检测类型及支持格式
-set fencs=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+set fileformats=unix                             " 设定换行符
+set bsdir=buffer                                 " 设定文件浏览器目录为当前目录
+set enc=utf-8                                    " 设置编码
+set fenc=utf-8                                   " 设置文件编码
+set fencs=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936 " 设置文件编码检测类型及支持格式
+set shortmess+=filmnrxoOtT                       " Abbrev. of messages (avoids 'hit enter')
+set viewoptions=folds,options,cursor,unix,slash  " Better Unix / Windows compatibility
+set virtualedit=onemore                          " Allow for cursor beyond last character
 
 
 
@@ -306,6 +313,7 @@ if g:isWIN
         " set guioptions-=r        " 隐藏右侧滚动条
         " set guioptions-=b        " 隐藏底部滚动条
         " set showtabline=1        " 隐藏Tab栏
+        set guioptions+=aA       " get some autoselect interaction with the system clipboard
 
         " set colortheme molokai autumn blackboard asu1dark busybee tomorrow
         colorscheme solarized
