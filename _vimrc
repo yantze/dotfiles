@@ -293,6 +293,9 @@ set shortmess+=filmnrxoOtT                       " Abbrev. of messages (avoids '
 set viewoptions=folds,options,cursor,unix,slash  " Better Unix / Windows compatibility
 set virtualedit=onemore                          " Allow for cursor beyond last character
 
+" Instead of reverting the cursor to the last position in the buffer, we
+" set it to the first line when editing a git commit message
+au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 
 
 " 设置着色模式和字体
