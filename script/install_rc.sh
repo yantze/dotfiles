@@ -7,10 +7,15 @@ cd "$(dirname $0)/.."
 
 dir="$PWD"
 
-mv ~/.vimrc ~/.vimrc_orgi
-mv ~/.vim ~/.vim_orgi
-ln -s "$dir/_vimrc" ~/.vimrc
-ln -s "$dir/vimfiles" ~/.vim
+if [[ -a ~/.vimrc ]]; then
+    mv ~/.vimrc{,_old}
+fi
+if [[ -d ~/.vim ]]; then
+    mv ~/.vim{,_old}
+fi
+
+ln -sf "$dir/_vimrc" ~/.vimrc
+ln -sf "$dir/vimfiles" ~/.vim
 
 #install vundle plugin
 if [ ! -d ~/.vim/bundle/Vundle.vim ]; then

@@ -1,5 +1,6 @@
 ##VIM使用说明
 拿到副本后，在linux和mac执行 vimrc/script/install_rc.sh 安装
+
 windows请看目录下的install_guide.txt
 
 ###常用命令-强大且要记住的功能(适用于本vim配置)
