@@ -24,8 +24,10 @@
     " Windows Compatible {
         if WINDOWS()
             let g:isWIN = 1
-            " set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+            " set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME
         else
+            " 下面这行如果不明白，最好不要改，因为安装程序会修改
+            set runtimepath=$HOME."/.dotfiles/vimrc/vimfiles"
             " 兼容windows的环境变量$VIM
             let $VIM = $HOME."/.vim"
             set shell=/bin/sh
@@ -407,7 +409,9 @@ else
     else
         " colorscheme ir_black
         " colorscheme grb256
-        colorscheme vt_tmux
+        if filereadable(expand("$VIM/colors/vt_tmux.vim"))
+            colorscheme vt_tmux
+        endif
 
         " set background=dark
         " let g:solarized_termtrans =0
@@ -423,8 +427,10 @@ if v:version > 703
     set relativenumber
 
     " 替换原来的查找，可以同时显示多个查找关键字(Easymotion)
-    map  / <Plug>(easymotion-sn)
-    omap / <Plug>(easymotion-tn)
+    if filereadable(expand("$VIM/bundle/vim-easymotion/README.md"))
+        map  / <Plug>(easymotion-sn)
+        omap / <Plug>(easymotion-tn)
+    endif
 endif
 
 " 基本设置
