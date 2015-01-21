@@ -26,8 +26,6 @@
             let g:isWIN = 1
             " set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME
         else
-            " 下面这行如果不明白，最好不要改，因为安装程序会修改
-            set runtimepath=$HOME."/.dotfiles/vimrc/vimfiles"
             " 兼容windows的环境变量$VIM
             let $VIM = $HOME."/.vim"
             set shell=/bin/sh
