@@ -1314,6 +1314,10 @@ v/pattern/d 是找到非pattern,删之
 #####row sort
 排序并删除重复行 :sort u
 
+#####添加选项到guivim的菜单栏
+比如下面的是添加modeline到文件末尾
+amenu Edit.Insert\ &modeline <C-\><C-N>ggOvim:ff=unix ts=4 ss=4<CR>vim60:fdm=marker<Esc>
+
 
 ###参考
 http://www.richardzhong.com/category/vim/

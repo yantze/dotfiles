@@ -1,35 +1,37 @@
+" author : yantze@126.com
+" full name : vastiny_tmux_putty
+
 " From https://github.com/garybernhardt/destroy-all-software-extras/blob/master/das-0030-some-vim-tips/grb256.vim
 " Based on
 runtime colors/ir_black.vim
-
-" changer : yantze@126.com
-" Base on grb256
+" and base on grb256
 
 let g:colors_name = "vt_tmux"
 
-hi pythonSpaceError ctermbg=red guibg=red
+hi pythonSpaceError ctermbg=red
 
-hi Comment ctermfg=grey
+hi StatusLine       ctermbg=darkgrey  ctermfg=white
+hi StatusLineNC     ctermbg=black     ctermfg=lightgrey
+hi VertSplit        ctermbg=black     ctermfg=lightgrey
+hi LineNr           ctermfg=darkgray
 
-hi StatusLine ctermbg=darkgrey ctermfg=white
-hi StatusLineNC ctermbg=black ctermfg=lightgrey
-hi VertSplit ctermbg=black ctermfg=lightgrey
-hi LineNr ctermfg=darkgray
-hi CursorLine     guifg=NONE        guibg=#121212     gui=NONE      ctermfg=NONE        ctermbg=234
-hi Function       guifg=#FFD2A7     guibg=NONE        gui=NONE      ctermfg=yellow      ctermbg=NONE   cterm=NONE
-hi Visual         guifg=NONE        guibg=#262D51     gui=NONE      ctermfg=NONE        ctermbg=32    cterm=NONE
+hi Comment          ctermbg=none        ctermfg=grey
+hi CursorLine       ctermfg=NONE        ctermbg=234
+hi Function         ctermfg=yellow      ctermbg=NONE   cterm=NONE
+hi Visual           ctermfg=NONE        ctermbg=32     cterm=NONE
 
-hi Error            guifg=NONE        guibg=NONE        gui=undercurl ctermfg=16       ctermbg=red     cterm=NONE     guisp=#FF6C60 " undercurl color
-hi ErrorMsg         guifg=white       guibg=#FF6C60     gui=BOLD      ctermfg=16       ctermbg=red     cterm=NONE
-hi WarningMsg       guifg=white       guibg=#FF6C60     gui=BOLD      ctermfg=16       ctermbg=red     cterm=NONE
-hi SpellBad         guifg=white       guibg=#FF6C60     gui=BOLD      ctermfg=16       ctermbg=160     cterm=NONE
+hi Error            ctermfg=16       ctermbg=red     cterm=NONE     guisp=#FF6C60 " undercurl color
+hi ErrorMsg         ctermfg=16       ctermbg=red     cterm=NONE
+hi WarningMsg       ctermfg=16       ctermbg=red     cterm=NONE
+hi SpellBad         ctermfg=16       ctermbg=160     cterm=NONE
 
 " ir_black doesn't highlight operators for some reason
-hi Operator        guifg=#6699CC     guibg=NONE        gui=NONE      ctermfg=lightblue   ctermbg=NONE        cterm=NONE
+hi Operator         ctermfg=lightblue   ctermbg=NONE        cterm=NONE
 
-highlight DiffAdd term=reverse cterm=bold ctermbg=lightgreen ctermfg=16
-highlight DiffChange term=reverse cterm=bold ctermbg=lightblue ctermfg=16
-highlight DiffText term=reverse cterm=bold ctermbg=lightgray ctermfg=16
-highlight DiffDelete term=reverse cterm=bold ctermbg=lightred ctermfg=16
+hi DiffAdd    term=reverse cterm=bold ctermbg=lightgreen ctermfg=16
+hi DiffChange term=reverse cterm=bold ctermbg=lightblue  ctermfg=16
+hi DiffText   term=reverse cterm=bold ctermbg=lightgray  ctermfg=16
+hi DiffDelete term=reverse cterm=bold ctermbg=lightred   ctermfg=16
 
-highlight PmenuSel ctermfg=16 ctermbg=156
+hi PmenuSel ctermfg=16 ctermbg=156
+

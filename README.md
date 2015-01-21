@@ -9,8 +9,8 @@ windows请看目录下的install_guide.txt
 Ctrl+P          快速查找当前文件夹下所有子目录的文件,ctrl+j/k上下选择文件
 :ag             查找当前目录下的所有文件的关键字
 ,gd             使用YCM的快速查找头文件定义,类似vs中的F12
-,ci             注释当前行/可选中
-,cm             块注释/可选中
+,ci             注释当前行(可选中)
+,cm             块注释(可选中)
 key<Tab>        UltiSnip And YCM 可以自动补全，UltiSnip对py，ycm对c好一些
                 <c-j/k>上下选择下一个瞄准位
 <c-n><c-j/k>    用<c-n>当前选中的行，用<c-j/k>来移动行的位置(vim-multipe-cursors)
@@ -26,6 +26,7 @@ key<Tab>        UltiSnip And YCM 可以自动补全，UltiSnip对py，ycm对c好
 :DiffSaved      比较在保存文件之后修改了什么那些内容
 :Man glob       查看linux关于glob的man文档(only linux/mac)
 :Man glob.php   查看从php.net中访问glob的相关语法和示例(only linux/mac)
+K               判断文件类型，自动调用:Man function/command name
 ```
 
 
@@ -82,7 +83,8 @@ zz                      把当前行移到屏幕中间
 
 ###一些不常用但是实用的设置
 ```
-:set display=uhex       这个是用来查看^@这种不可显示的字符，自动转换这些字符为hex进制，也可以ga查看当前光标的进制
+:set display=uhex       这个是用来查看^@这种不可显示的字符，自动转换这些字符为hex进制
+                        也可以ga查看当前光标的进制
 ,16                     转换当前文件为16进制，,r16为恢复，只有十六进制部分修改才有用
 :vert command           垂直打开command中的命令,示例 :vert h manpageview
 ```
@@ -110,8 +112,8 @@ html5
 <leader>默认是一个按钮，指的是反斜杠'\'，不过我在配置中设置成了',',减少小指的负担。
 <buffer>其实就是你当前下面的buffer而已。
 
-当你了解到了基本的使用方法后，你可以读看看我在.vimrc中的文档，里面有很多详细的技巧，熟悉后能和sublime和notepad++匹敌
-当然_vimrc.bundles这个文件里面是需要加载的插件，里面有介绍每个插件是拿来干嘛的，也可以了解一下
+当你了解到了基本的使用方法后，你可以读看看我在.vimrc中的文档，里面有很多详细的技巧，熟悉后基本能甩开sublime和notepad++
+当然_vimrc.bundles这个文件里面是加载的插件，里面有介绍每个插件是拿来干嘛的，也可以了解
 我之前学习vim的时候，收集到的一些资料，这次重新复习了里面的内容，整理了一下发布了出来，就把它当成中级vim的入门手册吧，[下载地址](https://github.com/yantze/vimrc/blob/master/VIMdoc.md)。
 
 
@@ -136,10 +138,10 @@ html5
 
 ###一些说明
 ```
-manpageview需要安装text browser软件links,elinks、links2也可以
+manpageview需要安装text browser软件, links、elinks或者links2中的一个
 
 默认关闭编译YCM，如果需要开启，确保安装了python-dev和gcc4.4.1+后,
-请自行取消script/install_rc.sh中的注释
+请自行取消script/install_rc.sh中YCM的注释
 ```
 
 
