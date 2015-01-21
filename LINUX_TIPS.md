@@ -1,3 +1,5 @@
+# vim: set expandtab:
+
 linux 详细的使用说明
 
 ##常用技能
@@ -144,15 +146,22 @@ ntpdate cn.pool.ntp.org //更新时间
 make 2>&1 | tee make.log //可以直接显示保
 lsof //列出当前正在使用的文件
 fuser //列出当前打开的文件和socket
-md5sum filename //计算文件的大小
 sha... // 哈希值，sha<tab>可以查看所有的hash值
+md5sum filename //计算文件的大小
+pushd $LFS/sources;md5sum -c md5sums;popd  //检查md5sums里面的md5值
+
 
 ag keychar  //直接查看当前目录下包含keychar的字符
 grep -r "some_text" /path/to/dir //递归查找grep的目录
 grep -w "name" test.txt  //查找完整的字符串
 grep pattern files
 grep -r pattern dir
+grep -o "SEARCH.*/usr/bin" dummy.log //Print  only  the  matched  (non-empty) parts of a matching line, with each such part on a  separate output line.
+grep -L/l "str" a.txt b.txt //-L, --files-without-match; -l, --files-with-matches
+grep -c "str" a.txt  // only output the number of result
+grep -x "hole line" a.txt // only output that exactly match the whole line 
 rsync -arvuzp --chmod=g+rx -e "ssh -p 22333" ./db.txt 172.31.195.91:/home/yantze/test/
+chmod -v a+wt dir  //Make this directory writable and sticky. “Sticky” means that even if multiple users have write permission on a directory, only the owner of a file can delete the file within a sticky directory.
 
 lex=flex / yacc / bison
 bison是GUN版的语法分析器，yacc是Berkeley版的语法分析器，两者实现功能类似，可能会有微小的语义差别
@@ -234,6 +243,10 @@ find . -depth; 这个可以不让find输出文件夹
 find . -name "*.log" print0 | xargs -0 cat | wc -l
 find . -perm /u+x -type f -exec rm {} \;  //删除可执行文件
 find . -perm /u+x -maxdepth 1 -type f -exec ag xxx {} \;  //查找当前目录的文件
+
+vimdiff
+vimdiff =(gcc -march=native -Q --help=target) =(gcc -march=core2 -Q --help=target) #比较两个非文件不同
+diff =(typeset) =(set) #也是可以比较的，但是不够vimdiff详细
 
 sshfs
 sshfs -o allow_other root@192.168.9.109:/opt /opt/s109 #挂载(如配上ssh key可完全自动化)

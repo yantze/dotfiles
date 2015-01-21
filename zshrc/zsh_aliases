@@ -2,6 +2,7 @@
 alias rm='rm -i'
 alias l.='ls -d .* --color=auto'
 alias vi='/usr/bin/vim'
+alias v='/usr/bin/vim --cmd "let g:vimrc_no_plugin=1"'
 alias javac="javac -J-Dfile.encoding=utf8"
 alias grep="grep --color=auto"
 alias -s txt=vi #在shell里面直接输入txt文件，直接用vim打开
@@ -39,7 +40,7 @@ alias proxy_local='http_proxy="http://vastiny:8087";'
 alias ytb='youtube-dl --proxy http://127.0.0.1:7777'
 alias ngtop='ngxtop -l /usr/local/nginx/logs/access.log'
 # the yasm is a rewrite interface for nasm
-alias nasm='yasm'
+# alias nasm='yasm'
 # if linux-centos6.7
 # alias cmake='cmake28'
 # alias ccmake='ccmake28'

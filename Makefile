@@ -15,7 +15,7 @@ all: install-all
 
 install-vim: download vim
 install-zsh: download ohmyzsh autojump zsh
-install-all: download zsh vim git tmux
+install-all: tmux
 
 download:
 	@rm -rf $(dest)
@@ -34,11 +34,12 @@ autojump:
 
 
 vim:
-	@$(dest)/vimrc/script/link-rc.sh
+	$(dest)/vimrc/script/install_rc.sh
 
 git:
 	ln -s $(dest)/git/_gitconfig ~/.gitconfig
 	ln -s $(dest)/git/_global_ignore ~/.global_ignore
 
 tmux:
+	echo "hahah"
 	ln -s $(dest)/tmux/tmux.conf ~/.tmux.conf
