@@ -1,13 +1,10 @@
-# zsh's alias
-if [ -f ~/.dotfiles/zshrc/zsh_aliases ]; then
-    . ~/.dotfiles/zshrc/zsh_aliases
-fi
-
 #history max num
 export HISTSIZE=10000
 #history max save
 export SAVEHIST=10000
 export EDITOR=vim
+# set -o vi #设置shell快捷键的默认器
+
 
 
 ###JAVA###
@@ -27,8 +24,8 @@ PATH="$PHP_HOME/bin:$PATH"
 
 ###GO###
 GO_HOME="/usr/local/go"
-GOROOT=$HOME/go
-export GOPATH=$HOME/go
+GOROOT=$HOME/workspace/go
+export GOPATH=$HOME/workspace/go
 PATH="$GO_HOME/bin:$GOROOT/bin:$PATH"
 
 ###python###
@@ -58,11 +55,11 @@ export GIT_FOR_SAE_ROOT=~/tools/git_svn_sae/ #此处就是你刚刚放置clone�
 PATH="$GIT_FOR_SAE_ROOT:$PATH"
 
 # Cling for centos7
-
 CLING_HOME="/usr/local/cling"
 PATH="$CLING_HOME/bin:$PATH"
 
-export PATH
+# 这里主要是屏蔽tmux对path再次赋值，导致type command时出现两个一样的路径
+# [[ -z $TMUX ]] && export PATH
 
 ###配置c编译
 # export CPATH="/usr/bin/gcc"
@@ -96,9 +93,6 @@ if { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
 fi
 
 
-export EDITOR='vim'
-# set -o vi #设置shell快捷键的默认器
-
 echo "THE BEST YANTZE TO BE ZHI"
 
 #if mac
@@ -130,4 +124,25 @@ alias go_c="c99 -xc '-' $go_libs $go_flags"
 function td {
 dig "$*.jianbing.org" +short txt | perl -pe's/\\(\d{1,3})/chr $1/eg; s/(^"|"$)//g'
 }
+
+
+###display language
+# export LANG="en_US.UTF-8"
+# export LC_COLLATE="en_US.UTF-8"
+# export LC_CTYPE="en_US.UTF-8"
+# export LC_MESSAGES="en_US.UTF-8"
+# export LC_MONETARY="en_US.UTF-8"
+# export LC_NUMERIC="en_US.UTF-8"
+# export LC_TIME="en_US.UTF-8"
+# export LC_ALL=
+
+###设置grep的高亮颜色为土黄色
+export GREP_COLOR="01;36"
+
+alias chinese='LC_ALL="zh_CN.UTF-8"'
+alias chinese2='LANG=zh_CN.UTF-8 LC_ALL="zh_CN.UTF-8"'
+alias japanese='LANG="ja_JP.UTF-8" LC_ALL="ja_JP.UTF-8"'
+alias japanese2='LANG="ja_JP.UTF-8" LC_ALL="ja_JP.UTF-8"'
+# 例如: japanese vim显示的就是日语的界面 :)
+# locale -v
 

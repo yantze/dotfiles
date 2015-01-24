@@ -1,11 +1,36 @@
+
+# custom zshrc
+. ~/.dotfiles/zshrc/zshrc
+# zsh's alias
+. ~/.dotfiles/zshrc/zsh_aliases
+
+
+# autocomplete functions
+fpath=(~/.dotfiles/module/zsh-completions/src/ $fpath)
+
+
+#cheat tips
+export DEFAULT_CHEAT_DIR=~/.dotfiles/module_config/cheat
+export CHEATCOLORS=true
+# #compdef cheat
+# declare -a cheats
+# cheats=$(cheat -l | cut -d' ' -f1)
+# _arguments "1:cheats:(${cheats})" && return 0
+
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+
 # zpreztorc's history file is ~/.zhistory not ~/.zsh_history
 # you can you `history 0` to display all command
 # change the ... = '../../'
 # copy the centos file to file
-#
-alias swift=$(xcrun -f swift)
-alias swiftc=$(xcrun -f swiftc)
+
+# for swift
+# alias swift=$(xcrun -f swift)
+# alias swiftc=$(xcrun -f swiftc)
 # Generate LLVM bytecode
 # swiftc -emit-bc hello.swift -o hello.bc
-
-

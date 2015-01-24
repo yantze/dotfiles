@@ -2,6 +2,8 @@
 alias rm='rm -i'
 alias l.='ls -d .* --color=auto'
 alias vi='/usr/bin/vim'
+#让vim不带插件的运行,速度非常快
+alias v='/usr/bin/vim --cmd "let g:vimrc_no_plugin=1"'
 alias javac="javac -J-Dfile.encoding=utf8"
 alias grep="grep --color=auto"
 alias -s txt=vi #在shell里面直接输入txt文件，直接用vim打开
@@ -13,6 +15,8 @@ alias -s bz2='tar -xjvf'
 alias tf="tail -f"
 alias cls='clear'
 alias q='exit'
+#這個是配合command-dict的命令版本
+# alias g='dict'
 #alias sp='~/tools/.sp.sh'
 alias sp='~/soft/sh-toolkits-lib/sp.sh'
 alias get='sh ~/soft/sh-toolkits-lib/sp.sh'
@@ -20,12 +24,12 @@ alias get='sh ~/soft/sh-toolkits-lib/sp.sh'
 #设置窗口的名字为hi
 alias t='tmux -2 -u attach || tmux -2 -u new-session -s hi'
 #新建一個有名字的窗口
-alias tmn='tmux -2 -u new-session -s'
+alias tn='tmux -2 -u new-session -s'
 # alias tmn='tmux new -s $(basename $(pwd))'
-alias tml='tmux list-sessions'
+alias tl='tmux list-sessions'
 #附上一個有名字的窗口
 # alias ta='tmux attach -t'
-alias tma='tmux attach -d -t'
+alias ta='tmux attach -d -t'
 
 alias hd='od -Ax -tx1z -v' #方便的十六进制输出。 (用法举例: • hd /proc/self/cmdline | less)
 alias realpath='readlink -f'  #显示符号链接指向的真实路径((用法举例: • realpath ~/../$USER)
@@ -39,7 +43,7 @@ alias proxy_local='http_proxy="http://vastiny:8087";'
 alias ytb='youtube-dl --proxy http://127.0.0.1:7777'
 alias ngtop='ngxtop -l /usr/local/nginx/logs/access.log'
 # the yasm is a rewrite interface for nasm
-alias nasm='yasm'
+# alias nasm='yasm'
 # if linux-centos6.7
 # alias cmake='cmake28'
 # alias ccmake='ccmake28'
@@ -50,3 +54,12 @@ alias putl='trash-list'
 #pp/po in zsh has already set
 # alias pp='pushd'
 # alias po='popd'
+
+
+#if mac
+if { [ `uname` = "Darwin" ] } then
+    alias play='afplay'
+else
+    alias play='mpg123'
+fi
+

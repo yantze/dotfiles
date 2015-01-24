@@ -1,3 +1,5 @@
+# vim: set expandtab:
+
 linux 详细的使用说明
 
 ##常用技能
@@ -125,8 +127,33 @@ lsof -i:22 //查看22端口在运行什么程序
 lsof -c abc //查看abc进程现在在打开的文件
 lsof -p 12 //查看进程号为12的打开了什么文件
 lsmod //查看使用的模块
-iotop 查看磁盘，与top结合
-ab -c 20 -n 2000 http://baidu.com/ 查看这个网站的并发量等功能，一个httpd的附属软件
+iotop //查看磁盘，与top结合
+ss //another utily socket viewer
+# 用tcpdump嗅探80端口的访问看看谁最高
+sudo tcpdump -i eth7 -tnn dst port 80 -c 1000 | awk -F "." '{print $1"."$2"."$3"."$4}' | sort | uniq -c | sort-nr |head -20
+# 查看http的并发请求数及其TCP连接状态
+netstat -n | awk '/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}'
+# 查看IP连接数
+netstat -n | awk '/^tcp/ {print $5}'| awk -F: '{print $1}' | sort | uniq -c | sort -rn
+
+# 查找一个域名的真实ip地址
+# TXT/spf records
+# A TXT record is a type of DNS record that provides text information to sources outside your domain. 
+# Sender Policy Framework (SPF) records allow domain owners to publish a list of IP addresses or subnets that are authorized to send email on their behalf.  
+nslookup google.com 8.8.8.8
+nslookup -vt google.com 8.8.8.8
+# _netblocks.google.com describes ipv4 ranges
+# _netblocks2.google.com describes ipv6 ranges
+nslookup -debug -type=AAAA www.example.com.
+nslookup -vc -q=txt _netblocks.google.com 8.8.4.4
+nslookup -q=TXT _netblocks.google.com 8.8.4.4 
+dig @ns1.nameserver1.com domain.com txt
+dig domain.com txt
+traceroute -n -w 2 -q 2 -m 30 8.8.4.4
+
+ab -c 20 -n 2000 http://baidu.com/ //查看这个网站的并发量等功能，一个httpd的附属软件
+#限定apache每秒钟连接数为1,峰值为3
+iptables -A INPUT -d 172.16.100.1 -p tcp –dport 80 -m limit –limit 1/second –limit-burst 3 -j ACCEPT
 c 代表请求的网页数目,越大越准
 n 代表并发2000
 lsblk 这个可以查看整个磁盘的逻辑位置
@@ -144,15 +171,22 @@ ntpdate cn.pool.ntp.org //更新时间
 make 2>&1 | tee make.log //可以直接显示保
 lsof //列出当前正在使用的文件
 fuser //列出当前打开的文件和socket
-md5sum filename //计算文件的大小
 sha... // 哈希值，sha<tab>可以查看所有的hash值
+md5sum filename //计算文件的大小
+pushd $LFS/sources;md5sum -c md5sums;popd  //检查md5sums里面的md5值
+
 
 ag keychar  //直接查看当前目录下包含keychar的字符
 grep -r "some_text" /path/to/dir //递归查找grep的目录
 grep -w "name" test.txt  //查找完整的字符串
 grep pattern files
 grep -r pattern dir
+grep -o "SEARCH.*/usr/bin" dummy.log //Print  only  the  matched  (non-empty) parts of a matching line, with each such part on a  separate output line.
+grep -L/l "str" a.txt b.txt //-L, --files-without-match; -l, --files-with-matches
+grep -c "str" a.txt  // only output the number of result
+grep -x "hole line" a.txt // only output that exactly match the whole line 
 rsync -arvuzp --chmod=g+rx -e "ssh -p 22333" ./db.txt 172.31.195.91:/home/yantze/test/
+chmod -v a+wt dir  //Make this directory writable and sticky. “Sticky” means that even if multiple users have write permission on a directory, only the owner of a file can delete the file within a sticky directory.
 
 lex=flex / yacc / bison
 bison是GUN版的语法分析器，yacc是Berkeley版的语法分析器，两者实现功能类似，可能会有微小的语义差别
@@ -217,6 +251,11 @@ which #查找当前path里面的可执行文件
 type file #如果用whereis找不到可以先看看文件类型
 nm  #查看.o文件中调用了哪些程序
 
+history
+HISTFILE stores the path to the history file
+HISTSIZE stores the maximum number of events to save in the internal history
+SAVEHIST stores the maximum number of events to save in the history file
+
 find http://www.cnblogs.com/peida/archive/2012/11/14/2769248.html
 常用find：
 find . -type f -exec ls -l {} \;
@@ -230,6 +269,10 @@ find . -name "*.log" print0 | xargs -0 cat | wc -l
 find . -perm /u+x -type f -exec rm {} \;  //删除可执行文件
 find . -perm /u+x -maxdepth 1 -type f -exec ag xxx {} \;  //查找当前目录的文件
 
+vimdiff
+vimdiff =(gcc -march=native -Q --help=target) =(gcc -march=core2 -Q --help=target) #比较两个非文件不同
+diff =(typeset) =(set) #也是可以比较的，但是不够vimdiff详细
+
 sshfs
 sshfs -o allow_other root@192.168.9.109:/opt /opt/s109 #挂载(如配上ssh key可完全自动化)
 添加allow_other是因为执行这条命令的人可能需要其它人使用，所以添加这个参数后就可以用用其它的用户了
@@ -237,6 +280,14 @@ fusermount -u /opt/s109 #卸载
 也可以用umount /opt/s109 来卸载
 mount -o remount,rw /
 mount -t tmpfs tmpfs /tmpram -o size=512m  //创建ramdisk
+# 映射widnows的共享文件建，cifs与smb同义
+mount -t cifs //192.168.100.10/share /mnt/share -o username="domain\user"="passwd"
+# 指定映射文件归属
+mount -t cifs //192.168.1.100/share /mnt/share -o username="domain\user",uid="618",gid="618"
+# smb客户端
+smbclient //192.168.1.50/share -U domain\user
+e2fsch -p //检测并自动修复文件系统
+
 
 dd
 备份/dev/hdb全盘数据，并利用gzip工具进行压缩，保存到指定路径
@@ -265,7 +316,8 @@ dev
 /dev/zero
 
 二进制 text2bin test2hex
-hexdump
+//有格式的解释二进制文件: [ [iteration_count]/byte_count ] "format"
+hexdump -e '1/1 "%i " 1/2 "%i " 2/4 "%i "  "\n"' data2bin
 xxd
 
 
@@ -308,6 +360,7 @@ x           #kill one panel in window
 w           #show all window(Select from interactive list of windows)
 tmux list-sessions  #list all sessions
 #cheatsheet:https://gist.github.com/MohamedAlaa/2961058#file-tmux-cheatsheet-markdown
+#use space to enter visual model in ctrl+a ] condition
 
 bind-key F1 set-window-option force-width 81
 
@@ -325,9 +378,6 @@ killall
 killall -TERM mysqld #关闭mysql进程
 killadd5
 
-要安装的软件
-bind-utils:包含dig, nslookup等网络工具
-man-pages man-pages-zh-CN:kernel源代码等手册
 
 常见的日志位置
 /var/log/message      – 记录系统日志或当前活动日志。
