@@ -57,6 +57,11 @@ PATH="$LINUXBREW/bin:$PATH"
 export GIT_FOR_SAE_ROOT=~/tools/git_svn_sae/ #此处就是你刚刚放置clone下来的项目路径
 PATH="$GIT_FOR_SAE_ROOT:$PATH"
 
+# Cling for centos7
+
+CLING_HOME="/usr/local/cling"
+PATH="$CLING_HOME/bin:$PATH"
+
 export PATH
 
 ###配置c编译
