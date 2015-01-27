@@ -1239,7 +1239,7 @@ something else, then  gi back to restart editing
 
 插件详细介绍
 emmet(zen coding)
-oding`是横扫各大小编辑器的快速编码插件，其使用类`CSS`选择器的语法实现扩展性编码，确实够酷、够快
+是横扫各大小编辑器的快速编码插件，其使用类`CSS`选择器的语法实现扩展性编码，确实够酷、够快
 
 `Zen Coding`在`Vim`下的默认触发键是`Ctrl + Y + ,`（注意，最后还有一个逗号）
 
@@ -1321,3 +1321,36 @@ amenu Edit.Insert\ &modeline <C-\><C-N>ggOvim:ff=unix ts=4 ss=4<CR>vim60:fdm=mar
 
 ###参考
 http://www.richardzhong.com/category/vim/
+
+### 拼写检查
+" set spell
+" 设置后Vim会高亮拼写错误的单词。将光标移至错误单词，输入z=查看建议拼写。
+" autocmd FileType tex setlocal spell spelllang=en_us
+" spell spelllang=en, de
+" :set spell    启用拼写检查
+" :set nospell  关闭拼写检查
+" ]s    移动到下一个拼写错误处
+" [s    移动到上一个拼写错误处
+" z=    选择正确的拼写
+" zg    添加用户拼写
+
+### grammer语法检查
+" en/fr/ge.. 
+" 必须下载https://www.languagetool.org/zh/里面的检查软件
+Plugin 'LanguageTool'
+" :LanguageToolCheck
+" Pressing <Enter>
+" :LanguageToolClear
+
+### 函数变量
+let s:w_mydictwin=0
+function! Mydict()
+    if s:w_mydictwin
+        let s:w_mydictwin=0
+        close
+        file
+        return
+    endif
+    let s:w_mydictwin=1
+    setlocal buftype=nofile bufhidden=hide noswapfile
+endfunction

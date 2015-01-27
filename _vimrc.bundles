@@ -19,7 +19,7 @@ Plugin 'scrooloose/syntastic'
 " http://blog.joncairns.com/2012/08/vdebug-a-dbgp-debugger-client-for-vim-supporting-php-python-perl-and-ruby/
 Plugin 'joonty/vdebug'
 
-" Plugin
+    " Plugin
 
 " fuzzy compolier
 "ycm=clang_complete +AutoComplPop +Supertab +neocomplcache +Syntastic(类似功能,仅仅针对c/c++/obj-c代码)
@@ -37,7 +37,8 @@ Plugin 'Valloric/YouCompleteMe'
 " 自动补全引用库中的内容，包括'->','.','::'
 " Plugin 'OmniCppComplete'
 
-" snip综合解决方案
+    " snip综合解决方案
+
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 " let g:snippets_dir="$VIM/vimfiles/resource/vim-snippets/" "添加新的片段
@@ -56,7 +57,7 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'marijnh/tern_for_vim'
 
 
-" 快捷注释
+    " 快捷注释
 " comments.vim 用c-c/c-x做注释
 " Plugin 'comments.vim'
 " 用<leader>ci/cm做注释
@@ -110,7 +111,7 @@ Plugin 'tpope/vim-fugitive'
 set statusline=%{exists(\"*fugitive#statusline\")?\"branch:\ \".fugitive#statusline():\"\"}\ %F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]
 
 
-" Web
+    " Web
 
 "HTML/JS混排缩进改善
 " Plugin 'pangloss/vim-javascript'
@@ -158,7 +159,8 @@ Plugin 'tyru/open-browser.vim'
 " 读取大文件
 " Plugin 'LargeFile'
 
-" Color
+    " Color
+
 Plugin 'molokai'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'flazz/vim-colorschemes'
@@ -194,7 +196,8 @@ Plugin 'dart-lang/dart-vim-plugin'
 
 
 
-" 编程环境
+    " 编程环境
+
 " javascript
 " Syntax file for jQuery
 Plugin 'jQuery'
@@ -277,7 +280,7 @@ Plugin 'TxtBrowser'
 "python
 Plugin 'fs111/pydoc.vim'
 Plugin 'python.vim'
-"检查python的代码错误,编译需要'+python'
+" 检查python的代码错误,编译需要'+python'
 " Plugin 'pyflakes.vim'
 "
 

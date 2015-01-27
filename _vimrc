@@ -79,11 +79,15 @@
         " 添加vundle插件管理器
         set nocompatible               " 设置不与之前版本兼容 be iMproved
         filetype off                   " 检测文件类型 required!
-        if filereadable(expand("$VIM/_vimrc.bundles"))
-            if filereadable(expand("$VIM/bundle/Vundle.vim/README.md"))
-                set rtp+=$VIM/bundle/Vundle.vim  "添加vendle环境变量
-                source $VIM/_vimrc.bundles
-            endif
+        " set vimrc_no_plugin=1 to do not add-on plugin
+        " let g:vimrc_no_plugin=1
+        if !exists("g:vimrc_no_plugin")
+            " if filereadable(expand("$VIM/_vimrc.bundles"))
+                if filereadable(expand("$VIM/bundle/Vundle.vim/README.md"))
+                    set rtp+=$VIM/bundle/Vundle.vim  "添加vendle环境变量
+                    source $VIM/_vimrc.bundles
+                endif
+            " endif
         endif
         " you can put it in tmpfs:/dev/shm/.dotfiles/vimrc/vimfiles/bundle/Vundle.vim
         " 安装新的插件 :PluginInstall
@@ -181,6 +185,22 @@ function! AppendModeline()
     let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
     call append(line("$"), l:modeline)
 endfunction
+
+" Mydict, use *dict* in vim {
+function! Mydict()
+    let expl=system('dict ' . expand("<cword>"))
+    windo if expand("%")=="dict.tmp" | q! | endif
+    " botright vertical 33split dict.tmp
+    botright 12split dict.tmp
+    " botright cwindow
+    setlocal buftype=nofile bufhidden=hide noswapfile
+    set report=2 " ignore the following 'one line' substitution
+    set nonu
+    1s/^/\=expl/
+    1
+    set report=0 " recovery the 'report' setting
+endfunction
+" Mydict }
 
 " 编译并运行
 func! Compile_Run_Code()
@@ -425,9 +445,11 @@ if v:version > 703
     set relativenumber
 
     " 替换原来的查找，可以同时显示多个查找关键字(Easymotion)
-    if filereadable(expand("$VIM/bundle/vim-easymotion/README.md"))
-        map  / <Plug>(easymotion-sn)
-        omap / <Plug>(easymotion-tn)
+    if !exists("g:vimrc_no_plugin")
+        if filereadable(expand("$VIM/bundle/vim-easymotion/README.md"))
+            map  / <Plug>(easymotion-sn)
+            omap / <Plug>(easymotion-tn)
+        endif
     endif
 endif
 
@@ -461,11 +483,13 @@ set history=50               " keep 50 lines of command line history
 set incsearch                " 开启实时搜索功能,查询时非常方便，如要查找book单词，当输入到/b时，会自动找到第一个b开头的单词，当输入到/bo时，会自动找到第一个bo开头的单词
 set hlsearch                 " 开启高亮显示结果
 set nowrapscan               " 搜索到文件两端时不重新搜索
-set lbr                      "不在单词中间断行(linebreak)
+set mouse=a                  " 启用鼠标
+set lbr                      " 不在单词中间断行(linebreak)
 " set nowrap                   " 设置不自动换行
 " set tw=78                    "超过80个字符就折行(textwrap)
-" set mouse=a                  " 启用鼠标
 " set viminfo='20,\"50         " read/write a .viminfo file, don't store more than 50 lines of registers
+set undofile                 " 重新打开文件可恢复上次关闭的撤销记录,默认filename.un~, only use for `vim --version` have +persistent_undo feature
+set display=lastline         " 不要显示@@@@@
 
 
 " Tab
@@ -815,6 +839,8 @@ au BufNewFile,BufRead *.phtml set filetype=php
 " Indent_guides       显示对齐线
 let g:indent_guides_enable_on_vim_startup = 1  " 默认关闭
 let g:indent_guides_guide_size            = 1  " 指定对齐线的尺寸
+" 因为go自动会添加tab, 使用<leader>ig也可以切换
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'go']
 
 
 ":Tlist               调用TagList
@@ -852,6 +878,8 @@ let Tlist_File_Fold_Auto_Close = 1             " 自动折叠
 " 可以使用快捷键K查询
 " 说明，比如你在centos里面装了man-pages，当你用K查询的时候，自动会弹出man 你光
 " 标下面的词
+" 查找当前的单词意思,quick close: ZZ/:q
+nmap <silent><leader>K :call Mydict()<CR>
 "
 "
 " =========
@@ -986,7 +1014,9 @@ nmap <silent><leader>mt :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <cr><
 
 "
 "
-"
+"marker 使用
+"m 0~9 标记文件
+"' 0~9 随时打开文件
 
 " tips
 " 从vim暂时的切换到Console
@@ -1126,4 +1156,10 @@ nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>:copen<CR>
 
 " Set 'comments' to format dashed lists in comments. setlocal only can use cur
 " file
-set comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
+" 无效果
+" set comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
+
+" au BufWritePre /tmp/* setl undofile
+" hahaha" dfsdjfksdj
+" z则次
+
