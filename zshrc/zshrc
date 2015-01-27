@@ -24,8 +24,8 @@ PATH="$PHP_HOME/bin:$PATH"
 
 ###GO###
 GO_HOME="/usr/local/go"
-GOROOT=$HOME/go
-export GOPATH=$HOME/go
+GOROOT=$HOME/workspace/go
+export GOPATH=$HOME/workspace/go
 PATH="$GO_HOME/bin:$GOROOT/bin:$PATH"
 
 ###python###
