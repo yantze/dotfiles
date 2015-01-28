@@ -16,3 +16,6 @@
 [submodule "module/zsh-completions"]
 	path = module/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions
+[submodule "soft_config/rime"]
+	path = soft_config/rime
+	url = https://github.com/yantze/rime
