@@ -23,8 +23,15 @@ setsebool httpd_enable_homedirs on
 
 内置命令：
 cat << EOF >> output.txt
-> line 1
-> EOF
+heredoc> type what you want append
+heredoc> EOF
+
+cat <<< a <<< b #显示a，然后换行，显示b
+
+cat <<-EOF
+heredoc> type what you want to echo
+heredoc> <<EOF
+
 printf "%x\n" 111
 locale 查看当前语言区的设置
 paste -sd, 1.txt 合并单个文件
