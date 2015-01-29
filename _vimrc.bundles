@@ -19,6 +19,17 @@ Plugin 'scrooloose/syntastic'
 " http://blog.joncairns.com/2012/08/vdebug-a-dbgp-debugger-client-for-vim-supporting-php-python-perl-and-ruby/
 Plugin 'joonty/vdebug'
 
+    "Highlight
+
+" sass
+Bundle 'JulesWang/css.vim'
+Bundle 'cakebaker/scss-syntax.vim'
+
+" swift
+Plugin 'Keithbsmiley/swift.vim'
+" another swift
+" Plugin 'toyamarinyon/vim-swift'
+
     " Plugin
 
 " fuzzy compolier
@@ -120,9 +131,7 @@ Plugin 'lukaszb/vim-web-indent'
 " vim-web-indent包含了javascript.vim 和html.vim
 " Plugin 'javascript.vim'
 
-" sass highlight
-Bundle 'JulesWang/css.vim'
-Bundle 'cakebaker/scss-syntax.vim'
+
 
 "适配jade
 Plugin 'digitaltoad/vim-jade'
@@ -278,7 +287,7 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'TxtBrowser'
 
 "python
-Plugin 'fs111/pydoc.vim'
+" Plugin 'fs111/pydoc.vim'
 Plugin 'python.vim'
 " 检查python的代码错误,编译需要'+python'
 " Plugin 'pyflakes.vim'

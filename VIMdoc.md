@@ -1352,5 +1352,6 @@ function! Mydict()
         return
     endif
     let s:w_mydictwin=1
+    let fwords=getreg("z")
     setlocal buftype=nofile bufhidden=hide noswapfile
 endfunction

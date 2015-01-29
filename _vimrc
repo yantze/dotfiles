@@ -1111,9 +1111,8 @@ nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " CtrlP
 " nnoremap <Leader>t :CtrlP getcwd()<CR>
 " nnoremap <Leader>f :CtrlPClearAllCaches<CR>
-nnoremap <Leader>bf :CtrlPBuffer<CR>
+nnoremap <Leader>bl :CtrlPBuffer<CR>
 " nnoremap <Leader>j :CtrlP ~/<CR>
-" nnoremap <Leader>p :CtrlP<CR>
 
 " command! -nargs=* -complete=function Call exec 'call '.<f-args>
 " command! Q q
@@ -1140,6 +1139,7 @@ command! -bang Bq call CleanClose(0,1)
 au BufRead *vimrc setl foldmethod=marker foldlevel=0
 " set foldenable
 " set foldlevelstart=99
+au BufRead *.wsgi setl filetype=python
 
 
 let g:iswindows=1
