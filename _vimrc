@@ -799,8 +799,9 @@ nmap <Leader><Space> :Goyo<CR>
 let g:airline#extensions#tabline#enabled = 1
 " determine whether bufferline will overwrite customization variables
 let g:airline#extensions#bufferline#overwrite_variables = 1
-" AirLine彩色状态栏
-let g:airline_theme = 'badwolf'                " 设置主题
+" AirLine彩色状态栏:badwolf, bubblegum, luna, raven, serene
+" mac: sol
+let g:airline_theme = 'serene'                " 设置主题
 " configure the title text for quickfix buffers
 let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'
 
