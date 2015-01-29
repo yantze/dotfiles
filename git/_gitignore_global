@@ -156,6 +156,7 @@ cscope.po.out
 
 *~
 .Ds_Store
+.DS_Store
 .svn
 *.swp
 *.rbc

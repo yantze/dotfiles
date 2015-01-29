@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 
 #from:https://github.com/typd/cmd-dict/blob/master/dict
+# put your key and kerfrom in ~/.dict_config,such as
+# key
+# keyfrom
 
 import sys
 from os.path import expanduser
