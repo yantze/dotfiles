@@ -175,7 +175,7 @@ chattr +i file//让文件为只读 /用lsattr 查看
 vmstat 5 //每五秒显示系统的cpu,memory,i/o
 top //shift+p 进程排序 /shift+m 内存排序
 ntpdate cn.pool.ntp.org //更新时间
-make 2>&1 | tee make.log //可以直接显示保
+make 2>&1 | tee make.log //可以直接把显示的内容保存在make.log文件中
 lsof //列出当前正在使用的文件
 fuser //列出当前打开的文件和socket
 sha... // 哈希值，sha<tab>可以查看所有的hash值
