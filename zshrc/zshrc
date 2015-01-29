@@ -4,8 +4,6 @@ export HISTSIZE=10000
 export SAVEHIST=10000
 export EDITOR=vim
 # set -o vi #设置shell快捷键的默认器
-# 设置grep输出的颜色为土黄色
-export GREP_COLOR="01;36"
 
 
 
@@ -145,7 +143,7 @@ export LC_TIME="en_US.UTF-8"
 # export LC_ALL=
 
 ###设置grep的高亮颜色为土黄色
-export GREP_COLOR="01;36"
+export GREP_COLORS="01;36"
 
 alias chinese='LC_ALL="zh_CN.UTF-8"'
 alias chinese2='LANG=zh_CN.UTF-8 LC_ALL="zh_CN.UTF-8"'

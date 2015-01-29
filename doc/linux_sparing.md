@@ -17,3 +17,7 @@ find . -print0 | cpio -0 -H newc -ov | gzip -c > ../initrd.gz
 
 ###把源格式文件shift-jis轉換爲utf-8
 iconv -f shift-jis -t utf-8 file1.cue >  file2.cue
+
+
+###
+ps -ef/ c column means the cpu utilization, please RTFM
