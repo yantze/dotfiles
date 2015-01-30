@@ -2,6 +2,7 @@
 alias rm='rm -i'
 alias l.='ls -d .* --color=auto'
 alias vi='/usr/bin/vim'
+#让vim不带插件的运行,速度非常快
 alias v='/usr/bin/vim --cmd "let g:vimrc_no_plugin=1"'
 alias javac="javac -J-Dfile.encoding=utf8"
 alias grep="grep --color=auto"
@@ -14,6 +15,8 @@ alias -s bz2='tar -xjvf'
 alias tf="tail -f"
 alias cls='clear'
 alias q='exit'
+#這個是配合command-dict的命令版本
+# alias g='dict'
 #alias sp='~/tools/.sp.sh'
 alias sp='~/soft/sh-toolkits-lib/sp.sh'
 alias get='sh ~/soft/sh-toolkits-lib/sp.sh'
@@ -51,3 +54,12 @@ alias putl='trash-list'
 #pp/po in zsh has already set
 # alias pp='pushd'
 # alias po='popd'
+
+
+#if mac
+if { [ `uname` = "Darwin" ] } then
+    alias play='afplay'
+else
+    alias play='mpg123'
+fi
+

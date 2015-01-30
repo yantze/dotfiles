@@ -13,11 +13,8 @@ sudo add-apt-repository ppa:kilian/f.lux
 sudo apt-get update
 sudo apt-get install fluxgui
 
-###install foobnix
-sudo apt-get remove foobnix
-sudo add-apt-repository ppa:popsul1993/ppa
-sudo apt-get update
-sudo apt-get install foobnix
+###build-essential
+sudo apt-get build-essential cmake python-dev
 
 
 ##一些配置

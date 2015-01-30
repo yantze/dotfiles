@@ -1,0 +1,74 @@
+#!/usr/bin/env python3
+
+#from:https://github.com/typd/cmd-dict/blob/master/dict
+
+import sys
+from os.path import expanduser
+import json
+import requests
+
+def make_request(text, keys):
+    text = text.strip()
+    if text == '':
+        return
+    url = ('http://fanyi.youdao.com/openapi.do?' +\
+            'keyfrom={}&key={}&' +\
+            'type=data&doctype=json&version=1.1&' +\
+            'q={}').format(keys[0], keys[1], text)
+    resp = requests.post(url).text
+    #print('url: ' + url)
+    # print('response: ' + resp)
+    jsobj = json.loads(resp)
+    translations = jsobj['translation'] if 'translation' in jsobj else None
+    _basic = jsobj['basic'] if 'basic' in jsobj else None
+    phonetic = _basic['phonetic'] if _basic and 'phonetic' in _basic else None
+    explains = _basic['explains'] if _basic and 'explains' in _basic else []
+    # print('----------------')
+    print('  {}'.format(translations[0]))
+    all_translations = set(explains)
+    for tran in all_translations:
+        print('  {}'.format(tran))
+    if phonetic:
+        print('  |{}|'.format(phonetic))
+    _webs = jsobj['web'] if 'web' in jsobj else None
+    if _webs:
+        padding_space = ' ' if is_eng_text(text) else '　'
+        print('')
+        max_length = max(len(_web['key']) for _web in _webs)
+        for _web in _webs:
+            key = _web['key']
+            values = _web['value']
+            print('  {0:{1}<{2}} : {3}'.format(key, padding_space, max_length, '; '.join(values)))
+    # print('----------------')
+
+def is_eng_text(text):
+    eng_letters = 0
+    for ch in text.lower():
+        if ch >= 'a' and ch <= 'z':
+            eng_letters += 1
+    return eng_letters > 0.8 * len(text)
+
+def get_config():
+    with open(expanduser('~/.dict_config'), 'r') as file_handler:
+        data = file_handler.read().split('\n')
+        return data
+
+def is_bye_word(text):
+    return text == 'bye' or text == 'exit'
+
+def main():
+    if len(sys.argv) == 1:
+        # enter shell mode
+        print('--------------------------------')
+        text = input('Look up: ')
+        while not is_bye_word(text):
+            make_request(text, get_config())
+            print()
+            print('--------------------------------')
+            text = input('Look up: ')
+    else:
+        text = sys.argv[1]
+        make_request(text, get_config())
+
+main()
+
