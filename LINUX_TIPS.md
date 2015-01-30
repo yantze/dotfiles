@@ -145,15 +145,15 @@ netstat -n | awk '/^tcp/ {print $5}'| awk -F: '{print $1}' | sort | uniq -c | so
 
 # 查找一个域名的真实ip地址
 # TXT/spf records
-# A TXT record is a type of DNS record that provides text information to sources outside your domain. 
-# Sender Policy Framework (SPF) records allow domain owners to publish a list of IP addresses or subnets that are authorized to send email on their behalf.  
+# A TXT record is a type of DNS record that provides text information to sources outside your domain.
+# Sender Policy Framework (SPF) records allow domain owners to publish a list of IP addresses or subnets that are authorized to send email on their behalf.
 nslookup google.com 8.8.8.8
 nslookup -vt google.com 8.8.8.8
 # _netblocks.google.com describes ipv4 ranges
 # _netblocks2.google.com describes ipv6 ranges
 nslookup -debug -type=AAAA www.example.com.
 nslookup -vc -q=txt _netblocks.google.com 8.8.4.4
-nslookup -q=TXT _netblocks.google.com 8.8.4.4 
+nslookup -q=TXT _netblocks.google.com 8.8.4.4
 dig @ns1.nameserver1.com domain.com txt
 dig domain.com txt
 traceroute -n -w 2 -q 2 -m 30 8.8.4.4
@@ -191,7 +191,8 @@ grep -r pattern dir
 grep -o "SEARCH.*/usr/bin" dummy.log //Print  only  the  matched  (non-empty) parts of a matching line, with each such part on a  separate output line.
 grep -L/l "str" a.txt b.txt //-L, --files-without-match; -l, --files-with-matches
 grep -c "str" a.txt  // only output the number of result
-grep -x "hole line" a.txt // only output that exactly match the whole line 
+grep -x "hole line" a.txt // only output that exactly match the whole line
+ps -ef | grep 'httpd\|vsftpd' //find 'httpd' or 'vsftpd'
 rsync -arvuzp --chmod=g+rx -e "ssh -p 22333" ./db.txt 172.31.195.91:/home/yantze/test/
 chmod -v a+wt dir  //Make this directory writable and sticky. “Sticky” means that even if multiple users have write permission on a directory, only the owner of a file can delete the file within a sticky directory.
 
@@ -266,7 +267,7 @@ SAVEHIST stores the maximum number of events to save in the history file
 find http://www.cnblogs.com/peida/archive/2012/11/14/2769248.html
 常用find：
 find . -type f -exec ls -l {} \;
-find . -type f -mtime +14 -exec rm {} \; 
+find . -type f -mtime +14 -exec rm {} \;
 find . -name "*.log" -mtime +5 -ok rm {} \;
 find /etc -name "passwd*" -exec grep "root" {} \;
 find . -name "*.log" -exec mv {} .. \;
@@ -308,8 +309,8 @@ dd
 修复硬盘：                 自初始化硬盘
     dd if=/dev/sda f=/dev/sda  SCSI硬盘 或dd if=/dev/hda f=/dev/hda   IDE
 BLOCKS单位:b=512, c=1, k=1024, w=2, xm=number m
-跳过一段以后才输出 seek=BLOCKS 
-跳过一段以后才输入 skip=BLOCKS 
+跳过一段以后才输出 seek=BLOCKS
+跳过一段以后才输入 skip=BLOCKS
 eg:dd if=fork.c of=i.iso count=20 bs=2c
 讲的是从fork.c中提取20个2char，写到文件i.iso中
 eg:dd if=fork.c of=i.iso count=20 bs=2c seek=2c skip=2c
@@ -343,7 +344,7 @@ alt+l 直接执行上一次执行的内容
 dirs 的命令
 d  //d is an alias for dirs -v | head -10
 po //popd , popd is pop dir
-pp //pushd , put the current dir 
+pp //pushd , put the current dir
 在zsh中输入d命令下面的数字，可以直接进入
 
 
@@ -370,6 +371,7 @@ tmux list-sessions  #list all sessions
 #use space to enter visual model in ctrl+a ] condition
 
 bind-key F1 set-window-option force-width 81
+set-window-title $(whoami)@$(hostname)  //设置当前putty或者tmux下面的标签栏
 
 较少使用的命令
 shred - overwrite a file to hide its contents, and optionally delete it
