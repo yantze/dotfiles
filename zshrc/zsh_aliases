@@ -30,6 +30,8 @@ alias tl='tmux list-sessions'
 #附上一個有名字的窗口
 # alias ta='tmux attach -t'
 alias ta='tmux attach -d -t'
+#设置tmux标签的名字，直到退出为止
+alias st='set-window-title'
 
 alias hd='od -Ax -tx1z -v' #方便的十六进制输出。 (用法举例: • hd /proc/self/cmdline | less)
 alias realpath='readlink -f'  #显示符号链接指向的真实路径((用法举例: • realpath ~/../$USER)
