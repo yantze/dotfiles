@@ -4,24 +4,11 @@ snippet //      多行注释
 	/* ${0}*/
 snippet -       分隔注释
 	// -------------------------------${0}
-snippet pa      包
-	package ${0}
 snippet pm      main包
 	package main${0}
-snippet im      导入单个包
-	import "${1}"${0}
-snippet im.     导入多个包
-	import (
-	    "${1}"
-	    "${2}"${0}
-	)
 # 函数、复合结构
-#snippet main    主函数
-#	func main () {
-#	    ${0}
-#	}
-snippet f       函数
-	func ${1:f_name} (${2}) ${3} {
+snippet main    主函数
+	func main () {
 	    ${0}
 	}
 snippet ff      匿名函数
