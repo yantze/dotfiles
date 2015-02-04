@@ -877,10 +877,10 @@ let Tlist_File_Fold_Auto_Close = 1             " 自动折叠
 " Ctrl+x, Ctrl+f 补全当前要输入的路径
 "
 "
-" manpageview phpfunctionname
+" manpageview phpfunctionname.php
 " 可以使用快捷键K查询
-" 说明，比如你在centos里面装了man-pages，当你用K查询的时候，自动会弹出man 你光
-" 标下面的词
+" 说明，比如你在centos里面装了man-pages，当你用K查询的时候，自动会弹出man 你光标下面的词
+" manpageview 替代了插件pydoc.vim
 " 查找当前的单词意思,quick close: ZZ/:q
 nmap <silent><leader>K :call Mydict()<CR>
 "
@@ -1166,3 +1166,11 @@ nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>:copen<CR>
 " hahaha" dfsdjfksdj
 " z则次
 
+" Ctrl + h/j/k/l 移动光标到上下左右位置
+" Ctrl + H/J/K/L 移动窗口到上下左右位置
+" '+1~9 上次打开的文件
+" m+1~9 mark 1~9文件的位置
+" :vert diffsplit main.c
+" dp : diffput,把增加的部分放到另外一边
+"
+" insert schema, ctrl+w and other keys likes emacs

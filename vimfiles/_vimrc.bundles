@@ -131,7 +131,7 @@ Bundle 'cakebaker/scss-syntax.vim'
 Plugin 'digitaltoad/vim-jade'
 
 " support css word with -
-set iskeyword+=-
+" set iskeyword+=-
 
 " Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 "
@@ -152,7 +152,7 @@ Plugin 'tyru/open-browser.vim'
 " 同上，这个只在Mac上,刷新
 " Bundle 'mkitt/browser-refresh.vim'
 
-" 平滑滚动插件
+" 平滑滚动插件, 非常不好用
 " Plugin 'yonchu/accelerated-smooth-scroll'
 
 " markdown live html, so hard to set to give up
@@ -162,10 +162,18 @@ Plugin 'tyru/open-browser.vim'
 " 读取大文件
 " Plugin 'LargeFile'
 
+"对txt文件列目录 dep:taglist.vim
+Plugin 'TxtBrowser'
+
+
 " Color
-Plugin 'molokai'
+" Plugin 'molokai'
 Plugin 'altercation/vim-colors-solarized'
+" many various colorschemes
 Plugin 'flazz/vim-colorschemes'
+" Plugin 'skammer/vim-css-color' " 每次打开php都要很久
+" 这个是vim-css-color的替代
+Plugin 'lilydjwg/colorizer'
 " Rainbows default for lisp,scheme and clojure
 Plugin 'amdt/vim-niji'
 let g:niji_matching_filetypes = ['lisp', 'scheme', 'clojure', 'php', 'ruby', 'python']
@@ -238,6 +246,8 @@ inoremap <c-;> <c-x><c-o>
 " Plugin 'briancollins/vim-jst'
 " Slim is a template language for ruby or ROR whose goal is reduce the syntax to the essential parts without becoming cryptic.
 " Plugin 'slim-template/vim-slim'
+Plugin 'vim-ruby/vim-ruby'
+
 
 
 " PHP
@@ -252,10 +262,10 @@ Plugin 'StanAngeloff/php.vim'
 Plugin 'tobyS/vmustache'
 " php debuger
 " https://brookhong.github.io/2014/09/27/dbgpavim-cn.html
-" Plugin 'brookhong/DBGPavim' "dbgpavim继承自DBGp-X-client'
+" Plugin 'brookhong/DBGPavim' "dbgpavim继承自DBGp-X-client'vdebug had united debug
 
 " phpdocument generate
-"pdv需要安装 "tobyS/vmustache模板引擎
+" pdv需要安装 "tobyS/vmustache模板引擎
 " Plugin 'tobyS/pdv'
 " let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
 " nnoremap <buffer> <C-p> :call pdv#DocumentWithSnip()<CR>
@@ -265,26 +275,16 @@ Plugin 'tobyS/vmustache'
 " Plugin 'ZenCoding.vim'
 " 原来的zen coding
 Plugin 'mattn/emmet-vim'
-" 每次打开php都要很久，暂时关闭
-" Plugin 'skammer/vim-css-color'
-" 这个是vimcsscolor的替代
-Plugin 'lilydjwg/colorizer'
 " 给原来的括号加上高亮
 " Plugin 'kien/rainbow_parentheses.vim'
 
-" Ruby
-Plugin 'vim-ruby/vim-ruby'
-
-"对txt文件列目录 dep:taglist.vim
-Plugin 'TxtBrowser'
-
 "python
-Plugin 'fs111/pydoc.vim'
-Plugin 'python.vim'
+" Plugin 'fs111/pydoc.vim' "manpageview united all helper
+" Plugin 'python.vim' "提供一些跳转的命令,比如跳到类或者跳到定义块
 "检查python的代码错误,编译需要'+python'
-" Plugin 'pyflakes.vim'
+Plugin 'pyflakes.vim' "require: pip install pyflakes
 " Python Tab-completion
-" Plugin 'rkulla/pydiction'
+Plugin 'rkulla/pydiction'
 "
 
 " Find & Search
@@ -310,11 +310,7 @@ endif
 Plugin 'matchit.zip'
 
 " 列出当前buffer列表的窗口,可以同过lru等排序快速找到文件
-" Plugin 'bufexplorer.zip'
-
-" vim post wordpress: vimpress
-" Plugin 'pentie/VimRepress'
-" Plugin 'VimRepress'
+" Plugin 'bufexplorer.zip' "ctrlp united the file manager
 
 " vim 7.4 backspace fix
 " set backspace=indent,eol,start
