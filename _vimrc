@@ -720,6 +720,8 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+" pydiction plugin for tab complete, generate yourself:github.com/rkulla/pydiction
+let g:pydiction_location = '/home/user/.vim/bundle/pydiction/complete-dict'
 
 " Enable heavy omni completion.
 if !exists('g:neocomplcache_omni_patterns')

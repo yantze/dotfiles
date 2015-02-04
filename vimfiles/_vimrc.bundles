@@ -1,1 +1,330 @@
-../_vimrc.bundles
+"call vundle#rc()
+" 下面这里可以规定bundle的安装路径
+" call vundle#rc('$VIM/vimfiles/bundle/')
+
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle Required!
+Plugin 'gmarik/Vundle.vim'
+
+    " Syntax
+
+" 语法查错
+Plugin 'scrooloose/syntastic'
+"校验JavaScript。JSHint 来检查代码错误，同时控制代码质量。
+
+" DBGP Debug
+" http://blog.joncairns.com/2012/08/vdebug-a-dbgp-debugger-client-for-vim-supporting-php-python-perl-and-ruby/
+Plugin 'joonty/vdebug'
+
+    " Plugin
+
+" fuzzy compolier
+"ycm=clang_complete +AutoComplPop +Supertab +neocomplcache +Syntastic(类似功能,仅仅针对c/c++/obj-c代码)
+Plugin 'Valloric/YouCompleteMe'
+
+
+" http://blog.163.com/lgh_2002/blog/static/440175262010613105148657/
+" Plugin 'ervandew/supertab'
+" Plugin 'Shougo/neocomplcache.vim' "不兼容另外一个自动完成ycm
+
+" C自动补全
+" cscope
+" Plugin 'brookhong/cscope.vim'
+" Plugin 'liuyug/cscope.vim'
+" 自动补全引用库中的内容，包括'->','.','::'
+" Plugin 'OmniCppComplete'
+
+" snip综合解决方案
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+" let g:snippets_dir="$VIM/vimfiles/resource/vim-snippets/" "添加新的片段
+" Trigger configuration. if comflict then change the <tab>
+" let g:UltiSnipsUsePythonVersion = 2
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-j>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+" 代码补全/snippets
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+" UltiSnips is a drop-in replacement for snipMate
+" Plugin 'garbas/vim-snipmate'
+"
+" javascript 补全
+Plugin 'marijnh/tern_for_vim'
+
+
+" 快捷注释
+" comments.vim 用c-c/c-x做注释
+" Plugin 'comments.vim'
+" 用<leader>ci/cm做注释
+" Plugin 'scrooloose/nerdcommenter'
+" 这个更智能一些,我的配置里面快捷键inhert了nerdcommenter
+Plugin 'tomtom/tcomment_vim'
+
+
+
+" Dash.vim
+" Search Dash.app from Vim
+Plugin 'rizzatti/dash.vim'
+
+
+
+" 文件管理器
+Plugin 'scrooloose/nerdtree'
+" tagbar is like the taglist
+Plugin 'majutsushi/tagbar'
+" multiple cursors
+Plugin 'terryma/vim-multiple-cursors'
+" 会出现缩进一条一条的颜色
+Plugin 'nathanaelkane/vim-indent-guides'
+" Press + to expand the visual selection and _ to shrink it.
+Plugin 'terryma/vim-expand-region'
+" quoting/parenthesizing made simple, there have many shortkey
+Plugin 'tpope/vim-surround'
+" 按等号或者其它符号对齐
+Plugin 'godlygeek/tabular'
+
+" Plugin 'kchmck/vim-coffee-script'
+" Plugin 'tpope/vim-haml'
+
+" 内置的文件浏览器已经够了
+" Bundle 'winmanager'
+Bundle 'taglist.vim'
+
+
+
+" 集成了md的语法和颜色配置,里面的toc功能不可用
+Plugin 'plasticboy/vim-markdown'
+" 这个没有多少用，用本配置的:Sw可以直接保存
+" Plugin 'sudo.vim'
+" helps editing xml (and [x]html, sgml, xslt) files
+Plugin 'othree/xml.vim'
+" A filetype plugin for VIM to help edit XML files
+Plugin 'sukima/xmledit'
+Plugin 'tpope/vim-ragtag'
+Plugin 'elzr/vim-json'
+
+
+" Git
+Plugin 'tpope/vim-fugitive'
+"Fugitive (Git) in status line
+set statusline=%{exists(\"*fugitive#statusline\")?\"branch:\ \".fugitive#statusline():\"\"}\ %F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]
+
+
+" Web
+
+"HTML/JS混排缩进改善
+" Plugin 'pangloss/vim-javascript'
+Bundle 'jelera/vim-javascript-syntax'
+Plugin 'lukaszb/vim-web-indent'
+" vim-web-indent包含了javascript.vim 和html.vim
+" Plugin 'javascript.vim'
+
+" sass highlight
+Bundle 'JulesWang/css.vim'
+Bundle 'cakebaker/scss-syntax.vim'
+
+"适配jade
+Plugin 'digitaltoad/vim-jade'
+
+" support css word with -
+set iskeyword+=-
+
+" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+"
+" Bundle 'pangloss/vim-javascript'
+" Bundle 'Townk/vim-autoclose'
+" Bundle 'hail2u/vim-css3-syntax'
+" Bundle 'mattn/webapi-vim'
+" Bundle 'bufexplorer.zip'
+" Plugin 'vim-sneak'
+" Plugin 'ludovicchabant/vim-lawrencium'
+" Plugin 'mhinz/vim-signify'
+" Plugin 'tpope/vim-sleuth'
+
+
+
+" 智能打开浏览器
+Plugin 'tyru/open-browser.vim'
+" 同上，这个只在Mac上,刷新
+" Bundle 'mkitt/browser-refresh.vim'
+
+" 平滑滚动插件
+" Plugin 'yonchu/accelerated-smooth-scroll'
+
+" markdown live html, so hard to set to give up
+" Plugin 'visualHtml'
+
+
+" 读取大文件
+" Plugin 'LargeFile'
+
+" Color
+Plugin 'molokai'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'flazz/vim-colorschemes'
+" Rainbows default for lisp,scheme and clojure
+Plugin 'amdt/vim-niji'
+let g:niji_matching_filetypes = ['lisp', 'scheme', 'clojure', 'php', 'ruby', 'python']
+" let g:niji_darkblood_colours = [
+"     \ ['255', '255'],
+"     \ ['253', '253'],
+"     \ ['251', '251'],
+"     \ ['249', '249'],
+"     \ ['247', '247'],
+"     \ ['245', '245'],
+"     \ ['243', '243'],
+"     \ ['241', '241'],
+"     \ ['239', '239'],
+"     \ ['237', '237'],
+"     \ ['235', '235'],
+"     \]
+
+" For Writer
+Plugin 'junegunn/goyo.vim'
+
+" 以下三个都是增强状态栏的，vim-powerline < powerline < vim-airline
+" Bundle 'Lokaltog/vim-powerline'
+" Bundle 'Lokaltog/powerline'
+Bundle 'bling/vim-airline'
+
+Plugin 'MarcWeber/vim-addon-manager-known-repositories'
+
+" 输入体验
+Plugin 'dart-lang/dart-vim-plugin'
+
+
+
+" 编程环境
+" javascript
+" Syntax file for jQuery
+Plugin 'jQuery'
+" A simple javascript indent script, support OOP, jquery
+Plugin 'Simple-Javascript-Indenter'
+
+" 对javascript整体上的改进
+" Plugin 'maksimr/vim-jsbeautify'
+" Plugin 'einars/js-beautify'
+
+"GO
+" goland的多种vim功能/安装
+Plugin 'cespare/vim-golang'
+" go get github.com/bradfitz/goimports
+" 需要添加let g:gofmt_command = "goimports" 可以使用下面的功能
+" 让任何Go文件保存前，调用goimports对该文件排版并插入/删除相应的import语句。
+
+" 这个是go的自动补全插件需要先安装下面这个
+" go get github.com/nsf/gocode
+Plugin 'undx/vim-gocode'
+
+" Go 自动调用goimport添加删除模块
+autocmd BufWritePre *.go :Fmt
+"去掉预览窗口preview和设置longest
+set completeopt=longest,menu
+"设置CTRL+J补全
+inoremap <c-;> <c-x><c-o>
+
+" Ruby
+" Plugin 'thoughtbot/vim-rspec'
+" Plugin 'rspec.vim'
+" Plugin 'Keithbsmiley/rspec.vim'
+" Plugin 'tpope/vim-rails'
+" ruby package manage
+" Plugin 'tpope/vim-bundler'
+" A vim plugin for highlighting and indenting JST/EJS syntax. Based on the eruby syntax from vim-ruby.
+" Plugin 'briancollins/vim-jst'
+" Slim is a template language for ruby or ROR whose goal is reduce the syntax to the essential parts without becoming cryptic.
+" Plugin 'slim-template/vim-slim'
+
+
+" PHP
+" php genner
+Plugin 'phpvim'
+" Plugin 'php.vim-html-enhanced'
+" 增加对php的兼容
+Plugin 'StanAngeloff/php.vim'
+" 匹配
+" Plugin 'shawncplus/phpcomplete.vim'
+" 模板引擎
+Plugin 'tobyS/vmustache'
+" php debuger
+" https://brookhong.github.io/2014/09/27/dbgpavim-cn.html
+" Plugin 'brookhong/DBGPavim' "dbgpavim继承自DBGp-X-client'
+
+" phpdocument generate
+"pdv需要安装 "tobyS/vmustache模板引擎
+" Plugin 'tobyS/pdv'
+" let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
+" nnoremap <buffer> <C-p> :call pdv#DocumentWithSnip()<CR>
+
+
+" Web : HTML CSS
+" Plugin 'ZenCoding.vim'
+" 原来的zen coding
+Plugin 'mattn/emmet-vim'
+" 每次打开php都要很久，暂时关闭
+" Plugin 'skammer/vim-css-color'
+" 这个是vimcsscolor的替代
+Plugin 'lilydjwg/colorizer'
+" 给原来的括号加上高亮
+" Plugin 'kien/rainbow_parentheses.vim'
+
+" Ruby
+Plugin 'vim-ruby/vim-ruby'
+
+"对txt文件列目录 dep:taglist.vim
+Plugin 'TxtBrowser'
+
+"python
+Plugin 'fs111/pydoc.vim'
+Plugin 'python.vim'
+"检查python的代码错误,编译需要'+python'
+" Plugin 'pyflakes.vim'
+" Python Tab-completion
+" Plugin 'rkulla/pydiction'
+"
+
+" Find & Search
+" Plugin 'ack.vim'
+" let g:ackprg = 'ag --nogroup --nocolor --column'
+Plugin 'rking/ag.vim'
+let g:agprg="ag --column"
+
+" 快速打开文件的功能
+" Bundle 'ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+map <leader>b :CtrlPBuffer<CR>
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.png,*.gif,*.jpeg,.DS_Store  " MacOSX/Linux
+
+" 快速移动，替换f,这个还没有完全弄懂
+if v:version > 703
+    Plugin 'Lokaltog/vim-easymotion'
+endif
+" 在()、""、甚至HTML标签之间快速跳转；
+Plugin 'matchit.zip'
+
+" 列出当前buffer列表的窗口,可以同过lru等排序快速找到文件
+" Plugin 'bufexplorer.zip'
+
+" vim post wordpress: vimpress
+" Plugin 'pentie/VimRepress'
+" Plugin 'VimRepress'
+
+" vim 7.4 backspace fix
+" set backspace=indent,eol,start
+
+call vundle#end()            " required
+
+" NOTE:
+" ag.vim: You must, of course, install ag / the_silver_searcher
+" :Ag [options] {pattern} [{directory}]
+" :Ag '\\\#define foo'
+" e    to open file and close the quickfix window
+" o    to open (same as enter)
+" go   to preview file (open but maintain focus on ag.vim results)
