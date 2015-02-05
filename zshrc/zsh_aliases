@@ -36,6 +36,9 @@ alias st='set-window-title'
 alias hd='od -Ax -tx1z -v' #方便的十六进制输出。 (用法举例: • hd /proc/self/cmdline | less)
 alias realpath='readlink -f'  #显示符号链接指向的真实路径((用法举例: • realpath ~/../$USER)
 
+###for type ls is error
+alias s='ls'
+
 ###
 alias rsyn='rsync -arvuzp'
 alias proxy_local='http_proxy="http://vastiny:8087";'
