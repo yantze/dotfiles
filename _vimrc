@@ -19,6 +19,16 @@
         silent function! WINDOWS()
             return  (has('win16') || has('win32') || has('win64'))
         endfunction
+        " if has('win32')
+        "     let g:pydiction_location = 'C:/vim/vimfiles/ftplugin/pydiction/complete-dict'
+        " else
+        "     if system('uname')=~'Darwin'
+        "         let g:pydiction_location = '/Users/you/.vim/bundle/pydiction/complete-dict'
+        "     else
+        "         let g:pydiction_location = '/home/you/.vim/bundle/pydiction/complete-dict'
+        "     endif
+        " endif
+
     " }
 
     " Windows Compatible {
@@ -662,6 +672,21 @@ nnoremap <silent> <C-j>  :m+<CR>==
 xnoremap <silent> <C-k>  :m'<-2<CR>gv=gv
 xnoremap <silent> <C-j>  :m'>+<CR>gv=gv
 
+" Process past
+set pastetoggle=<F3>
+nnoremap <F3> :set invpaste paste?<CR>
+imap <F3> <C-O>:set invpaste paste?<CR>
+set pastetoggle=<F3>
+
+" 切换窗口光标
+" switch window
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+"nnoremap <leader>w <C-W>w
+
+
 " =======
 " Plugins
 " =======
@@ -733,52 +758,38 @@ map <leader>cf :CoffeeCompile watch vert<cr>
 "let skim use slim syntax
 au BufRead,BufNewFile *.skim set filetype=slim
 
+
+" Enable omni completion.还不确定这个有什么用
+" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+" autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+" autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+" autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
+
+" neocomplcache setting
+" Enable heavy omni completion.
+" if !exists('g:neocomplcache_omni_patterns')
+"   let g:neocomplcache_omni_patterns = {}
+" endif
+" let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+
+
+"minitest
+set completefunc=syntaxcomplete#Complete
+
 "auto completed
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
 
 
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-" pydiction plugin for tab complete, generate yourself:github.com/rkulla/pydiction
-let g:pydiction_location = '/home/user/.vim/bundle/pydiction/complete-dict'
-
-" Enable heavy omni completion.
-if !exists('g:neocomplcache_omni_patterns')
-  let g:neocomplcache_omni_patterns = {}
-endif
-let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-
-
-let g:Powerline_cache_enabled = 1
-
-"minitest
-set completefunc=syntaxcomplete#Complete
-
-"process past
-set pastetoggle=<F3>
-nnoremap <F3> :set invpaste paste?<CR>
-imap <F3> <C-O>:set invpaste paste?<CR>
-set pastetoggle=<F3>
 
 " RSpec.vim mappings
 " map <Leader>t :call RunCurrentSpecFile()<CR>
 " map <Leader>s :call RunNearestSpec()<CR>
 " map <Leader>l :call RunLastSpec()<CR>
 " map <Leader>a :call RunAllSpecs()<CR>
-
-" 切换窗口光标
-" switch window
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-"nnoremap <leader>w <C-W>w
 
 " Goyo:the pure writer
 function! s:goyo_before()
@@ -1174,3 +1185,5 @@ nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>:copen<CR>
 " dp : diffput,把增加的部分放到另外一边
 "
 " insert schema, ctrl+w and other keys likes emacs
+
+let b:python_version_2 = 1

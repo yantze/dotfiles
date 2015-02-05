@@ -12,23 +12,20 @@ Plugin 'gmarik/Vundle.vim'
     " Syntax
 
 " 语法查错
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
 "校验JavaScript。JSHint 来检查代码错误，同时控制代码质量。
 
-" DBGP Debug
-" http://blog.joncairns.com/2012/08/vdebug-a-dbgp-debugger-client-for-vim-supporting-php-python-perl-and-ruby/
+    " Debug
+
+" DBGP for all language
 Plugin 'joonty/vdebug'
 
-    " Plugin
+    " AutoComplete
 
-" fuzzy compolier
-"ycm=clang_complete +AutoComplPop +Supertab +neocomplcache +Syntastic(类似功能,仅仅针对c/c++/obj-c代码)
-Plugin 'Valloric/YouCompleteMe'
-
-
-" http://blog.163.com/lgh_2002/blog/static/440175262010613105148657/
+" ycm=clang_complete +AutoComplPop +Supertab +neocomplcache +Syntastic(类似功能,仅仅针对c/c++/obj-c代码)
+" Plugin 'Valloric/YouCompleteMe'
 " Plugin 'ervandew/supertab'
-" Plugin 'Shougo/neocomplcache.vim' "不兼容另外一个自动完成ycm
+" Plugin 'Shougo/neocomplcache.vim' "不兼容ycm
 
 " C自动补全
 " cscope
@@ -36,6 +33,8 @@ Plugin 'Valloric/YouCompleteMe'
 " Plugin 'liuyug/cscope.vim'
 " 自动补全引用库中的内容，包括'->','.','::'
 " Plugin 'OmniCppComplete'
+
+    " Plugin
 
 " snip综合解决方案
 Plugin 'SirVer/ultisnips'
@@ -257,7 +256,7 @@ Plugin 'phpvim'
 " 增加对php的兼容
 Plugin 'StanAngeloff/php.vim'
 " 匹配
-" Plugin 'shawncplus/phpcomplete.vim'
+Plugin 'shawncplus/phpcomplete.vim'
 " 模板引擎
 Plugin 'tobyS/vmustache'
 " php debuger
@@ -278,14 +277,15 @@ Plugin 'mattn/emmet-vim'
 " 给原来的括号加上高亮
 " Plugin 'kien/rainbow_parentheses.vim'
 
-"python
+" python
+Plugin 'hdima/python-syntax'
 " Plugin 'fs111/pydoc.vim' "manpageview united all helper
 " Plugin 'python.vim' "提供一些跳转的命令,比如跳到类或者跳到定义块
-"检查python的代码错误,编译需要'+python'
-Plugin 'pyflakes.vim' "require: pip install pyflakes
+" 检查python的代码错误,编译需要'+python', require: pip install pyflakes
+" Plugin 'pyflakes.vim' "syntastic united
 " Python Tab-completion
 Plugin 'rkulla/pydiction'
-"
+let g:pydiction_location = '/home/yantze/.vim/bundle/pydiction/complete-dict'
 
 " Find & Search
 " Plugin 'ack.vim'
