@@ -8,7 +8,8 @@ export EDITOR=vim
 
 
 ###JAVA###
-export JAVA_HOME=/usr/java/jdk1.8.0_05
+# export JAVA_HOME=/usr/java/jdk1.8.0_05
+export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
 export JRE_HOME=$JAVA_HOME/jre
 CLASSPATH=./:$JAVA_HOME/lib:$JRE_HOME/lib:$JRE_HOME/lib/tools.jar
 export CLASSPATH

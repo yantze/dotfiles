@@ -1,6 +1,11 @@
 ##一些快捷鍵
 命令                    shortkey
 command/terminal        CTRL+ALT+T
+trash                   super+t
+
+##一些命令
+sudo update-alternatives --config java             find mul same soft
+
 
 ##必須裝的軟件
 
