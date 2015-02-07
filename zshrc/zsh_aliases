@@ -38,6 +38,7 @@ alias realpath='readlink -f'  #显示符号链接指向的真实路径((用法�
 
 ###for type ls is error
 alias s='ls'
+alias lss='ls'
 
 ###
 alias rsyn='rsync -arvuzp'
