@@ -380,7 +380,7 @@ set visualbell t_vb=         "关闭visual bell/声音
 au GuiEnter * set t_vb=      "关闭beep/屏闪
 
 " 文件配置
-set fileformats=unix                             " 设定换行符
+" set fileformats=unix                             " 设定换行符
 set bsdir=buffer                                 " 设定文件浏览器目录为当前目录
 set enc=utf-8                                    " 设置编码
 set fenc=utf-8                                   " 设置文件编码
@@ -637,13 +637,22 @@ imap <c-tab> <Esc>:tabn<CR>i
 :map <c-s-tab> :tabp<CR>
 imap <c-s-tab> <Esc>:tabp<CR>i
 
+" 下一个缓冲区
 :nmap <leader>n :bn<CR>
 :map <leader>n :bn<CR>
 imap <leader>n <Esc>:bp<CR>i
+:nmap <F3> :bn<CR>
+:map <F3> :bn<CR>
+imap <F3> <Esc>:bp<CR>i
 
+
+" 上一个缓冲区
 :nmap <leader>p :bp<CR>
 :map <leader>p :bp<CR>
 imap <leader>p <Esc>:bp<CR>i
+:nmap <F2> :bp<CR>
+:map <F2> :bp<CR>
+imap <F2> <Esc>:bp<CR>i
 
 " \R         一键保存、编译、运行
 imap <leader>R <ESC>:call Compile_Run_Code()<CR>
@@ -673,10 +682,13 @@ xnoremap <silent> <C-k>  :m'<-2<CR>gv=gv
 xnoremap <silent> <C-j>  :m'>+<CR>gv=gv
 
 " Process past
-set pastetoggle=<F3>
-nnoremap <F3> :set invpaste paste?<CR>
-imap <F3> <C-O>:set invpaste paste?<CR>
-set pastetoggle=<F3>
+set pastetoggle=<F4>
+nnoremap <F4> :set invpaste paste?<CR>
+imap <F4> <C-O>:set invpaste paste?<CR>
+set pastetoggle=<F4>
+" no num and relative
+nnoremap <leader><F4> :set relativenumber!<CR>:set nu!<CR>
+imap <leader><F4>     :set relativenumber!<CR>:set nu!<CR>
 
 " 切换窗口光标
 " switch window

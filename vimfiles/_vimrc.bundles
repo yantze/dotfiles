@@ -12,7 +12,7 @@ Plugin 'gmarik/Vundle.vim'
     " Syntax
 
 " 语法查错
-" Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 "校验JavaScript。JSHint 来检查代码错误，同时控制代码质量。
 
     " Debug
@@ -23,7 +23,7 @@ Plugin 'joonty/vdebug'
     " AutoComplete
 
 " ycm=clang_complete +AutoComplPop +Supertab +neocomplcache +Syntastic(类似功能,仅仅针对c/c++/obj-c代码)
-" Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 " Plugin 'ervandew/supertab'
 " Plugin 'Shougo/neocomplcache.vim' "不兼容ycm
 
@@ -50,9 +50,6 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 " UltiSnips is a drop-in replacement for snipMate
 " Plugin 'garbas/vim-snipmate'
-"
-" javascript 补全
-Plugin 'marijnh/tern_for_vim'
 
 
 " 快捷注释
@@ -121,6 +118,9 @@ Bundle 'jelera/vim-javascript-syntax'
 Plugin 'lukaszb/vim-web-indent'
 " vim-web-indent包含了javascript.vim 和html.vim
 " Plugin 'javascript.vim'
+"
+" javascript 补全
+Plugin 'marijnh/tern_for_vim'
 
 " sass highlight
 Bundle 'JulesWang/css.vim'
@@ -167,6 +167,7 @@ Plugin 'TxtBrowser'
 
 " Color
 " Plugin 'molokai'
+Plugin 'yantze/pt_putty'
 Plugin 'altercation/vim-colors-solarized'
 " many various colorschemes
 Plugin 'flazz/vim-colorschemes'
