@@ -4,13 +4,12 @@ export HISTSIZE=10000
 export SAVEHIST=10000
 export EDITOR=vim
 # set -o vi #设置shell快捷键的默认器
-# 设置grep输出的颜色为土黄色
-export GREP_COLOR="01;36"
 
 
 
 ###JAVA###
-export JAVA_HOME=/usr/java/jdk1.8.0_05
+# export JAVA_HOME=/usr/java/jdk1.8.0_05
+export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
 export JRE_HOME=$JAVA_HOME/jre
 CLASSPATH=./:$JAVA_HOME/lib:$JRE_HOME/lib:$JRE_HOME/lib/tools.jar
 export CLASSPATH
@@ -19,6 +18,11 @@ PATH="$JAVA_HOME/bin:$PATH"
 ###NODE###
 NODE_HOME="/usr/local/node"
 PATH="$NODE_HOME/bin:$PATH"
+
+# nvm for various node version
+export NVM_DIR="~/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
 
 ###PHP###
 PHP_HOME="/usr/local/php5.6"
@@ -55,6 +59,11 @@ PATH="$PATH:/usr/local/bin:/bin:/usr/bin:$HOME/bin:/usr/local/sbin:/usr/sbin:/sb
 # Git for SAE
 export GIT_FOR_SAE_ROOT=~/tools/git_svn_sae/ #此处就是你刚刚放置clone下来的项目路径
 PATH="$GIT_FOR_SAE_ROOT:$PATH"
+
+# Cling for centos7
+CLING_HOME="/usr/local/cling"
+PATH="$CLING_HOME/bin:$PATH"
+
 
 # 这里主要是屏蔽tmux对path再次赋值，导致type command时出现两个一样的路径
 # [[ -z $TMUX ]] && export PATH
