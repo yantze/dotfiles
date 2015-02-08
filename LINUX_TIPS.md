@@ -333,6 +333,8 @@ xxd
 本机使用的软件
 rouchdb #一个json格式的nosql数据库
 fail2ban
+duck #duck -q --synchronize ftp://pftp:pftp@127.0.0.1/pocket/ ~/tmp/tes
+#必须要在url后面指定一个文件夹,否则程序会出错
 
 zsh使用技巧
 ..  快速向上跳 ‘...’顶目录

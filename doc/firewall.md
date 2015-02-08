@@ -15,6 +15,20 @@ list add firewall rules:
 firewall-cmd --set-default-zone=<zone>:
     firewall-cmd --zone=<zone> --query-port=80/tcp
 
+##advance
+To know if Firewalld is running, root user
+    direwall-cmd --state
+    or,systemctl status firewalld
+
+##serveral network interfaces in IPv4:
+if you’ve got several network interfaces in IPv4, you will have to activate ip forwarding.
+To do that, paste the following line in the /etc/sysctl.conf file:
+    net.ipv4.ip_forward=1
+
+Then, activate the configuration:
+    sysctl -p
+Although Firewalld is the RHEL 7 way to deal with firewalls and provides many improvements, iptables can still be used (but both shouldn’t run at the same time).
+
 ###go back to a more classic iptables setup
 ```bash
 yum install iptables-services
@@ -33,3 +47,6 @@ Enable the service at boot-time:
 Saving firewall rules:
     service iptables save
     or,/usr/libexec/iptables/iptables.init save
+
+#Further Reading
+http://www.certdepot.net/rhel7-get-started-firewalld/
