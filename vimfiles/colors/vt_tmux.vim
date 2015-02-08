@@ -16,7 +16,7 @@ hi VertSplit        ctermbg=black     ctermfg=lightgrey
 hi LineNr           ctermfg=darkgray
 
 hi Comment          ctermbg=none        ctermfg=grey
-hi CursorLine       ctermfg=NONE        ctermbg=234
+hi CursorLine       ctermfg=NONE        ctermbg=0
 hi Function         ctermfg=yellow      ctermbg=NONE   cterm=NONE
 hi Visual           ctermfg=NONE        ctermbg=32     cterm=NONE
 
