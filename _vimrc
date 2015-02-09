@@ -313,7 +313,7 @@ func! Compile_Run_Code()
 endfunc
 
 " 生成cscope和tags文件
-function Do_CsTag()
+function! Do_CsTag()
     let dir = getcwd()
     if filereadable("tags")
         if(g:iswindows==1)
@@ -375,9 +375,9 @@ syntax on                    " 开启文件类型侦测
 filetype indent on           " 针对不同的文件类型采用不同的缩进格式
 filetype plugin on           " 针对不同的文件类型加载对应的插件
 filetype plugin indent on    " 启用自动补全
-set ic                       "忽略大小写查找
-set visualbell t_vb=         "关闭visual bell/声音
-au GuiEnter * set t_vb=      "关闭beep/屏闪
+set ic                       " 忽略大小写查找
+set visualbell t_vb=         " 关闭visual bell/声音
+au GuiEnter * set t_vb=      " 关闭beep/屏闪
 
 " 文件配置
 " set fileformats=unix                             " 设定换行符
@@ -387,7 +387,9 @@ set fenc=utf-8                                   " 设置文件编码
 set fencs=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936 " 设置文件编码检测类型及支持格式
 set shortmess+=filmnrxoOtT                       " Abbrev. of messages (avoids 'hit enter')
 set viewoptions=folds,options,cursor,unix,slash  " Better Unix / Windows compatibility
-set virtualedit=onemore                          " Allow for cursor beyond last character
+" set virtualedit=onemore                          " Allow for cursor beyond last character
+" set bsdir=buffer                               " 设定文件浏览器目录为当前目录,default value
+" set autochdir
 
 
 " 设置着色模式和字体
@@ -473,7 +475,6 @@ set smartindent              " 智能自动缩进
 set nu!                      " 显示行号
 set ruler                    " 右下角显示光标位置的状态行
 set hidden                   " 允许在有未保存的修改时切换缓冲区
-set autochdir                " 设定文件浏览器目录为当前目录
 set foldmethod=marker        " 选择代码折叠类型
 set foldlevel=100            " 禁止自动折叠 also same: set [no]foldenable
 set laststatus=2             " 开启状态栏信息
@@ -785,9 +786,9 @@ au BufRead,BufNewFile *.skim set filetype=slim
 " endif
 " let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 
+" minitest
+" set completefunc=syntaxcomplete#Complete
 
-"minitest
-set completefunc=syntaxcomplete#Complete
 
 "auto completed
 " Disable AutoComplPop.
@@ -910,11 +911,12 @@ nmap <silent><leader>K :call Mydict()<CR>
 " PHP
 " =========
 "只有在是PHP文件时，才启用PHP补全
-function AddPHPFuncList()
+function! AddPHPFuncList()
     set dictionary+=$HOME/.vim/vimfiles/resource/php-offical.dict
     set complete-=k complete+=k
 endfunction
 autocmd FileType php call AddPHPFuncList()
+autocmd FileType php setlocal omnifunc=syntaxcomplete#Complete
 
 " set tags+= ~/.vim/vimfiles/resource/tags-php
 
@@ -1137,6 +1139,15 @@ nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " nnoremap <Leader>f :CtrlPClearAllCaches<CR>
 nnoremap <Leader>bl :CtrlPBuffer<CR>
 " nnoremap <Leader>j :CtrlP ~/<CR>
+" 下面这句话是说ctrlp自动默认取消探索所有tmp目录下的文件,所以会导致在tmp目录中
+" ,不能使用ctrlp,其实我发现在随便一种tmp目录下面,使用vim的 :e path/to/filename
+" 都没有作用,具体原因可能和ctrlp类似
+" default gtrlp_custom_ignore =  '\v[\/]\.(git|hg|svn)$',
+unlet g:ctrlp_custom_ignore
+let g:ctrlp_custom_ignore = {
+            \'dir': '\.git$\|\.hg$\|\.svn$\|bower_components$\|dist$\|node_modules$\|project_files$\|test$',
+            \'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$\|\.pyo$\|\.rbc$\|\.rbo$\|\.class$\|\.o$\|\~$'
+            \} 
 
 " command! -nargs=* -complete=function Call exec 'call '.<f-args>
 " command! Q q
@@ -1196,4 +1207,63 @@ nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>:copen<CR>
 "
 " insert schema, ctrl+w and other keys likes emacs
 
+" python highlight
+let python_highlight_all = 1
 let b:python_version_2 = 1
+let g:python_version_2 = 1
+
+let g:phpcomplete_relax_static_constraint = 1
+let g:phpcomplete_complete_for_unknown_classes = 1
+let g:phpcomplete_search_tags_for_variables = 1
+let g:phpcomplete_mappings = {
+  \ 'jump_to_def': ',g',
+  \ }
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Modify word boundary characters
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" remove - as a word boundary (i.e. making a keyword character)
+set iskeyword+=-
+" remove $ as a word boundary (i.e. making a keyword character)
+set iskeyword+=$
+set wrap linebreak nolist
+
+" map j to gj and k to gk, so line navigation ignores line wrap
+nnoremap j gj
+nnoremap k gk
+" mapping search with Ack
+"nnoremap <leader>f :Ack<space>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Wild settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Disable output and VCS files
+set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
+
+" Disable image files
+set wildignore+=*.psd,*.png,*.jpg,*.gif,*.jpeg
+
+" Disable archive files
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
+
+" Ignore bundler and sass cache
+set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
+
+" Disable temp and backup files
+set wildignore+=*.swp,*~,._*
+
+" Node and JS stuff
+set wildignore+=*/node_modules/*,*.min.js
+
+" WP Language files
+set wildignore+=*.pot,*.po,*.mo
+
+" Fonts and such
+set wildignore+=*.eot,*.eol,*.ttf,*.otf,*.afm,*.ffil,*.fon,*.pfm,*.pfb,*.woff,*.svg,*.std,*.pro,*.xsf
+
+" Map <leader>el to error_log value
+" takes the whatever is under the cursor and wraps it in error_log( and
+" print_r( with parameter true and a label
+autocmd FileType php nnoremap <leader>el ^vg_daerror_log( '<esc>pa=' . print_r( <esc>pa, true ) );<cr><esc>
+
+

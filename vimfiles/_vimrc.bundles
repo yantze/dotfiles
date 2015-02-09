@@ -252,13 +252,13 @@ Plugin 'vim-ruby/vim-ruby'
 
 
 " PHP
-" php genner
+" php highlight and genner
 Plugin 'phpvim'
 " Plugin 'php.vim-html-enhanced'
 " 增加对php的兼容
 Plugin 'StanAngeloff/php.vim'
-" 匹配
-Plugin 'shawncplus/phpcomplete.vim'
+" 自动匹配,这个测试过了,装上去没有什么作用
+" Plugin 'shawncplus/phpcomplete.vim'
 " 模板引擎
 Plugin 'tobyS/vmustache'
 " php debuger
