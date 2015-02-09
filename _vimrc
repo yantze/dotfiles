@@ -437,9 +437,7 @@ else
     else
         " colorscheme ir_black
         " colorscheme grb256
-        if filereadable(expand("$VIM/colors/vt_tmux.vim"))
-            colorscheme vt_tmux
-        endif
+        colorscheme pt_black
 
         " set background=dark
         " let g:solarized_termtrans =0

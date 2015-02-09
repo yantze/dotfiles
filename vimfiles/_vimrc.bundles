@@ -167,8 +167,9 @@ Plugin 'TxtBrowser'
 
 " Color
 " Plugin 'molokai'
-Plugin 'yantze/pt_putty'
-Plugin 'altercation/vim-colors-solarized'
+Plugin 'yantze/pt_black'
+Plugin 'stulzer/heroku-colorscheme'
+" Plugin 'altercation/vim-colors-solarized'
 " many various colorschemes
 Plugin 'flazz/vim-colorschemes'
 " Plugin 'skammer/vim-css-color' " 每次打开php都要很久
