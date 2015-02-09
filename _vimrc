@@ -406,20 +406,23 @@ if g:isWIN
         set guioptions+=c        " 使用字符提示框
         set guioptions-=m        " 隐藏菜单栏
         set guioptions-=T        " 隐藏工具栏
-        " set guioptions-=L        " 隐藏左侧滚动条
-        " set guioptions-=r        " 隐藏右侧滚动条
+        set guioptions-=L        " 隐藏左侧滚动条
+        set guioptions-=r        " 隐藏右侧滚动条
         " set guioptions-=b        " 隐藏底部滚动条
         " set showtabline=1        " 隐藏Tab栏
         set guioptions+=aA       " get some autoselect interaction with the system clipboard
 
         " set colortheme molokai autumn blackboard asu1dark busybee tomorrow
-        colorscheme solarized
+        " colorscheme solarized
+        colorscheme zenburn
 
         " set font
         " set guifont=Consolas:h12
         " set guifont=Monaco:h15
         " set guifont=Source\ Code\ Pro\ Regular:h15
-        set guifont=Source\ Code\ Pro\:h13
+        " set guifont=YaHei\ Consolas\ Hybrid:h13
+        set guifont=Source\ Code\ Pro:h13
+
     else
         colorscheme ir_black
         " 兼容windows下cmd的gb2312
@@ -640,18 +643,18 @@ imap <c-s-tab> <Esc>:tabp<CR>i
 :nmap <leader>n :bn<CR>
 :map <leader>n :bn<CR>
 imap <leader>n <Esc>:bp<CR>i
-:nmap <F3> :bn<CR>
-:map <F3> :bn<CR>
-imap <F3> <Esc>:bp<CR>i
+:nmap <c-F3> :bn<CR>
+:map <c-F3> :bn<CR>
+imap <c-F3> <Esc>:bp<CR>i
 
 
 " 上一个缓冲区
 :nmap <leader>p :bp<CR>
 :map <leader>p :bp<CR>
 imap <leader>p <Esc>:bp<CR>i
-:nmap <F2> :bp<CR>
-:map <F2> :bp<CR>
-imap <F2> <Esc>:bp<CR>i
+:nmap <c-F2> :bp<CR>
+:map <c-F2> :bp<CR>
+imap <c-F2> <Esc>:bp<CR>i
 
 " \R         一键保存、编译、运行
 imap <leader>R <ESC>:call Compile_Run_Code()<CR>
@@ -681,13 +684,13 @@ xnoremap <silent> <C-k>  :m'<-2<CR>gv=gv
 xnoremap <silent> <C-j>  :m'>+<CR>gv=gv
 
 " Process past
-set pastetoggle=<F4>
-nnoremap <F4> :set invpaste paste?<CR>
-imap <F4> <C-O>:set invpaste paste?<CR>
-set pastetoggle=<F4>
+set pastetoggle=<F3>
+nnoremap <F3> :set invpaste paste?<CR>
+imap <F3> <C-O>:set invpaste paste?<CR>
+set pastetoggle=<F3>
 " no num and relative
-nnoremap <leader><F4> :set relativenumber!<CR>:set nu!<CR>
-imap <leader><F4>     :set relativenumber!<CR>:set nu!<CR>
+nnoremap <leader><F3> :set relativenumber!<CR>:set nu!<CR>
+imap <leader><F3>     :set relativenumber!<CR>:set nu!<CR>
 
 " 切换窗口光标
 " switch window
@@ -1143,7 +1146,9 @@ nnoremap <Leader>bl :CtrlPBuffer<CR>
 " ,不能使用ctrlp,其实我发现在随便一种tmp目录下面,使用vim的 :e path/to/filename
 " 都没有作用,具体原因可能和ctrlp类似
 " default gtrlp_custom_ignore =  '\v[\/]\.(git|hg|svn)$',
-unlet g:ctrlp_custom_ignore
+if exists('g:ctrlp_custom_ignore')
+    unlet g:ctrlp_custom_ignore
+endif
 let g:ctrlp_custom_ignore = {
             \'dir': '\.git$\|\.hg$\|\.svn$\|bower_components$\|dist$\|node_modules$\|project_files$\|test$',
             \'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$\|\.pyo$\|\.rbc$\|\.rbo$\|\.class$\|\.o$\|\~$'
