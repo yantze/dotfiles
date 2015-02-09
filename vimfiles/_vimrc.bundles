@@ -1,4 +1,4 @@
-"call vundle#rc()
+" call vundle#rc()
 " 下面这里可以规定bundle的安装路径
 " call vundle#rc('$VIM/vimfiles/bundle/')
 
@@ -39,7 +39,7 @@ Plugin 'Valloric/YouCompleteMe'
 " snip综合解决方案
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-" let g:snippets_dir="$VIM/vimfiles/resource/vim-snippets/" "添加新的片段
+let g:snippets_dir="$VIM/vimfiles/snippets/"
 " Trigger configuration. if comflict then change the <tab>
 " let g:UltiSnipsUsePythonVersion = 2
 " let g:UltiSnipsExpandTrigger="<tab>"
@@ -166,8 +166,7 @@ Plugin 'TxtBrowser'
 
 
 " Color
-" Plugin 'molokai'
-Plugin 'yantze/pt_black'
+" Plugin 'yantze/pt_black'
 Plugin 'stulzer/heroku-colorscheme'
 " Plugin 'altercation/vim-colors-solarized'
 " many various colorschemes
@@ -286,8 +285,8 @@ Plugin 'hdima/python-syntax'
 " 检查python的代码错误,编译需要'+python', require: pip install pyflakes
 " Plugin 'pyflakes.vim' "syntastic united
 " Python Tab-completion
-Plugin 'rkulla/pydiction'
-let g:pydiction_location = '/home/yantze/.vim/bundle/pydiction/complete-dict'
+" Plugin 'rkulla/pydiction'
+" let g:pydiction_location = '/home/yantze/.vim/bundle/pydiction/complete-dict'
 
 " Find & Search
 " Plugin 'ack.vim'
@@ -298,11 +297,6 @@ let g:agprg="ag --column"
 " 快速打开文件的功能
 " Bundle 'ctrlp.vim'
 Plugin 'kien/ctrlp.vim'
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-map <leader>b :CtrlPBuffer<CR>
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.png,*.gif,*.jpeg,.DS_Store  " MacOSX/Linux
 
 " 快速移动，替换f,这个还没有完全弄懂
 if v:version > 703

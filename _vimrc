@@ -412,9 +412,10 @@ if g:isWIN
         " set showtabline=1        " 隐藏Tab栏
         set guioptions+=aA       " get some autoselect interaction with the system clipboard
 
-        " set colortheme molokai autumn blackboard asu1dark busybee tomorrow
-        " colorscheme solarized
-        colorscheme zenburn
+        " colortheme list: molokai autumn blackboard asu1dark busybee tomorrow
+        " colorscheme solarized  " deep blue
+        " colorscheme morning    " white
+        colorscheme zenburn      " grey, my fav
 
         " set font
         " set guifont=Consolas:h12
@@ -440,16 +441,8 @@ else
         let g:solarized_termcolors=256
 
     else
-        " colorscheme ir_black
-        " colorscheme grb256
+        " colortheme list: ir_black grb256 BusyBee
         colorscheme pt_black
-
-        " set background=dark
-        " let g:solarized_termtrans =0
-        " let g:solarized_termcolors=256
-        " colorscheme solarized
-        " colorscheme BusyBee
-        " set guifont=Monaco\ 11
     endif
 endif
 
@@ -921,6 +914,12 @@ endfunction
 autocmd FileType php call AddPHPFuncList()
 autocmd FileType php setlocal omnifunc=syntaxcomplete#Complete
 
+" Map <leader>el to error_log value
+" takes the whatever is under the cursor and wraps it in error_log( and
+" print_r( with parameter true and a label
+autocmd FileType php nnoremap <leader>el ^vg_daerror_log( '<esc>pa=' . print_r( <esc>pa, true ) );<cr><esc>
+
+
 " set tags+= ~/.vim/vimfiles/resource/tags-php
 
 " autocmd FileType php setlocal omnifunc=phpcomplete#CompleteTags
@@ -1138,6 +1137,9 @@ nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 
 " CtrlP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.png,*.gif,*.jpeg,.DS_Store  " MacOSX/Linux
 " nnoremap <Leader>t :CtrlP getcwd()<CR>
 " nnoremap <Leader>f :CtrlPClearAllCaches<CR>
 nnoremap <Leader>bl :CtrlPBuffer<CR>
@@ -1255,7 +1257,7 @@ set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
 set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
 
 " Disable temp and backup files
-set wildignore+=*.swp,*~,._*
+set wildignore+=*.swp,*~,._*,*.un~
 
 " Node and JS stuff
 set wildignore+=*/node_modules/*,*.min.js
@@ -1266,9 +1268,68 @@ set wildignore+=*.pot,*.po,*.mo
 " Fonts and such
 set wildignore+=*.eot,*.eol,*.ttf,*.otf,*.afm,*.ffil,*.fon,*.pfm,*.pfb,*.woff,*.svg,*.std,*.pro,*.xsf
 
-" Map <leader>el to error_log value
-" takes the whatever is under the cursor and wraps it in error_log( and
-" print_r( with parameter true and a label
-autocmd FileType php nnoremap <leader>el ^vg_daerror_log( '<esc>pa=' . print_r( <esc>pa, true ) );<cr><esc>
+" \ig                        --显示/关闭对齐线
+" 0 or ^ or $                --跳至 行首 or 第一个非空字符 or 行尾
+"
 
+"
+" [ Ctrl+D                   --跳至当前光标所在变量的首次定义位置 [从文件头部开始]
+" [ Ctrl+I                   --跳至当前光标所在变量的首次出现位置 [从文件头部开始]
+" [ D                        --列出当前光标所在变量的所有定义位置 [从文件头部开始]
+" [ I                        --列出当前光标所在变量的所有出现位置 [从文件头部开始]
+"
+" ---------- 文本操作 ----------
+"
+" dw de d0 d^ d$ dd          --删除
+" cw ce c0 c^ c$ cc          --删除并进入插入模式
+" yw ye y0 y^ y$ yy          --复制
+" vw ve v0 v^ v$ vv          --选中
+"
+" di分隔符                   --删除指定分隔符之间的内容 [不包括分隔符]
+" ci分隔符                   --删除指定分隔符之间的内容并进入插入模式 [不包括分隔符]
+" yi分隔符                   --复制指定分隔符之间的内容 [不包括分隔符]
+" vi分隔符                   --选中指定分隔符之间的内容 [不包括分隔符]
+"
+" da分隔符                   --删除指定分隔符之间的内容 [包括分隔符]
+" ca分隔符                   --删除指定分隔符之间的内容并进入插入模式 [包括分隔符]
+" ya分隔符                   --复制指定分隔符之间的内容 [包括分隔符]
+" va分隔符                   --选中指定分隔符之间的内容 [包括分隔符]
+"
+" Xi和Xa都可以在X后面加入一个数字，以指代所处理的括号层次
+" 如 d2i( 执行的是删除当前光标外围第二层括号内的所有内容
+"
+" dt字符                     --删除本行内容，直到遇到第一个指定字符 [不包括该字符]
+" ct字符                     --删除本行内容，直到遇到第一个指定字符并进入插入模式 [不包括该字符]
+" yt字符                     --复制本行内容，直到遇到第一个指定字符 [不包括该字符]
+" vt字符                     --选中本行内容，直到遇到第一个指定字符 [不包括该字符]
+"
+" df字符                     --删除本行内容，直到遇到第一个指定字符 [包括该字符]
+" cf字符                     --删除本行内容，直到遇到第一个指定字符并进入插入模式 [包括该字符]
+" yf字符                     --复制本行内容，直到遇到第一个指定字符 [包括该字符]
+" vf字符                     --选中本行内容，直到遇到第一个指定字符 [包括该字符]
+"
+" XT 和 XF 是 Xt/Xf 的反方向操作
+"
+" ---------- 便捷操作 ----------
+"
+" Ctrl + A                   --将当前光标所在数字自增1        [仅普通模式可用]
+" Ctrl + X                   --将当前光标所在数字自减1        [仅普通模式可用]
+" m字符       and '字符      --标记位置 and 跳转到标记位置
+" q字符 xxx q and @字符      --录制宏   and 执行宏
 
+" 对部分语言设置单独的缩进
+au FileType scala,clojure,lua,ruby,eruby,dart,coffee,slim,jade,sh set shiftwidth=2
+au FileType scala,clojure,lua,ruby,eruby,dart,coffee,slim,jade,sh set tabstop=2
+
+" 根据后缀名指定文件类型
+au BufRead,BufNewFile *.h   setlocal ft=c
+au BufRead,BufNewFile *.sql setlocal ft=mysql
+au BufRead,BufNewFile *.tpl setlocal ft=smarty
+au BufRead,BufNewFile *.txt setlocal ft=txt
+
+" 针对部分语言取消指定字符的单词属性
+au FileType clojure  set iskeyword-=.
+au FileType clojure  set iskeyword-=>
+au FileType perl,php set iskeyword-=$
+au FileType ruby     set iskeyword+=!
+au FileType ruby     set iskeyword+=?
