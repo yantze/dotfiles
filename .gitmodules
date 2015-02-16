@@ -19,3 +19,6 @@
 [submodule "soft_config/rime"]
 	path = soft_config/rime
 	url = https://github.com/yantze/rime
+[submodule "module/search-and-view"]
+	path = module/search-and-view
+	url = https://github.com/lilydjwg/search-and-view

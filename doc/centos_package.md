@@ -1,5 +1,11 @@
 ###must installed package
 yum install git hg ntpdate the_silver_searcher
+yum install zsh tmux bind-utils man-pages
+bind-utils:包含dig, nslookup等网络工具
+man-pages man-pages-zh-CN:kernel源代码等手册
+
+yum groupinstall -y "Development Tools"
+
 
 ###
 locate now is mlocate in Centos&RHEL

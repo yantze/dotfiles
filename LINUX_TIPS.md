@@ -38,6 +38,7 @@ paste -sd, 1.txt 合并单个文件
 paste 1.txt 2.txt 按Tab合并两个文件
 cut -d: -f1 /etc/passwd | head -2 //打印第一列前两行
 cut -c2- //删除空格
+tty | tr '/' '_' //替换前面你的字符串'/'为'_'
 cp /your/path/to/file.list{,.20121106} //备份文件
 cp -af file tofile //用原来文档的用户名
 Ctrl+x Ctrl+e //编辑当前的命令到编辑器，可以在zshrc中export EDITOR='vim'
@@ -184,6 +185,7 @@ pushd $LFS/sources;md5sum -c md5sums;popd  //检查md5sums里面的md5值
 
 
 ag keychar  //直接查看当前目录下包含keychar的字符
+ag -g pattern  //查看当前目录下的所有文件名
 grep -r "some_text" /path/to/dir //递归查找grep的目录
 grep -w "name" test.txt  //查找完整的字符串
 grep pattern files
@@ -246,9 +248,11 @@ iostat #这个软件中包含了这个软件
 日志监控软件
 iostat
 vmstat
-sp htop
-glances
+atop #同top,集成了iostat, vmstat, netstat 
+htop / sp htop
+glances #这个很好用,可以监控温度
 goaccess #for apache/nginx/lighttp
+dstat  # yum install dstat, repoforge repo
 
 linux帮助命令
 man/page
@@ -352,9 +356,13 @@ pp //pushd , put the current dir
 
 
 
-valgrind c检查错误工具，编译需要加上'-g'
+valgrind
+c检查错误工具，编译需要加上'-g'
 valgrind ./execufile
 
+mosh
+一个比ssh快很多倍和稳定强的terminal,需要先连上ssh,同时安装mosh:
+https://mosh.mit.edu
 
 tmux
 #shortcut explan

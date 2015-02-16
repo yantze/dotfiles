@@ -32,7 +32,6 @@ bundle
 .sqlite_history
 .ssh
 .vim
-.vim_old
 .viminfo
 .vimrc
 .w3m
@@ -160,5 +159,8 @@ cscope.po.out
 .svn
 *.swp
 *.rbc
+*.pyc
 
+vendor/
+cache/
 
