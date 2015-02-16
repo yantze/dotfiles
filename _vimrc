@@ -370,6 +370,12 @@ function! Do_CsTag()
 endfunction
 " }}}
 
+
+let g:startify_custom_header = [
+        \ '   hello zhi',
+        \ '',
+        \ ]
+
 syntax enable                " 打开语法高亮
 syntax on                    " 开启文件类型侦测
 filetype indent on           " 针对不同的文件类型采用不同的缩进格式
@@ -1088,9 +1094,11 @@ nmap <silent><leader>mt :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <cr><
 " :HexoNew artical-name
 " :HexoOpen artical-name
 
-" there use special tech
+" there use special tech, when you put ':ag ', will display ':Ag '
 " cnoreabbrev ag Ag
 cabbrev ag <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'Ag' : 'ag')<CR>
+" search the cur word by ag
+command! Agg exe 'Ag -Q ' . expand('<cword>')
 
 " Syntastic
 let g:syntastic_check_on_open        = 0
@@ -1333,3 +1341,7 @@ au FileType clojure  set iskeyword-=>
 au FileType perl,php set iskeyword-=$
 au FileType ruby     set iskeyword+=!
 au FileType ruby     set iskeyword+=?
+
+" 去掉BOM
+" set nobomb; set fileencoding=utf8; w
+

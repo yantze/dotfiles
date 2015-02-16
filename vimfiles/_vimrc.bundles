@@ -9,6 +9,7 @@ call vundle#begin()
 " let Vundle manage Vundle Required!
 Plugin 'gmarik/Vundle.vim'
 
+
     " Syntax
 
 " 语法查错
@@ -33,6 +34,9 @@ Plugin 'Valloric/YouCompleteMe'
 " Plugin 'liuyug/cscope.vim'
 " 自动补全引用库中的内容，包括'->','.','::'
 " Plugin 'OmniCppComplete'
+
+" welcome interface
+" Plugin 'mhinz/vim-startify'
 
     " Plugin
 
