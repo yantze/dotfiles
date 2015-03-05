@@ -363,6 +363,8 @@ valgrind ./execufile
 mosh
 一个比ssh快很多倍和稳定强的terminal,需要先连上ssh,同时安装mosh:
 https://mosh.mit.edu
+但是我测试一下显示的环境，用这里连接DigtalOcean的三番服务器，但是mosh-server由于长时间丢包，导致一直不能访问，很明显ssh要稳定得多。
+
 
 tmux
 #shortcut explan

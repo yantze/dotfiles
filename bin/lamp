@@ -1,2 +1,3 @@
 #!/bin/env sh
-sudo su - -c "source start.sh"
+# sudo su - -c "source start.sh"
+sudo service httpd restart
