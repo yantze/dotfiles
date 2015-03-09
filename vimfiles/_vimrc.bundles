@@ -114,15 +114,19 @@ Plugin 'tpope/vim-fugitive'
 set statusline=%{exists(\"*fugitive#statusline\")?\"branch:\ \".fugitive#statusline():\"\"}\ %F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]
 
 
-" Web
+    " Web
 
-"HTML/JS混排缩进改善
+" 对前端代码整体上的改进
+Plugin 'maksimr/vim-jsbeautify'
+Plugin 'einars/js-beautify'
+
 " Plugin 'pangloss/vim-javascript'
-Bundle 'jelera/vim-javascript-syntax'
-Plugin 'lukaszb/vim-web-indent'
+" Plugin 'jelera/vim-javascript-syntax'
+" HTML/JS混排缩进改善
+" Plugin 'lukaszb/vim-web-indent'
 " vim-web-indent包含了javascript.vim 和html.vim
 " Plugin 'javascript.vim'
-"
+
 " javascript 补全
 Plugin 'marijnh/tern_for_vim'
 
@@ -217,9 +221,6 @@ Plugin 'jQuery'
 " A simple javascript indent script, support OOP, jquery
 Plugin 'Simple-Javascript-Indenter'
 
-" 对javascript整体上的改进
-" Plugin 'maksimr/vim-jsbeautify'
-" Plugin 'einars/js-beautify'
 
 "GO
 " goland的多种vim功能/安装

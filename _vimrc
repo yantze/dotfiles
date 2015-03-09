@@ -421,6 +421,9 @@ if g:isWIN
         " colortheme list: molokai autumn blackboard asu1dark busybee tomorrow
         " colorscheme solarized  " deep blue
         " colorscheme morning    " white
+
+        " let g:zenburn_transparent = 1 " black
+        let g:zenburn_high_Contrast = 1
         colorscheme zenburn      " grey, my fav
 
         " set font
@@ -538,6 +541,9 @@ set ai!                      " 设置自动缩进
 " 用两个<CR>可以隐藏执行命令后出现的提示信息"
 " map F :call FormatCode() <CR><CR>
 " map <silent>F 也可以隐藏
+" F                   格式化输出(已抛弃,js-beautify better)
+" map F :%s/{/{\r/g <CR> :%s/}/}\r/g <CR>  :%s/;/;\r/g <CR> gg=G
+
 
 " Ctrl + H            光标移当前行行首
 imap <c-h> <ESC>I
@@ -614,9 +620,6 @@ vmap <leader>r<cr> <ESC>:%s/\r//g<CR>
 " imap <leader>th <ESC>:set nonumber<CR>:set norelativenumber<CR><ESC>:TOhtml<CR><ESC>:w %:r.html<CR><ESC>:q<CR>:set number<CR>:set relativenumber<CR>
 nmap <leader>th <ESC>:set nonumber<CR>:set norelativenumber<CR><ESC>:TOhtml<CR><ESC>:w %:r.html<CR><ESC>:q<CR>:set number<CR>:set relativenumber<CR>
 vmap <leader>th <ESC>:set nonumber<CR>:set norelativenumber<CR><ESC>:TOhtml<CR><ESC>:w %:r.html<CR><ESC>:q<CR>:set number<CR>:set relativenumber<CR>
-
-" F                   格式化输出
-map F :%s/{/{\r/g <CR> :%s/}/}\r/g <CR>  :%s/;/;\r/g <CR> gg=G
 
 " move lines up or down (command - D)
 nmap <m-j> mz:m+<cr>`z
@@ -1345,3 +1348,10 @@ au FileType ruby     set iskeyword+=?
 " 去掉BOM
 " set nobomb; set fileencoding=utf8; w
 
+" js-beautify 格式化网页代码
+autocmd FileType javascript noremap <buffer>  <s-f> :call JsBeautify()<cr>
+autocmd FileType html noremap <buffer> <s-f> :call HtmlBeautify()<cr>
+autocmd FileType css noremap <buffer> <s-f> :call CSSBeautify()<cr>
+autocmd FileType javascript vnoremap <buffer>  <s-f> :call RangeJsBeautify()<cr>
+autocmd FileType html vnoremap <buffer> <s-f> :call RangeHtmlBeautify()<cr>
+autocmd FileType css vnoremap <buffer> <s-f> :call RangeCSSBeautify()<cr>
