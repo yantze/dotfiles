@@ -13,10 +13,21 @@ yum install openssl-devel
 locate now is mlocate in Centos&RHEL
 yum install mlocate
 After that either wait for tomorrow :-) or give command "updatedb". This collects folder and file names to a database, which is the reason everyone wants to use locate instead of find: it is dozens of times faster.
+yum install the_silver_searcher
+
+# mount ntfs
+yum install ntfs-3g
+
+# 7zip and unrar support(command 7za/unrar)
+yum install p7zip unrar
+# or use this version:Nux Dextop
+sudo yum localinstall http://li.nux.ro/download/nux/dextop/el7/x86_64/unrar-5.0.12-2.el7.nux.x86_64.rpm
+
+#only valid in centos7
+yum install clang-devel
 
 
-###
-python3
+### python3
 wget http://www.python.org/ftp/python/3.4.2/Python-3.4.2.tar.bz2
 ./configure
 ./make
@@ -24,4 +35,27 @@ wget http://www.python.org/ftp/python/3.4.2/Python-3.4.2.tar.bz2
 sudo ln -n /usr/local/bin/python3.4 /usr/local/bin/python3
 sudo ln -n /usr/local/bin/pip3.4 /usr/local/bin/pip3
 
+**python dependency**
+sudo yum install readline readline-devel readline-static
+sudo yum install openssl openssl-devel openssl-static
+sudo yum install sqlite-devel
+sudo yum install bzip2-devel bzip2-libs
+
+**instal pyenv**(python version control)
+```
+git clone git://github.com/yyuu/pyenv.git ~/.pyenv
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+exec $SHELL -l
+```
+the download file in ~/.pyenv/cache
+more detail:http://seisman.info/python-pyenv.html
+
+#ELREpo
+#ELRepo包含了一些硬件相关的驱动程序，比如显卡、声卡驱动。
+```
+sudo rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+sudo rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm
+```
 

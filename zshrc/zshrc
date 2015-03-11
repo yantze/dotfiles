@@ -5,34 +5,6 @@ export SAVEHIST=10000
 export EDITOR=vim
 # set -o vi #设置shell快捷键的默认器
 
-# Bored with "tar -zxvf" for .tar.gz, "tar -xvjf" for .tar.bz2 or something else?
-extract () {
-  if [ -f $1 ] ; then
-      case $1 in
-          *.tar.bz2)   tar xvjf $1    ;;
-          *.tar.gz)    tar xvzf $1    ;;
-          *.tar.xz)    tar -Jxvf $1   ;;
-          *.tar.Z)     tar zxvf $1    ;;
-          *.bz2)       bunzip2 $1     ;;
-          *.rar)       unrar x $1     ;;
-          *.gz)        gunzip $1      ;;
-          *.tar)       tar xvf $1     ;;
-          *.tbz2)      tar xvjf $1    ;;
-          *.tgz)       tar xvzf $1    ;;
-          *.zip)       unzip $1       ;;
-          *.Z)         uncompress $1  ;;
-          *.7z)        7z x $1        ;;
-          *.cab)       cabextract $1  ;;
-          *.arj)       unarj $1       ;;
-          *.lzh)       lha e $1       ;;
-          *)           echo "don't know how to extract '$1'…" ;;
-      esac
-  else
-      echo "'$1' is not a valid file!"
-  fi
-}
-
-
 
 ###JAVA###
 # export JAVA_HOME=/usr/java/jdk1.8.0_05
@@ -81,8 +53,6 @@ export LD_LIBRARY_PATH=$LINUXBREW/lib:$LD_LIBRARY_PATH
 PATH="$LINUXBREW/bin:$PATH"
 
 
-PATH="$PATH:/usr/local/bin:/bin:/usr/bin:$HOME/bin:/usr/local/sbin:/usr/sbin:/sbin"
-
 # Git for SAE
 export GIT_FOR_SAE_ROOT=~/tools/git_svn_sae/ #此处就是你刚刚放置clone下来的项目路径
 PATH="$GIT_FOR_SAE_ROOT:$PATH"
@@ -91,6 +61,11 @@ PATH="$GIT_FOR_SAE_ROOT:$PATH"
 CLING_HOME="/usr/local/cling"
 PATH="$CLING_HOME/bin:$PATH"
 
+export PYENV_ROOT="$HOME/.pyenv"
+PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+PATH="$PATH:/usr/local/bin:/bin:/usr/bin:$HOME/bin:/usr/local/sbin:/usr/sbin:/sbin"
 
 # 这里主要是屏蔽tmux对path再次赋值，导致type command时出现两个一样的路径
 # [[ -z $TMUX ]] && export PATH
