@@ -5,6 +5,8 @@ bind-utils:包含dig, nslookup等网络工具
 man-pages man-pages-zh-CN:kernel源代码等手册
 
 yum groupinstall -y "Development Tools"
+**for pip3**
+yum install openssl-devel
 
 
 ###

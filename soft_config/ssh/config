@@ -1,0 +1,18 @@
+# example
+#
+# Host cloudstack-1
+#     HostName example.com
+#     Port 2222
+#     User admin
+#     IdentityFile  ~/.ssh/id_example
+#     IdentitiesOnly yes
+#
+# Host openstack-1
+#     HostName 192.168.33.10
+#     User anotheruser
+#     PubkeyAuthentication no
+# Host aws-1
+#     HostName some.address.ec2.aws.com
+#     User awsuser
+#     IdentityFile  ~/.ssh/aws_identity.pem
+#     IdentitiesOnly yes

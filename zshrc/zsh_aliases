@@ -69,3 +69,13 @@ else
     alias play='mpg123'
 fi
 
+
+#functions
+
+#fname 递归查找当前目录下指定文件
+function fname() { find . -iname "*$@*"; }
+
+#创建文件夹并且cd进去
+function mcd() { mkdir $1 && cd $1; }
+
+function psgrep() { ps axuf | grep -v grep | grep "$@" -i --color=auto; }
