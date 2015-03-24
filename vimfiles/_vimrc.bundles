@@ -277,9 +277,12 @@ Plugin 'tobyS/vmustache'
 
 
 " Web : HTML CSS
-" Plugin 'ZenCoding.vim'
-" 原来的zen coding
+" 原来的'ZenCoding.vim'已经变为emmet-vim
 Plugin 'mattn/emmet-vim'
+" Enable just for html/css
+let g:user_emmet_install_global = 0
+autocmd FileType html,css,phtml,tpl EmmetInstall
+
 " 给原来的括号加上高亮
 " Plugin 'kien/rainbow_parentheses.vim'
 

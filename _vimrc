@@ -1001,12 +1001,6 @@ let g:phpqa_messdetector_autorun = 0
 " shell测试：jshint -version
 "
 
-" ==============
-" web : html css
-" ==============
-" 只能在特定的文件里面才载入，默认是全局
-let g:user_emmet_install_global = 0
-autocmd FileType html,css,phtml,tpl EmmetInstall
 
 " 这个主要用来对txt文档也可以用taglist列表
 au BufEnter *.txt,*.log,*.ini setlocal ft=txt
@@ -1355,3 +1349,7 @@ autocmd FileType css noremap <buffer> <s-f> :call CSSBeautify()<cr>
 autocmd FileType javascript vnoremap <buffer>  <s-f> :call RangeJsBeautify()<cr>
 autocmd FileType html vnoremap <buffer> <s-f> :call RangeHtmlBeautify()<cr>
 autocmd FileType css vnoremap <buffer> <s-f> :call RangeCSSBeautify()<cr>
+
+" Emmet.vim
+" div>p#foo$*3>a
+" https://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL
