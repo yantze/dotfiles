@@ -34,3 +34,9 @@ fi
 # alias swiftc=$(xcrun -f swiftc)
 # Generate LLVM bytecode
 # swiftc -emit-bc hello.swift -o hello.bc
+
+# added by travis gem
+[ -f /home/yantze/.travis/travis.sh ] && source /home/yantze/.travis/travis.sh
+
+export NVM_DIR=~/.nvm
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

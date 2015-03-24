@@ -2,6 +2,10 @@
 
 linux 详细的使用说明
 
+###download video
+you-get
+youtube-dl
+
 ##常用技能
 * vim
 - CtrlP

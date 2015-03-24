@@ -1,0 +1,40 @@
+# Intro.
+# you can change port by /etc/ssh/sshd_config
+# Port 443 or other
+#
+# Example
+#
+# Host cloudstack-1
+#     HostName example.com
+#     Port 2222
+#     User admin
+#     IdentityFile  ~/.ssh/id_example
+#     IdentitiesOnly yes
+#
+# Host openstack-1
+#     HostName 192.168.33.10
+#     User anotheruser
+#     PubkeyAuthentication no
+# Host aws-1
+#     HostName some.address.ec2.aws.com
+#     User awsuser
+#     IdentityFile  ~/.ssh/aws_identity.pem
+#     IdentitiesOnly yes
+
+# 如果出现一只提示是否要加入（add to known host）时，可以启用下面的禁用
+# UserKnownHostsFile /dev/null
+# StrictHostKeyChecking no
+
+Host *  # 表示应用于所有Host
+ControlMaster auto  # 默认开启
+ControlPath ~/.ssh/sockets/%r@%h-%p 
+# 确保~/.ssh/sockets文件夹存在
+# 这个配置可以保证如果ssh remote server的hostname变更，可以建立新的session
+# %r remote_user
+# %h hostname
+# %p server port
+ControlPersist 600  # session 保留时间，秒， 即使退出ssh，下次连接还是飞速
+
+Host dev # 一台你不关心安全性的机器
+    Ciphers arcfour # 采用最简单的加密算法(替换复杂的加密算法，提高速度)
+
