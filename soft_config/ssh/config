@@ -38,3 +38,7 @@ ControlPersist 600  # session 保留时间，秒， 即使退出ssh，下次连�
 Host dev # 一台你不关心安全性的机器
     Ciphers arcfour # 采用最简单的加密算法(替换复杂的加密算法，提高速度)
 
+Host */* #  to use one host as a jumphost
+    ProxyCommand ssh $(dirname %h) nc -w1 $(basename %h) %p
+    ControlMaster no
+# using the "jumphost/server" syntax. It even allows chaining! Minor issue: the jumphost needs to know about the final destination, so you'll most likely need to deploy your .ssh/config on the jumphost(s) as well.

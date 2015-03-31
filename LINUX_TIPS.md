@@ -1,4 +1,5 @@
 # vim: set expandtab:
+With less code you get more done.
 
 linux 详细的使用说明
 
@@ -210,6 +211,27 @@ curl
 curl -u "yantze" -d '{"scopes":["public_repo"]}' https://api.github.com/users/yantze\?callback\=haha
 curl -u "yantze" -H "Accept: application/vnd.github.v3.text+json"  https://api.github.com/users/yantze
 curl -i/-I -u "username":"password"
+
+wget
+1) use –quiet option to surpress download progress indicator
+wget --quiet http://host_name_of_the_server/path/to/afile.doc
+
+2) use -N to get file only when timestamp or size of the file downloaded has changed
+wget -N http://host_name_of_the_server/path/to/somefile.dat
+
+3) when running wget under bash, one can take advantage of Bash curl braces expansion and do something like this
+wget http://host_name_of_the_server/path/to/{file1.txt,file2.txt,file3.txt}
+wget http://host_name_of_the_server/path/to/{file1,file2,file3}.txt
+wget http://host_name_of_the_server/path/to/file{1,2,3}.txt
+
+Each of the above commands is equivalent to the following
+wget http://host_name_of_the_server/path/to/file1.txt
+wget http://host_name_of_the_server/path/to/file2.txt
+wget http://host_name_of_the_server/path/to/file3.txt
+
+
+
+
 
 
 zsh使用技巧
