@@ -59,6 +59,10 @@ alias putl='trash-list'
 #shadowsocks
 alias ssd='ssserver -c /etc/shadowsocks.json -d'
 
+# view config file whitout empty line(s),spaces(s) ,tab(s) ,'#' or ;
+# there have another:egrep -v '^#|^$' /etc/ntp.conf
+alias cf='egrep -v "^[[:cntrl:] ]*[#;]|^[[:cntrl:] ]*$"'
+
 
 #pp/po in zsh has already set
 # alias pp='pushd'
@@ -74,6 +78,7 @@ fi
 
 
 #functions
+
 
 #fname 递归查找当前目录下指定文件
 function fname() { find . -iname "*$@*"; }

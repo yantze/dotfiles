@@ -90,6 +90,7 @@ echo filename haha !#:1  //显示当前第1个参数!#:1的位置
 eg.
 $ ls code src
 $ cp -r !*
+$_ //you can use to access the last argument in the last command, putty have another efficient key is 'Alt+.'
 
 ^hits^hist  //替换上一条指令
 ^hits^hist^:G  //替换上一条命令的所有string
@@ -424,6 +425,8 @@ http://www.pixelbeat.org/cmdline_zh_CN.html
 killall
 killall -TERM mysqld #关闭mysql进程
 killadd5
+pkill progress_name
+pgrep progress_name # return the progress pid
 
 
 常见的日志位置

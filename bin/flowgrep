@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# ./flowgrep event.log [0-9]+
+# ./flowgrep /var/log/messages "Too many login failures"
+[ $# -lt 2 ] && echo "$0 file \"pattern\"" && exit 0
+tail -f $1|while read line; do echo $line|egrep --color "$2"; done
