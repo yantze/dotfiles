@@ -2,10 +2,12 @@
 
 ###安装
 **快速安装**
+
 在linux和mac执行 vimrc/script/install_rc.sh
 
 **手动安装**
-目录下的install_guide.md
+
+查看目录下的install_guide.md
 
 
 ###常用命令-强大且要记住的功能(适用于本vim配置)
@@ -144,9 +146,11 @@ F1            执行代码到当前行
 <buffer>其实就是你当前下面的buffer而已。
 
 当你熟练的实用Vim后，你可以看看.vimrc文件中的内容，里面有很多详细和实用的技巧，这个一定要循序渐进才能浑然天成
+
 当然_vimrc.bundles这个文件里面是加载的插件，里面有介绍每个插件的作用
+
 我之前学习vim的时候，收集到的一些资料，这次重新复习了里面的内容，整理了一下发布了出来，把它当成中级vim的入门手册吧
-[下载地址](https://github.com/yantze/vimrc/blob/master/VIMdoc.md)。
+[查看](https://github.com/yantze/vimrc/blob/master/VIMdoc.md)。
 
 
 mac下的terminal中,可能会出现菜单栏是黑色的,可以去
