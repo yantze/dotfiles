@@ -18,7 +18,7 @@ Plugin 'scrooloose/syntastic'
 
     " Debug
 
-" DBGP for all language
+" DBGP for PHP, Python, Ruby, Perl, Tcl and NodeJS.
 Plugin 'joonty/vdebug'
 
     " AutoComplete

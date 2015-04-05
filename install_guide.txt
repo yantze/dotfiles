@@ -1,6 +1,7 @@
 https://www.python.org/downloads/
 http://git-scm.com/download/win
 添加字体YaHei.Consolas.1.12.Revise
+到~/.vim/vimfiles/bundle/tern_for_vim下执行npm install 
 
 
 ###安装ycm的步骤 for c/c++ style user

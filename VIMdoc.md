@@ -1355,3 +1355,8 @@ function! Mydict()
     let fwords=getreg("z")
     setlocal buftype=nofile bufhidden=hide noswapfile
 endfunction
+
+###File opening tips
+vim file1 file2 … -o opens file1, file2, … in stacked windows
+vim file1 file2 … -O opens file1, file2, … side by side
+vim file + opens file and move the cursor to the last line.

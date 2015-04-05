@@ -17,7 +17,9 @@ hi VertSplit        ctermbg=black     ctermfg=lightgrey
 hi LineNr           ctermfg=darkgray
 
 hi Comment          ctermbg=none        ctermfg=grey
-hi CursorLine       ctermfg=NONE        ctermbg=0
+" 原来的样子
+" hi CursorLine       ctermfg=NONE        ctermbg=0
+hi CursorLine       ctermfg=NONE        ctermbg=237
 hi Function         ctermfg=yellow      ctermbg=NONE   cterm=NONE
 hi Visual           ctermfg=NONE        ctermbg=32     cterm=NONE
 

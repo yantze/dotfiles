@@ -970,9 +970,9 @@ let g:vdebug_options = {
 \    "debug_file_level"   : 0,
 \    "debug_file"         : "",
 \    "watch_window_style" : 'expanded',
-\    "marker_default"     : '⬦',
-\    "marker_closed_tree" : '▸',
-\    "marker_open_tree"   : '▾'
+\    "marker_default"     : '*',
+\    "marker_closed_tree" : '+',
+\    "marker_open_tree"   : '-'
 \}
 
 " ==============

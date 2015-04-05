@@ -1,7 +1,8 @@
 ##VIM使用说明
 拿到副本后，在linux和mac执行 vimrc/script/install_rc.sh 安装
 
-windows请看目录下的install_guide.txt
+手动安装:
+目录下的install_guide.txt
 
 ###常用命令-强大且要记住的功能(适用于本vim配置)
 
@@ -101,6 +102,21 @@ ctags               可以自行在c/php等头文件建立ctags文件
                     c比如/usr/local/include, php比如pear的包管理中
 ```
 
+###debug
+debug主要用vdebug插件实现
+python:
+pip install pydbgp
+在vim中某行按F9插入断点,按F5开始debug，<leade>F5结束断点
+在20秒内，执行pydbgp.py -d localhost:9000 需要debug的python文件
+```
+F10           step over
+F11           step into
+<leader><F11> step out
+F1            执行代码到当前行
+<leader>ec    执行当前行的代码(后期快捷键可能会变动)
+```
+其它语言由于暂时没有实验过，可以去查:h vdebug
+
 ####Snip
 一旦你输入下面的字符，按Tab键自动补全
 ```
@@ -144,6 +160,10 @@ manpageview需要安装text browser软件, links、elinks或者links2中的一�
 
 默认关闭编译YCM，如果需要开启，确保安装了python-dev和gcc4.4.1+后,
 请自行取消script/install_rc.sh中YCM的注释
+
+mac下的terminal中,可能会出现菜单栏是黑色的,可以去
+~/.dotfiles/vimrc/vimfiles/bundle/vim-airline/autoload/airline/themes/serene.vim
+中改一下背景颜色,把第四行的 let s:termbg = 232 改成 235
 ```
 
 
