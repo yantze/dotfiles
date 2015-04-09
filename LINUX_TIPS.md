@@ -47,9 +47,14 @@ tty | tr '/' '_' //替换前面你的字符串'/'为'_'
 cp /your/path/to/file.list{,.20121106} //备份文件
 cp -af file tofile //用原来文档的用户名
 Ctrl+x Ctrl+e //编辑当前的命令到编辑器，可以在zshrc中export EDITOR='vim'
+Ctrl+R   来搜索历史命令
+Ctrl+W  来删除最后一个单词
+Ctrl+U  来删除一行命令
+
 echo $'\x41'  //输出A
 echo "`ls -l`" || echo `ls -l` //shell用IFS定义的分隔符来分隔字符串，包括、n，所以再传给echo就是，"line 1" "line 2"
 nl || cat -n || cat -d //给文件加行号，中间的会给空行加行号，其它的不会
+nl等同于cat -b
 dmesg //查看软硬件配置
 uptime //查看计算机登陆信息，负载均衡等
 su www -c 'php xxx.php' //命令下行指定用户组来执行命令
@@ -149,6 +154,7 @@ sudo tcpdump -i eth7 -tnn dst port 80 -c 1000 | awk -F "." '{print $1"."$2"."$3"
 netstat -n | awk '/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}'
 # 查看IP连接数
 netstat -n | awk '/^tcp/ {print $5}'| awk -F: '{print $1}' | sort | uniq -c | sort -rn
+netstat -lntp看侦听在网络某端口的进程ㄝ也可以使用 lsof。
 
 # 查找一个域名的真实ip地址
 # TXT/spf records
@@ -427,6 +433,10 @@ killall -TERM mysqld #关闭mysql进程
 killadd5
 pkill progress_name
 pgrep progress_name # return the progress pid
+pstree -p 查看当前进程
+jobs -l(列出id)查看后台运行情况
+fg [%]id 把id拿到前台来
+bg 显示fg要放在前面的,其中一个功能是
 
 
 常见的日志位置

@@ -1,3 +1,18 @@
+### package manager
+rpm -qa | grep php
+可以查看一些没有yum没有清理干净的东邪
+rpm -e 需要卸载的软件名
+
+yum erase 需要卸载的软件名
+yum provides '*/radtest'  #这个可以查找的某个未安装命令的位置
+find / | fgrep radtest 
+
+rpm -ql freeradius-mysql
+查找这个软件安装了什么
+
+rpm -qf /usr/lib/freeradius/rlm_sql_mysql-2.1.1.so
+查找这个动态库来自哪个安装包
+
 ###must installed package
 yum install git hg ntpdate the_silver_searcher
 yum install zsh tmux bind-utils man-pages
@@ -59,3 +74,10 @@ sudo rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
 sudo rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm
 ```
 
+#镜像网站
+http://mirror-status.centos.org/
+http://mirrors.163.com/
+http://mirror.sohu.com/
+http://mirrors.ustc.edu.cn/
+http://mirror.bjtu.edu.cn/cn/
+http://mirrors.tuna.tsinghua.edu.cn/
