@@ -224,7 +224,9 @@ Plugin 'Simple-Javascript-Indenter'
 
 "GO
 " goland的多种vim功能/安装
-Plugin 'cespare/vim-golang'
+" Plugin 'cespare/vim-golang'
+" 另外一个后浪:https://github.com/fatih/vim-go
+Plugin 'fatih/vim-go'
 " go get github.com/bradfitz/goimports
 " 需要添加let g:gofmt_command = "goimports" 可以使用下面的功能
 " 让任何Go文件保存前，调用goimports对该文件排版并插入/删除相应的import语句。
