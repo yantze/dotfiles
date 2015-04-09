@@ -131,6 +131,14 @@ openssl rand -hex n
 截取长度
 ${variable:0:5}
 
+zsh内置函数
+zmv
+zmv '(*).lis' '$1.txt' // renames 'foo.lis' to 'foo.txt'
+alias mmv='noglob zmv -W'  //noglob means no need quote the arguments
+mmv *.c.orig orig/*.c
+
+stat file/dirname
+显示inode和blocks数量
 
 
 软件使用：
