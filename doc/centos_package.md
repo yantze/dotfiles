@@ -1,3 +1,8 @@
+### 包管理工具 yum update和yum upgrade 的区别
+yum upgrade 会升级包到最新的版本，举个例子，foo 新版改名为 foo2，那么它会安装 foo2 并且把 foo 删除，而 yum update 只会升级 foo，不会将包更新到 foo2。
+其实 yum upgrade = yum --obsoletes update。
+因此，yum update 可以更保守地管理包，但 yum upgrade 才会将所有的包保持最新，虽然可能改名会引起一起麻烦。
+
 ### package manager
 rpm -qa | grep php
 可以查看一些没有yum没有清理干净的东邪

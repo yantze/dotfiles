@@ -37,3 +37,6 @@ After compiling, you may wish to
 Code:
 sudo swapoff /swapfile
 sudo rm /swapfile
+
+# linux找出两个文件中相同的行(diff相反)
+grep -f file.a file.b

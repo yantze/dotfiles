@@ -146,3 +146,7 @@ git push
 git checkout master
 git pull
 get thing done
+
+## move master to origin/master
+git checkout master
+git rebase origin/master
