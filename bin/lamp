@@ -2,4 +2,4 @@
 # sudo su - -c "source start.sh"
 sudo setenforce 0
 sudo service httpd restart
-sudo service mysqld restart
+sudo service mariadb restart
