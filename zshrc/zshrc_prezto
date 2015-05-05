@@ -20,7 +20,7 @@ export CHEATCOLORS=true
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+#  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
 
@@ -38,5 +38,5 @@ fi
 # added by travis gem
 [ -f /home/yantze/.travis/travis.sh ] && source /home/yantze/.travis/travis.sh
 
-export NVM_DIR=~/.nvm
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# export NVM_DIR=~/.nvm
+# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
