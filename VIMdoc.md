@@ -1360,3 +1360,18 @@ endfunction
 vim file1 file2 … -o opens file1, file2, … in stacked windows
 vim file1 file2 … -O opens file1, file2, … side by side
 vim file + opens file and move the cursor to the last line.
+
+### 
+把找到的内容放在文件头
+g/pattern/t0
+把找到的内容放在文件尾
+g/pattern/t$
+把找到的内容整行放在文件尾
+g/pattern/m$
+
+输入分割线---
+72i-<esc>
+所有行倒序
+:g/^/m0
+行间插入空行
+:g/^/pu _

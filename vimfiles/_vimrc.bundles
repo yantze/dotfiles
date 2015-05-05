@@ -39,6 +39,8 @@ Plugin 'Valloric/YouCompleteMe'
 " Plugin 'mhinz/vim-startify'
 
     " Plugin
+" Plugin 'Conque-Shell'
+Plugin 'rosenfeld/conque-term'
 
 " snip综合解决方案
 Plugin 'SirVer/ultisnips'
