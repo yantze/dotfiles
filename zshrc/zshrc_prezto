@@ -40,10 +40,6 @@ fi
 # added by travis gem
 [ -f /home/yantze/.travis/travis.sh ] && source /home/yantze/.travis/travis.sh
 
-<<<<<<< HEAD
-# export NVM_DIR=~/.nvm
-# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-=======
 # zprezto history module
 # Press ^U (the Control and U keys simultaneously) to abort the search.
 # bind UP and DOWN arrow keys
@@ -53,4 +49,3 @@ bindkey "$terminfo[kcud1]" history-substring-search-down
 # bind P and N for EMACS mode
 # bindkey -M emacs '^P' history-substring-search-up
 # bindkey -M emacs '^N' history-substring-search-down
->>>>>>> d2d845c82fba4a1e81fa9a06e314879b79038b85
