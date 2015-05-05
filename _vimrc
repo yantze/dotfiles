@@ -829,7 +829,10 @@ let g:airline#extensions#tabline#enabled = 1
 " determine whether bufferline will overwrite customization variables
 let g:airline#extensions#bufferline#overwrite_variables = 1
 " AirLine彩色状态栏:badwolf, bubblegum, luna, raven, serene
-" mac: sol
+" 白色状态栏: sol
+" serene需要修改的地方：
+" ~/.dotfiles/vimrc/vimfiles/bundle/vim-airline/autoload/airline/themes +4
+" 改为235
 let g:airline_theme = 'serene'                " 设置主题
 " configure the title text for quickfix buffers
 let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'
@@ -1159,7 +1162,7 @@ endif
 let g:ctrlp_custom_ignore = {
             \'dir': '\.git$\|\.hg$\|\.svn$\|bower_components$\|dist$\|node_modules$\|project_files$\|test$',
             \'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$\|\.pyo$\|\.rbc$\|\.rbo$\|\.class$\|\.o$\|\~$'
-            \} 
+            \}
 
 " command! -nargs=* -complete=function Call exec 'call '.<f-args>
 " command! Q q
