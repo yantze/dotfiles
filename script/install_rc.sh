@@ -22,7 +22,7 @@ ln -sf "$dir/vimfiles" ~/.vim
 
 #install vundle plugin
 if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
-    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+   git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 fi
 
 
@@ -30,7 +30,7 @@ fi
 vim +BundleInstall +qall
 
 #DEFAULT : Not to install YCM plug-in
-sed -i '/Valloric\/YouCompleteMe/{s@^@" @}' ~/.vim/_vimrc.bundles
+#sed -i '/Valloric\/YouCompleteMe/{s@^@" @}' ~/.vim/_vimrc.bundles
 # if you want to install & compile YCM
 # cd ~/.vim/bundle/YouCompleteMe
 # mkdir ycm_build

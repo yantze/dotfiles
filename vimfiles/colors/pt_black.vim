@@ -1,12 +1,13 @@
 " author : yantze@126.com
-" full name : vastiny_tmux_putty
+" full name : putty_tmux_black
 
-" From https://github.com/garybernhardt/destroy-all-software-extras/blob/master/das-0030-some-vim-tips/grb256.vim
 " Based on
 runtime colors/ir_black.vim
-" and base on grb256
+" runtime globpath(&rtp, 'colors\ir_black.vim')
+" and base-cn on grb256
+" From https://github.com/garybernhardt/destroy-all-software-extras/blob/master/das-0030-some-vim-tips/grb256.vim
 
-let g:colors_name = "vt_tmux"
+let g:colors_name = "pt_black"
 
 hi pythonSpaceError ctermbg=red
 
@@ -16,7 +17,9 @@ hi VertSplit        ctermbg=black     ctermfg=lightgrey
 hi LineNr           ctermfg=darkgray
 
 hi Comment          ctermbg=none        ctermfg=grey
-hi CursorLine       ctermfg=NONE        ctermbg=234
+" 原来的样子
+" hi CursorLine       ctermfg=NONE        ctermbg=0
+hi CursorLine       ctermfg=NONE        ctermbg=237
 hi Function         ctermfg=yellow      ctermbg=NONE   cterm=NONE
 hi Visual           ctermfg=NONE        ctermbg=32     cterm=NONE
 

@@ -1,10 +1,14 @@
 ##VIM使用说明
-拿到副本后，在linux和mac执行 vimrc/script/install_rc.sh 安装
 
-windows请看目录下的install_guide.txt
+###安装
+**快速安装** 
+在linux和mac执行 vimrc/script/install_rc.sh
+
+**手动安装** 
+查看目录下的install_guide.md
+
 
 ###常用命令-强大且要记住的功能(适用于本vim配置)
-
 ####Key
 ```
 Ctrl+P          快速查找当前文件夹下所有子目录的文件,ctrl+j/k上下选择文件
@@ -34,18 +38,16 @@ K               判断文件类型，自动调用:Man function/command name
 ####PHP补全
 可以使用Ctrl+x,Ctrl+o来补全内容
 
+####Snip
+一旦你输入下面的字符，按Tab键自动补全
+```
+#!
+class
+html5
+```
 
 
-###vim学习
-如果是初学者，要学会这几个技巧
-vim有很多的‘模式’，在normal模式下
-jkhl: 这四个键分别代表：下上左右
-按字母i，进入insert插入模式，然后就可以输入文字
-按ESC键，退出insert进入normal模式
-退出要先按英文冒号:然后输入q
-
-这些是基本的规则，如果要熟练的话，需要做一些高级的练习：
-
+####Vim学习
 [简明Vim练级攻略](http://coolshell.cn/articles/5426.html)
 
 [vim游戏](http://vim-adventures.com/)
@@ -57,6 +59,7 @@ jkhl: 这四个键分别代表：下上左右
 /xxx                    查找xxx字符串
 ,ci                     注释选定行(自动识别文件类型后添加注释)
 ,n/,p                   切换buffer的标签(因为vim的一个窗口里面有多个buffer)
+                        同时设置了新的快捷键F2/F3对应,n/,p
 10G                     数字10和大写的G，跳到第十行
 
 :s/^/#                  用"#"注释当前行 ,":s/<search>/<replace>"
@@ -65,7 +68,7 @@ jkhl: 这四个键分别代表：下上左右
 :.,+3s/x/b              在前行和当前行后面的三行，替换x为b
 :set notextmode         这个可以去掉^M这个符号
 :set pastetoggle        可以解决在linux命令行复制内容的时候，
-                        内容被识别为vim操作和乱序缩进,在我的配置中快捷键为F3
+                        内容被识别为vim操作和乱序缩进,在我的配置中快捷键为F4
 
 f<char>                 查找当前行的字符
 gb                      go browser，光标下如果是url链接，自动用默认浏览器打开链接，
@@ -100,33 +103,31 @@ ctags               可以自行在c/php等头文件建立ctags文件
                     c比如/usr/local/include, php比如pear的包管理中
 ```
 
-####Snip
-一旦你输入下面的字符，按Tab键自动补全
+###debug
+debug主要用vdebug插件实现
+python:
+pip install pydbgp
+在vim中某行按F9插入断点,按F5开始debug，<leade>F5结束断点
+在20秒内，执行pydbgp.py -d localhost:9000 需要debug的python文件
 ```
-#!
-class
-html5
+F10           step over
+F11           step into
+<leader><F11> step out
+F1            执行代码到当前行
+<leader>ec    执行当前行的代码(后期快捷键可能会变动)
 ```
-
-
-初入门的你，以后肯定会遇到这两个东西 <leader>和<buffer>
-<leader>默认是一个按钮，指的是反斜杠'\'，不过我在配置中设置成了',',减少小指的负担。
-<buffer>其实就是你当前下面的buffer而已。
-
-当你了解到了基本的使用方法后，你可以读看看我在.vimrc中的文档，里面有很多详细的技巧，熟悉后基本能甩开sublime和notepad++
-当然_vimrc.bundles这个文件里面是加载的插件，里面有介绍每个插件是拿来干嘛的，也可以了解
-我之前学习vim的时候，收集到的一些资料，这次重新复习了里面的内容，整理了一下发布了出来，就把它当成中级vim的入门手册吧，[下载地址](https://github.com/yantze/vimrc/blob/master/VIMdoc.md)。
-
+其它语言由于暂时没有实验过，可以去查:h vdebug
 
 
 ###Thanks
 
 这份vim配置的所以完成，会如此热爱vim，是看到了ruchee的vimrc的配置
-其完善的配置让我感觉vim是如此的简单
+
+其完善的配置让我感觉vim生命的质量
 [ruchee](https://github.com/ruchee/vimrc)
 
 
-我也参考了很多的vim配置:
+我也参考了很多其它优秀的vim配置:
 [vimfiles](https://github.com/coderhwz/vimfiles)
 [dotfiles](https://github.com/luin/dotfiles)
 [vimrc](https://github.com/rhyzx/vimrc)
@@ -138,16 +139,19 @@ html5
 
 
 ###一些说明
+`<leader>和<buffer>`
+`<leader>`默认是一个按钮，指的是反斜杠'\'，不过我在配置中设置成了',',减少小指的负担。
+`<buffer>`其实就是你当前下面的buffer而已。
+`.vimrc`是vim的配置文件，我在里面引用了很多详细和实用的技巧，这个一定要循序渐进才能浑然天成
+`_vimrc.bundles`是加载的插件，里面有介绍每个插件的作用
+
+我之前学习vim的时候，收集到的一些资料，这次重新复习了里面的内容，整理了一下发布了出来，把它当成中级vim的入门手册吧
+[查看](https://github.com/yantze/vimrc/blob/master/VIMdoc.md)
+
+
+mac下的terminal中,可能会出现菜单栏是黑色的,可以去
 ```
-manpageview需要安装text browser软件, links、elinks或者links2中的一个
-
-默认关闭编译YCM，如果需要开启，确保安装了python-dev和gcc4.4.1+后,
-请自行取消script/install_rc.sh中YCM的注释
+~/.dotfiles/vimrc/vimfiles/bundle/vim-airline/autoload/airline/themes/serene.vim
 ```
+中改一下背景颜色,把第四行的 let s:termbg = 232 改成 235
 
-
-
-###提取php函数名
-```bash
-find ./php.5.3 -type f -name "*.h" -o -name "*.c" | xargs grep -E "PHP_FUNCTION|ZEND_FUNCTION" | sed -ie "s/.*_FUNCTION(//g;s/)//g" | sort | uniq > functions.txt
-```

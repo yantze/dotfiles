@@ -19,6 +19,16 @@
         silent function! WINDOWS()
             return  (has('win16') || has('win32') || has('win64'))
         endfunction
+        " if has('win32')
+        "     let g:pydiction_location = 'C:/vim/vimfiles/ftplugin/pydiction/complete-dict'
+        " else
+        "     if system('uname')=~'Darwin'
+        "         let g:pydiction_location = '/Users/you/.vim/bundle/pydiction/complete-dict'
+        "     else
+        "         let g:pydiction_location = '/home/you/.vim/bundle/pydiction/complete-dict'
+        "     endif
+        " endif
+
     " }
 
     " Windows Compatible {
@@ -79,11 +89,15 @@
         " 添加vundle插件管理器
         set nocompatible               " 设置不与之前版本兼容 be iMproved
         filetype off                   " 检测文件类型 required!
-        if filereadable(expand("$VIM/_vimrc.bundles"))
-            if filereadable(expand("$VIM/bundle/Vundle.vim/README.md"))
-                set rtp+=$VIM/bundle/Vundle.vim  "添加vendle环境变量
-                source $VIM/_vimrc.bundles
-            endif
+        " set vimrc_no_plugin=1 to do not add-on plugin
+        " let g:vimrc_no_plugin=1
+        if !exists("g:vimrc_no_plugin")
+            " if filereadable(expand("$VIM/_vimrc.bundles"))
+                if filereadable(expand("$VIM/bundle/Vundle.vim/README.md"))
+                    set rtp+=$VIM/bundle/Vundle.vim  "添加vendle环境变量
+                    source $VIM/_vimrc.bundles
+                endif
+            " endif
         endif
         " you can put it in tmpfs:/dev/shm/.dotfiles/vimrc/vimfiles/bundle/Vundle.vim
         " 安装新的插件 :PluginInstall
@@ -181,6 +195,22 @@ function! AppendModeline()
     let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
     call append(line("$"), l:modeline)
 endfunction
+
+" Mydict, use *dict* in vim {
+function! Mydict()
+    let expl=system('dict ' . expand("<cword>"))
+    windo if expand("%")=="dict.tmp" | q! | endif
+    " botright vertical 33split dict.tmp
+    botright 12split dict.tmp
+    " botright cwindow
+    setlocal buftype=nofile bufhidden=hide noswapfile
+    set report=2 " ignore the following 'one line' substitution
+    set nonu
+    1s/^/\=expl/
+    1
+    set report=0 " recovery the 'report' setting
+endfunction
+" Mydict }
 
 " 编译并运行
 func! Compile_Run_Code()
@@ -283,7 +313,7 @@ func! Compile_Run_Code()
 endfunc
 
 " 生成cscope和tags文件
-function Do_CsTag()
+function! Do_CsTag()
     let dir = getcwd()
     if filereadable("tags")
         if(g:iswindows==1)
@@ -340,24 +370,32 @@ function Do_CsTag()
 endfunction
 " }}}
 
+
+let g:startify_custom_header = [
+        \ '   hello zhi',
+        \ '',
+        \ ]
+
 syntax enable                " 打开语法高亮
 syntax on                    " 开启文件类型侦测
 filetype indent on           " 针对不同的文件类型采用不同的缩进格式
 filetype plugin on           " 针对不同的文件类型加载对应的插件
 filetype plugin indent on    " 启用自动补全
-set ic                       "忽略大小写查找
-set visualbell t_vb=         "关闭visual bell/声音
-au GuiEnter * set t_vb=      "关闭beep/屏闪
+set ic                       " 忽略大小写查找
+set visualbell t_vb=         " 关闭visual bell/声音
+au GuiEnter * set t_vb=      " 关闭beep/屏闪
 
 " 文件配置
-set fileformats=unix                             " 设定换行符
+" set fileformats=unix                             " 设定换行符
 set bsdir=buffer                                 " 设定文件浏览器目录为当前目录
 set enc=utf-8                                    " 设置编码
 set fenc=utf-8                                   " 设置文件编码
 set fencs=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936 " 设置文件编码检测类型及支持格式
 set shortmess+=filmnrxoOtT                       " Abbrev. of messages (avoids 'hit enter')
 set viewoptions=folds,options,cursor,unix,slash  " Better Unix / Windows compatibility
-set virtualedit=onemore                          " Allow for cursor beyond last character
+" set virtualedit=onemore                          " Allow for cursor beyond last character
+" set bsdir=buffer                               " 设定文件浏览器目录为当前目录,default value
+" set autochdir
 
 
 " 设置着色模式和字体
@@ -374,20 +412,27 @@ if g:isWIN
         set guioptions+=c        " 使用字符提示框
         set guioptions-=m        " 隐藏菜单栏
         set guioptions-=T        " 隐藏工具栏
-        " set guioptions-=L        " 隐藏左侧滚动条
-        " set guioptions-=r        " 隐藏右侧滚动条
+        set guioptions-=L        " 隐藏左侧滚动条
+        set guioptions-=r        " 隐藏右侧滚动条
         " set guioptions-=b        " 隐藏底部滚动条
         " set showtabline=1        " 隐藏Tab栏
         set guioptions+=aA       " get some autoselect interaction with the system clipboard
 
-        " set colortheme molokai autumn blackboard asu1dark busybee tomorrow
-        colorscheme solarized
+        " colortheme list: molokai autumn blackboard asu1dark busybee tomorrow
+        " colorscheme solarized  " deep blue
+        " colorscheme morning    " white
+
+        " let g:zenburn_transparent = 1 " black
+        let g:zenburn_high_Contrast = 1
+        colorscheme zenburn      " grey, my fav
 
         " set font
         " set guifont=Consolas:h12
         " set guifont=Monaco:h15
         " set guifont=Source\ Code\ Pro\ Regular:h15
-        set guifont=Source\ Code\ Pro\:h13
+        " set guifont=YaHei\ Consolas\ Hybrid:h13
+        set guifont=Source\ Code\ Pro:h13
+
     else
         colorscheme ir_black
         " 兼容windows下cmd的gb2312
@@ -405,18 +450,8 @@ else
         let g:solarized_termcolors=256
 
     else
-        " colorscheme ir_black
-        " colorscheme grb256
-        if filereadable(expand("$VIM/colors/vt_tmux.vim"))
-            colorscheme vt_tmux
-        endif
-
-        " set background=dark
-        " let g:solarized_termtrans =0
-        " let g:solarized_termcolors=256
-        " colorscheme solarized
-        " colorscheme BusyBee
-        " set guifont=Monaco\ 11
+        " colortheme list: ir_black grb256 BusyBee
+        colorscheme pt_black
     endif
 endif
 
@@ -425,9 +460,11 @@ if v:version > 703
     set relativenumber
 
     " 替换原来的查找，可以同时显示多个查找关键字(Easymotion)
-    if filereadable(expand("$VIM/bundle/vim-easymotion/README.md"))
-        map  / <Plug>(easymotion-sn)
-        omap / <Plug>(easymotion-tn)
+    if !exists("g:vimrc_no_plugin")
+        if filereadable(expand("$VIM/bundle/vim-easymotion/README.md"))
+            map  / <Plug>(easymotion-sn)
+            omap / <Plug>(easymotion-tn)
+        endif
     endif
 endif
 
@@ -443,7 +480,6 @@ set smartindent              " 智能自动缩进
 set nu!                      " 显示行号
 set ruler                    " 右下角显示光标位置的状态行
 set hidden                   " 允许在有未保存的修改时切换缓冲区
-set autochdir                " 设定文件浏览器目录为当前目录
 set foldmethod=marker        " 选择代码折叠类型
 set foldlevel=100            " 禁止自动折叠 also same: set [no]foldenable
 set laststatus=2             " 开启状态栏信息
@@ -461,11 +497,13 @@ set history=50               " keep 50 lines of command line history
 set incsearch                " 开启实时搜索功能,查询时非常方便，如要查找book单词，当输入到/b时，会自动找到第一个b开头的单词，当输入到/bo时，会自动找到第一个bo开头的单词
 set hlsearch                 " 开启高亮显示结果
 set nowrapscan               " 搜索到文件两端时不重新搜索
-set lbr                      "不在单词中间断行(linebreak)
+set mouse=a                  " 启用鼠标
+set lbr                      " 不在单词中间断行(linebreak)
 " set nowrap                   " 设置不自动换行
 " set tw=78                    "超过80个字符就折行(textwrap)
-" set mouse=a                  " 启用鼠标
 " set viminfo='20,\"50         " read/write a .viminfo file, don't store more than 50 lines of registers
+set undofile                 " 重新打开文件可恢复上次关闭的撤销记录,默认filename.un~, only use for `vim --version` have +persistent_undo feature
+set display=lastline         " 不要显示@@@@@
 
 
 " Tab
@@ -503,6 +541,9 @@ set ai!                      " 设置自动缩进
 " 用两个<CR>可以隐藏执行命令后出现的提示信息"
 " map F :call FormatCode() <CR><CR>
 " map <silent>F 也可以隐藏
+" F                   格式化输出(已抛弃,js-beautify better)
+" map F :%s/{/{\r/g <CR> :%s/}/}\r/g <CR>  :%s/;/;\r/g <CR> gg=G
+
 
 " Ctrl + H            光标移当前行行首
 imap <c-h> <ESC>I
@@ -580,9 +621,6 @@ vmap <leader>r<cr> <ESC>:%s/\r//g<CR>
 nmap <leader>th <ESC>:set nonumber<CR>:set norelativenumber<CR><ESC>:TOhtml<CR><ESC>:w %:r.html<CR><ESC>:q<CR>:set number<CR>:set relativenumber<CR>
 vmap <leader>th <ESC>:set nonumber<CR>:set norelativenumber<CR><ESC>:TOhtml<CR><ESC>:w %:r.html<CR><ESC>:q<CR>:set number<CR>:set relativenumber<CR>
 
-" F                   格式化输出
-map F :%s/{/{\r/g <CR> :%s/}/}\r/g <CR>  :%s/;/;\r/g <CR> gg=G
-
 " move lines up or down (command - D)
 nmap <m-j> mz:m+<cr>`z
 nmap <m-k> mz:m-2<cr>`z
@@ -603,13 +641,22 @@ imap <c-tab> <Esc>:tabn<CR>i
 :map <c-s-tab> :tabp<CR>
 imap <c-s-tab> <Esc>:tabp<CR>i
 
+" 下一个缓冲区
 :nmap <leader>n :bn<CR>
 :map <leader>n :bn<CR>
 imap <leader>n <Esc>:bp<CR>i
+:nmap <c-F3> :bn<CR>
+:map <c-F3> :bn<CR>
+imap <c-F3> <Esc>:bp<CR>i
 
+
+" 上一个缓冲区
 :nmap <leader>p :bp<CR>
 :map <leader>p :bp<CR>
 imap <leader>p <Esc>:bp<CR>i
+:nmap <c-F2> :bp<CR>
+:map <c-F2> :bp<CR>
+imap <c-F2> <Esc>:bp<CR>i
 
 " \R         一键保存、编译、运行
 imap <leader>R <ESC>:call Compile_Run_Code()<CR>
@@ -637,6 +684,24 @@ nnoremap <silent> <C-k>  :m-2<CR>==
 nnoremap <silent> <C-j>  :m+<CR>==
 xnoremap <silent> <C-k>  :m'<-2<CR>gv=gv
 xnoremap <silent> <C-j>  :m'>+<CR>gv=gv
+
+" Process past
+set pastetoggle=<F3>
+nnoremap <F3> :set invpaste paste?<CR>
+imap <F3> <C-O>:set invpaste paste?<CR>
+set pastetoggle=<F3>
+" no num and relative
+nnoremap <leader><F3> :set relativenumber!<CR>:set nu!<CR>
+imap <leader><F3>     :set relativenumber!<CR>:set nu!<CR>
+
+" 切换窗口光标
+" switch window
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+"nnoremap <leader>w <C-W>w
+
 
 " =======
 " Plugins
@@ -709,50 +774,38 @@ map <leader>cf :CoffeeCompile watch vert<cr>
 "let skim use slim syntax
 au BufRead,BufNewFile *.skim set filetype=slim
 
+
+" Enable omni completion.还不确定这个有什么用
+" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+" autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+" autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+" autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
+
+" neocomplcache setting
+" Enable heavy omni completion.
+" if !exists('g:neocomplcache_omni_patterns')
+"   let g:neocomplcache_omni_patterns = {}
+" endif
+" let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+
+" minitest
+" set completefunc=syntaxcomplete#Complete
+
+
 "auto completed
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
 
 
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" Enable heavy omni completion.
-if !exists('g:neocomplcache_omni_patterns')
-  let g:neocomplcache_omni_patterns = {}
-endif
-let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-
-
-let g:Powerline_cache_enabled = 1
-
-"minitest
-set completefunc=syntaxcomplete#Complete
-
-"process past
-set pastetoggle=<F3>
-nnoremap <F3> :set invpaste paste?<CR>
-imap <F3> <C-O>:set invpaste paste?<CR>
-set pastetoggle=<F3>
 
 " RSpec.vim mappings
 " map <Leader>t :call RunCurrentSpecFile()<CR>
 " map <Leader>s :call RunNearestSpec()<CR>
 " map <Leader>l :call RunLastSpec()<CR>
 " map <Leader>a :call RunAllSpecs()<CR>
-
-" 切换窗口光标
-" switch window
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-"nnoremap <leader>w <C-W>w
 
 " Goyo:the pure writer
 function! s:goyo_before()
@@ -775,8 +828,9 @@ nmap <Leader><Space> :Goyo<CR>
 let g:airline#extensions#tabline#enabled = 1
 " determine whether bufferline will overwrite customization variables
 let g:airline#extensions#bufferline#overwrite_variables = 1
-" AirLine彩色状态栏
-let g:airline_theme = 'badwolf'                " 设置主题
+" AirLine彩色状态栏:badwolf, bubblegum, luna, raven, serene
+" mac: sol
+let g:airline_theme = 'serene'                " 设置主题
 " configure the title text for quickfix buffers
 let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'
 
@@ -815,6 +869,8 @@ au BufNewFile,BufRead *.phtml set filetype=php
 " Indent_guides       显示对齐线
 let g:indent_guides_enable_on_vim_startup = 1  " 默认关闭
 let g:indent_guides_guide_size            = 1  " 指定对齐线的尺寸
+" 因为go自动会添加tab, 使用<leader>ig也可以切换
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'go']
 
 
 ":Tlist               调用TagList
@@ -848,21 +904,30 @@ let Tlist_File_Fold_Auto_Close = 1             " 自动折叠
 " Ctrl+x, Ctrl+f 补全当前要输入的路径
 "
 "
-" manpageview phpfunctionname
+" manpageview phpfunctionname.php
 " 可以使用快捷键K查询
-" 说明，比如你在centos里面装了man-pages，当你用K查询的时候，自动会弹出man 你光
-" 标下面的词
+" 说明，比如你在centos里面装了man-pages，当你用K查询的时候，自动会弹出man 你光标下面的词
+" manpageview 替代了插件pydoc.vim
+" 查找当前的单词意思,quick close: ZZ/:q
+nmap <silent><leader>K :call Mydict()<CR>
 "
 "
 " =========
 " PHP
 " =========
 "只有在是PHP文件时，才启用PHP补全
-function AddPHPFuncList()
+function! AddPHPFuncList()
     set dictionary+=$HOME/.vim/vimfiles/resource/php-offical.dict
     set complete-=k complete+=k
 endfunction
 autocmd FileType php call AddPHPFuncList()
+autocmd FileType php setlocal omnifunc=syntaxcomplete#Complete
+
+" Map <leader>el to error_log value
+" takes the whatever is under the cursor and wraps it in error_log( and
+" print_r( with parameter true and a label
+autocmd FileType php nnoremap <leader>el ^vg_daerror_log( '<esc>pa=' . print_r( <esc>pa, true ) );<cr><esc>
+
 
 " set tags+= ~/.vim/vimfiles/resource/tags-php
 
@@ -905,9 +970,9 @@ let g:vdebug_options = {
 \    "debug_file_level"   : 0,
 \    "debug_file"         : "",
 \    "watch_window_style" : 'expanded',
-\    "marker_default"     : '⬦',
-\    "marker_closed_tree" : '▸',
-\    "marker_open_tree"   : '▾'
+\    "marker_default"     : '*',
+\    "marker_closed_tree" : '+',
+\    "marker_open_tree"   : '-'
 \}
 
 " ==============
@@ -936,12 +1001,6 @@ let g:phpqa_messdetector_autorun = 0
 " shell测试：jshint -version
 "
 
-" ==============
-" web : html css
-" ==============
-" 只能在特定的文件里面才载入，默认是全局
-let g:user_emmet_install_global = 0
-autocmd FileType html,css,phtml,tpl EmmetInstall
 
 " 这个主要用来对txt文档也可以用taglist列表
 au BufEnter *.txt,*.log,*.ini setlocal ft=txt
@@ -986,7 +1045,9 @@ nmap <silent><leader>mt :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <cr><
 
 "
 "
-"
+"marker 使用
+"m 0~9 标记文件
+"' 0~9 随时打开文件
 
 " tips
 " 从vim暂时的切换到Console
@@ -1030,9 +1091,11 @@ nmap <silent><leader>mt :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <cr><
 " :HexoNew artical-name
 " :HexoOpen artical-name
 
-" there use special tech
+" there use special tech, when you put ':ag ', will display ':Ag '
 " cnoreabbrev ag Ag
 cabbrev ag <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'Ag' : 'ag')<CR>
+" search the cur word by ag
+command! Agg exe 'Ag -Q ' . expand('<cword>')
 
 " Syntastic
 let g:syntastic_check_on_open        = 0
@@ -1079,11 +1142,24 @@ nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 
 " CtrlP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.png,*.gif,*.jpeg,.DS_Store  " MacOSX/Linux
 " nnoremap <Leader>t :CtrlP getcwd()<CR>
 " nnoremap <Leader>f :CtrlPClearAllCaches<CR>
-nnoremap <Leader>bf :CtrlPBuffer<CR>
+nnoremap <Leader>bl :CtrlPBuffer<CR>
 " nnoremap <Leader>j :CtrlP ~/<CR>
-" nnoremap <Leader>p :CtrlP<CR>
+" 下面这句话是说ctrlp自动默认取消探索所有tmp目录下的文件,所以会导致在tmp目录中
+" ,不能使用ctrlp,其实我发现在随便一种tmp目录下面,使用vim的 :e path/to/filename
+" 都没有作用,具体原因可能和ctrlp类似
+" default gtrlp_custom_ignore =  '\v[\/]\.(git|hg|svn)$',
+if exists('g:ctrlp_custom_ignore')
+    unlet g:ctrlp_custom_ignore
+endif
+let g:ctrlp_custom_ignore = {
+            \'dir': '\.git$\|\.hg$\|\.svn$\|bower_components$\|dist$\|node_modules$\|project_files$\|test$',
+            \'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$\|\.pyo$\|\.rbc$\|\.rbo$\|\.class$\|\.o$\|\~$'
+            \} 
 
 " command! -nargs=* -complete=function Call exec 'call '.<f-args>
 " command! Q q
@@ -1110,6 +1186,7 @@ command! -bang Bq call CleanClose(0,1)
 au BufRead *vimrc setl foldmethod=marker foldlevel=0
 " set foldenable
 " set foldlevelstart=99
+au BufRead *.wsgi setl filetype=python
 
 
 let g:iswindows=1
@@ -1126,4 +1203,153 @@ nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>:copen<CR>
 
 " Set 'comments' to format dashed lists in comments. setlocal only can use cur
 " file
-set comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
+" 无效果
+" set comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
+
+" au BufWritePre /tmp/* setl undofile
+" hahaha" dfsdjfksdj
+" z则次
+
+" Ctrl + h/j/k/l 移动光标到上下左右位置
+" Ctrl + H/J/K/L 移动窗口到上下左右位置
+" '+1~9 上次打开的文件
+" m+1~9 mark 1~9文件的位置
+" :vert diffsplit main.c
+" dp : diffput,把增加的部分放到另外一边
+"
+" insert schema, ctrl+w and other keys likes emacs
+
+" python highlight
+let python_highlight_all = 1
+let b:python_version_2 = 1
+let g:python_version_2 = 1
+
+let g:phpcomplete_relax_static_constraint = 1
+let g:phpcomplete_complete_for_unknown_classes = 1
+let g:phpcomplete_search_tags_for_variables = 1
+let g:phpcomplete_mappings = {
+  \ 'jump_to_def': ',g',
+  \ }
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Modify word boundary characters
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" remove - as a word boundary (i.e. making a keyword character)
+set iskeyword+=-
+" remove $ as a word boundary (i.e. making a keyword character)
+set iskeyword+=$
+set wrap linebreak nolist
+
+" map j to gj and k to gk, so line navigation ignores line wrap
+nnoremap j gj
+nnoremap k gk
+" mapping search with Ack
+"nnoremap <leader>f :Ack<space>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Wild settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Disable output and VCS files
+set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
+
+" Disable image files
+set wildignore+=*.psd,*.png,*.jpg,*.gif,*.jpeg
+
+" Disable archive files
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
+
+" Ignore bundler and sass cache
+set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
+
+" Disable temp and backup files
+set wildignore+=*.swp,*~,._*,*.un~
+
+" Node and JS stuff
+set wildignore+=*/node_modules/*,*.min.js
+
+" WP Language files
+set wildignore+=*.pot,*.po,*.mo
+
+" Fonts and such
+set wildignore+=*.eot,*.eol,*.ttf,*.otf,*.afm,*.ffil,*.fon,*.pfm,*.pfb,*.woff,*.svg,*.std,*.pro,*.xsf
+
+" \ig                        --显示/关闭对齐线
+" 0 or ^ or $                --跳至 行首 or 第一个非空字符 or 行尾
+"
+
+"
+" [ Ctrl+D                   --跳至当前光标所在变量的首次定义位置 [从文件头部开始]
+" [ Ctrl+I                   --跳至当前光标所在变量的首次出现位置 [从文件头部开始]
+" [ D                        --列出当前光标所在变量的所有定义位置 [从文件头部开始]
+" [ I                        --列出当前光标所在变量的所有出现位置 [从文件头部开始]
+"
+" ---------- 文本操作 ----------
+"
+" dw de d0 d^ d$ dd          --删除
+" cw ce c0 c^ c$ cc          --删除并进入插入模式
+" yw ye y0 y^ y$ yy          --复制
+" vw ve v0 v^ v$ vv          --选中
+"
+" di分隔符                   --删除指定分隔符之间的内容 [不包括分隔符]
+" ci分隔符                   --删除指定分隔符之间的内容并进入插入模式 [不包括分隔符]
+" yi分隔符                   --复制指定分隔符之间的内容 [不包括分隔符]
+" vi分隔符                   --选中指定分隔符之间的内容 [不包括分隔符]
+"
+" da分隔符                   --删除指定分隔符之间的内容 [包括分隔符]
+" ca分隔符                   --删除指定分隔符之间的内容并进入插入模式 [包括分隔符]
+" ya分隔符                   --复制指定分隔符之间的内容 [包括分隔符]
+" va分隔符                   --选中指定分隔符之间的内容 [包括分隔符]
+"
+" Xi和Xa都可以在X后面加入一个数字，以指代所处理的括号层次
+" 如 d2i( 执行的是删除当前光标外围第二层括号内的所有内容
+"
+" dt字符                     --删除本行内容，直到遇到第一个指定字符 [不包括该字符]
+" ct字符                     --删除本行内容，直到遇到第一个指定字符并进入插入模式 [不包括该字符]
+" yt字符                     --复制本行内容，直到遇到第一个指定字符 [不包括该字符]
+" vt字符                     --选中本行内容，直到遇到第一个指定字符 [不包括该字符]
+"
+" df字符                     --删除本行内容，直到遇到第一个指定字符 [包括该字符]
+" cf字符                     --删除本行内容，直到遇到第一个指定字符并进入插入模式 [包括该字符]
+" yf字符                     --复制本行内容，直到遇到第一个指定字符 [包括该字符]
+" vf字符                     --选中本行内容，直到遇到第一个指定字符 [包括该字符]
+"
+" XT 和 XF 是 Xt/Xf 的反方向操作
+"
+" ---------- 便捷操作 ----------
+"
+" Ctrl + A                   --将当前光标所在数字自增1        [仅普通模式可用]
+" Ctrl + X                   --将当前光标所在数字自减1        [仅普通模式可用]
+" m字符       and '字符      --标记位置 and 跳转到标记位置
+" q字符 xxx q and @字符      --录制宏   and 执行宏
+
+" 对部分语言设置单独的缩进
+au FileType scala,clojure,lua,ruby,eruby,dart,coffee,slim,jade,sh set shiftwidth=2
+au FileType scala,clojure,lua,ruby,eruby,dart,coffee,slim,jade,sh set tabstop=2
+
+" 根据后缀名指定文件类型
+au BufRead,BufNewFile *.h   setlocal ft=c
+au BufRead,BufNewFile *.sql setlocal ft=mysql
+au BufRead,BufNewFile *.tpl setlocal ft=smarty
+au BufRead,BufNewFile *.txt setlocal ft=txt
+
+" 针对部分语言取消指定字符的单词属性
+au FileType clojure  set iskeyword-=.
+au FileType clojure  set iskeyword-=>
+au FileType perl,php set iskeyword-=$
+au FileType ruby     set iskeyword+=!
+au FileType ruby     set iskeyword+=?
+
+" 去掉BOM
+" set nobomb; set fileencoding=utf8; w
+
+" js-beautify 格式化网页代码
+autocmd FileType javascript noremap <buffer>  <s-f> :call JsBeautify()<cr>
+autocmd FileType html noremap <buffer> <s-f> :call HtmlBeautify()<cr>
+autocmd FileType css noremap <buffer> <s-f> :call CSSBeautify()<cr>
+autocmd FileType javascript vnoremap <buffer>  <s-f> :call RangeJsBeautify()<cr>
+autocmd FileType html vnoremap <buffer> <s-f> :call RangeHtmlBeautify()<cr>
+autocmd FileType css vnoremap <buffer> <s-f> :call RangeCSSBeautify()<cr>
+
+" Emmet.vim
+" div>p#foo$*3>a
+" https://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL
