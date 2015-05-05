@@ -1,0 +1,2 @@
+#!/bin/env sh
+sudo su - -c "/usr/local/apache2/bin/apachectl stop"

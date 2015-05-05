@@ -1,4 +1,5 @@
 # vim: set expandtab:
+With less code you get more done.
 
 linux 详细的使用说明
 
@@ -46,9 +47,14 @@ tty | tr '/' '_' //替换前面你的字符串'/'为'_'
 cp /your/path/to/file.list{,.20121106} //备份文件
 cp -af file tofile //用原来文档的用户名
 Ctrl+x Ctrl+e //编辑当前的命令到编辑器，可以在zshrc中export EDITOR='vim'
+Ctrl+R   来搜索历史命令
+Ctrl+W  来删除最后一个单词
+Ctrl+U  来删除一行命令
+
 echo $'\x41'  //输出A
 echo "`ls -l`" || echo `ls -l` //shell用IFS定义的分隔符来分隔字符串，包括、n，所以再传给echo就是，"line 1" "line 2"
 nl || cat -n || cat -d //给文件加行号，中间的会给空行加行号，其它的不会
+nl等同于cat -b
 dmesg //查看软硬件配置
 uptime //查看计算机登陆信息，负载均衡等
 su www -c 'php xxx.php' //命令下行指定用户组来执行命令
@@ -89,6 +95,7 @@ echo filename haha !#:1  //显示当前第1个参数!#:1的位置
 eg.
 $ ls code src
 $ cp -r !*
+$_ //you can use to access the last argument in the last command, putty have another efficient key is 'Alt+.'
 
 ^hits^hist  //替换上一条指令
 ^hits^hist^:G  //替换上一条命令的所有string
@@ -129,6 +136,14 @@ openssl rand -hex n
 截取长度
 ${variable:0:5}
 
+zsh内置函数
+zmv
+zmv '(*).lis' '$1.txt' // renames 'foo.lis' to 'foo.txt'
+alias mmv='noglob zmv -W'  //noglob means no need quote the arguments
+mmv *.c.orig orig/*.c
+
+stat file/dirname
+显示inode和blocks数量
 
 
 软件使用：
@@ -147,6 +162,7 @@ sudo tcpdump -i eth7 -tnn dst port 80 -c 1000 | awk -F "." '{print $1"."$2"."$3"
 netstat -n | awk '/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}'
 # 查看IP连接数
 netstat -n | awk '/^tcp/ {print $5}'| awk -F: '{print $1}' | sort | uniq -c | sort -rn
+netstat -lntp看侦听在网络某端口的进程ㄝ也可以使用 lsof。
 
 # 查找一个域名的真实ip地址
 # TXT/spf records
@@ -180,6 +196,9 @@ chattr +i file//让文件为只读 /用lsattr 查看
 vmstat 5 //每五秒显示系统的cpu,memory,i/o
 top //shift+p 进程排序 /shift+m 内存排序
 ntpdate cn.pool.ntp.org //更新时间
+hell将正常时间转为unix时间
+date -d "2011-10-18 14:00:00" +%s //转换为unix时间：1318917600。
+date -d @1314583003  // unix时间转换为正常时间
 make 2>&1 | tee make.log //可以直接把显示的内容保存在make.log文件中
 lsof //列出当前正在使用的文件
 fuser //列出当前打开的文件和socket
@@ -210,6 +229,27 @@ curl
 curl -u "yantze" -d '{"scopes":["public_repo"]}' https://api.github.com/users/yantze\?callback\=haha
 curl -u "yantze" -H "Accept: application/vnd.github.v3.text+json"  https://api.github.com/users/yantze
 curl -i/-I -u "username":"password"
+
+wget
+1) use –quiet option to surpress download progress indicator
+wget --quiet http://host_name_of_the_server/path/to/afile.doc
+
+2) use -N to get file only when timestamp or size of the file downloaded has changed
+wget -N http://host_name_of_the_server/path/to/somefile.dat
+
+3) when running wget under bash, one can take advantage of Bash curl braces expansion and do something like this
+wget http://host_name_of_the_server/path/to/{file1.txt,file2.txt,file3.txt}
+wget http://host_name_of_the_server/path/to/{file1,file2,file3}.txt
+wget http://host_name_of_the_server/path/to/file{1,2,3}.txt
+
+Each of the above commands is equivalent to the following
+wget http://host_name_of_the_server/path/to/file1.txt
+wget http://host_name_of_the_server/path/to/file2.txt
+wget http://host_name_of_the_server/path/to/file3.txt
+
+
+
+
 
 
 zsh使用技巧
@@ -271,6 +311,8 @@ history
 HISTFILE stores the path to the history file
 HISTSIZE stores the maximum number of events to save in the internal history
 SAVEHIST stores the maximum number of events to save in the history file
+# 最常用的10个命令
+history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -n | tail
 
 find http://www.cnblogs.com/peida/archive/2012/11/14/2769248.html
 常用find：
@@ -284,6 +326,8 @@ find . -depth; 这个可以不让find输出文件夹
 find . -name "*.log" print0 | xargs -0 cat | wc -l
 find . -perm /u+x -type f -exec rm {} \;  //删除可执行文件
 find . -perm /u+x -maxdepth 1 -type f -exec ag xxx {} \;  //查找当前目录的文件
+find 路径 -name '*.JPG' -exec rename "s/.JPG/.jpg/g" \{\} \; //修改文件扩展名
+rm !(*.php) // 删除当前目录下不是扩展名php的文件。
 
 vimdiff
 vimdiff =(gcc -march=native -Q --help=target) =(gcc -march=core2 -Q --help=target) #比较两个非文件不同
@@ -402,6 +446,12 @@ http://www.pixelbeat.org/cmdline_zh_CN.html
 killall
 killall -TERM mysqld #关闭mysql进程
 killadd5
+pkill progress_name
+pgrep progress_name # return the progress pid
+pstree -p 查看当前进程
+jobs -l(列出id)查看后台运行情况
+fg [%]id 把id拿到前台来
+bg 显示fg要放在前面的,其中一个功能是
 
 
 常见的日志位置

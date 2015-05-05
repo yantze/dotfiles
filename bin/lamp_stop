@@ -1,0 +1,4 @@
+#!/bin/env sh
+
+sudo service httpd stop
+sudo service mysqld stop

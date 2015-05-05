@@ -1,5 +1,9 @@
 ##my zsh
 
+###.zprezto
+kill <tab>
+pkill <tab>
+
 z:
 export _Z_CMD='j'
 can rename the command z to j

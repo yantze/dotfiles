@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 sysctl vm.loadavg #view system loadavg
 brew install coreutils #install coreutils to compatible linux
 
@@ -28,3 +29,20 @@ cp out.gif ~/Dropbox/Public/screenshots/Screencast-`date +"%Y.%m.%d-%H.%M"`.gif
 
 from : https://gist.github.com/dergachev/4627207
 more detail:https://github.com/dergachev/screengif
+=======
+# view system loadavg
+```
+sysctl vm.loadavg 
+```
+
+# install coreutils to compatible linux
+```
+brew install coreutils 
+```
+
+# change hostname
+```
+hostname what-you-want
+sudo scutil --set HostName yourname
+```
+>>>>>>> d2d845c82fba4a1e81fa9a06e314879b79038b85

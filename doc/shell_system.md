@@ -7,5 +7,6 @@ typeset还显示这些系统变量的类型
 
 ###same with ssh-copy-id
 `ssh user@host "mkdir -p .ssh && cat >> .ssh/authorized_keys" < ~/.ssh/id_rsa.pub`
+mkdir -p to avoid failing if .ssh already exists.
 **`ssh-copy-id` not work in mac** can use :
 brew install ssh-copy-id
