@@ -1,11 +1,18 @@
-##VIM使用说明
+##VIM 使用说明
 
 ###安装
 **快速安装** 
-在linux和mac执行 vimrc/script/install_rc.sh
+
+在linux和mac执行 `vimrc/script/install_rc.sh`
 
 **手动安装** 
-查看目录下的install_guide.md
+
+*install_guide.md*
+
+**精简安装**
+
+本配置对不加载插件做了优化，完全不加载插件也不会有什么问题,并且速度会很快.
+只需要把_vimrc文件替换掉自己系统的.vimrc文件即可.
 
 
 ###常用命令-强大且要记住的功能(适用于本vim配置)
