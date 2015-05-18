@@ -1,0 +1,5 @@
+#!/bin/bash
+
+URL="http://paste.sinaapp.com"
+get_url=$(cat $1 | curl -s -F 'p=<-' $URL)
+echo ${get_url:31}
