@@ -14,3 +14,5 @@ alt + d 是删除当前光标到后面第一个分隔符的部分
 esc + b 向左跳一个单词 （按着很别扭） 
 esc + f 向右跳一个单词 （同上） 
 空行情况下 ctrl + d 为 logout
+
+p is alias for less
