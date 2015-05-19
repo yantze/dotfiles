@@ -1,0 +1,6 @@
+#!/bin/env bash
+#
+
+sudo service nginx restart
+sudo service mysql restart
+sudo service php-fpm restart

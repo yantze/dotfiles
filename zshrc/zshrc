@@ -6,22 +6,15 @@ export EDITOR=vim
 # set -o vi #设置shell快捷键的默认器
 
 
-
 ###JAVA###
 # export JAVA_HOME=/usr/java/jdk1.8.0_05
+# you can download from:
+# http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
 export JRE_HOME=$JAVA_HOME/jre
 CLASSPATH=./:$JAVA_HOME/lib:$JRE_HOME/lib:$JRE_HOME/lib/tools.jar
 export CLASSPATH
 PATH="$JAVA_HOME/bin:$PATH"
-
-###NODE###
-NODE_HOME="/usr/local/node"
-PATH="$NODE_HOME/bin:$PATH"
-
-# nvm for various node version
-export NVM_DIR="~/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 
 ###PHP###
@@ -54,8 +47,6 @@ export LD_LIBRARY_PATH=$LINUXBREW/lib:$LD_LIBRARY_PATH
 PATH="$LINUXBREW/bin:$PATH"
 
 
-PATH="$PATH:/usr/local/bin:/bin:/usr/bin:$HOME/bin:/usr/local/sbin:/usr/sbin:/sbin"
-
 # Git for SAE
 export GIT_FOR_SAE_ROOT=~/tools/git_svn_sae/ #此处就是你刚刚放置clone下来的项目路径
 PATH="$GIT_FOR_SAE_ROOT:$PATH"
@@ -64,6 +55,24 @@ PATH="$GIT_FOR_SAE_ROOT:$PATH"
 CLING_HOME="/usr/local/cling"
 PATH="$CLING_HOME/bin:$PATH"
 
+# pyenv for various python version
+# git clone https://github.com/yyuu/pyenv.git ~/.pyenv
+# pyenv global 3.4.2 2.7.8
+export PYENV_ROOT="$HOME/.pyenv"
+PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+###NODE###
+# NODE_HOME="/usr/local/node"
+# PATH="$NODE_HOME/bin:$PATH"
+
+# nvm for various node version
+# git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+
+PATH="$PATH:/usr/local/bin:/bin:/usr/bin:$HOME/bin:/usr/local/sbin:/usr/sbin:/sbin"
 
 # 这里主要是屏蔽tmux对path再次赋值，导致type command时出现两个一样的路径
 # [[ -z $TMUX ]] && export PATH

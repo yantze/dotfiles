@@ -2,11 +2,14 @@
 dpkg -s ibus-rime 
 
 ###build essential
-sudo apt-get install build-essential cmake
+apt-get update && apt-get install -y libncurses5-dev build-essential cmake
 
 ###soft essential
 sudo apt-get install silversearcher-ag Exuberant-ctags curl
 sudo apt-get install git subversion mercurial
+wget https://bootstrap.pypa.io/get-pip.py
+python get-pip.py
+
 
 ###
 sudo apt-get update

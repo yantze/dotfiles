@@ -1,0 +1,17 @@
+#!/bin/bash
+# https://github.com/lilydjwg/search-and-view
+
+ttyname=$(tty | tr '/' '_')
+# base=/run/user/$UID
+base=/tmp
+logfile="$base/.agg.log.$ttyname"
+tmpfile="$base/.agg.tmp"
+
+pwd -L > $tmpfile
+echo "$@" >> $tmpfile
+ag -s --column --nogroup --color "$@" | cat -n | tee -ai $tmpfile | ${PAGER:-less}
+if [[ ${PIPESTATUS[0]} -eq 0 ]]; then
+  mv $tmpfile "$logfile"
+else
+  exit "${PIPESTATUS[0]}"
+fi

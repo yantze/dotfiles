@@ -1,2 +1,5 @@
 #!/bin/env sh
-sudo su - -c "source start.sh"
+# sudo su - -c "source start.sh"
+sudo setenforce 0
+sudo service httpd restart
+sudo service mariadb restart

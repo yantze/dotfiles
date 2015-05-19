@@ -40,6 +40,9 @@ alias realpath='readlink -f'  #显示符号链接指向的真实路径((用法�
 alias s='ls'
 alias lss='ls'
 
+### system alias
+alias sctl='systemctl'
+
 ###
 alias rsyn='rsync -arvuzp'
 alias proxy_local='http_proxy="http://vastiny:8087";'
@@ -56,6 +59,17 @@ alias ngtop='ngxtop -l /usr/local/nginx/logs/access.log'
 alias put='trash-put'
 alias putl='trash-list'
 
+#shadowsocks
+alias ssd='ssserver -c /etc/shadowsocks.json -d'
+
+# http/ftp
+alias pyhttp='python -mhttp.server'
+alias pyftp='python -mpyftpdlib -w'
+
+# view config file whitout empty line(s),spaces(s) ,tab(s) ,'#' or ;
+# there have another:egrep -v '^#|^$' /etc/ntp.conf
+alias cf='egrep -v "^[[:cntrl:] ]*[#;]|^[[:cntrl:] ]*$"'
+
 
 #pp/po in zsh has already set
 # alias pp='pushd'
@@ -68,4 +82,44 @@ if { [ `uname` = "Darwin" ] } then
 else
     alias play='mpg123'
 fi
+
+
+#functions
+
+
+#fname 递归查找当前目录下指定文件
+function fname() { find . -iname "*$@*"; }
+
+#创建文件夹并且cd进去
+function mcd() { mkdir $1 && cd $1; }
+
+function psgrep() { ps axuf | grep -v grep | grep "$@" -i --color=auto; }
+
+# Bored with "tar -zxvf" for .tar.gz, "tar -xvjf" for .tar.bz2 or something else?
+extract () {
+  if [ -f $1 ] ; then
+      case $1 in
+          *.tar.bz2)   tar xvjf $1    ;;
+          *.tar.gz)    tar xvzf $1    ;;
+          *.tar.xz)    tar -Jxvf $1   ;;
+          *.tar.Z)     tar zxvf $1    ;;
+          *.bz2)       bunzip2 $1     ;;
+          *.rar)       unrar x $1     ;;
+          *.gz)        gunzip $1      ;;
+          *.tar)       tar xvf $1     ;;
+          *.tbz2)      tar xvjf $1    ;;
+          *.tgz)       tar xvzf $1    ;;
+          *.zip)       unzip $1       ;;
+          *.Z)         uncompress $1  ;;
+          *.7z)        7za x $1        ;;
+          *.cab)       cabextract $1  ;;
+          *.arj)       unarj $1       ;;
+          *.lzh)       lha e $1       ;;
+          *)           echo "don't know how to extract '$1'…" ;;
+      esac
+  else
+      echo "'$1' is not a valid file!"
+  fi
+}
+
 

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+URL=http://paste.sinaapp.com
+curl $URL/$1
