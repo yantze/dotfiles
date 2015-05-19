@@ -18,6 +18,11 @@ apt install php-pear
 pear config-set preferred_state alpha
 sudo pecl install yaf
 
+###soft
+https://github.com/rofl0r/proxychains-ng
+config file:
+/usr/local/etc/proxychains.conf
+
 
 ###install mysql
 sudo apt-get install mysql-server mysql-client

@@ -387,6 +387,12 @@ killall
 killall -TERM mysqld #关闭mysql进程
 killadd5
 
+had three console version dict
+~/bin/dict
+go get github.com/c4pt0r/yd
+wget https://raw.githubusercontent.com/felixonmars/ydcv/master/ydcv.py
+
+
 
 常见的日志位置
 /var/log/message      – 记录系统日志或当前活动日志。
