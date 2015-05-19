@@ -49,3 +49,9 @@ bindkey "$terminfo[kcud1]" history-substring-search-down
 # bind P and N for EMACS mode
 # bindkey -M emacs '^P' history-substring-search-up
 # bindkey -M emacs '^N' history-substring-search-down
+
+# export WORKON_HOME=$HOME/.virtualenvs
+# VIRTUALENVWRAPPER_PYTHON='/home/yantze/.pyenv/shims/python' # This needs to be placed before the virtualenvwrapper command
+# source /usr/local/bin/virtualenvwrapper.sh
+# export PROJECT_HOME=$HOME/workspace/app
+#  ~/.pyenv/shims/virtualenvwrapper.sh

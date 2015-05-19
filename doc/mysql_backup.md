@@ -1,6 +1,7 @@
-#!/bin/env sh
+# 一句话执行SQL
+mysql -e "statement1; statement2"  dbname -u username -p password
 
-#可以压缩导出的文档
+# 可以压缩导出的文档
 mysqldump -uraiuds -p radius | gzip -9 >sql.gz
 
 # 备份数据库到本地

@@ -150,3 +150,13 @@ get thing done
 ## move master to origin/master
 git checkout master
 git rebase origin/master
+
+
+# git-extras
+```bash
+git clone https://github.com/tj/git-extras.git
+cd git-extras
+# checkout the latest tag
+git checkout $(git describe --tags $(git rev-list --tags --max-count=1))
+[sudo] make install
+```

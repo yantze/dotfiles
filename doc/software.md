@@ -1,3 +1,6 @@
+### fanyi
+npm install -g fanyi
+
 ###w3m
 Q         不提示的退出
 >/<       屏幕左右页面

@@ -437,6 +437,7 @@ set-window-title $(whoami)@$(hostname)  //设置当前putty或者tmux下面的�
 shred - overwrite a file to hide its contents, and optionally delete it
 python -m SimpleHTTPServer 8888 & //python 2+
 python -m http.server 8888 & //python 3+
+python -m pyftpdlib -w //后面的-w是添加写权限，更多可看-h
 gpg -c file件加密
 gpg file.gpg件解密
 
@@ -449,6 +450,7 @@ killadd5
 pkill progress_name
 pgrep progress_name # return the progress pid
 pstree -p 查看当前进程
+ps -ef f  # 显示ascii进程图
 jobs -l(列出id)查看后台运行情况
 fg [%]id 把id拿到前台来
 bg 显示fg要放在前面的,其中一个功能是

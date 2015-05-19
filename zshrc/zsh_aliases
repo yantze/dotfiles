@@ -40,6 +40,9 @@ alias realpath='readlink -f'  #显示符号链接指向的真实路径((用法�
 alias s='ls'
 alias lss='ls'
 
+### system alias
+alias sctl='systemctl'
+
 ###
 alias rsyn='rsync -arvuzp'
 alias proxy_local='http_proxy="http://vastiny:8087";'
@@ -58,6 +61,10 @@ alias putl='trash-list'
 
 #shadowsocks
 alias ssd='ssserver -c /etc/shadowsocks.json -d'
+
+# http/ftp
+alias pyhttp='python -mhttp.server'
+alias pyftp='python -mpyftpdlib -w'
 
 # view config file whitout empty line(s),spaces(s) ,tab(s) ,'#' or ;
 # there have another:egrep -v '^#|^$' /etc/ntp.conf
