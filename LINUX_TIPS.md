@@ -327,6 +327,15 @@ find . -name "*.log" print0 | xargs -0 cat | wc -l
 find . -perm /u+x -type f -exec rm {} \;  //删除可执行文件
 find . -perm /u+x -maxdepth 1 -type f -exec ag xxx {} \;  //查找当前目录的文件
 find 路径 -name '*.JPG' -exec rename "s/.JPG/.jpg/g" \{\} \; //修改文件扩展名
+for filename in *eee*; do newname=`echo $filename|sed -n ‘s/eee/EEE/p’`; mv $filename $newname;done
+for  i in `ls|grep glyphicons`
+do
+    newName=`echo $i |cut -d_ -f3`
+    mv $i $newName
+done
+zmv 'glyphicons_*_(*).png' '$1.png'
+rename 's/^glyphicons_[0-9]+_//' glyphicons_*.png
+ls -1 glyphicons_[0-9]*.png|sed "s/glyphicons_\([0-9][0-9]*\)_\(.*\).png/mv & \2.png/"|sh -v
 rm !(*.php) // 删除当前目录下不是扩展名php的文件。
 
 vimdiff
@@ -400,6 +409,11 @@ d  //d is an alias for dirs -v | head -10
 po //popd , popd is pop dir
 pp //pushd , put the current dir
 在zsh中输入d命令下面的数字，可以直接进入
+
+echo '#!/bin/env sh
+cd /var/www/html
+'> ~/.bin/proj
+. proj // 用这种方法可以直接在当前bash运行
 
 
 
