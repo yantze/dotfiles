@@ -1,6 +1,8 @@
 # vim: set expandtab:
 With less code you get more done.
 
+测试代码:alias cp=rsync -ah --progress --append
+
 linux 详细的使用说明
 
 ###download video
