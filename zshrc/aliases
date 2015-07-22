@@ -20,6 +20,7 @@ alias q='exit'
 #alias sp='~/tools/.sp.sh'
 alias sp='~/soft/sh-toolkits-lib/sp.sh'
 alias get='sh ~/soft/sh-toolkits-lib/sp.sh'
+
 # tmux
 #设置窗口的名字为hi
 alias t='tmux -2 -u attach || tmux -2 -u new-session -s hi'
@@ -32,6 +33,16 @@ alias tl='tmux list-sessions'
 alias ta='tmux attach -d -t'
 #设置tmux标签的名字，直到退出为止
 alias st='set-window-title'
+
+# screen 需要的时候使用
+# C-a D D (quick exit)
+# alias t='screen -R hi'
+# alias ta='screen -R'
+# alias tn='screen -S'
+# alias tl='screen -list'
+# alias st='screen -t'
+# 随便找了个可以attach的
+# alias tt='screen -dRR'
 
 alias hd='od -Ax -tx1z -v' #方便的十六进制输出。 (用法举例: • hd /proc/self/cmdline | less)
 alias realpath='readlink -f'  #显示符号链接指向的真实路径((用法举例: • realpath ~/../$USER)
