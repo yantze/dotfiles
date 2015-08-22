@@ -462,6 +462,8 @@ http://www.pixelbeat.org/cmdline_zh_CN.html
 
 killall
 killall -TERM mysqld #关闭mysql进程
+kill -TERM/15 PID
+kill -KILLL/9 PID
 killadd5
 pkill progress_name
 pgrep progress_name # return the progress pid
@@ -475,6 +477,12 @@ had three console version dict
 ~/bin/dict
 go get github.com/c4pt0r/yd
 wget https://raw.githubusercontent.com/felixonmars/ydcv/master/ydcv.py
+
+
+top的参数理解
+NI 代表的是niceless, "-19/-20"(highest priority, 耗资源多) and "19/20"(lowest priority)
+use "nice -n 15 command_to_execute" when start
+use "renice 0 PID_to_prioritize" when already executing
 
 
 

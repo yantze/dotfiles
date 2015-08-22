@@ -32,6 +32,8 @@ PYTHON3_HOME="/usr/local/python/3.4"
 PYTHON2_HOME="/usr/local/python/2.7"
 PATH="$PYTHON3_HOME/bin:$PATH"
 PATH="$PYTHON2_HOME/bin:$PATH"
+PYENV_BIN="/home/yantze/.pyenv/shims"
+PATH="$PYENV_BIN:$PATH"
 
 ###scala###
 SCALA_HOME="/usr/local/scala"
