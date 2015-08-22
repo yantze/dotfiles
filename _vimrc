@@ -368,13 +368,18 @@ function! Do_CsTag()
         endif
     endif
 endfunction
+
+" Append modeline after last line in buffer.
+" Use substitute() instead of printf() to handle '%%s' modeline in LaTeX
+" files.
+function! AppendModeline()
+    let l:modeline = printf(" vim: set ts=%d sw=%d tw=%d %set :",
+                \ &tabstop, &shiftwidth, &textwidth, &expandtab ? '' : 'no')
+    let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
+    call append(line("$"), l:modeline)
+endfunction
 " }}}
 
-
-let g:startify_custom_header = [
-        \ '   hello zhi',
-        \ '',
-        \ ]
 
 syntax enable                " 打开语法高亮
 syntax on                    " 开启文件类型侦测
@@ -480,7 +485,7 @@ set smartindent              " 智能自动缩进
 set nu!                      " 显示行号
 set ruler                    " 右下角显示光标位置的状态行
 set hidden                   " 允许在有未保存的修改时切换缓冲区
-set foldmethod=marker        " 选择代码折叠类型
+set foldmethod=indent        " 选择代码折叠类型, other:marker
 set foldlevel=100            " 禁止自动折叠 also same: set [no]foldenable
 set laststatus=2             " 开启状态栏信息
 set cmdheight=2              " 命令行的高度，默认为1，这里设为2
@@ -702,6 +707,7 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 "nnoremap <leader>w <C-W>w
 
+nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 
 " =======
 " Plugins
@@ -1356,3 +1362,6 @@ autocmd FileType css vnoremap <buffer> <s-f> :call RangeCSSBeautify()<cr>
 " Emmet.vim
 " div>p#foo$*3>a
 " https://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL
+" vim: set ts=4 sw=4 tw=0 et :
+" vim: set ts=4 sw=4 tw=0 et :
+" vim: set ts=4 sw=4 tw=0 et :
