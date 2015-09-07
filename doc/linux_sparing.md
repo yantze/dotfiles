@@ -40,3 +40,25 @@ sudo rm /swapfile
 
 # linux找出两个文件中相同的行(diff相反)
 grep -f file.a file.b
+
+# extundelete 文件恢复工具
+yum install e2fsprogs-devel e2fsprogs-static
+http://extundelete.sourceforge.net/
+# 查看删除的目录，ls -id /， 一般根目录inode为2
+extundelete  /dev/sdc1  --inode 2
+extundelete  /dev/sdc1  --restore-file passwd 
+extundelete  /dev/sdc1  --restore-directory /ganglia-3.4.0
+extundelete  /dev/sdc1  --restore-all
+# 按时间恢复
+[root@cloud1 ~]#cd /data/
+[root@cloud1 data]# cp /app/ganglia-3.4.0.tar.gz  /data
+[root@cloud1 data]# date +%s
+1379150309
+[root@cloud1 data]# rm -rf ganglia-3.4.0.tar.gz
+[root@cloud1 data]# cd /mnt
+[root@cloud1 mnt]# umount /data
+[root@cloud1 mnt]# date +%s
+1379150340
+[root@cloud1 mnt]# extundelete  --after 1379146740 --before 1379150555 --restore-all /dev/sdc1
+
+【如何找回一个误删除、但还在被进程打开的文件？】 到/proc目录下找打开这个文件的pid下的fd目录，然后ls -l /proc/<pid>/fd/ 你会看到哪个fd是link到了这个被误删除的文件，然后：cp /proc/<pid>/fd/<fd> ~/myfile.txt 。这个方法对于一些执行中的shell脚本同样有效。

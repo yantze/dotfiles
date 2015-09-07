@@ -484,6 +484,12 @@ NI 代表的是niceless, "-19/-20"(highest priority, 耗资源多) and "19/20"(l
 use "nice -n 15 command_to_execute" when start
 use "renice 0 PID_to_prioritize" when already executing
 
+数学运算
+expr 1 + 1
+let a=1
+echo $((1+1))
+echo '1+1' | bc
+具体的可以看 ~/.dotfiles/doc/bash.math.md
 
 
 常见的日志位置
