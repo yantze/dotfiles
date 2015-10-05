@@ -74,7 +74,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 
-PATH="$PATH:/usr/local/bin:/bin:/usr/bin:$HOME/bin:/usr/local/sbin:/usr/sbin:/sbin"
+PATH="$PATH:$HOME/.bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin"
 
 # 这里主要是屏蔽tmux对path再次赋值，导致type command时出现两个一样的路径
 # [[ -z $TMUX ]] && export PATH
