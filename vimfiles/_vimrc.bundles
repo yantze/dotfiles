@@ -108,6 +108,8 @@ Plugin 'othree/xml.vim'
 Plugin 'sukima/xmledit'
 Plugin 'tpope/vim-ragtag'
 Plugin 'elzr/vim-json'
+" vimflowy is an implementation of workflowy-style outliner on vim
+Plugin 'laoyang945/vimflowy'
 
 
 " Git
