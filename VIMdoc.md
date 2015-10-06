@@ -3,36 +3,61 @@
 > 首先要记住的是 Vim 有很强的对称性观念，这份文档很多都来自其它 vimer 的教程。
 
 整理人： [yantze](http://vastiny.com)
+---
 
+## 掌握这些可以高效使用 /*{{{*/
+> 把本项目的 `_vimrc` 看完就可以玩转 vim 了。下面都是一些补充知识。
 
-常用命令 /*{{{*/
+### 常用命令 /*{{{*/
 
-`数字`是很有意义，
+`数字`是很有意义
+```
 删除50  = 50dd
 下移20  = 20j
+```
 
+书签
+```
 `.          跳转至上次编辑位置
-``          跳转上一次的位置`
-:qx         开始记录宏，并将结果存入寄存器x，x代表1-9的数字
+``          跳转上一次的位置
+ma          把当前位置存成标签 `a`
+`a          跳转到标签 `a` 处
+```
+
+
+宏
+```
+qx          开始记录宏，并将结果存入寄存器x，x代表1-9的数字
 q           退出记录模式
 @x          播放记录在x寄存器中的宏命令
+```
 
+寄存器
+```
 "a          将内容放入/存入a寄存器，可以支持多粘贴板
-附：系统寄存器，名称为+，从系统粘贴板粘贴到vim中的命令为"+p
-注意此处的+不表示操作符，二十一个寄存器。
+```
+附：系统寄存器，名称为+，从系统粘贴板粘贴到vim中的命令为"+p。此处的+不表示操作符，二十一个寄存器。
 
 
+跳转
+```
 fx          在当前行中找x字符，找到了就跳转至
 ;           重复上一个f命令，而不用重复的输入fx
 tx          与fx类似，但是只是跳转到x的前一个字符处
 Fx          跟fx的方向相反
 ),(         跳转到上/下一个语句
+Ctrl+i / Ctrl+o 跳到之前的那个光标的位置，对称Ctrl+Shift+i or o
+```
 
 快速选中括号内的字符串
+```
 va( = vaw 括号之外，ext：'{'
 vi( = vae 括号之内， ext：'{'
+```
 
 
+基础知识
+```
 w           跳动单词到第一个字母上
 e           跳动单词到最后一个字母上
 b           跳动到上一个单词前
@@ -76,24 +101,35 @@ zo          打开折叠的代码
 "           zM --关闭所有折叠
 "           zR --打开所有折叠
 zz          将当前行滚动到屏幕中央
+gi          incredibly handy goes to Insert mode where you left it last time scenario: edit something, exit Insert, go look at something else, then  gi back to restart editing
+```
 
 
+```
 ~        切换大小写，当前字符
 g~iw     切换当前字的大小写
 gUiw     将当前字变成大写
 guiw     将当前字变成小写
+```
 
+```
 aw     选中一个字
 ab     选中括号中的所有内容，包括括号本身
 aB     选中{}括号中的所有内容
 ib     选中括号中的内容，不含括号
 iB     选中{}中的内容，不含{}
+```
 
 
+查找
+```
 /word  ?word 分别可以向后向前搜素内容
 n，N 分别可以对之前用/搜索过得字符向后，向前搜索
 :100,200s/word1/word2 /g  100到200行之间找 word1，改为 word2
+```
 
+替换
+```
 :1,$s/word1/word2/g 首行到末行找 word1，并将该字符串为 word2
 :1,$s/word1/word2/gc 首行到末行找 word1，并将该字符串为 word2 且要confirm
 
@@ -108,37 +144,27 @@ n，N 分别可以对之前用/搜索过得字符向后，向前搜索
 :g/text1/s/text2/text3
 查找包含 text1 的行，用 text3 替换 text2
 :g/^/exec "s/^/".strpart(line(".")." ", 0, 4)  在行首插入行号
+```
 
 
-格式化那些整行的代码
-:%s/{/\r{\r/g
-:%s/}/\r}\r/g
-:%s/;/;\r/g
-
-^M是windows换行符,删除方法
-:%s/\r/\r/g
-:%s/^M$//g
-%  指匹配整个文件
-s  是置换的意思
-^M 注意要用 Ctrl+V, Ctrl+M来输入
-M  后的'$'代表匹配行尾的内容
-g  则表示每行中匹配到的内容都要置换
-
-
+注释行
+```
 :s/^/#      用"#"注释当前行
 :2,5s/^ /#  在2~5行首添加"#"注释
 :.,+3s/^/#  用"#"注释当前行和当前行后面的三行
 :%s/^/#     用"#"注释所有行
-
+```
 删除所有注释行
+```
 :g/^#$//g
-
-
+```
 删除所有的空白行
+```
 :g/^$/d
 或者在非交互情况下用shell执行
 echo "wq"|ex -c "g/^$/d" filename
 其中/d代表的是删除行内容，更多的介绍请用:help global查看
+```
 
 
 
@@ -147,13 +173,16 @@ echo "wq"|ex -c "g/^$/d" filename
 
 
 
+```
 r, R (Replace mode): r 只代一个字符一次；R一直代光标所在，按下 ESC 为止
 
 :r [filename] 在编辑数据中，读入另一个档案的数据，并且放在游标后面
 :n1,n2 w [filename] 将 n1 到 n2 癿内容储存成 filename 这个档案。
+```
 
 
 目录操作
+```
 可以查看Vim所在的当前工作目录:
 :pwd
 切换到其它目
@@ -163,28 +192,188 @@ r, R (Replace mode): r 只代一个字符一次；R一直代光标所在，按�
 如果在正文中需要用到系统中的路径
 ctrl+x,ctrl+f
 用ctrl+n, ctrl+p来切换
+```
 
 
+```
 Ctrl+u 删除光标前的一行， Ctrl+w 删除前面一个单词
+```
 
 
-书签
-ma     把当前位置存成标签a
-`a     `跳转到标签a处
-
-Ctrl+i and Ctrl+o 是可以跳到之前的那个光标的位置
-对称Ctrl+Shift+i or o
-
+```
 (           移到句子的开头
 )           移到句子的结尾
 {           移到段落的开头
 }           移到下一个段落的开头
 0           移到当前行的第一列
+```
 
 
 /*}}}*/
 
-功能介绍 /*{{{*/
+/*}}}*/
+
+## practic experience /*{{{*/
+
+主要的一些查询功能
+:verbose map <所要查找的快捷键>
+:echo $TERM
+:verbose set term?
+:set termcap
+使用Ctrl-v来查看一些按钮的原来的代码
+
+####配置里面<leader>rsl不同的实现方法
+#####执行选中行命令
+" function RunTheSelectLinesInSystem() range
+"     echo system('echo '.shellescape(join(getline(a:firstline, a:lastline), "\n")).'| sh ')
+" endfunction
+" com -range=% -nargs=0 RCurLine :<line1>,<line2>call RunTheSelectLinesInSystem()
+" you can use the method :'<,'>RCurLine
+
+#####sed method
+!!sed s/<search>/<replace>/<num>
+
+#####get some lines out or in
+To read in from file-name.txt into the current buffer
+:read file-name.txt
+
+To append the range of line 1 to line 300 from the current buffer to file-to-append.txt
+:1,300write >> file-to-append.txt
+
+You can also use marks instead of line numbers such as the visual marks
+:'<,'>write >> file-to-append.txt
+
+Or can write some line to a new file
+:1,300w file.txt
+
+#####row control
+刪除包含有空格組成的空行： g/^\s*$/d
+删除空白行： g/^$/d
+删除以#开头的： s/^#.*$//g
+删除以空格或tab開頭到結尾的空行 g/^[ |\t]*$/d
+在行头加注释： s/^/#/g
+:n,$s/string/sky/g 替换第n行开始到最后一行中每一行所有string为sky
+删除以//的开头的注释行： cat a2.C | grep -v '//' > a3.C
+g/pattern/d 是找到pattern, 删之
+v/pattern/d 是找到非pattern,删之
+
+#####row sort
+排序并删除重复行 :sort u
+
+#####添加选项到guivim的菜单栏
+比如下面的是添加modeline到文件末尾
+amenu Edit.Insert\ &modeline <C-\><C-N>ggOvim:ff=unix ts=4 ss=4<CR>vim60:fdm=marker<Esc>
+
+
+###参考
+http://www.richardzhong.com/category/vim/
+
+### 拼写检查
+```
+set spell
+设置后Vim会高亮拼写错误的单词。将光标移至错误单词，输入z=查看建议拼写。
+autocmd FileType tex setlocal spell spelllang=en_us
+spell spelllang=en, de
+:set spell    启用拼写检查
+:set nospell  关闭拼写检查
+]s    移动到下一个拼写错误处
+[s    移动到上一个拼写错误处
+z=    选择正确的拼写
+zg    添加用户拼写
+```
+
+### grammer语法检查
+```
+" en/fr/ge.. 
+" 必须下载https://www.languagetool.org/zh/里面的检查软件
+Plugin 'LanguageTool'
+" :LanguageToolCheck
+" Pressing <Enter>
+" :LanguageToolClear
+```
+
+### 函数变量
+```
+let s:w_mydictwin=0
+function! Mydict()
+    if s:w_mydictwin
+        let s:w_mydictwin=0
+        close
+        file
+        return
+    endif
+    let s:w_mydictwin=1
+    let fwords=getreg("z")
+    setlocal buftype=nofile bufhidden=hide noswapfile
+endfunction
+```
+
+###File opening tips
+```
+vim file1 file2 … -o opens file1, file2, … in stacked windows
+vim file1 file2 … -O opens file1, file2, … side by side
+vim file + opens file and move the cursor to the last line.
+```
+
+### 
+```
+把找到的内容放在文件头
+g/pattern/t0
+把找到的内容放在文件尾
+g/pattern/t$
+把找到的内容整行放在文件尾
+g/pattern/m$
+```
+
+输入分割线---
+```
+72i-<esc>
+所有行倒序
+:g/^/m0
+行间插入空行
+:g/^/pu _
+```
+
+
+格式化那些整行的代码
+```
+:%s/{/\r{\r/g
+:%s/}/\r}\r/g
+:%s/;/;\r/g
+```
+
+^M是windows换行符,删除方法
+```
+:%s/\r/\r/g
+:%s/^M$//g
+%  指匹配整个文件
+s  是置换的意思
+^M 注意要用 Ctrl+V, Ctrl+M来输入
+M  后的'$'代表匹配行尾的内容
+g  则表示每行中匹配到的内容都要置换
+```
+
+统计匹配字符串的个数
+```
+:%s/字符串//gn
+```
+
+块编辑
+```
+esc
+0       跳到行首
+ctrl+v  可视块模式
+jjj     下移3行
+I       进入插入模式
+//
+Esc
+```
+
+/*}}}*/
+
+## Manual /*{{{*/
+
+### 功能介绍 /*{{{*/
 
 1. 查找/*{{{*/
    /xxx(?xxx)       表示在整篇文档中搜索匹配xxx的字符串, / 表示向下查找, ? 表示
@@ -1041,87 +1230,7 @@ zE                  除去 (Eliminate) 窗口里“所有”的折叠。
 
 /*}}}*/
 
-Vim正则表达式/*{{{*/
-*    指前面所出现的字元或字元集合，出现0或0次以上；
-\+    匹配内容同上，只不过出现次数不包括0次；
-\=    指前面所出现的字元，仅出现0次或者1次；
-\|    这个是多选，同or的意思相同，无论满足哪个条件都可以匹配；
-\{n,m}    指前面所出现的字元或字元集合最少出现n次，最多出现m次；
-上面这个可以演变一下几种，
-\{n}    指前面所出现的字元或字元集合出现次数为n次；
-\{n,}    指前面所出现的字元或字元集合最少出现为n次；
-\{,m}    指前面所出现的字元或字元集合最多出现为m次；
-^    匹配行首，在这个后面的字元出现在行首才符合；
-$    匹配行尾，在这个之前的字元出现在行尾才符合；
-[...]    字元集合，表示符合括号中所有字元中的其中一个；
-[^...]    上面这个的补集，表非括号中字元的其中一个；
-.    代表除换行字外的任一单一字元；千万不要小看了它，天大的符号(某网友语)自然不一般，在VIM的normal模式下，它可以重复上次的命令；在这边又可以表示任一字元，果然名不虚传；
-讲了这么多来点实际的例子。
-写elan单片机程序时，程序的标号都必须顶在最前，而且后面有个":"，如果忘记打了这个":"怎么办？一个一个找，再加上，当然也是可以。如果用VIM，就不用那么麻烦了。对了，用VIM的替代然后加上强大的正则表达式。看看VIM的神奇吧，敲入
-:%s/^[a-zA-Z].*[^:]$/&:/gc
-^[a-zA-Z]表示匹配行首为字母，可以排除不是顶在最前的其它指令，还可以排除顶在最前面的注释，因为注释使用";"打头，不在范围之内。
-[^:]$表示匹配行尾不是以":"结尾的东东。然后那个".*"就表示中间任意字元都行。这样只要行首和行尾符合的都会在后面加上":"了。怎么样，好用吧！
-其实关于那个[a-zA-Z]在VIM中有简单的表示方法，再来看看正则表达式中的一些简写
-\s    表示空白字元，即 Space 或 Tab 。
-\S    表示非空白字元
-\d    表示数字，即[0-9]。
-\D    表示非数字，即[^0-9]。
-\w    表示一般字元，包括下划线。即[0-9a-zA-Z_]。
-\W    表示非一般字元，即[^0-9a-zA-Z]。
-\a    表示英文字母，即[a-zA-Z]。
-\A    表示非英文字母，即[^a-zA-Z]。
-\l    表示小写字母，即[a-z]。
-\L    表示非小写字母，即[^a-z]。
-\u    表示大写字母，即[A-Z]。
-\U    表示非大写字母，即[^A-Z]。
-看完了上面的这些简写表示，上面那个例子其实可以改写如下：
-:%s/^\a.*[^:]$/&:/gc
-可以达到同样的效果。
-再来一个例子，写程序时难免会在某些行尾会留下一些多余的空格或者TAB指令，虽然没什么影响，但用VIM同样可以轻松找到这些多余的空指令，并删除。看看下面这个指令：
-:%s/\s$//gc
-试用一下，好像不错，末尾的空白指令都被删除了！但是仔细去看如果行尾有不止一个的空白指令，上面那个就只会取代最后一个空白指令，而忽略其它的空白指令。让我们动手再改进一下！用到前面的\+，这样就基本上ok了！不管行尾有多少空白指令都可以匹配到了！
-:%s/\s\+$//gc
 
-量词
-vim的量词与perl相比一点也不逊色。
-vim    Perl    意义
-*    *    0个或多个(匹配优先)
-\+    +    1个或多个(匹配优先)
-\? 或 \=    ?    0个或1个(匹配优先)，\?不能在 ? 命令(逆向查找)中使用
-\{n,m}    {n,m}    n个到m个(匹配优先)
-\{n,}    {n,}    最少n个(匹配优先)
-\{,m}    {,m}    最多m个(匹配优先)
-\{n}    {n}    恰好n个
-\{-n,m}    {n,m}?    n个到m个(忽略优先)
-\{-}    *?    0个或多个(忽略优先)
-\{-1,}    +?    1个或多个(忽略优先)
-\{-,1}    ??    0个或1个(忽略优先)
-从上表中可见，vim的忽略优先量词不像perl的 *? +? ?? 那样，而是统一使用 \{- 实现的。这大概跟忽略优先量词不常用有关吧。
-环视和固化分组
-vim居然还支持环视和固化分组的功能，强大，赞一个。关于环视的解释请参考Yurii的《精通正则表达式》一书吧。
-vim    Perl    意义
-\@=    (?=    顺序环视
-\@!    (?!    顺序否定环视
-\@<=    (?<=    逆序环视
-\@<!    (?<!    逆序否定环视
-\@>    (?>    固化分组
-\%(atom\)    (?:    非捕获型括号
-和perl稍有不同的是，vim中的环视和固化分组的模式的位置与perl不同。例如，查找紧跟在 foo 之后的 bar，perl将模式写在环视的括号内，而vim将模式写在环视的元字符之前。/*}}}*/
-
-
-特殊使用场景
-
-统计匹配字符串的个数
-:%s/字符串//gn
-
-块编辑
-esc
-0       跳到行首
-ctrl+v  可视块模式
-jjj     下移3行
-I       进入插入模式
-//
-Esc
 
 VIM 寄存器
 将寄存器与各种删除、复制、粘贴命令组合使用，能够大大提高编辑文本的效率。
@@ -1221,15 +1330,10 @@ used as motions
 ‘. and  `. - jump to the line or exact location of
 the last modification
 ```
+/*}}}*/
 
 
-#### insert
-```
-gi - incredibly handy goes to Insert mode where you left it last time scenario: edit something, exit Insert, go look at something else, then  gi back to restart editing
-```
-
-
-插件详细介绍
+### 插件详细介绍 /*{{{*/
 emmet(zen coding)
 是横扫各大小编辑器的快速编码插件，其使用类`CSS`选择器的语法实现扩展性编码，确实够酷、够快
 
@@ -1250,134 +1354,88 @@ emmet(zen coding)
 
 常用缩写
 ```
-`html:4t`：传统的`HTML4.01`模板
-`html:5`：`HTML5`模板
-`style`：样式标签
-`script`：脚本标签
-`link`：`link`标签
-`a`：链接标签
+html:4t  传统的`HTML4.01`模板
+html:5  `HTML5`模板
+style  样式标签
+script  脚本标签
+link  `link`标签
+a  链接标签
+```
 更多用法可以查看":help emmet"
 本文修改于：https://github.com/ruchee/backup2/blob/master/code/linux/vim/zencoding.wiki
+/*}}}*/
+
+### Vim 正则表达式 /*{{{*/
+```
+*    指前面所出现的字元或字元集合，出现0或0次以上；
+\+    匹配内容同上，只不过出现次数不包括0次；
+\=    指前面所出现的字元，仅出现0次或者1次；
+\|    这个是多选，同or的意思相同，无论满足哪个条件都可以匹配；
+\{n,m}    指前面所出现的字元或字元集合最少出现n次，最多出现m次；
+上面这个可以演变一下几种，
+\{n}    指前面所出现的字元或字元集合出现次数为n次；
+\{n,}    指前面所出现的字元或字元集合最少出现为n次；
+\{,m}    指前面所出现的字元或字元集合最多出现为m次；
+^    匹配行首，在这个后面的字元出现在行首才符合；
+$    匹配行尾，在这个之前的字元出现在行尾才符合；
+[...]    字元集合，表示符合括号中所有字元中的其中一个；
+[^...]    上面这个的补集，表非括号中字元的其中一个；
+.    代表除换行字外的任一单一字元；千万不要小看了它，天大的符号(某网友语)自然不一般，在VIM的normal模式下，它可以重复上次的命令；在这边又可以表示任一字元，果然名不虚传；
+讲了这么多来点实际的例子。
+写elan单片机程序时，程序的标号都必须顶在最前，而且后面有个":"，如果忘记打了这个":"怎么办？一个一个找，再加上，当然也是可以。如果用VIM，就不用那么麻烦了。对了，用VIM的替代然后加上强大的正则表达式。看看VIM的神奇吧，敲入
+:%s/^[a-zA-Z].*[^:]$/&:/gc
+^[a-zA-Z]表示匹配行首为字母，可以排除不是顶在最前的其它指令，还可以排除顶在最前面的注释，因为注释使用";"打头，不在范围之内。
+[^:]$表示匹配行尾不是以":"结尾的东东。然后那个".*"就表示中间任意字元都行。这样只要行首和行尾符合的都会在后面加上":"了。怎么样，好用吧！
+其实关于那个[a-zA-Z]在VIM中有简单的表示方法，再来看看正则表达式中的一些简写
+\s    表示空白字元，即 Space 或 Tab 。
+\S    表示非空白字元
+\d    表示数字，即[0-9]。
+\D    表示非数字，即[^0-9]。
+\w    表示一般字元，包括下划线。即[0-9a-zA-Z_]。
+\W    表示非一般字元，即[^0-9a-zA-Z]。
+\a    表示英文字母，即[a-zA-Z]。
+\A    表示非英文字母，即[^a-zA-Z]。
+\l    表示小写字母，即[a-z]。
+\L    表示非小写字母，即[^a-z]。
+\u    表示大写字母，即[A-Z]。
+\U    表示非大写字母，即[^A-Z]。
+看完了上面的这些简写表示，上面那个例子其实可以改写如下：
+:%s/^\a.*[^:]$/&:/gc
+可以达到同样的效果。
+再来一个例子，写程序时难免会在某些行尾会留下一些多余的空格或者TAB指令，虽然没什么影响，但用VIM同样可以轻松找到这些多余的空指令，并删除。看看下面这个指令：
+:%s/\s$//gc
+试用一下，好像不错，末尾的空白指令都被删除了！但是仔细去看如果行尾有不止一个的空白指令，上面那个就只会取代最后一个空白指令，而忽略其它的空白指令。让我们动手再改进一下！用到前面的\+，这样就基本上ok了！不管行尾有多少空白指令都可以匹配到了！
+:%s/\s\+$//gc
 ```
 
-
-主要的一些查询功能
-:verbose map <所要查找的快捷键>
-:echo $TERM
-:verbose set term?
-:set termcap
-使用Ctrl-v来查看一些按钮的原来的代码
-
-##一些片段
-
-####配置里面<leader>rsl不同的实现方法
-#####执行选中行命令
-" function RunTheSelectLinesInSystem() range
-"     echo system('echo '.shellescape(join(getline(a:firstline, a:lastline), "\n")).'| sh ')
-" endfunction
-" com -range=% -nargs=0 RCurLine :<line1>,<line2>call RunTheSelectLinesInSystem()
-" you can use the method :'<,'>RCurLine
-
-#####sed method
-!!sed s/<search>/<replace>/<num>
-
-#####get some lines out or in
-To read in from file-name.txt into the current buffer
-:read file-name.txt
-
-To append the range of line 1 to line 300 from the current buffer to file-to-append.txt
-:1,300write >> file-to-append.txt
-
-You can also use marks instead of line numbers such as the visual marks
-:'<,'>write >> file-to-append.txt
-
-Or can write some line to a new file
-:1,300w file.txt
-
-#####row control
-刪除包含有空格組成的空行： g/^\s*$/d
-删除空白行： g/^$/d
-删除以#开头的： s/^#.*$//g
-删除以空格或tab開頭到結尾的空行 g/^[ |\t]*$/d
-在行头加注释： s/^/#/g
-:n,$s/string/sky/g 替换第n行开始到最后一行中每一行所有string为sky
-删除以//的开头的注释行： cat a2.C | grep -v '//' > a3.C
-g/pattern/d 是找到pattern, 删之
-v/pattern/d 是找到非pattern,删之
-
-#####row sort
-排序并删除重复行 :sort u
-
-#####添加选项到guivim的菜单栏
-比如下面的是添加modeline到文件末尾
-amenu Edit.Insert\ &modeline <C-\><C-N>ggOvim:ff=unix ts=4 ss=4<CR>vim60:fdm=marker<Esc>
-
-
-###参考
-http://www.richardzhong.com/category/vim/
-
-### 拼写检查
+量词
 ```
-set spell
-设置后Vim会高亮拼写错误的单词。将光标移至错误单词，输入z=查看建议拼写。
-autocmd FileType tex setlocal spell spelllang=en_us
-spell spelllang=en, de
-:set spell    启用拼写检查
-:set nospell  关闭拼写检查
-]s    移动到下一个拼写错误处
-[s    移动到上一个拼写错误处
-z=    选择正确的拼写
-zg    添加用户拼写
+vim的量词与perl相比一点也不逊色。
+vim    Perl    意义
+*    *    0个或多个(匹配优先)
+\+    +    1个或多个(匹配优先)
+\? 或 \=    ?    0个或1个(匹配优先)，\?不能在 ? 命令(逆向查找)中使用
+\{n,m}    {n,m}    n个到m个(匹配优先)
+\{n,}    {n,}    最少n个(匹配优先)
+\{,m}    {,m}    最多m个(匹配优先)
+\{n}    {n}    恰好n个
+\{-n,m}    {n,m}?    n个到m个(忽略优先)
+\{-}    *?    0个或多个(忽略优先)
+\{-1,}    +?    1个或多个(忽略优先)
+\{-,1}    ??    0个或1个(忽略优先)
+从上表中可见，vim的忽略优先量词不像perl的 *? +? ?? 那样，而是统一使用 \{- 实现的。这大概跟忽略优先量词不常用有关吧。
+环视和固化分组
+vim居然还支持环视和固化分组的功能，强大，赞一个。关于环视的解释请参考Yurii的《精通正则表达式》一书吧。
+vim    Perl    意义
+\@=    (?=    顺序环视
+\@!    (?!    顺序否定环视
+\@<=    (?<=    逆序环视
+\@<!    (?<!    逆序否定环视
+\@>    (?>    固化分组
+\%(atom\)    (?:    非捕获型括号
+和perl稍有不同的是，vim中的环视和固化分组的模式的位置与perl不同。例如，查找紧跟在 foo 之后的 bar，perl将模式写在环视的括号内，而vim将模式写在环视的元字符之前。
 ```
+/*}}}*/
 
-### grammer语法检查
-```
-" en/fr/ge.. 
-" 必须下载https://www.languagetool.org/zh/里面的检查软件
-Plugin 'LanguageTool'
-" :LanguageToolCheck
-" Pressing <Enter>
-" :LanguageToolClear
-```
-
-### 函数变量
-```
-let s:w_mydictwin=0
-function! Mydict()
-    if s:w_mydictwin
-        let s:w_mydictwin=0
-        close
-        file
-        return
-    endif
-    let s:w_mydictwin=1
-    let fwords=getreg("z")
-    setlocal buftype=nofile bufhidden=hide noswapfile
-endfunction
-```
-
-###File opening tips
-```
-vim file1 file2 … -o opens file1, file2, … in stacked windows
-vim file1 file2 … -O opens file1, file2, … side by side
-vim file + opens file and move the cursor to the last line.
-```
-
-### 
-```
-把找到的内容放在文件头
-g/pattern/t0
-把找到的内容放在文件尾
-g/pattern/t$
-把找到的内容整行放在文件尾
-g/pattern/m$
-```
-
-输入分割线---
-72i-<esc>
-所有行倒序
-:g/^/m0
-行间插入空行
-:g/^/pu _
 
 " vim: set ts=4 sw=4 tw=0 et fdm=marker foldlevel=0 foldenable foldlevelstart=99 :
