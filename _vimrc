@@ -1192,9 +1192,6 @@ command! -bang Bw call CleanClose(1,1)
 command! -bang Bq call CleanClose(0,1)
 
 
-au BufRead *vimrc setl foldmethod=marker foldlevel=0
-" set foldenable
-" set foldlevelstart=99
 au BufRead *.wsgi setl filetype=python
 
 
@@ -1362,6 +1359,5 @@ autocmd FileType css vnoremap <buffer> <s-f> :call RangeCSSBeautify()<cr>
 " Emmet.vim
 " div>p#foo$*3>a
 " https://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL
-" vim: set ts=4 sw=4 tw=0 et :
-" vim: set ts=4 sw=4 tw=0 et :
-" vim: set ts=4 sw=4 tw=0 et :
+
+" vim: set ts=4 sw=4 tw=0 et fdm=marker foldlevel=0 foldenable foldlevelstart=99 :

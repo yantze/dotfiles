@@ -1,11 +1,8 @@
-#VIM文档
+# VIM 文档
 
->说明
-Vim有很强的对称性观念，所以通过这个来学习vim
-这份文档很多都来自博客的整理，我自己只是把它们整理了一下
+> 首先要记住的是 Vim 有很强的对称性观念，这份文档很多都来自其它 vimer 的教程。
 
-整理人：
-yantze: http://vastiny.com
+整理人： [yantze](http://vastiny.com)
 
 
 常用命令 /*{{{*/
@@ -1185,6 +1182,7 @@ VIM 寄存器
 
 
 vim标记
+```
 Ctrl+i/o 跳转到较早/较晚的地方，
 :marks  列出所有的标记
 m{a-zA-Z} 用标记 {a-zA-Z} 记录当前位置
@@ -1198,27 +1196,22 @@ m{a-zA-Z} 用标记 {a-zA-Z} 记录当前位置
 `<           至 (前次) 可视区域的开始
 `>           至 (前次) 可视区域的结尾
 `.          至当前文件最后被改动的位置
+```
 
-we can bookmark locations in the buffer
-m<letter> sets mark named  <letter> at
-current location
+we can bookmark locations in the buffer m<letter> sets mark named  <letter> at current location
+```
 `<letter> jumps precisely to that mark
 ‘<letter> jumps to the line with the mark
 lowercase letter: mark is local to the buffer
-uppercase letter: mark is global, your buffer will
-be switched to the file with the mark
+uppercase letter: mark is global, your buffer will be switched to the file with the mark
 :marks shows you your current marks
 
-marks are very handy for changing text
-set a mark (let’s say  ma )
-then you can do:
+marks are very handy for changing text set a mark (let’s say  ma ) then you can do:
 d`a - delete text from cursor to mark a
 c`a - change text from cursor to mark a
-=’a - reformat lines from current one to the one
-with mark a
+=’a - reformat lines from current one to the one with mark a
 
-let’s say you jump somewhere
-how do you go back?
+let’s say you jump somewhere how do you go back?
 `` moves you between the last two locations
 you can set  ` (the context mark) explicitly:
     m`, jump elsewhere, then come back with ``
@@ -1227,13 +1220,13 @@ positions in the full jump history, but can’t be
 used as motions
 ‘. and  `. - jump to the line or exact location of
 the last modification
+```
 
 
 #### insert
-gi - incredibly handy
-goes to Insert mode where you left it last time
-scenario: edit something, exit Insert, go look at
-something else, then  gi back to restart editing
+```
+gi - incredibly handy goes to Insert mode where you left it last time scenario: edit something, exit Insert, go look at something else, then  gi back to restart editing
+```
 
 
 插件详细介绍
@@ -1243,7 +1236,7 @@ emmet(zen coding)
 `Zen Coding`在`Vim`下的默认触发键是`Ctrl + Y + ,`（注意，最后还有一个逗号）
 
 调用规则
-
+```
 `1`、单个元素：`div`
 `2`、带`id`的元素，使用`#`号：`div#name`
 `3`、带`class`的元素，使用点号（`.`）：`div.header`
@@ -1253,9 +1246,10 @@ emmet(zen coding)
 `7`、多项相同的元素，使用星号（`*`）：`ul>li*5`
 `8`、带有序号的元素，使用美元符（`$`），从`1`开始自动递增：`div>p#id$*5`
 `9`、如果需要指定序号的位数，只须多写几个美元符（`$`）即可：`div>p#id$$$*5`
+```
 
 常用缩写
-
+```
 `html:4t`：传统的`HTML4.01`模板
 `html:5`：`HTML5`模板
 `style`：样式标签
@@ -1264,6 +1258,7 @@ emmet(zen coding)
 `a`：链接标签
 更多用法可以查看":help emmet"
 本文修改于：https://github.com/ruchee/backup2/blob/master/code/linux/vim/zencoding.wiki
+```
 
 
 主要的一些查询功能
@@ -1322,26 +1317,31 @@ amenu Edit.Insert\ &modeline <C-\><C-N>ggOvim:ff=unix ts=4 ss=4<CR>vim60:fdm=mar
 http://www.richardzhong.com/category/vim/
 
 ### 拼写检查
-" set spell
-" 设置后Vim会高亮拼写错误的单词。将光标移至错误单词，输入z=查看建议拼写。
-" autocmd FileType tex setlocal spell spelllang=en_us
-" spell spelllang=en, de
-" :set spell    启用拼写检查
-" :set nospell  关闭拼写检查
-" ]s    移动到下一个拼写错误处
-" [s    移动到上一个拼写错误处
-" z=    选择正确的拼写
-" zg    添加用户拼写
+```
+set spell
+设置后Vim会高亮拼写错误的单词。将光标移至错误单词，输入z=查看建议拼写。
+autocmd FileType tex setlocal spell spelllang=en_us
+spell spelllang=en, de
+:set spell    启用拼写检查
+:set nospell  关闭拼写检查
+]s    移动到下一个拼写错误处
+[s    移动到上一个拼写错误处
+z=    选择正确的拼写
+zg    添加用户拼写
+```
 
 ### grammer语法检查
+```
 " en/fr/ge.. 
 " 必须下载https://www.languagetool.org/zh/里面的检查软件
 Plugin 'LanguageTool'
 " :LanguageToolCheck
 " Pressing <Enter>
 " :LanguageToolClear
+```
 
 ### 函数变量
+```
 let s:w_mydictwin=0
 function! Mydict()
     if s:w_mydictwin
@@ -1354,19 +1354,24 @@ function! Mydict()
     let fwords=getreg("z")
     setlocal buftype=nofile bufhidden=hide noswapfile
 endfunction
+```
 
 ###File opening tips
+```
 vim file1 file2 … -o opens file1, file2, … in stacked windows
 vim file1 file2 … -O opens file1, file2, … side by side
 vim file + opens file and move the cursor to the last line.
+```
 
 ### 
+```
 把找到的内容放在文件头
 g/pattern/t0
 把找到的内容放在文件尾
 g/pattern/t$
 把找到的内容整行放在文件尾
 g/pattern/m$
+```
 
 输入分割线---
 72i-<esc>
@@ -1374,3 +1379,5 @@ g/pattern/m$
 :g/^/m0
 行间插入空行
 :g/^/pu _
+
+" vim: set ts=4 sw=4 tw=0 et fdm=marker foldlevel=0 foldenable foldlevelstart=99 :
