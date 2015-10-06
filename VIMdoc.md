@@ -2,8 +2,7 @@
 
 > 首先要记住的是 Vim 有很强的对称性观念，这份文档很多都来自其它 vimer 的教程。
 
-整理人： [yantze](http://vastiny.com)
----
+整理： [yantze](http://vastiny.com)
 
 ## 掌握这些可以高效使用 /*{{{*/
 > 把本项目的 `_vimrc` 看完就可以玩转 vim 了。下面都是一些补充知识。
