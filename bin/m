@@ -5,13 +5,21 @@ HOME=$DIR/$USER
 manfile="$HOME/.dotfiles/LINUX_TIPS.md $HOME/.dotfiles/wiki/"
 
 if [[ $1 == "m" ]]; then
-    if [[ -z $2 ]]; then
-        echo "require second word"
-    fi
-    cheat $2
+  if [[ -z $2 ]]; then
+    echo "require second word"
+    exit;
+  fi
+  cheat $2
 else
-    if [[ $1 ]]; then
-        grep -h -r -n -A 1 -B 1 "$1" $manfile
-    fi
+  if [[ $1 ]]; then
+    hash foo 2>/dev/null || {
+      # if not installed ag
+      grep -h -r -n -B 1 -A 2 "$1" $manfile
+      # -h 隐藏文件名
+      # -r 递归查找
+      # -n 显示行号
+    }
+    ag -B 1 -A 2 "$1" $manfile
+fi
 fi
 

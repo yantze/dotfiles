@@ -40,7 +40,7 @@ heredoc> type what you want to echo
 heredoc> <<EOF
 
 printf "%x\n" 111
-locale 查看当前语言区的设置
+locale 查看当前语言区的设置, locale -v
 paste -sd, 1.txt 合并单个文件
 paste 1.txt 2.txt 按Tab合并两个文件
 cut -d: -f1 /etc/passwd | head -2 //打印第一列前两行

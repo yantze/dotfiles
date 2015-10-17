@@ -1,3 +1,9 @@
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
 PATH="/usr/local/php7/bin:$PATH"
 # custom zshrc
 . ~/.dotfiles/zshrc/zshrc
@@ -10,14 +16,6 @@ PATH="/usr/local/php7/bin:$PATH"
 # autocomplete functions
 fpath=(~/.dotfiles/module/zsh-completions/src/ $fpath)
 
-
-#cheat tips
-export DEFAULT_CHEAT_DIR=~/.dotfiles/module_config/cheat
-export CHEATCOLORS=true
-#compdef cheat
-declare -a cheats
-cheats=$(cheat -l | cut -d' ' -f1)
-# _arguments "1:cheats:(${cheats})" && return 0
 
 
 # Source Prezto.

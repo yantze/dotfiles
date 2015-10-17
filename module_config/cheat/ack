@@ -1,0 +1,3 @@
+# list all support types
+ack --help=type
+
