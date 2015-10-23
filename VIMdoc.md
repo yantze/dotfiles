@@ -1,6 +1,5 @@
 # VIM 文档
-
-> 首先要记住的是 Vim 有很强的对称性观念，这份文档很多都来自其它 vimer 的教程。
+> 首先要记住的是 Vim 有很强的对称性观念，这份文档很多都来自其他 vimer 的教程。
 
 整理： [yantze](http://vastiny.com)
 
@@ -96,11 +95,14 @@ cc:         删除一行并进入插入模式。
 
 zc          折叠代码
 zo          打开折叠的代码
-"           za --打开或关闭当前折叠
-"           zM --关闭所有折叠
-"           zR --打开所有折叠
+za          打开或关闭当前折叠
+zM          关闭所有折叠
+zR          打开所有折叠
+
 zz          将当前行滚动到屏幕中央
-gi          incredibly handy goes to Insert mode where you left it last time scenario: edit something, exit Insert, go look at something else, then  gi back to restart editing
+gi          incredibly handy goes to Insert mode where you left it
+            last time scenario: edit something, exit Insert, go look at something else,
+            then  gi back to restart editing
 ```
 
 
@@ -1437,4 +1439,7 @@ vim    Perl    意义
 /*}}}*/
 
 
-" vim: set ts=4 sw=4 tw=0 et fdm=marker foldlevel=0 foldenable foldlevelstart=99 :
+
+
+
+modeline voim: set ts=4 sw=4 tw=0 et fdm=marker foldlevel=0 foldenable foldlevelstart=99 :

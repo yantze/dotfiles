@@ -34,12 +34,19 @@
     " Windows Compatible {
         if WINDOWS()
             let g:isWIN = 1
-            " set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME
+            " set runtimepath=$HOME.'\.vim',$VIM.'\vimfiles',$VIMRUNTIME
+            if has("statusline")
+                set statusline  =%<%f\ %h%m%r%=%{(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\")}
+                set statusline +=%{\"[\".&ff.\"]\"} "file format
+                set statusline +=%k
+                set statusline +=\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+            endif
         else
+            let g:isWIN = 0
             " 兼容windows的环境变量$VIM
             let $VIM = $HOME."/.vim"
+            " 没有效果，待定
             set shell=/bin/sh
-            let g:isWIN = 0
         endif
     " }
 
@@ -52,6 +59,7 @@
             set <m-k>=k
             set <m-l>=l
             "from: https://groups.google.com/forum/#!topic/vim_use/uKOmY-mHo_k
+            " 导致 ESC 延迟反应
             "below set <esc> wait the next key millionstime
             set timeout timeoutlen=3000 ttimeoutlen=100
         endif
@@ -119,8 +127,10 @@
         if has('clipboard')
             if has('unnamedplus')  " When possible use + register for copy-paste
                 set clipboard=unnamed,unnamedplus
-            else         " On mac and Windows, use * register for copy-paste
-                set clipboard=unnamed
+            else  
+                " On mac and Windows, use * register for copy-paste
+                " windows/mac 粘贴板一起用，不方便
+                " set clipboard=unnamed
             endif
         endif
 
@@ -402,6 +412,8 @@ set viewoptions=folds,options,cursor,unix,slash  " Better Unix / Windows compati
 " set bsdir=buffer                               " 设定文件浏览器目录为当前目录,default value
 " set autochdir
 
+" 把这个快捷键放在这里主要是因为dos的vim对这个不支持，其它的系统支持
+imap <c-h> <ESC>I
 
 " 设置着色模式和字体
 if g:isWIN
@@ -410,7 +422,7 @@ if g:isWIN
         " 启动gvim时窗口的大小
         " set lines=42 columns=170
         " 启动时自动最大化窗口
-        au GUIEnter * simalt ~x
+        " au GUIEnter * simalt ~x
 
         " winpos 20 20             " 指定窗口出现的位置，坐标原点在屏幕左上角
         " set lines=20 columns=90  " 指定窗口大小，lines为高度，columns为宽度
@@ -430,6 +442,7 @@ if g:isWIN
         " let g:zenburn_transparent = 1 " black
         let g:zenburn_high_Contrast = 1
         colorscheme zenburn      " grey, my fav
+        colorscheme desertEx
 
         " set font
         " set guifont=Consolas:h12
@@ -441,7 +454,14 @@ if g:isWIN
     else
         colorscheme ir_black
         " 兼容windows下cmd的gb2312
-        set enc=cp936
+        " set enc=cp936
+        " help encoding-table
+        set termencoding=cp936
+        " In order to reload a file with proper encoding you can do:
+        " :e! ++enc=<the_encoding>.
+        " dos里面<backspace>和<c-h>完全链接了，要取消<c-h>的映射
+        iunmap <c-h>
+
 
     endif
 else
@@ -461,8 +481,7 @@ else
 endif
 
 if v:version > 703
-    " 开启相对行号
-    set relativenumber
+    set relativenumber " 开启相对行号
 
     " 替换原来的查找，可以同时显示多个查找关键字(Easymotion)
     if !exists("g:vimrc_no_plugin")
@@ -485,7 +504,7 @@ set smartindent              " 智能自动缩进
 set nu!                      " 显示行号
 set ruler                    " 右下角显示光标位置的状态行
 set hidden                   " 允许在有未保存的修改时切换缓冲区
-set foldmethod=indent        " 选择代码折叠类型, other:marker
+set foldmethod=syntax        " 选择代码折叠类型, other:marker,indent
 set foldlevel=100            " 禁止自动折叠 also same: set [no]foldenable
 set laststatus=2             " 开启状态栏信息
 set cmdheight=2              " 命令行的高度，默认为1，这里设为2
@@ -550,8 +569,8 @@ set ai!                      " 设置自动缩进
 " map F :%s/{/{\r/g <CR> :%s/}/}\r/g <CR>  :%s/;/;\r/g <CR> gg=G
 
 
-" Ctrl + H            光标移当前行行首
-imap <c-h> <ESC>I
+" Ctrl + H            光标移当前行行首/已经搬到兼容区
+" imap <c-h> <ESC>I
 
 " Ctrl + J            光标移下一行行首
 imap <c-j> <ESC><Down>I

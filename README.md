@@ -7,7 +7,7 @@
 
 **手动安装** 
 
-*install_guide.md*
+参考 *install_guide.md*
 
 **精简安装**
 

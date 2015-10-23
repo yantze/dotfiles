@@ -5,6 +5,11 @@ YaHei.Consolas.1.12.Revise https://github.com/yantze/vimrc/tree/master/vimfiles/
 
 MONACO.TTF,地址同上
 
+### 安装 ctags
+windows 从 https://github.com/yantze/vimrc/tree/master/misc
+获取 ctags.exe , misc/ctags58_src.zip 是程序的源代码和可执行文件打包。
+或者 访问 http://ctags.sourceforge.net 下载最新的 ctags，将 ctags.exe 复制到 \Vim\vim74 目录
+
 
 ###安装javascript语法检查和自动排版(`<shift-f>`)
 到~/.vim/vimfiles/bundle/tern_for_vim下执行`npm install`
