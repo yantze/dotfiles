@@ -11,6 +11,10 @@
 
     " Identify platform {
         silent function! OSX()
+            if system('uname')=~'Darwin'
+                let g:test = ''
+            else
+                let g:test = ''
             return has('macunix')
         endfunction
         silent function! LINUX()
@@ -19,16 +23,6 @@
         silent function! WINDOWS()
             return  (has('win16') || has('win32') || has('win64'))
         endfunction
-        " if has('win32')
-        "     let g:pydiction_location = 'C:/vim/vimfiles/ftplugin/pydiction/complete-dict'
-        " else
-        "     if system('uname')=~'Darwin'
-        "         let g:pydiction_location = '/Users/you/.vim/bundle/pydiction/complete-dict'
-        "     else
-        "         let g:pydiction_location = '/home/you/.vim/bundle/pydiction/complete-dict'
-        "     endif
-        " endif
-
     " }
 
     " Windows Compatible {
@@ -120,9 +114,11 @@
     " Basic {
         "set powerline
         "set guifont=Powerline
-        "set font=Source\ Code\ Pro\:h15
         " Uncomment the following to have Vim jump to the last position when reopening a file
         au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+        " set vimrc
+        let $VIMRC=$MYVIMRC
 
         if has('clipboard')
             if has('unnamedplus')  " When possible use + register for copy-paste
@@ -445,11 +441,11 @@ if g:isWIN
         colorscheme desertEx
 
         " set font
-        " set guifont=Consolas:h12
-        " set guifont=Monaco:h15
+        set guifont=Consolas:h12
+        " set guifont=Monaco:h11
         " set guifont=Source\ Code\ Pro\ Regular:h15
         " set guifont=YaHei\ Consolas\ Hybrid:h13
-        set guifont=Source\ Code\ Pro:h13
+        " set guifont=Source\ Code\ Pro:h13
 
     else
         colorscheme ir_black
