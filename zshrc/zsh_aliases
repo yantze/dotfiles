@@ -1,9 +1,26 @@
 ###require
 alias rm='rm -i'
 alias l.='ls -d .* --color=auto'
-alias vi='/usr/bin/vim'
-#让vim不带插件的运行,速度非常快
+
+###for type ls is error
+alias s='ls'
+alias lss='ls'
+
+### system alias
+alias sctl='systemctl'
+
+
+# Editor
+# 让vim不带插件的运行,速度非常快
 alias v='/usr/bin/vim --cmd "let g:vimrc_no_plugin=1"'
+# alias vi='/usr/bin/vim'
+alias less='/usr/share/vim/vim74/macros/less.sh' # replace sys less
+# use `emacs --daemon` and then `emacsclient filename`
+alias ec='emacsclient -a "" -c' # `-a ''` attempt to connect to an existing server, and if no server exists, start one then connect to it.
+alias et='emacsclient -t'  # 适合 GUI 时，启动一个新的 frame (-n) 
+alias en='emacsclient -n'  # 适合 终端运行(emacs --daemon) 后
+
+
 alias javac="javac -J-Dfile.encoding=utf8"
 alias grep="grep --color=auto"
 alias -s txt=vi #在shell里面直接输入txt文件，直接用vim打开
@@ -19,7 +36,6 @@ alias q='exit'
 # alias g='dict'
 #alias sp='~/tools/.sp.sh'
 alias sp='~/soft/sh-toolkits-lib/sp.sh'
-alias get='sh ~/soft/sh-toolkits-lib/sp.sh'
 
 # tmux
 #设置窗口的名字为hi
@@ -47,13 +63,6 @@ alias st='set-window-title'
 alias hd='od -Ax -tx1z -v' #方便的十六进制输出。 (用法举例: • hd /proc/self/cmdline | less)
 alias realpath='readlink -f'  #显示符号链接指向的真实路径((用法举例: • realpath ~/../$USER)
 
-###for type ls is error
-alias s='ls'
-alias lss='ls'
-
-### system alias
-alias sctl='systemctl'
-
 ###
 alias rsyn='rsync -arvuzp'
 alias proxy_local='http_proxy="http://vastiny:8087";'
@@ -73,9 +82,9 @@ alias putl='trash-list'
 #shadowsocks
 alias ssd='ssserver -c /etc/shadowsocks.json -d'
 
-# http/ftp
-alias pyhttp='python -mhttp.server'
-alias pyftp='python -mpyftpdlib -w'
+# http/ftp only python3, use bin/pyhttp bin/pyftp
+# alias pyhttp='python -mhttp.server'
+# alias pyftp='python -mpyftpdlib -w'
 
 # view config file whitout empty line(s),spaces(s) ,tab(s) ,'#' or ;
 # there have another:egrep -v '^#|^$' /etc/ntp.conf

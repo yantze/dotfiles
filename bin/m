@@ -2,7 +2,7 @@
 DIR=$(dirname ~)
 HOME=$DIR/$USER
 
-manfile="$HOME/.dotfiles/LINUX_TIPS.md $HOME/.dotfiles/wiki/"
+manfile="$HOME/.dotfiles/linux_log.md $HOME/.dotfiles/wiki/"
 
 if [[ $1 == "m" ]]; then
   if [[ -z $2 ]]; then
@@ -12,14 +12,15 @@ if [[ $1 == "m" ]]; then
   cheat $2
 else
   if [[ $1 ]]; then
-    hash foo 2>/dev/null || {
-      # if not installed ag
-      grep -h -r -n -B 1 -A 2 "$1" $manfile
-      # -h 隐藏文件名
-      # -r 递归查找
-      # -n 显示行号
-    }
+  #   hash ag 2>/dev/null || {
+  #     # if not installed ag
+  #     grep -h -r -n -B 1 -A 2 "$1" $manfile
+  #     # -h 隐藏文件名
+  #     # -r 递归查找
+  #     # -n 显示行号
+  #   }
+  # else
     ag -B 1 -A 2 "$1" $manfile
-fi
+  fi
 fi
 

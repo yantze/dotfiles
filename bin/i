@@ -1,0 +1,4 @@
+#!/bin/env sh
+
+# 显示 ip 地址
+ifconfig | awk '/eth0/{getline;gsub(/addr:/,"",$2);print $2}'
