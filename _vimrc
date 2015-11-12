@@ -1,9 +1,7 @@
-" Info
 " Author: yantze
-" Last Change:2014-10-14
+" Last Change:2015-11-14
 
-" the package location:
-" $VIM/_vimrc.bundles
+" $VIM/_vimrc.bundles " the package location:
 
 " 下面的两行，配置基本保持不变,一般不需要修改,所以折叠,可以用za打开
 " two lines below folded because of not often changing
@@ -386,6 +384,60 @@ function! AppendModeline()
 endfunction
 " }}}
 
+" Python {{{
+    " Base Setting {
+        au BufRead *.wsgi setl filetype=python
+        " python highlight
+        let python_highlight_all = 1
+        let b:python_version_2 = 1
+        let g:python_version_2 = 1
+
+        au BufNewFile,BufRead *.py
+            \ set tabstop=4 |
+            \ set softtabstop=4 |
+            \ set shiftwidth=4 |
+            \ set textwidth=79 |
+            \ set expandtab |
+            \ set autoindent |
+            \ set fileformat=unix |
+
+        au BufNewFile,BufRead *.js,*.html,*.css
+            \ set tabstop=2 |
+            \ set softtabstop=2 |
+            \ set shiftwidth=2 |
+
+        let python_highlight_all=1
+        " Display tabs at the beginning of a line in Python mode as bad.
+        " au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
+        " Make trailing whitespace be flagged as bad.
+        " au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+        " Wrap text after a certain number of characters
+        au BufRead,BufNewFile *.py,*.pyw, set textwidth=100
+
+        " Use UNIX (\n) line endings.
+        au BufNewFile *.py,*.pyw,*.c,*.h set fileformat=unix
+
+        " 支持Virtualenv虚拟环境
+
+        " 上面“转到定义”功能的一个问题，就是默认情况下Vim不知道virtualenv虚拟环境的情况，所以你必须在配置文件中添加下面的代码，使得Vim和YouCompleteMe能够发现你的虚拟环境：
+
+        " python with virtualenv support
+        " py << EOF
+        " import os
+        " import sys
+        " if 'VIRTUAL_ENV' in os.environ:
+        "   project_base_dir = os.environ['VIRTUAL_ENV']
+        "   activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+        "   execfile(activate_this, dict(__file__=activate_this))
+        " EOF
+        " 这段代码会判断你目前是否在虚拟环境中编辑，然后切换到相应的虚拟环境，并设置好你的系统路径，确保YouCompleteMe能够找到相应的site packages文件夹。
+        " 上面的代码似乎已经被下面的插件智能解 决
+        " https://github.com/jmcantrell/vim-virtualenv
+        " 如果有一天一直使用 python  可以考虑把 python 放在单独的一个文件配置中, 参考这篇文章
+        " https://segmentfault.com/a/1190000003962806
+    " }
+" }}}
 
 syntax enable                " 打开语法高亮
 syntax on                    " 开启文件类型侦测
@@ -500,8 +552,6 @@ set smartindent              " 智能自动缩进
 set nu!                      " 显示行号
 set ruler                    " 右下角显示光标位置的状态行
 set hidden                   " 允许在有未保存的修改时切换缓冲区
-set foldmethod=syntax        " 选择代码折叠类型, other:marker,indent
-set foldlevel=100            " 禁止自动折叠 also same: set [no]foldenable
 set laststatus=2             " 开启状态栏信息
 set cmdheight=2              " 命令行的高度，默认为1，这里设为2
 set writebackup              " 设置无备份文件
@@ -735,8 +785,10 @@ let g:NERDTreeWinSize = 18
 " autocmd VimEnter * NERDTree " auto start nerdtree
 " autocmd vimenter * if !argc() | NERDTree | endif " if not file start too
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif " when no file colse nerdtree
-let NERDTreeIgnore = ['\.pyc$','\.sock$'] "不显示的文件
+let NERDTreeIgnore = ['\.pyc$','\.sock$', '\~$', '\#.*#$'] "不显示的文件
 map <leader>fl :NERDTreeToggle<CR>
+" 不显示项目树上额外的信息，例如帮助、提示
+let NERDTreeMinimalUI=1
 
 
 " tComment - inherit the NERD_commenter shortkey
@@ -1158,6 +1210,8 @@ let g:ycm_error_symbol   = '>>'
 let g:ycm_warning_symbol = '>!'
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
+" 确保了在你完成操作之后，自动补全窗口不会消失
+let g:ycm_autoclose_preview_window_after_completion=1
 " offer like ctags: declara, define and multi, only support c/cpp
 " nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 " nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
@@ -1207,7 +1261,6 @@ command! -bang Bw call CleanClose(1,1)
 command! -bang Bq call CleanClose(0,1)
 
 
-au BufRead *.wsgi setl filetype=python
 
 
 let g:iswindows=1
@@ -1239,11 +1292,6 @@ nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>:copen<CR>
 " dp : diffput,把增加的部分放到另外一边
 "
 " insert schema, ctrl+w and other keys likes emacs
-
-" python highlight
-let python_highlight_all = 1
-let b:python_version_2 = 1
-let g:python_version_2 = 1
 
 let g:phpcomplete_relax_static_constraint = 1
 let g:phpcomplete_complete_for_unknown_classes = 1
@@ -1374,5 +1422,14 @@ autocmd FileType css vnoremap <buffer> <s-f> :call RangeCSSBeautify()<cr>
 " Emmet.vim
 " div>p#foo$*3>a
 " https://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL
+
+" Enable folding with the spacebar
+set foldmethod=indent        " 选择代码折叠类型, other:marker,indent,syntax
+set foldlevel=99             " 禁止自动折叠 also same: set [no]foldenable
+au BufWinLeave * silent mkview  " 保存文件的折叠状态
+au BufRead * silent loadview    " 恢复文件的折叠状态
+nnoremap <space> za             " 用空格来切换折叠状态
+" nnoremap 里第一个 n 代表 normal mode，后面的 noremap 代表不要重复映射，这是避免一个按键同时映射多个动作用的
+
 
 " vim: set ts=4 sw=4 tw=0 et fdm=marker foldlevel=0 foldenable foldlevelstart=99 :

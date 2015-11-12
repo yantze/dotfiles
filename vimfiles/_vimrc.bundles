@@ -12,9 +12,10 @@ Plugin 'gmarik/Vundle.vim'
 
     " Syntax
 
-" 语法查错
+" 语法查错,校验JavaScript。JSHint 来检查代码错误，同时控制代码质量。
 Plugin 'scrooloose/syntastic'
-"校验JavaScript。JSHint 来检查代码错误，同时控制代码质量。
+" 添加PEP8代码风格检查
+Plugin 'nvie/vim-flake8'
 
     " Debug
 
@@ -103,7 +104,7 @@ Plugin 'plasticboy/vim-markdown'
 " 这个没有多少用，用本配置的:Sw可以直接保存
 " Plugin 'sudo.vim'
 " helps editing xml (and [x]html, sgml, xslt) files
-Plugin 'othree/xml.vim'
+" ;;;;Plugin 'othree/xml.vim'
 " A filetype plugin for VIM to help edit XML files
 Plugin 'sukima/xmledit'
 Plugin 'tpope/vim-ragtag'
@@ -178,6 +179,8 @@ Plugin 'TxtBrowser'
 
 
 " Color
+" 这个有可能会 conflict 测试先
+Plugin 'jnurmine/Zenburn'
 " Plugin 'yantze/pt_black'
 Plugin 'stulzer/heroku-colorscheme'
 " Plugin 'altercation/vim-colors-solarized'
@@ -301,6 +304,12 @@ Plugin 'hdima/python-syntax'
 " Python Tab-completion
 " Plugin 'rkulla/pydiction'
 " let g:pydiction_location = '/home/yantze/.vim/bundle/pydiction/complete-dict'
+" 适用 python 折叠
+Plugin 'tmhedberg/SimpylFold'
+" preview doc
+let g:SimpylFold_docstring_preview=1
+" 自动缩进
+Plugin 'vim-scripts/indentpython.vim'
 
 " Find & Search
 " Plugin 'ack.vim'
