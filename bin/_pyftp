@@ -3252,7 +3252,7 @@ usages       :
 
     authorizer = DummyAuthorizer()
 #    authorizer.add_anonymous( opts.get( '-d', os.getcwd() ), perm='elradfmw' )
-    authorizer.add_user('username', 'xxxx', opts.get( '-d', os.getcwd() ), perm='elradfmw' )
+    authorizer.add_user('yantze', 'zzzzzz', opts.get( '-d', os.getcwd() ), perm='elradfmw' )
 
     FTPHandler.authorizer = authorizer
 

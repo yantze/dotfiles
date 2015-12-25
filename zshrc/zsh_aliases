@@ -142,4 +142,5 @@ extract () {
   fi
 }
 
-
+# gollum
+alias gollum="nohup  gollum --h1-title --no-edit &"

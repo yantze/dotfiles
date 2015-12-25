@@ -1,0 +1,1 @@
+openssl passwd -1

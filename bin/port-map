@@ -1,6 +1,0 @@
-#!/bin/env sh
-
-path=/etc/httpd/conf/sites-enabled/test.vhost
-sed "/ \*:/p; /Root \"\/var/p" $path >testtt
-diff testtt $path | awk '{print $3}'| sed '/^$/d' | sed 'N;s/\n//'
-rm -rf testtt

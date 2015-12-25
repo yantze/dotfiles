@@ -2,7 +2,7 @@
 DIR=$(dirname ~)
 HOME=$DIR/$USER
 
-manfile="$HOME/.dotfiles/linux_log.md $HOME/.dotfiles/wiki/"
+manfile="$HOME/.dotfiles/linux_log.md $HOME/wiki/ $HOME/.dotfiles/linux_assist.md"
 
 if [[ $1 == "m" ]]; then
   if [[ -z $2 ]]; then

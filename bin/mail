@@ -1,0 +1,2 @@
+#!/bin/env sh
+vim /var/spool/mail/yantze

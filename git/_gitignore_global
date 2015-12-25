@@ -196,3 +196,6 @@ tramp
 
 # cask packages
 .cask/
+
+# deamon
+nohup.out

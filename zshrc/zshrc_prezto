@@ -53,3 +53,8 @@ bindkey "$terminfo[kcud1]" history-substring-search-down
 # source /usr/local/bin/virtualenvwrapper.sh
 # export PROJECT_HOME=$HOME/workspace/app
 #  ~/.pyenv/shims/virtualenvwrapper.sh
+
+export NVM_DIR="/home/yantze/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+[ -s "/home/yantze/.dnx/dnvm/dnvm.sh" ] && . "/home/yantze/.dnx/dnvm/dnvm.sh" # Load dnvm

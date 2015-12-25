@@ -14,3 +14,10 @@ you can list repositories by:
 yum repolist
 yum repolist disabled
 ```
+
+want to find string without binary files
+```bash
+grep to_find_string . -r -I
+```
+    -r recursive
+    -I ignore binary
