@@ -249,6 +249,10 @@ snippet ee      输出信息，并终止执行
 	echo ${0};  exit();
 snippet e-      打印调试分隔符
 	echo '------ ${0} ------<br/>';
+snippet du      打印变量信息
+	var_dump(${0});
+snippet dudi     打印变量信息，并终止执行
+	var_dump(${0}); exit();
 snippet vd      打印变量信息
 	var_dump(${0});
 snippet vde     打印变量信息，并终止执行

@@ -256,11 +256,7 @@ func! Compile_Run_Code()
     elseif &filetype == "clojure"
         exec "!clojure -i %:t"
     elseif &filetype == "cs"
-        if g:isWIN
-            exec "!csc %:t && %:r.exe"
-        else
-            exec "!mono-csc %:t && ./%:r.exe"
-        endif
+            exec "!mcs %:t && mono %:r.exe"
     elseif &filetype == "fsharp"
         if g:isWIN
             exec "!fsc %:t && %:r.exe"
@@ -386,13 +382,14 @@ endfunction
 
 " Python {{{
     " Base Setting {
-        au BufRead *.wsgi setl filetype=python
         " python highlight
         let python_highlight_all = 1
         let b:python_version_2 = 1
         let g:python_version_2 = 1
 
-        au BufNewFile,BufRead *.py
+        au BufRead *.wsgi setl filetype=python
+
+        au BufNewFile,BufRead *.py,*.pyw
             \ set tabstop=4 |
             \ set softtabstop=4 |
             \ set shiftwidth=4 |
@@ -401,22 +398,19 @@ endfunction
             \ set autoindent |
             \ set fileformat=unix |
 
+        " Use UNIX (\n) line endings.
+        au BufNewFile *.py,*.pyw,*.c,*.h set fileformat=unix
+
         au BufNewFile,BufRead *.js,*.html,*.css
             \ set tabstop=2 |
             \ set softtabstop=2 |
             \ set shiftwidth=2 |
 
-        let python_highlight_all=1
         " Display tabs at the beginning of a line in Python mode as bad.
         " au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
         " Make trailing whitespace be flagged as bad.
         " au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
-        " Wrap text after a certain number of characters
-        au BufRead,BufNewFile *.py,*.pyw, set textwidth=100
-
-        " Use UNIX (\n) line endings.
-        au BufNewFile *.py,*.pyw,*.c,*.h set fileformat=unix
 
         " 支持Virtualenv虚拟环境
 
@@ -438,6 +432,93 @@ endfunction
         " https://segmentfault.com/a/1190000003962806
     " }
 " }}}
+
+" PHP {{{
+    " Base Setting {
+        "只有在是PHP文件时，才启用PHP补全
+        function! AddPHPFuncList()
+            set dictionary+=$HOME/.vim/vimfiles/resource/php-offical.dict
+            set complete-=k complete+=k
+        endfunction
+
+        " Map <leader>el to error_log value
+        " takes the whatever is under the cursor and wraps it in error_log( and
+        " print_r( with parameter true and a label
+        au FileType php nnoremap <leader>el ^vg_daerror_log( '<esc>pa=' . print_r( <esc>pa, true ) );<cr><esc>
+
+        au FileType php call AddPHPFuncList()
+        au FileType php setlocal omnifunc=syntaxcomplete#Complete
+        au BufNewFile,BufRead *.phtml set filetype=php
+
+        " set tags+= ~/.vim/vimfiles/resource/tags-php
+
+        " autocmd FileType php setlocal omnifunc=phpcomplete#CompleteTags
+        " 除了使用Tab这个补全的方式，还可以使用Ctrl+x，Ctrl+o来补全上面文件的内置函数
+
+        " function! RunPhpcs()
+            " let l:filename=@%
+            " let l:phpcs_output=system('phpcs --report=csv --standard=YMC '.l:filename)
+            " let l:phpcs_list=split(l:phpcs_output, "\n")
+            " unlet l:phpcs_list[0]
+            " cexpr l:phpcs_list
+            " cwindow
+            " endfunction
+
+            " set errorformat+=\"%f\"\\,%l\\,%c\\,%t%*[a-zA-Z]\\,\"%m\"
+        " command! Phpcs execute RunPhpcs()
+        " php debug
+        let g:vdebug_keymap = {
+        \    "run"               : "<F5>",
+        \    "set_breakpoint"    : "<F9>",
+        \    "run_to_cursor"     : "<F1>",
+        \    "get_context"       : "<F2>",
+        \    "detach"            : "<F7>",
+        \    "step_over"         : "<F10>",
+        \    "step_into"         : "<F11>",
+        \    "step_out"          : '<leader><F11>',
+        \    "close"             : '<leader><F5>',
+        \    "eval_under_cursor" : "<Leader>ec",
+        \    "eval_visual"       : "<Leader>ev",
+        \}
+        let g:vdebug_options = {
+        \    "port"               : 9000,
+        \    "server"             : 'localhost',
+        \    "timeout"            : 20,
+        \    "on_close"           : 'detach',
+        \    "break_on_open"      : 0,
+        \    "path_maps"          : {},
+        \    "debug_window_level" : 0,
+        \    "debug_file_level"   : 0,
+        \    "debug_file"         : "",
+        \    "watch_window_style" : 'expanded',
+        \    "marker_default"     : '*',
+        \    "marker_closed_tree" : '+',
+        \    "marker_open_tree"   : '-'
+        \}
+
+        " 要让vim支持php/js的错误查询，先安装syntastic插件
+        " 然后用php对应的版本pear install PHP_CodeSniffer-2.0.0a2
+        " shell测试：phpcs index.php
+        " phpcs，tab 4个空格，编码参考使用CodeIgniter风格
+        " let g:syntastic_phpcs_conf = "--tab-width=3 --standard=Zend"
+        " let g:syntastic_phpcs_conf = "--tab-width=4 --standard=CodeIgniter"
+        " 也可以在cli中执行下面的命令
+        " phpcs --config-set default_standard Zend
+        " 如果怕被phpcs提示的错误吓倒，可以把Zend改成none,这样就只会提示一些常见的错误
+        "
+        let g:phpqa_messdetector_ruleset = ''
+        let g:phpqa_messdetector_cmd = '/usr/bin/phpmd'
+        " 在打开文件的时候检查
+        let g:phpqa_messdetector_autorun = 0
+    " }
+" }}}
+
+" Node {{{
+let g:used_javascript_libs = 'underscore,jquery,react'
+
+" }}}
+
+" Base Setting {{{
 
 syntax enable                " 打开语法高亮
 syntax on                    " 开启文件类型侦测
@@ -530,6 +611,7 @@ endif
 
 if v:version > 703
     set relativenumber " 开启相对行号
+    set undofile                 " 重新打开文件可恢复上次关闭的撤销记录,默认filename.un~, only use for `vim --version` have +persistent_undo feature
 
     " 替换原来的查找，可以同时显示多个查找关键字(Easymotion)
     if !exists("g:vimrc_no_plugin")
@@ -572,29 +654,30 @@ set lbr                      " 不在单词中间断行(linebreak)
 " set nowrap                   " 设置不自动换行
 " set tw=78                    "超过80个字符就折行(textwrap)
 " set viminfo='20,\"50         " read/write a .viminfo file, don't store more than 50 lines of registers
-set undofile                 " 重新打开文件可恢复上次关闭的撤销记录,默认filename.un~, only use for `vim --version` have +persistent_undo feature
 set display=lastline         " 不要显示@@@@@
+
+
+" set ambiwidth=double         "如果全角字符不能识别一般用这个(自动用宽字符显示)
+set fo+=mB                   "打开断行模块对亚洲语言支持
+set ai!                      " autoindent 设置自动缩进
+" set showmatch                " 显示括号配对情况
+" set lsp=0                    "设置行间距
+
+" }}}
 
 
 " Tab
 set tabstop=4
 set cindent shiftwidth=4
-"set autoindent shiftwidth=4
 set expandtab                " 将Tab自动转化成空格 [需要输入真正的Tab键时，使用 Ctrl+V + Tab]
 " 详细的tab设置：http://blog.chinaunix.net/uid-24774106-id-3396220.html
 "set ts=4 sw=4 et  "也可以一行写完:ts=tabstop=4 sw=shiftwidth=4 et=expandtab
 set smarttab                 "在行首按TAB将加入sw个空格，否则加入ts个空格;按Backspace可以删除4个空格
 
-" set ambiwidth=double         "如果全角字符不能识别一般用这个(自动用宽字符显示)
-set fo+=mB                   "打开断行模块对亚洲语言支持
-set ai!                      " 设置自动缩进
-" set showmatch                " 显示括号配对情况
-" set lsp=0                    "设置行间距
 
 
 
-
-
+" custom shorcut {{{
 
 " =======
 " 自定义快捷键
@@ -774,6 +857,8 @@ nnoremap <C-l> <C-w>l
 
 nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 
+" }}}
+
 " =======
 " Plugins
 " =======
@@ -874,47 +959,7 @@ let g:acp_enableAtStartup = 0
 
 
 
-" RSpec.vim mappings
-" map <Leader>t :call RunCurrentSpecFile()<CR>
-" map <Leader>s :call RunNearestSpec()<CR>
-" map <Leader>l :call RunLastSpec()<CR>
-" map <Leader>a :call RunAllSpecs()<CR>
 
-" Goyo:the pure writer
-function! s:goyo_before()
-  silent !tmux set status off
-  set noshowmode
-  set noshowcmd
-endfunction
-function! s:goyo_after()
-  silent !tmux set status on
-  set showmode
-  set showcmd
-endfunction
-let g:goyo_callbacks = [function('s:goyo_before'), function('s:goyo_after')]
-nmap <Leader><Space> :Goyo<CR>
-
-
-
-" Airline:status bar
-" 打开airline的扩展tab buffer exploer功能
-let g:airline#extensions#tabline#enabled = 1
-" determine whether bufferline will overwrite customization variables
-let g:airline#extensions#bufferline#overwrite_variables = 1
-" AirLine彩色状态栏:badwolf, bubblegum, luna, raven, serene
-" 白色状态栏: sol
-" serene需要修改的地方：
-" ~/.dotfiles/vimrc/vimfiles/bundle/vim-airline/autoload/airline/themes +4
-" 改为235
-let g:airline_theme = 'serene'                " 设置主题
-" configure the title text for quickfix buffers
-let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'
-
-" Open URI under cursor or search.--go brower
-nmap gb <Plug>(openbrowser-smart-search)
-" Open URI selected word or search.
-vmap gb <Plug>(openbrowser-smart-search)
-" Open URI you also can use <leader>gb because of "textbrowser.vim"
 
 " 配置高亮括号 kien/rainbow_parentheses.vim
 let g:rbpt_colorpairs = [
@@ -940,7 +985,6 @@ let g:rbpt_loadcmd_toggle = 0
 
 "自定义关联文件类型
 au BufNewFile,BufRead *.less set filetype=css
-au BufNewFile,BufRead *.phtml set filetype=php
 
 " Indent_guides       显示对齐线
 let g:indent_guides_enable_on_vim_startup = 1  " 默认关闭
@@ -957,25 +1001,18 @@ let Tlist_File_Fold_Auto_Close = 1             " 自动折叠
 
 
 
-" <leader>a 排列归类
-"tabn/tabp 切换tab
-"tn 创建新窗口
-" <leader>g/f 搜索和查找
-":retab 对当前文档重新替换tab为空格
-"用Ctrl+v Tab可以产生原生的Tab
-" <leader>be打开当前所有buffer的列表<leader>bs,<leader>bv
+" tabn/tabp 切换tab
+" tabnew 创建新窗口
+" :retab 对当前文档重新替换tab为空格
+" 用Ctrl+v Tab可以产生原生的Tab
 " <leader>Space 打开Goyo编写环境
 " :e $m<tab> 自动扩展到:e $MYVIMRC 然后打开_vimrc
-" <c-y>,  扩展htmlcss的文件
 "
-"少用
-"ga 转换光标下的内容为多进制
-":e $MYVIMRC 快速打开配置文件,$MYGVIMRC
+" 少用
+" ga 转换光标下的内容为多进制
 " :set notextmode  去掉^M这个符号
-" :set paste  这个可以解决在linux下面有些字母会被执行
-" :set nopaster
-" :set pastetoggle
-" 如果碰到输入不了*号键，可以先按Ctrl+v，再输入想要输入的特殊符号
+" :set paste  这个可以解决在linux下面有些字母会被执行 nopaste pastetoggle
+" 碰到不能输入*号键，先按Ctrl+v，再输入想要输入的特殊符号
 " gCtrl+g 统计字数
 " Ctrl+x, Ctrl+f 补全当前要输入的路径
 "
@@ -987,91 +1024,7 @@ let Tlist_File_Fold_Auto_Close = 1             " 自动折叠
 " 查找当前的单词意思,quick close: ZZ/:q
 nmap <silent><leader>K :call Mydict()<CR>
 "
-"
-" =========
-" PHP
-" =========
-"只有在是PHP文件时，才启用PHP补全
-function! AddPHPFuncList()
-    set dictionary+=$HOME/.vim/vimfiles/resource/php-offical.dict
-    set complete-=k complete+=k
-endfunction
-autocmd FileType php call AddPHPFuncList()
-autocmd FileType php setlocal omnifunc=syntaxcomplete#Complete
 
-" Map <leader>el to error_log value
-" takes the whatever is under the cursor and wraps it in error_log( and
-" print_r( with parameter true and a label
-autocmd FileType php nnoremap <leader>el ^vg_daerror_log( '<esc>pa=' . print_r( <esc>pa, true ) );<cr><esc>
-
-
-" set tags+= ~/.vim/vimfiles/resource/tags-php
-
-" autocmd FileType php setlocal omnifunc=phpcomplete#CompleteTags
-" 除了使用Tab这个补全的方式，还可以使用Ctrl+x，Ctrl+o来补全上面文件的内置函数
-
-" function! RunPhpcs()
-    " let l:filename=@%
-    " let l:phpcs_output=system('phpcs --report=csv --standard=YMC '.l:filename)
-    " let l:phpcs_list=split(l:phpcs_output, "\n")
-    " unlet l:phpcs_list[0]
-    " cexpr l:phpcs_list
-    " cwindow
-    " endfunction
-
-    " set errorformat+=\"%f\"\\,%l\\,%c\\,%t%*[a-zA-Z]\\,\"%m\"
-" command! Phpcs execute RunPhpcs()
-" php debug
-let g:vdebug_keymap = {
-\    "run"               : "<F5>",
-\    "set_breakpoint"    : "<F9>",
-\    "run_to_cursor"     : "<F1>",
-\    "get_context"       : "<F2>",
-\    "detach"            : "<F7>",
-\    "step_over"         : "<F10>",
-\    "step_into"         : "<F11>",
-\    "step_out"          : '<leader><F11>',
-\    "close"             : '<leader><F5>',
-\    "eval_under_cursor" : "<Leader>ec",
-\    "eval_visual"       : "<Leader>ev",
-\}
-let g:vdebug_options = {
-\    "port"               : 9000,
-\    "server"             : 'localhost',
-\    "timeout"            : 20,
-\    "on_close"           : 'detach',
-\    "break_on_open"      : 0,
-\    "path_maps"          : {},
-\    "debug_window_level" : 0,
-\    "debug_file_level"   : 0,
-\    "debug_file"         : "",
-\    "watch_window_style" : 'expanded',
-\    "marker_default"     : '*',
-\    "marker_closed_tree" : '+',
-\    "marker_open_tree"   : '-'
-\}
-
-" ==============
-" Syntastic: php
-" ==============
-"
-" ===php===
-" 要让vim支持php/js的错误查询，先安装syntastic插件
-" 然后用php对应的版本pear install PHP_CodeSniffer-2.0.0a2
-" shell测试：phpcs index.php
-"在打开文件的时候检查
-"phpcs，tab 4个空格，编码参考使用CodeIgniter风格
-" let g:syntastic_phpcs_conf = "--tab-width=3 --standard=Zend"
-" let g:syntastic_phpcs_conf = "--tab-width=4 --standard=CodeIgniter"
-" 也可以在cli中执行下面的命令
-" phpcs --config-set default_standard Zend
-" 如果怕被phpcs提示的错误吓倒，可以把Zend改成none,这样就只会提示一些常见的错误
-"
-let g:phpqa_messdetector_ruleset = ''
-let g:phpqa_messdetector_cmd = '/usr/bin/phpmd'
-let g:phpqa_messdetector_autorun = 0
-
-"
 " ===js===
 " 需要用nodejs下的包安装工具npm安装npm install -g jshint
 " shell测试：jshint -version
@@ -1079,93 +1032,12 @@ let g:phpqa_messdetector_autorun = 0
 
 
 " 这个主要用来对txt文档也可以用taglist列表
-au BufEnter *.txt,*.log,*.ini setlocal ft=txt
+au BufReadPre *.txt,*.log,*.ini setlocal ft=txt
 
+au BufReadPre * if getfsize(expand("%")) > 10000000 | syntax off | endif
 
-autocmd BufReadPre * if getfsize(expand("%")) > 10000000 | syntax off | endif
+au BufRead,BufNewFile *.js set filetype=javascript syntax=jquery
 
-autocmd BufRead,BufNewFile *.js set filetype=javascript syntax=jquery
-
-
-"vim 插件调试
-"检测插件加载时间
-"vim filename --startuptime 'time.txt'
-"下面代码可以检测加载插件总用时
-"awk '{print $2}' time.txt | sed '/[0-9].*:/d' | awk '{sum+=$1} END {print sum}'
-"检测vim在干什么 vim filename -V > savefilename
-"
-"
-
-" c/c++环境开发IDE
-" c开发介绍：http://blog.csdn.net/bokee/article/details/6633193
-" Ctags
-"inoremap  <c-]> <c-x><c-]> "ctags 补全快捷键
-" 用ctrl+]和Ctrl+t跳转定义和返回
-nmap <silent><leader>mt :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <cr><cr>:echo 'Generate Ctags Done'<cr>
-" nmap <leader>mt <ESC>:!ctags -R --languages=
-" set tags+=~/gitdb/rails/tags
-" 生成cscope
-" nmap <leader>gc :!cscope -Rbq -f cscope/cs.out <CR><CR>:echo 'generate cscope done'<cr>
-" cscope的使用
-" <leader>f
-" s: Find this C symbol
-" g: Find this definition
-" d: Find functions called by this function
-" c: Find functions calling this function
-" t: Find this text string
-" e: Find this egrep pattern
-" f: Find this file
-" i: Find files #including this file
-" 使用taglist <leader>tl
-" 在. -> :: 等地方可以自动补全
-
-"
-"
-"marker 使用
-"m 0~9 标记文件
-"' 0~9 随时打开文件
-
-" tips
-" 从vim暂时的切换到Console
-" 暂停vim方式:Ctrl+z, jobs, fg
-" 使用vim的sh命令启动新console :sh
-" 使用!bash启动一个console
-" 直接执行:!命令
-
-" For Mac
-" noremap <silent> <M-up> <C-W>+
-" noremap <silent> <M-down> <C-W>-
-"
-
-" deploy python
-" source $VIM/rc/py
-
-" if g:isWIN
-"     let g:hexoProjectPath="D:\\Work\\GitHub\\hexo"
-" else
-"     let g:hexoProjectPath="~/hexo/"
-" endif
-" fun! OpenHexoProjPath()
-"     execute "cd " . g:hexoProjectPath
-" endfun
-" function! OpenHexoPost(...)
-"     call OpenHexoProjPath()
-"
-"     let filename = "source/_posts/" . a:1 . ".md"
-"     execute "e " . filename
-" endfunction
-" function! NewHexoPost(...)
-"     call OpenHexoProjPath()
-"
-"     let filename = a:1
-"     execute "!hexo new " . filename
-"
-"     call OpenHexoPost(a:1)
-" endfunction
-" command -nargs=+ HexoOpen :call OpenHexoPost("<args>")
-" command -nargs=+ HexoNew :call NewHexoPost("<args>")
-" :HexoNew artical-name
-" :HexoOpen artical-name
 
 " there use special tech, when you put ':ag ', will display ':Ag '
 " cnoreabbrev ag Ag
@@ -1192,73 +1064,6 @@ let g:syntastic_cpp_compiler_options = "-std=c++11"
 let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'passive_filetypes': ['elixir', 'javascript'] }
 
-" You Complete Me
-"competeble with UltraSnips
-let g:ycm_key_list_select_completion   = []
-let g:ycm_key_list_previous_completion = []
-let g:ycm_global_ycm_extra_conf        = $VIM . '/rc/ycm_extra_conf.py'
-" 下里的filetype主要是和上面的syntastic对应，用于使用clang编译的情况
-let g:ycm_extra_conf_vim_data          = ['&filetype', 'g:syntastic_c_compiler_options', 'g:syntastic_cpp_compiler_options']
-let g:ycm_filetype_blacklist = {
-    \ 'notes' : 1,
-    \ 'markdown' : 1,
-    \ 'text' : 1,
-    \ 'gitcommit': 1,
-    \ 'mail': 1,
-\}
-let g:ycm_error_symbol   = '>>'
-let g:ycm_warning_symbol = '>!'
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-" 确保了在你完成操作之后，自动补全窗口不会消失
-let g:ycm_autoclose_preview_window_after_completion=1
-" offer like ctags: declara, define and multi, only support c/cpp
-" nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
-" nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
-
-
-" CtrlP
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.png,*.gif,*.jpeg,.DS_Store  " MacOSX/Linux
-" nnoremap <Leader>t :CtrlP getcwd()<CR>
-" nnoremap <Leader>f :CtrlPClearAllCaches<CR>
-nnoremap <Leader>bl :CtrlPBuffer<CR>
-" nnoremap <Leader>j :CtrlP ~/<CR>
-" 下面这句话是说ctrlp自动默认取消探索所有tmp目录下的文件,所以会导致在tmp目录中
-" ,不能使用ctrlp,其实我发现在随便一种tmp目录下面,使用vim的 :e path/to/filename
-" 都没有作用,具体原因可能和ctrlp类似
-" default gtrlp_custom_ignore =  '\v[\/]\.(git|hg|svn)$',
-if exists('g:ctrlp_custom_ignore')
-    unlet g:ctrlp_custom_ignore
-endif
-let g:ctrlp_custom_ignore = {
-            \'dir': '\.git$\|\.hg$\|\.svn$\|bower_components$\|dist$\|node_modules$\|project_files$\|test$',
-            \'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$\|\.pyo$\|\.rbc$\|\.rbo$\|\.class$\|\.o$\|\~$'
-            \}
-
-" command! -nargs=* -complete=function Call exec 'call '.<f-args>
-" command! Q q
-" command! -bang Q q<bang>
-" command! Qall qall
-" command! -bang Qall qall<bang>
-" command! W w
-" command! -nargs=1 -complete=file E e <args>
-" command! -bang -nargs=1 -complete=file E e<bang> <args>
-" command! -nargs=1 -complete=tag Tag tag <args>
-"
-" Save a file that requires sudoing even when
-" you opened it as a normal user.
-command! Sw w !sudo tee % > /dev/null
-" Show difference between modified buffer and original file
-command! DiffSaved call s:DiffWithSaved()
-
-command! Bw call CleanClose(1,0)
-command! Bq call CleanClose(0,0)
-command! -bang Bw call CleanClose(1,1)
-command! -bang Bq call CleanClose(0,1)
 
 
 
@@ -1431,5 +1236,157 @@ au BufRead * silent loadview    " 恢复文件的折叠状态
 nnoremap <space> za             " 用空格来切换折叠状态
 " nnoremap 里第一个 n 代表 normal mode，后面的 noremap 代表不要重复映射，这是避免一个按键同时映射多个动作用的
 
+au FileType javascript set sw=2
+
+
+
+"vim 插件调试
+"检测插件加载时间
+"vim filename --startuptime 'time.txt'
+"下面代码可以检测加载插件总用时
+"awk '{print $2}' time.txt | sed '/[0-9].*:/d' | awk '{sum+=$1} END {print sum}'
+"检测vim在干什么 vim filename -V > savefilename
+"
+"
+
+" c/c++环境开发IDE
+" c开发介绍：http://blog.csdn.net/bokee/article/details/6633193
+" Ctags
+"inoremap  <c-]> <c-x><c-]> "ctags 补全快捷键
+" 用ctrl+]和Ctrl+t跳转定义和返回
+nmap <silent><leader>mt :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <cr><cr>:echo 'Generate Ctags Done'<cr>
+" nmap <leader>mt <ESC>:!ctags -R --languages=
+" set tags+=~/gitdb/rails/tags
+" 生成cscope
+" nmap <leader>gc :!cscope -Rbq -f cscope/cs.out <CR><CR>:echo 'generate cscope done'<cr>
+" cscope的使用
+" <leader>f
+" s: Find this C symbol
+" g: Find this definition
+" d: Find functions called by this function
+" c: Find functions calling this function
+" t: Find this text string
+" e: Find this egrep pattern
+" f: Find this file
+" i: Find files #including this file
+" 使用taglist <leader>tl
+" 在. -> :: 等地方可以自动补全
+
+"
+"
+"marker 使用
+" m 0~9 标记文件
+" ' 0~9 随时打开文件
+
+" tips: 从vim暂时的切换到Console
+" 暂停vim方式:Ctrl+z, jobs, fg
+" 使用vim的sh命令启动新console :sh
+" 使用!bash启动一个console
+" 直接执行:!命令
+
+" Plugin {{{
+    " CtrlP {{{
+        let g:ctrlp_map = '<c-p>'
+        let g:ctrlp_cmd = 'CtrlP'
+        let g:ctrlp_working_path_mode = 'ra'
+        set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.png,*.gif,*.jpeg,.DS_Store  " MacOSX/Linux
+        " nnoremap <Leader>t :CtrlP getcwd()<CR>
+        " nnoremap <Leader>f :CtrlPClearAllCaches<CR>
+        nnoremap <Leader>bl :CtrlPBuffer<CR>
+        " nnoremap <Leader>j :CtrlP ~/<CR>
+        " 下面这句话是说ctrlp自动默认取消探索所有tmp目录下的文件,所以会导致在tmp目录中
+        " 不能使用ctrlp,其实我发现在随便一种tmp目录下面,使用vim的 :e path/to/filename
+        " 都没有作用,具体原因可能和ctrlp类似
+        " default gtrlp_custom_ignore =  '\v[\/]\.(git|hg|svn)$',
+        if exists('g:ctrlp_custom_ignore')
+            unlet g:ctrlp_custom_ignore
+        endif
+        let g:ctrlp_custom_ignore = {
+                    \'dir': '\.git$\|\.hg$\|\.svn$\|bower_components$\|dist$\|node_modules$\|project_files$\|test$',
+                    \'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$\|\.pyo$\|\.rbc$\|\.rbo$\|\.class$\|\.o$\|\~$'
+                    \}
+
+        " command! -nargs=* -complete=function Call exec 'call '.<f-args>
+        " command! Q q
+        " command! -bang Q q<bang>
+        " command! Qall qall
+        " command! -bang Qall qall<bang>
+        " command! W w
+        " command! -nargs=1 -complete=file E e <args>
+        " command! -bang -nargs=1 -complete=file E e<bang> <args>
+        " command! -nargs=1 -complete=tag Tag tag <args>
+        "
+        " Save a file that requires sudoing even when
+        " you opened it as a normal user.
+        command! Sw w !sudo tee % > /dev/null
+        " Show difference between modified buffer and original file
+        command! DiffSaved call s:DiffWithSaved()
+
+        command! Bw call CleanClose(1,0)
+        command! Bq call CleanClose(0,0)
+        command! -bang Bw call CleanClose(1,1)
+        command! -bang Bq call CleanClose(0,1)
+    " }}}
+    " YCM {{{
+        "competeble with UltraSnips
+        let g:ycm_key_list_select_completion   = []
+        let g:ycm_key_list_previous_completion = []
+        let g:ycm_global_ycm_extra_conf        = $VIM . '/rc/ycm_extra_conf.py'
+        " 下里的filetype主要是和上面的syntastic对应，用于使用clang编译的情况
+        let g:ycm_extra_conf_vim_data          = ['&filetype', 'g:syntastic_c_compiler_options', 'g:syntastic_cpp_compiler_options']
+        let g:ycm_filetype_blacklist = {
+            \ 'notes' : 1,
+            \ 'markdown' : 1,
+            \ 'text' : 1,
+            \ 'gitcommit': 1,
+            \ 'mail': 1,
+        \}
+        let g:ycm_error_symbol   = '>>'
+        let g:ycm_warning_symbol = '>!'
+        let g:ycm_collect_identifiers_from_tags_files = 1
+        let g:ycm_collect_identifiers_from_comments_and_strings = 1
+        " 确保了在你完成操作之后，自动补全窗口不会消失
+        let g:ycm_autoclose_preview_window_after_completion=1
+        " offer like ctags: declara, define and multi, only support c/cpp
+        " nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+        " nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+        nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+    " }}}
+    " Airline {{{
+        " 打开airline的扩展tab buffer exploer功能
+        let g:airline#extensions#tabline#enabled = 1
+        " determine whether bufferline will overwrite customization variables
+        let g:airline#extensions#bufferline#overwrite_variables = 1
+        " AirLine彩色状态栏:badwolf, bubblegum, luna, raven, serene
+        " 白色状态栏: sol
+        " serene需要修改的地方：
+        " ~/.dotfiles/vimrc/vimfiles/bundle/vim-airline/autoload/airline/themes +4
+        " 改为235
+        let g:airline_theme = 'serene'                " 设置主题
+        " configure the title text for quickfix buffers
+        let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'
+
+        " Open URI under cursor or search.--go brower
+        nmap gb <Plug>(openbrowser-smart-search)
+        " Open URI selected word or search.
+        vmap gb <Plug>(openbrowser-smart-search)
+        " Open URI you also can use <leader>gb because of "textbrowser.vim"
+    " }}}
+    " Goyo:the pure writer {{{
+        function! s:goyo_before()
+          silent !tmux set status off
+          set noshowmode
+          set noshowcmd
+        endfunction
+        function! s:goyo_after()
+          silent !tmux set status on
+          set showmode
+          set showcmd
+        endfunction
+        let g:goyo_callbacks = [function('s:goyo_before'), function('s:goyo_after')]
+        nmap <Leader><Space> :Goyo<CR>
+    " }}}
+" }}}
 
 " vim: set ts=4 sw=4 tw=0 et fdm=marker foldlevel=0 foldenable foldlevelstart=99 :

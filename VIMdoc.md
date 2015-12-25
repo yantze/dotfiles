@@ -1,7 +1,7 @@
 # VIM 文档
-> 首先要记住的是 Vim 有很强的对称性观念，这份文档很多都来自其他 vimer 的教程。
+> Vim 有很强的对称性观念，这份文档很多都来自其他 vimer 的教程。
 
-整理： [yantze](http://vastiny.com)
+整理： [yantze](http://github.com/yantze)
 
 ## 掌握这些可以高效使用 /*{{{*/
 > 把本项目的 `_vimrc` 看完就可以玩转 vim 了。下面都是一些补充知识。
@@ -368,6 +368,11 @@ jjj     下移3行
 I       进入插入模式
 //
 Esc
+```
+
+unix 与 dos 换行符切换
+```
+set ff=unix
 ```
 
 /*}}}*/
@@ -1440,6 +1445,4 @@ vim    Perl    意义
 
 
 
-
-
-modeline voim: set ts=4 sw=4 tw=0 et fdm=marker foldlevel=0 foldenable foldlevelstart=99 :
+modeline vim: set ts=4 sw=4 tw=0 et fdm=marker foldlevel=0 foldenable foldlevelstart=99 :

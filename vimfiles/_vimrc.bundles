@@ -232,6 +232,10 @@ Plugin 'Simple-Javascript-Indenter'
 "GO
 " goland的多种vim功能/安装
 " Plugin 'cespare/vim-golang'
+" Go 自动调用goimport添加删除模块
+autocmd BufWritePre *.go :Fmt
+" 去掉预览窗口preview和设置longest
+" set completeopt=longest,menu
 " 另外一个后浪:https://github.com/fatih/vim-go
 Plugin 'fatih/vim-go'
 " go get github.com/bradfitz/goimports
@@ -241,11 +245,6 @@ Plugin 'fatih/vim-go'
 " 这个是go的自动补全插件需要先安装下面这个
 " go get github.com/nsf/gocode
 Plugin 'undx/vim-gocode'
-
-" Go 自动调用goimport添加删除模块
-autocmd BufWritePre *.go :Fmt
-"去掉预览窗口preview和设置longest
-set completeopt=longest,menu
 "设置CTRL+J补全
 inoremap <c-;> <c-x><c-o>
 
@@ -295,21 +294,6 @@ autocmd FileType html,css,phtml,tpl EmmetInstall
 " 给原来的括号加上高亮
 " Plugin 'kien/rainbow_parentheses.vim'
 
-" python
-Plugin 'hdima/python-syntax'
-" Plugin 'fs111/pydoc.vim' "manpageview united all helper
-" Plugin 'python.vim' "提供一些跳转的命令,比如跳到类或者跳到定义块
-" 检查python的代码错误,编译需要'+python', require: pip install pyflakes
-" Plugin 'pyflakes.vim' "syntastic united
-" Python Tab-completion
-" Plugin 'rkulla/pydiction'
-" let g:pydiction_location = '/home/yantze/.vim/bundle/pydiction/complete-dict'
-" 适用 python 折叠
-Plugin 'tmhedberg/SimpylFold'
-" preview doc
-let g:SimpylFold_docstring_preview=1
-" 自动缩进
-Plugin 'vim-scripts/indentpython.vim'
 
 " Find & Search
 " Plugin 'ack.vim'
@@ -327,6 +311,27 @@ if v:version > 703
 endif
 " 在()、""、甚至HTML标签之间快速跳转；
 Plugin 'matchit.zip'
+
+" Plugin {
+    " call vundle#begin()
+    " python
+    Plugin 'hdima/python-syntax'
+    " Plugin 'fs111/pydoc.vim' "manpageview united all helper
+    " Plugin 'python.vim' "提供一些跳转的命令,比如跳到类或者跳到定义块
+    " 检查python的代码错误,编译需要'+python', require: pip install pyflakes
+    " Plugin 'pyflakes.vim' "syntastic united
+    " Python Tab-completion
+    " Plugin 'rkulla/pydiction'
+    " let g:pydiction_location = '/home/yantze/.vim/bundle/pydiction/complete-dict'
+    " 适用 python 折叠
+    Plugin 'tmhedberg/SimpylFold'
+    " preview doc
+    let g:SimpylFold_docstring_preview=1
+    " 自动缩进
+    Plugin 'vim-scripts/indentpython.vim'
+
+    " call vundle#end()            " required
+" }
 
 " 列出当前buffer列表的窗口,可以同过lru等排序快速找到文件
 " Plugin 'bufexplorer.zip' "ctrlp united the file manager
