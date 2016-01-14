@@ -19,5 +19,12 @@ want to find string without binary files
 ```bash
 grep to_find_string . -r -I
 ```
-    -r recursive
-    -I ignore binary
+- -r recursive
+- -I ignore binary
+
+检测 `vt-us1.vent.link` 到本地的 ping 时长
+```bash
+traceroute -T -p 33322 vt-us1.vnet.link
+```
+
+
