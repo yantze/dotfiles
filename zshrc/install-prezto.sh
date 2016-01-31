@@ -23,6 +23,6 @@ chsh -s /usr/bin/zsh
 # //install & update
 # git pull && git submodule update --init --recursive
 
-ln -sf ~/.dotfiles/zshrc/prezto_theme_sorin_for_putty ~/.zprezto/modules/prompt/functions/prompt_sorin_setup
-ln -sf ~/.dotfiles/zshrc/zshrc_prezto ~/.zshrc
+# ln -sf ~/.dotfiles/zshrc/prezto_theme_sorin_for_putty ~/.zprezto/modules/prompt/functions/prompt_sorin_setup
+# ln -sf ~/.dotfiles/zshrc/zshrc_prezto ~/.zshrc
 ln -sf ~/.dotfiles/zshrc/zpreztorc ~/.zpreztorc
