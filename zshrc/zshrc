@@ -10,11 +10,11 @@ export EDITOR=vim
 # export JAVA_HOME=/usr/java/jdk1.8.0_05
 # you can download from:
 # http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
-export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
-export JRE_HOME=$JAVA_HOME/jre
-CLASSPATH=./:$JAVA_HOME/lib:$JRE_HOME/lib:$JRE_HOME/lib/tools.jar
-export CLASSPATH
-PATH="$JAVA_HOME/bin:$PATH"
+# export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+# export JRE_HOME=$JAVA_HOME/jre
+# CLASSPATH=./:$JAVA_HOME/lib:$JRE_HOME/lib:$JRE_HOME/lib/tools.jar
+# export CLASSPATH
+# PATH="$JAVA_HOME/bin:$PATH"
 
 
 ###PHP###
@@ -167,4 +167,3 @@ alias japanese2='LANG="ja_JP.UTF-8" LC_ALL="ja_JP.UTF-8"'
 ### cheat
 export DEFAULT_CHEAT_DIR=~/.dotfiles/module_config/cheat
 export CHEATCOLORS=true
-
