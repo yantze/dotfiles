@@ -8,6 +8,9 @@
 https://github.com/rhyzx/.config
 講了用 stow 、subtree、hub、png等dotfiles 管理辦法，很強大。https://github.com/jcouyang/dotfiles
 
+### subtree 管理
+
+
 
 暂时放在这里
 ##GET技能列表
