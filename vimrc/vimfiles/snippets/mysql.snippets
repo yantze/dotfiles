@@ -1,0 +1,33 @@
+snippet /       单行注释
+	-- ${0}
+snippet //      多行注释
+	/*${0}*/
+# 主干命令
+snippet cre     建表
+	create table ${0}
+snippet ins     插入记录
+	insert into ${0}
+snippet pri     主键
+	primary key ${0}
+# 数据类型
+snippet un      无符号
+	unsigned${0}
+snippet smi     smallint
+	smallint(${0})
+snippet in      int
+	int(${0})
+snippet vch     varchar
+	varchar(${0})
+snippet 
+# 选项设置
+snippet eng     数据引擎
+	engine=${0:MyISAM}
+snippet cha     默认编码
+	default charset=${0:utf8}
+# 单个关键字
+snippet exi     存在
+	exists${0}
+snippet val     记录的值
+	values${0}
+snippet aut     自增
+	auto_increment${0}
