@@ -1,11 +1,12 @@
-##一切竟在不言中
+## 一切竟在不言中
 
-###安装
-wget https://raw.github.com/yantze/dotfiles/master/Makefile && make all
+### 安装
+可以參考 makefile 裏面的安裝方法
 
 
 ###参考
 https://github.com/rhyzx/.config
+講了用 stow 、subtree、hub、png等dotfiles 管理辦法，很強大。https://github.com/jcouyang/dotfiles
 
 
 暂时放在这里
