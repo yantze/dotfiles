@@ -2,8 +2,8 @@
 # // Zsh起動
 
 # // リポジトリをclone
-# git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-ln -sf ~/.dotfiles/module/prezto ~/.zprezto
+git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+# ln -sf ~/.dotfiles/module/prezto ~/.zprezto
 
 # // 既存の設定ファイルを退避(必要な場合)
 timeRd=$(date +%s)
