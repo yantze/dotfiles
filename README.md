@@ -10,6 +10,17 @@ https://github.com/rhyzx/.config
 
 ### subtree 管理
 
+#### substree wiki
+https://github.com/yantze/wiki.git
+git subtree add --prefix wiki https://github.com/yantze/wiki.git master --squash
+跟 submodule 一樣，下載 subtree 並且合併（squash）成一個 commits
+
+### push wiki
+先 commit 主 repo，然後：
+git remote wiki https://github.com/yantze/wiki.git
+git subtree push --prefix module/wiki wiki master
+
+
 
 
 暂时放在这里
