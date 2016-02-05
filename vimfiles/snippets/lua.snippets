@@ -1,0 +1,92 @@
+snippet /       单行注释
+	-- ${0}
+snippet //      多行注释
+	--[[
+	${0}
+	--]]
+snippet -       分隔注释
+	-- -------------------------------${0}
+snippet rq      包含库文件
+	require('${1}')${0}
+# 函数
+snippet f       多行函数定义
+	function ${1} (${2})
+	  ${0}
+	end
+snippet ff      单行函数定义
+	function ${1} (${2}) return ${0} end
+# 流程控制
+snippet if      if
+	if ${1} then
+	  ${0}
+	end
+snippet elif    elseif
+	elseif ${1} then
+	  ${0}
+snippet el      else
+	else
+	  ${0}
+snippet fo      for
+	for ${1} do
+	  ${0}
+	end
+snippet fi      for in
+	for ${1} in ${2} do
+	  ${0}
+	end
+snippet wh      while
+	while ${1} do
+	  ${0}
+	end
+snippet rep     repeat .. until
+	repeat
+	  ${0}
+	until
+snippet do     do .. end
+	do
+	  ${0}
+	end
+# 协同程序
+snippet ccr     create
+	coroutine.create(${0})
+snippet cst     status
+	coroutine.status(${0})
+snippet cre     resume
+	coroutine.resume(${0})
+snippet cyi     yield
+	coroutine.yield(${0})
+# 常用函数
+snippet dof     加载Lua源文件
+	dofile('${0}')
+snippet tp      检测数据类型
+	type(${0})
+snippet err     打印错误信息
+	error(${0})
+snippet ipa     数组迭代器
+	ipairs(${0})
+snippet pa      Table迭代器
+	pairs(${0})
+snippet unp     解开Table
+	unpack(${0})
+snippet tonm    转换成数值
+	tonumber(${0})
+snippet tost    转换成字符串
+	tostring(${0})
+# 单个关键字
+snippet br      中断
+	break${0}
+snippet re      返回
+	return ${0}
+snippet lo      局部变量
+	local ${0}
+snippet go      跳转
+	goto ${0}
+snippet str     字符串
+	string.${0}
+snippet tab     表
+	table.${0}
+snippet p       输出
+	print(${0})
+# 其他
+snippet .       :: ... ::
+	::${0}::
