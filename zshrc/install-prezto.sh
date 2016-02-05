@@ -17,7 +17,7 @@ for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
 done
 
 # // Shellのデフォルトに設定
-chsh -s /usr/bin/zsh
+# chsh -s /usr/bin/zsh
 # ubuntu's zsh in /usr/bin/zsh
 
 # //install & update
