@@ -1,4 +1,6 @@
-## MySQL基本命令
+# MySQL 实践
+
+[[mysql_base]]
 
 进入MySQL管理，用yum mysql mysql-devel
 ```
@@ -38,7 +40,7 @@ update mysql.user set password=password('新密码') where User="phplamp" and Ho
 
 创建数据库：
 ```
-create database phplampDB;
+CREATE DATABASE `dbname` /*!40100 COLLATE 'utf8_general_ci' */
 ```
 刷新系统权限表
 ```
@@ -162,7 +164,6 @@ ALTER TABLE `ipstats` DROP INDEX `ip`;
 alter table radcheck drop mac;
 ```
 
-### 未实践
 增加表的外键
 ```
 alter table score add constraint fk foreign key(stu_id) references student(id);
@@ -314,9 +315,12 @@ truncate table test1;
 show variables like '%log_bin%';
 ```
 
-# 二进制备份
-开启方法。my.cnf
+## 二进制日志
+开启方法
+```
+# my.cnf
 log_bin on //开启
+```
 
 ```
 mysql>flush logs; //执行就会多一个最新的bin-log日志。
@@ -372,13 +376,13 @@ END$$
 DELIMITER ;
 ```
 
-//显示存储过程
+显示存储过程
 ```
 SHOW CREATE PROCEDURE pro_test1;
 show procedure status \G
 ```
 
-//存储过程预处理语句执行动态表插入
+存储过程预处理语句执行动态表插入
 ```
 DELIMITER $$
 DROP PROCEDURE IF EXISTS create_test$$
@@ -405,7 +409,7 @@ DELIMITER ;
 ```
 
 
-//function 
+function 
 ```
 DELIMITER $$
 DROP FUNCTION IF EXISTS shorten$$
