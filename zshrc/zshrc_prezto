@@ -19,6 +19,10 @@ fpath=(~/.dotfiles/module/zsh-completions/src/ $fpath)
 
 
 
+# setopt EXTENDED_GLOB
+# for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+#   ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+# done
 # Source Prezto.
 # setopt EXTENDED_GLOB
 # for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
