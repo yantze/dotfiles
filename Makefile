@@ -11,16 +11,18 @@ dest=~/.dotfiles
 ohmyzsh=https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
 autojump=git://github.com/joelthelion/autojump.git
 
-all: install-all
+
+all: 
+	@echo Dotfiles manual
 
 install-vim: download vim
 install-zsh: download ohmyzsh autojump zsh
 install-all: tmux
 
 download:
-	@rm -rf $(dest)
-	git clone $(dotfiles) $(dest)
-	cd $(dest) && git submodule update --init
+	# @rm -rf $(dest)
+	# git clone $(dotfiles) $(dest)
+	# cd $(dest) && git submodule update --init
 
 zsh:
 	ln -s $(dest)/zshrc/zshrc ~/.zshrc
@@ -51,3 +53,5 @@ prezto:
 		ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
 	done
 
+subtree-update:
+	git subtree pull --prefix wiki https://github.com/yantze/wiki.git master --squash
