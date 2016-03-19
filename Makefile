@@ -16,6 +16,7 @@ all:
 	@echo Dotfiles manual
 	@echo
 	@echo st-update    - subtree pull and push all prefix, vimrc,module/wiki.
+	@echo pull         - pull current repo.
 	@echo push         - push current repo.
 
 install-vim: download vim
