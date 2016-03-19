@@ -4,11 +4,8 @@ case $- in
       *) return;;
 esac
 
-PATH="/usr/local/php7/bin:$PATH"
 # custom zshrc
 . ~/.dotfiles/zshrc/zshrc
-# zsh's alias
-. ~/.dotfiles/zshrc/zsh_aliases
 # prezto config
 . ~/.zpreztorc
 . ~/.zshrc_local
@@ -17,17 +14,6 @@ PATH="/usr/local/php7/bin:$PATH"
 # autocomplete functions
 fpath=(~/.dotfiles/module/zsh-completions/src/ $fpath)
 
-
-
-# setopt EXTENDED_GLOB
-# for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-#   ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-# done
-# Source Prezto.
-# setopt EXTENDED_GLOB
-# for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-#   ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-# done
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
@@ -36,13 +22,7 @@ fi
 # zpreztorc's history file is ~/.zhistory not ~/.zsh_history
 # you can you `history 0` to display all command
 # change the ... = '../../'
-# copy the centos file to file
 
-# for swift
-# alias swift=$(xcrun -f swift)
-# alias swiftc=$(xcrun -f swiftc)
-# Generate LLVM bytecode
-# swiftc -emit-bc hello.swift -o hello.bc
 
 # added by travis gem
 [ -f /home/yantze/.travis/travis.sh ] && source /home/yantze/.travis/travis.sh
@@ -50,20 +30,6 @@ fi
 # zprezto history module
 # Press ^U (the Control and U keys simultaneously) to abort the search.
 # bind UP and DOWN arrow keys
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
+# bindkey "$terminfo[kcuu1]" history-substring-search-up
+# bindkey "$terminfo[kcud1]" history-substring-search-down
 
-# bind P and N for EMACS mode
-# bindkey -M emacs '^P' history-substring-search-up
-# bindkey -M emacs '^N' history-substring-search-down
-
-# export WORKON_HOME=$HOME/.virtualenvs
-# VIRTUALENVWRAPPER_PYTHON='/home/yantze/.pyenv/shims/python' # This needs to be placed before the virtualenvwrapper command
-# source /usr/local/bin/virtualenvwrapper.sh
-# export PROJECT_HOME=$HOME/workspace/app
-#  ~/.pyenv/shims/virtualenvwrapper.sh
-
-export NVM_DIR="/home/yantze/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-[ -s "/home/yantze/.dnx/dnvm/dnvm.sh" ] && . "/home/yantze/.dnx/dnvm/dnvm.sh" # Load dnvm
