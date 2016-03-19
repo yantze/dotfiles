@@ -56,13 +56,20 @@ prezto:
 		ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
 	done
 
+pull: st-pull
+	git pull
+
 push:
 	git add . -A
 	git commit -a
 	git push origin master
 
-st-update:
+st-update: st-pull st-push
+
+st-pull:
 	git subtree pull --prefix wiki https://github.com/yantze/wiki.git master --squash
-	git subtree push --prefix wiki https://github.com/yantze/wiki.git master --squash
 	git subtree pull --prefix vimrc https://github.com/yantze/vimrc master --squash
+
+st-push:
+	git subtree push --prefix wiki https://github.com/yantze/wiki.git master --squash
 	git subtree push --prefix vimrc https://github.com/yantze/vimrc master --squash
