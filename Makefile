@@ -59,7 +59,7 @@ prezto:
 push:
 	git add . -A
 	git commit -a
-	git push master origin
+	git push origin master
 
 st-update:
 	git subtree pull --prefix wiki https://github.com/yantze/wiki.git master --squash
