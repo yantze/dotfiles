@@ -53,5 +53,13 @@ prezto:
 		ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
 	done
 
-subtree-update:
+push:
+	git add . -A
+	git commit -a
+	git push
+
+st-update:
 	git subtree pull --prefix wiki https://github.com/yantze/wiki.git master --squash
+	git subtree push --prefix wiki https://github.com/yantze/wiki.git master --squash
+	git subtree pull --prefix vimrc https://github.com/yantze/vimrc master --squash
+	git subtree push --prefix vimrc https://github.com/yantze/vimrc master --squash
