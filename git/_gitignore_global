@@ -199,3 +199,6 @@ tramp
 
 # deamon
 nohup.out
+
+# Mac OS
+.DS_Store
