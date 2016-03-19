@@ -14,6 +14,9 @@ autojump=git://github.com/joelthelion/autojump.git
 
 all: 
 	@echo Dotfiles manual
+	@echo
+	@echo st-update    - subtree pull and push all prefix, vimrc,module/wiki.
+	@echo push         - push current repo.
 
 install-vim: download vim
 install-zsh: download ohmyzsh autojump zsh
@@ -56,7 +59,7 @@ prezto:
 push:
 	git add . -A
 	git commit -a
-	git push
+	git push master origin
 
 st-update:
 	git subtree pull --prefix wiki https://github.com/yantze/wiki.git master --squash
