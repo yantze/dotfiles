@@ -18,7 +18,7 @@ export EDITOR=vim
 
 
 ###PHP###
-PHP_HOME="/usr/local/php5.6"
+PHP_HOME="/usr/local/php70"
 PATH="$PHP_HOME/bin:$PATH"
 
 ###GO###

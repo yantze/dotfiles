@@ -14,6 +14,9 @@ autojump=git://github.com/joelthelion/autojump.git
 
 all: 
 	@echo Dotfiles manual
+	@echo subtree-update: update all subtree, wiki prezto
+	@echo git: ln -s git/_gitconfig to ~/.gitconfig, ln -s git/_global_ignore to ~/.global_ignore
+	@echo tmux: ln -s tmux/tmux.conf to ~/.tmux.conf
 
 install-vim: download vim
 install-zsh: download ohmyzsh autojump zsh
