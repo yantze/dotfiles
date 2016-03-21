@@ -5,6 +5,20 @@ export SAVEHIST=10000
 export EDITOR=vim
 # set -o vi #设置shell快捷键的默认器
 
+# zsh's functions
+. ~/.dotfiles/zshrc/zsh_func
+# zsh's alias
+. ~/.dotfiles/zshrc/zsh_aliases
+
+#if mac
+if { [ `uname` = "Darwin" ] } then
+    echo "hello mac!"
+else
+    export NVM_DIR="/home/yantze/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+    [ -s "/home/yantze/.dnx/dnvm/dnvm.sh" ] && . "/home/yantze/.dnx/dnvm/dnvm.sh" # Load dnvm
+fi
 
 ###JAVA###
 # export JAVA_HOME=/usr/java/jdk1.8.0_05
@@ -113,13 +127,6 @@ fi
 
 echo "THE BEST YANTZE TO BE ZHI"
 
-#if mac
-if { [ `uname` = "Darwin" ] } then
-    export DOCKER_HOST=tcp://localhost:4243
-    alias macvim='/Applications/MacVim.app/Contents/MacOS/MacVim'
-    alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
-
-fi
 
 ###path PATH###
 # Set the list of directories that Zsh searches for programs.

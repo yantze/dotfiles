@@ -14,9 +14,11 @@ autojump=git://github.com/joelthelion/autojump.git
 
 all: 
 	@echo Dotfiles manual
-	@echo subtree-update: update all subtree, wiki prezto
-	@echo git: ln -s git/_gitconfig to ~/.gitconfig, ln -s git/_global_ignore to ~/.global_ignore
-	@echo tmux: ln -s tmux/tmux.conf to ~/.tmux.conf
+	@echo
+	@echo st-update    - subtree pull and push all prefix, vimrc,module/wiki.
+	@echo pull         - pull current repo.
+	@echo push         - push current repo.
+	@echo tmux 		   - ln tmux.
 
 install-vim: download vim
 install-zsh: download ohmyzsh autojump zsh
@@ -46,7 +48,6 @@ git:
 	ln -s $(dest)/git/_global_ignore ~/.global_ignore
 
 tmux:
-	echo "hahah"
 	ln -s $(dest)/tmux/tmux.conf ~/.tmux.conf
 
 prezto:
@@ -56,5 +57,20 @@ prezto:
 		ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
 	done
 
-subtree-update:
+pull: st-pull
+	git pull
+
+push:
+	git add . -A
+	git commit -a
+	git push origin master
+
+st-update: st-pull st-push
+
+st-pull:
 	git subtree pull --prefix wiki https://github.com/yantze/wiki.git master --squash
+	git subtree pull --prefix vimrc https://github.com/yantze/vimrc master --squash
+
+st-push:
+	git subtree push --prefix wiki https://github.com/yantze/wiki.git master --squash
+	git subtree push --prefix vimrc https://github.com/yantze/vimrc master --squash
