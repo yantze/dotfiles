@@ -15,7 +15,7 @@ autojump=git://github.com/joelthelion/autojump.git
 all: 
 	@echo Dotfiles manual
 	@echo
-	@echo st-update    - subtree pull and push all prefix, vimrc,module/wiki.
+	@echo st-update    - subtree pull and push all prefix, vimrc,module/wiki.(push first)
 	@echo pull         - pull current repo.
 	@echo push         - push current repo.
 	@echo tmux 		   - ln tmux.

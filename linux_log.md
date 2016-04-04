@@ -27,4 +27,8 @@ grep to_find_string . -r -I
 traceroute -T -p 33322 vt-us1.vnet.link
 ```
 
-
+yum warning RPMDB alter out of yum. because of rpm use none yum api to modify soft
+```bash
+yum clean all
+yum history sync
+```
