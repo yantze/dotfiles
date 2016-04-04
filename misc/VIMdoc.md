@@ -1099,6 +1099,12 @@ set encoding=cp936 或者 set encoding=utf-8
 •    如果在终端环境下使用Vim，需要设置termencoding和终端所使用的编码一致。例如：
 set termencoding=cp936 或者 set termencoding=utf-8
 Windows记事本编辑UTF-8编码文件时会在文件头上加上三个字节的BOM：EFBBBF。如果fileencodings中设 置ucs-bom的目的就是为了能够兼容用记事本编辑的文件，不需要的话可以去掉。Vim在保存UTF-8编码的文件时会去掉BOM。去掉BOM的最大好 处是在Unix下能够使用cat a b>c来正确合并文件，这点经常被忽略。
+'去掉utf-8 BOM
+:set nobomb
+'保留utf-8 BOM
+:set bomb
+
+
 5、FAQ
 1.    为什么在Vim中一次只能删除半个汉字？
 因为encoding设置错误，把encoding设置为cp936就可以解决此问题。在Unix环境下Vim会根据locale来设置默认的encoding，如果没有正确设置locale并且没有设置encoding就会一次只能删除半个汉字。
@@ -1131,8 +1137,6 @@ encoding(enc)：encoding是Vim的内部使用编码，encoding的设置会影响
 fileencodings(fenc)：Vim在打开文件时会根据fileencodings选项来识别文件编码，fileencodings可以同时设置多个编码，Vim会根据设置的顺序来猜测所打开文件的编码。
 fileencoding(fencs) ：Vim在保存新建文件时会根据fileencoding的设置编码来保存。如果是打开已有文件，Vim会根据打开文件时所识别的编码来保存，除非在保存时重新设置fileencoding。
 termencodings(tenc)：在终端环境下使用Vim时，通过termencoding项来告诉Vim终端所使用的编码。
-
-Windows记事本编辑UTF-8编码文件时会在文件头上加上三个字节的BOM：EFBBBF。如果fileencodings中设 置ucs-bom的目的就是为了能够兼容用记事本编辑的文件，不需要的话可以去掉。Vim在保存UTF-8编码的文件时会去掉BOM。去掉BOM的最大好 处是在Unix下能够使用cat a b>c来正确合并文件，这点经常被忽略。
 
 
 参考链接

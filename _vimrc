@@ -1363,7 +1363,7 @@ nmap <silent><leader>mt :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <cr><
         " serene需要修改的地方：
         " ~/.dotfiles/vimrc/vimfiles/bundle/vim-airline/autoload/airline/themes +4
         " 改为235
-        let g:airline_theme = 'serene'                " 设置主题
+        " let g:airline_theme = 'serene'                " 设置主题
         " configure the title text for quickfix buffers
         let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'
 
