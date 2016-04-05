@@ -57,10 +57,15 @@ prezto:
 		ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
 	done
 
-pull: st-pull
+pull: repo-pull st-pull
+
+push: repo-push st-push
+	
+
+repo-pull:
 	git pull
 
-push:
+repo-push:
 	git add . -A
 	git commit -a
 	git push origin master

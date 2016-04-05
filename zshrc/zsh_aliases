@@ -15,8 +15,17 @@ alias sctl='systemctl'
 alias v='/usr/bin/vim --cmd "let g:vimrc_no_plugin=1"'
 # alias vi='/usr/bin/vim'
 alias less='/usr/share/vim/vim74/macros/less.sh' # replace sys less
+
 # use `emacs --daemon` and then `emacsclient filename`
-alias ec='emacsclient -a "" -c' # `-a ''` attempt to connect to an existing server, and if no server exists, start one then connect to it.
+# `-a ''` attempt to connect to an existing server, and if no server exists, start one then connect to it.
+
+if { [ `uname` = "Darwin" ] } then #if mac
+    alias ec='emacsclient -a ""' 
+else
+    alias ec='emacsclient -a "" -c'
+fi
+
+
 alias et='emacsclient -t'  # 适合 GUI 时，启动一个新的 frame (-n) 
 alias en='emacsclient -n'  # 适合 终端运行(emacs --daemon) 后
 
