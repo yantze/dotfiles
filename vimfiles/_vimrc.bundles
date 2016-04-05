@@ -25,7 +25,7 @@ Plugin 'joonty/vdebug'
     " AutoComplete
 
 " ycm=clang_complete +AutoComplPop +Supertab +neocomplcache +Syntastic(类似功能,仅仅针对c/c++/obj-c代码)
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 " Plugin 'ervandew/supertab'
 " Plugin 'Shougo/neocomplcache.vim' "不兼容ycm
 
