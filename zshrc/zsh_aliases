@@ -1,6 +1,8 @@
 ###require
 alias rm='rm -i'
 alias l.='ls -d .* --color=auto'
+alias cd='cl'
+
 
 ###for typo
 alias s='ls'
