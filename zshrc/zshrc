@@ -34,6 +34,9 @@ fi
 ###PHP###
 PHP_HOME="/usr/local/php5.6"
 PATH="$PHP_HOME/bin:$PATH"
+###Composer###
+COMPOSER_HOME="$HOME/.composer"
+PATH="$COMPOSER_HOME/vendor/bin:$PATH"
 
 ###GO###
 GO_HOME="/usr/local/go"
