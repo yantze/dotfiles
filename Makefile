@@ -15,9 +15,10 @@ autojump=git://github.com/joelthelion/autojump.git
 all: 
 	@echo Dotfiles manual
 	@echo
-	@echo st-update    - subtree pull and push all prefix, vimrc,module/wiki.
+	@echo st-update    - subtree pull and push all prefix, vimrc,module/wiki.(push first)
 	@echo pull         - pull current repo.
 	@echo push         - push current repo.
+	@echo tmux 		   - ln tmux.
 
 install-vim: download vim
 install-zsh: download ohmyzsh autojump zsh
@@ -47,7 +48,6 @@ git:
 	ln -s $(dest)/git/_global_ignore ~/.global_ignore
 
 tmux:
-	echo "hahah"
 	ln -s $(dest)/tmux/tmux.conf ~/.tmux.conf
 
 prezto:

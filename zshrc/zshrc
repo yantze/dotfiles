@@ -14,10 +14,13 @@ export EDITOR=vim
 if { [ `uname` = "Darwin" ] } then
     echo "hello mac!"
 else
+    # nvm for various node version
+    # git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
+    # set default : nvm alias default v5.9.1
     export NVM_DIR="/home/yantze/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-    [ -s "/home/yantze/.dnx/dnvm/dnvm.sh" ] && . "/home/yantze/.dnx/dnvm/dnvm.sh" # Load dnvm
+    # [ -s "/home/yantze/.dnx/dnvm/dnvm.sh" ] && . "/home/yantze/.dnx/dnvm/dnvm.sh" # Load dnvm
 fi
 
 ###JAVA###
@@ -32,11 +35,8 @@ fi
 
 
 ###PHP###
-PHP_HOME="/usr/local/php5.6"
-PATH="$PHP_HOME/bin:$PATH"
-###Composer###
-COMPOSER_HOME="$HOME/.composer"
-PATH="$COMPOSER_HOME/vendor/bin:$PATH"
+# PHP_HOME="/usr/local/php70"
+# PATH="$PHP_HOME/bin:$PATH"
 
 ###GO###
 GO_HOME="/usr/local/go"
@@ -80,16 +80,6 @@ PATH="$CLING_HOME/bin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-
-###NODE###
-# NODE_HOME="/usr/local/node"
-# PATH="$NODE_HOME/bin:$PATH"
-
-# nvm for various node version
-# git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
 
 PATH="$PATH:$HOME/.bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin"
 
