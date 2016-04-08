@@ -1,6 +1,13 @@
 # Linux use log
 
-want to find path of log file but not in con.
+add last command word
+```bash
+pressing Esc+Dot or typing !$, !*
+echo !:1
+!^ or !:1
+```
+
+
 ```bash
 lsof | grep php-fpm
 ```
