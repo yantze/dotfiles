@@ -380,6 +380,8 @@ function! AppendModeline()
 endfunction
 " }}}
 
+" Language {{{
+
 " Python {{{
     " Base Setting {
         " python highlight
@@ -518,32 +520,10 @@ let g:used_javascript_libs = 'underscore,jquery,react'
 
 " }}}
 
-" Base Setting {{{
+" }}}
 
-syntax enable                " 打开语法高亮
-syntax on                    " 开启文件类型侦测
-filetype indent on           " 针对不同的文件类型采用不同的缩进格式
-filetype plugin on           " 针对不同的文件类型加载对应的插件
-filetype plugin indent on    " 启用自动补全
-set ic                       " 忽略大小写查找
-set visualbell t_vb=         " 关闭visual bell/声音
-au GuiEnter * set t_vb=      " 关闭beep/屏闪
-
-" 文件配置
-" set fileformats=unix                             " 设定换行符
-set bsdir=buffer                                 " 设定文件浏览器目录为当前目录
-set enc=utf-8                                    " 设置编码
-set fenc=utf-8                                   " 设置文件编码
-set fencs=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936 " 设置文件编码检测类型及支持格式
-set shortmess+=filmnrxoOtT                       " Abbrev. of messages (avoids 'hit enter')
-set viewoptions=folds,options,cursor,unix,slash  " Better Unix / Windows compatibility
-" set virtualedit=onemore                          " Allow for cursor beyond last character
-" set bsdir=buffer                               " 设定文件浏览器目录为当前目录,default value
-" set autochdir
-
-" 把这个快捷键放在这里主要是因为dos的vim对这个不支持，其它的系统支持
-imap <c-h> <ESC>I
-
+" Setting {{{
+" Theme {{{
 " 设置着色模式和字体
 if g:isWIN
     " 使用GUI界面时的设置
@@ -595,20 +575,35 @@ if g:isWIN
     endif
 else
     if g:isGUI
-        "set guifont=Monaco\ 11
-        set guifont=YaHei\ Consolas\ Hybrid:h13
-        set background=dark
+        set guifont=Monaco\ 11
+        " set guifont=YaHei\ Consolas\ Hybrid:h13
+        set background=light
         colorscheme solarized
         set lines=38 columns=140
-        let g:solarized_termtrans =0
-        let g:solarized_termcolors=256
 
     else
-        " colortheme list: ir_black grb256 BusyBee
-        colorscheme pt_black
+        set background=light
+        " g:solarized_termcolors= 16 | 256
+        " g:solarized_termtrans = 0 | 1
+        " g:solarized_degrade = 0 | 1
+        " g:solarized_bold = 1 | 0 
+        " g:solarized_underline = 1 | 0 
+        " g:solarized_italic = 1 | 0 
+        " g:solarized_contrast = “normal”| “high” or “low” 
+        " g:solarized_visibility= “normal”| “high” or “low”
+
+        " colortheme list: ir_black grb256 BusyBee pt_black
+        colorscheme solarized
     endif
 endif
+" }}}
 
+" System Setting {{{
+if g:isWIN
+else
+    " 在 macvim 中，不支持
+    set nu!
+endif
 if v:version > 703
     set relativenumber " 开启相对行号
     set undofile                 " 重新打开文件可恢复上次关闭的撤销记录,默认filename.un~, only use for `vim --version` have +persistent_undo feature
@@ -621,63 +616,10 @@ if v:version > 703
         endif
     endif
 endif
-
-" 基本设置
-" set my leader
-let mapleader=","
-" map : to ;
-map ; :
-
-set backspace=2              " 设置退格键可用
-set autoindent               " 自动对齐
-set smartindent              " 智能自动缩进
-set nu!                      " 显示行号
-set ruler                    " 右下角显示光标位置的状态行
-set hidden                   " 允许在有未保存的修改时切换缓冲区
-set laststatus=2             " 开启状态栏信息
-set cmdheight=2              " 命令行的高度，默认为1，这里设为2
-set writebackup              " 设置无备份文件
-set autoread                 " 当文件在外部被修改时自动更新该文件
-set nobackup                 " 不生成备份文件
-set noswapfile               " 不生成交换文件
-set wildmenu                 " 在命令行下显示匹配的字段到状态栏里面
-set list                     " 显示特殊字符，其中Tab使用高亮竖线代替，尾部空白使用高亮点号代替
-set listchars=tab:\|\ ,trail:. "设置tab/尾部字符用什么填充
-set t_Co=256                 " 设置文字可以显示多少种颜色
-set cursorline               " 突出显示当前行
-set history=50               " keep 50 lines of command line history
-set incsearch                " 开启实时搜索功能,查询时非常方便，如要查找book单词，当输入到/b时，会自动找到第一个b开头的单词，当输入到/bo时，会自动找到第一个bo开头的单词
-set hlsearch                 " 开启高亮显示结果
-set nowrapscan               " 搜索到文件两端时不重新搜索
-set mouse=a                  " 启用鼠标
-set lbr                      " 不在单词中间断行(linebreak)
-" set nowrap                   " 设置不自动换行
-" set tw=78                    "超过80个字符就折行(textwrap)
-" set viminfo='20,\"50         " read/write a .viminfo file, don't store more than 50 lines of registers
-set display=lastline         " 不要显示@@@@@
-
-
-" set ambiwidth=double         "如果全角字符不能识别一般用这个(自动用宽字符显示)
-set fo+=mB                   "打开断行模块对亚洲语言支持
-set ai!                      " autoindent 设置自动缩进
-" set showmatch                " 显示括号配对情况
-" set lsp=0                    "设置行间距
-
+" }}}
 " }}}
 
-
-" Tab
-set tabstop=4
-set cindent shiftwidth=4
-set expandtab                " 将Tab自动转化成空格 [需要输入真正的Tab键时，使用 Ctrl+V + Tab]
-" 详细的tab设置：http://blog.chinaunix.net/uid-24774106-id-3396220.html
-"set ts=4 sw=4 et  "也可以一行写完:ts=tabstop=4 sw=shiftwidth=4 et=expandtab
-set smarttab                 "在行首按TAB将加入sw个空格，否则加入ts个空格;按Backspace可以删除4个空格
-
-
-
-
-" custom shorcut {{{
+" Shorcut {{{
 
 " =======
 " 自定义快捷键
@@ -859,6 +801,8 @@ nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 
 " }}}
 
+" Plugins {{{
+
 " =======
 " Plugins
 " =======
@@ -999,7 +943,194 @@ let Tlist_Exit_OnlyWindow      = 1             " 如果Taglist窗口是最后一
 let Tlist_Use_Right_Window     = 1             " 在右侧窗口中显示
 let Tlist_File_Fold_Auto_Close = 1             " 自动折叠
 
+" }}}
 
+" Plugin {{{
+    " CtrlP {{{
+        let g:ctrlp_map = '<c-p>'
+        let g:ctrlp_cmd = 'CtrlP'
+        let g:ctrlp_working_path_mode = 'ra'
+        set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.png,*.gif,*.jpeg,.DS_Store  " MacOSX/Linux
+        " nnoremap <Leader>t :CtrlP getcwd()<CR>
+        " nnoremap <Leader>f :CtrlPClearAllCaches<CR>
+        nnoremap <Leader>bl :CtrlPBuffer<CR>
+        " nnoremap <Leader>j :CtrlP ~/<CR>
+        " 下面这句话是说ctrlp自动默认取消探索所有tmp目录下的文件,所以会导致在tmp目录中
+        " 不能使用ctrlp,其实我发现在随便一种tmp目录下面,使用vim的 :e path/to/filename
+        " 都没有作用,具体原因可能和ctrlp类似
+        " default gtrlp_custom_ignore =  '\v[\/]\.(git|hg|svn)$',
+        if exists('g:ctrlp_custom_ignore')
+            unlet g:ctrlp_custom_ignore
+        endif
+        let g:ctrlp_custom_ignore = {
+                    \'dir': '\.git$\|\.hg$\|\.svn$\|bower_components$\|dist$\|node_modules$\|project_files$\|test$',
+                    \'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$\|\.pyo$\|\.rbc$\|\.rbo$\|\.class$\|\.o$\|\~$'
+                    \}
+
+        " command! -nargs=* -complete=function Call exec 'call '.<f-args>
+        " command! Q q
+        " command! -bang Q q<bang>
+        " command! Qall qall
+        " command! -bang Qall qall<bang>
+        " command! W w
+        " command! -nargs=1 -complete=file E e <args>
+        " command! -bang -nargs=1 -complete=file E e<bang> <args>
+        " command! -nargs=1 -complete=tag Tag tag <args>
+        "
+        " Save a file that requires sudoing even when
+        " you opened it as a normal user.
+        command! Sw w !sudo tee % > /dev/null
+        " Show difference between modified buffer and original file
+        command! DiffSaved call s:DiffWithSaved()
+
+        command! Bw call CleanClose(1,0)
+        command! Bq call CleanClose(0,0)
+        command! -bang Bw call CleanClose(1,1)
+        command! -bang Bq call CleanClose(0,1)
+    " }}}
+    " YCM {{{
+        "competeble with UltraSnips
+        let g:ycm_key_list_select_completion   = []
+        let g:ycm_key_list_previous_completion = []
+        let g:ycm_global_ycm_extra_conf        = $VIM . '/rc/ycm_extra_conf.py'
+        " 下里的filetype主要是和上面的syntastic对应，用于使用clang编译的情况
+        let g:ycm_extra_conf_vim_data          = ['&filetype', 'g:syntastic_c_compiler_options', 'g:syntastic_cpp_compiler_options']
+        let g:ycm_filetype_blacklist = {
+            \ 'notes' : 1,
+            \ 'markdown' : 1,
+            \ 'text' : 1,
+            \ 'gitcommit': 1,
+            \ 'mail': 1,
+        \}
+        let g:ycm_error_symbol   = '>>'
+        let g:ycm_warning_symbol = '>!'
+        let g:ycm_collect_identifiers_from_tags_files = 1
+        let g:ycm_collect_identifiers_from_comments_and_strings = 1
+        " 确保了在你完成操作之后，自动补全窗口不会消失
+        let g:ycm_autoclose_preview_window_after_completion=1
+        " offer like ctags: declara, define and multi, only support c/cpp
+        " nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+        " nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+        nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+    " }}}
+    " Airline {{{
+        " 打开airline的扩展tab buffer exploer功能
+        " let g:airline#extensions#tabline#enabled = 1
+        " determine whether bufferline will overwrite customization variables
+        " let g:airline#extensions#bufferline#overwrite_variables = 1
+        " AirLine彩色状态栏:badwolf, bubblegum, luna, raven, serene
+        " serene需要修改的地方：
+        " 白色状态栏: sol
+        " ~/.dotfiles/vimrc/vimfiles/bundle/vim-airline/autoload/airline/themes +4
+        " 改为235
+        " let g:airline_theme = 'serene'                " 设置主题
+        " configure the title text for quickfix buffers
+        " let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'
+
+        " Open URI under cursor or search.--go brower
+        nmap gb <Plug>(openbrowser-smart-search)
+        " Open URI selected word or search.
+        vmap gb <Plug>(openbrowser-smart-search)
+        " Open URI you also can use <leader>gb because of "textbrowser.vim"
+    " }}}
+    " Goyo:the pure writer {{{
+        function! s:goyo_before()
+          silent !tmux set status off
+          set noshowmode
+          set noshowcmd
+        endfunction
+        function! s:goyo_after()
+          silent !tmux set status on
+          set showmode
+          set showcmd
+        endfunction
+        let g:goyo_callbacks = [function('s:goyo_before'), function('s:goyo_after')]
+        nmap <Leader><Space> :Goyo<CR>
+    " }}}
+" }}}
+
+" Base Setting {{{
+
+syntax enable                " 打开语法高亮
+syntax on                    " 开启文件类型侦测
+filetype indent on           " 针对不同的文件类型采用不同的缩进格式
+filetype plugin on           " 针对不同的文件类型加载对应的插件
+filetype plugin indent on    " 启用自动补全
+set ic                       " 忽略大小写查找
+set visualbell t_vb=         " 关闭visual bell/声音
+au GuiEnter * set t_vb=      " 关闭beep/屏闪
+
+" 文件配置
+" set fileformats=unix                             " 设定换行符
+set bsdir=buffer                                 " 设定文件浏览器目录为当前目录
+set enc=utf-8                                    " 设置编码
+set fenc=utf-8                                   " 设置文件编码
+set fencs=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936 " 设置文件编码检测类型及支持格式
+set shortmess+=filmnrxoOtT                       " Abbrev. of messages (avoids 'hit enter')
+set viewoptions=folds,options,cursor,unix,slash  " Better Unix / Windows compatibility
+" set virtualedit=onemore                          " Allow for cursor beyond last character
+" set bsdir=buffer                               " 设定文件浏览器目录为当前目录,default value
+" set autochdir
+
+" 把这个快捷键放在这里主要是因为dos的vim对这个不支持，其它的系统支持
+imap <c-h> <ESC>I
+
+
+" 基本设置
+" set my leader
+let mapleader=","
+" map : to ;
+map ; :
+
+set backspace=2              " 设置退格键可用
+set autoindent               " 自动对齐
+set smartindent              " 智能自动缩进
+set nu!                      " 显示行号
+set ruler                    " 右下角显示光标位置的状态行
+set hidden                   " 允许在有未保存的修改时切换缓冲区
+set laststatus=2             " 开启状态栏信息
+set cmdheight=2              " 命令行的高度，默认为1，这里设为2
+set writebackup              " 设置无备份文件
+set autoread                 " 当文件在外部被修改时自动更新该文件
+set nobackup                 " 不生成备份文件
+set noswapfile               " 不生成交换文件
+set wildmenu                 " 在命令行下显示匹配的字段到状态栏里面
+set list                     " 显示特殊字符，其中Tab使用高亮竖线代替，尾部空白使用高亮点号代替
+set listchars=tab:\|\ ,trail:. "设置tab/尾部字符用什么填充
+set t_Co=256                 " 设置文字可以显示多少种颜色
+set cursorline               " 突出显示当前行
+set history=50               " keep 50 lines of command line history
+set incsearch                " 开启实时搜索功能,查询时非常方便，如要查找book单词，当输入到/b时，会自动找到第一个b开头的单词，当输入到/bo时，会自动找到第一个bo开头的单词
+set hlsearch                 " 开启高亮显示结果
+set nowrapscan               " 搜索到文件两端时不重新搜索
+set mouse=a                  " 启用鼠标
+set lbr                      " 不在单词中间断行(linebreak)
+" set nowrap                   " 设置不自动换行
+" set tw=78                    "超过80个字符就折行(textwrap)
+" set viminfo='20,\"50         " read/write a .viminfo file, don't store more than 50 lines of registers
+set display=lastline         " 不要显示@@@@@
+
+
+" set ambiwidth=double         "如果全角字符不能识别一般用这个(自动用宽字符显示)
+set fo+=mB                   "打开断行模块对亚洲语言支持
+set ai!                      " autoindent 设置自动缩进
+" set showmatch                " 显示括号配对情况
+" set lsp=0                    "设置行间距
+
+" Tab
+set tabstop=4
+set cindent shiftwidth=4
+set expandtab                " 将Tab自动转化成空格 [需要输入真正的Tab键时，使用 Ctrl+V + Tab]
+" 详细的tab设置：http://blog.chinaunix.net/uid-24774106-id-3396220.html
+"set ts=4 sw=4 et  "也可以一行写完:ts=tabstop=4 sw=shiftwidth=4 et=expandtab
+set smarttab                 "在行首按TAB将加入sw个空格，否则加入ts个空格;按Backspace可以删除4个空格
+
+
+
+" }}}
+
+" Other {{{
 
 " tabn/tabp 切换tab
 " tabnew 创建新窗口
@@ -1284,109 +1415,7 @@ nmap <silent><leader>mt :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <cr><
 " 使用!bash启动一个console
 " 直接执行:!命令
 
-" Plugin {{{
-    " CtrlP {{{
-        let g:ctrlp_map = '<c-p>'
-        let g:ctrlp_cmd = 'CtrlP'
-        let g:ctrlp_working_path_mode = 'ra'
-        set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.png,*.gif,*.jpeg,.DS_Store  " MacOSX/Linux
-        " nnoremap <Leader>t :CtrlP getcwd()<CR>
-        " nnoremap <Leader>f :CtrlPClearAllCaches<CR>
-        nnoremap <Leader>bl :CtrlPBuffer<CR>
-        " nnoremap <Leader>j :CtrlP ~/<CR>
-        " 下面这句话是说ctrlp自动默认取消探索所有tmp目录下的文件,所以会导致在tmp目录中
-        " 不能使用ctrlp,其实我发现在随便一种tmp目录下面,使用vim的 :e path/to/filename
-        " 都没有作用,具体原因可能和ctrlp类似
-        " default gtrlp_custom_ignore =  '\v[\/]\.(git|hg|svn)$',
-        if exists('g:ctrlp_custom_ignore')
-            unlet g:ctrlp_custom_ignore
-        endif
-        let g:ctrlp_custom_ignore = {
-                    \'dir': '\.git$\|\.hg$\|\.svn$\|bower_components$\|dist$\|node_modules$\|project_files$\|test$',
-                    \'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$\|\.pyo$\|\.rbc$\|\.rbo$\|\.class$\|\.o$\|\~$'
-                    \}
-
-        " command! -nargs=* -complete=function Call exec 'call '.<f-args>
-        " command! Q q
-        " command! -bang Q q<bang>
-        " command! Qall qall
-        " command! -bang Qall qall<bang>
-        " command! W w
-        " command! -nargs=1 -complete=file E e <args>
-        " command! -bang -nargs=1 -complete=file E e<bang> <args>
-        " command! -nargs=1 -complete=tag Tag tag <args>
-        "
-        " Save a file that requires sudoing even when
-        " you opened it as a normal user.
-        command! Sw w !sudo tee % > /dev/null
-        " Show difference between modified buffer and original file
-        command! DiffSaved call s:DiffWithSaved()
-
-        command! Bw call CleanClose(1,0)
-        command! Bq call CleanClose(0,0)
-        command! -bang Bw call CleanClose(1,1)
-        command! -bang Bq call CleanClose(0,1)
-    " }}}
-    " YCM {{{
-        "competeble with UltraSnips
-        let g:ycm_key_list_select_completion   = []
-        let g:ycm_key_list_previous_completion = []
-        let g:ycm_global_ycm_extra_conf        = $VIM . '/rc/ycm_extra_conf.py'
-        " 下里的filetype主要是和上面的syntastic对应，用于使用clang编译的情况
-        let g:ycm_extra_conf_vim_data          = ['&filetype', 'g:syntastic_c_compiler_options', 'g:syntastic_cpp_compiler_options']
-        let g:ycm_filetype_blacklist = {
-            \ 'notes' : 1,
-            \ 'markdown' : 1,
-            \ 'text' : 1,
-            \ 'gitcommit': 1,
-            \ 'mail': 1,
-        \}
-        let g:ycm_error_symbol   = '>>'
-        let g:ycm_warning_symbol = '>!'
-        let g:ycm_collect_identifiers_from_tags_files = 1
-        let g:ycm_collect_identifiers_from_comments_and_strings = 1
-        " 确保了在你完成操作之后，自动补全窗口不会消失
-        let g:ycm_autoclose_preview_window_after_completion=1
-        " offer like ctags: declara, define and multi, only support c/cpp
-        " nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
-        " nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
-        nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
-    " }}}
-    " Airline {{{
-        " 打开airline的扩展tab buffer exploer功能
-        let g:airline#extensions#tabline#enabled = 1
-        " determine whether bufferline will overwrite customization variables
-        let g:airline#extensions#bufferline#overwrite_variables = 1
-        " AirLine彩色状态栏:badwolf, bubblegum, luna, raven, serene
-        " 白色状态栏: sol
-        " serene需要修改的地方：
-        " ~/.dotfiles/vimrc/vimfiles/bundle/vim-airline/autoload/airline/themes +4
-        " 改为235
-        " let g:airline_theme = 'serene'                " 设置主题
-        " configure the title text for quickfix buffers
-        let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'
-
-        " Open URI under cursor or search.--go brower
-        nmap gb <Plug>(openbrowser-smart-search)
-        " Open URI selected word or search.
-        vmap gb <Plug>(openbrowser-smart-search)
-        " Open URI you also can use <leader>gb because of "textbrowser.vim"
-    " }}}
-    " Goyo:the pure writer {{{
-        function! s:goyo_before()
-          silent !tmux set status off
-          set noshowmode
-          set noshowcmd
-        endfunction
-        function! s:goyo_after()
-          silent !tmux set status on
-          set showmode
-          set showcmd
-        endfunction
-        let g:goyo_callbacks = [function('s:goyo_before'), function('s:goyo_after')]
-        nmap <Leader><Space> :Goyo<CR>
-    " }}}
 " }}}
+
 
 " vim: set ts=4 sw=4 tw=0 et fdm=marker foldlevel=0 foldenable foldlevelstart=99 :
