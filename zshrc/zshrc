@@ -1,3 +1,6 @@
+. ~/.dotfiles/zshrc/zsh_func
+. ~/.dotfiles/zshrc/zsh_aliases
+
 #history max num
 export HISTSIZE=10000
 #history max save
@@ -5,22 +8,16 @@ export SAVEHIST=10000
 export EDITOR=vim
 # set -o vi #设置shell快捷键的默认器
 
-# zsh's functions
-. ~/.dotfiles/zshrc/zsh_func
-# zsh's alias
-. ~/.dotfiles/zshrc/zsh_aliases
-
-#if mac
+echo "THE BEST YANTZE TO BE ZHI"
 if { [ `uname` = "Darwin" ] } then
-    echo "hello mac!"
+    echo "hello Mac!"
 else
+    echo "hello Linux!"
     # nvm for various node version
     # git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
     # set default : nvm alias default v5.9.1
     export NVM_DIR="/home/yantze/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-    # [ -s "/home/yantze/.dnx/dnvm/dnvm.sh" ] && . "/home/yantze/.dnx/dnvm/dnvm.sh" # Load dnvm
 fi
 
 ###JAVA###
@@ -118,8 +115,6 @@ if { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
 fi
 
 
-echo "THE BEST YANTZE TO BE ZHI"
-
 
 ###path PATH###
 # Set the list of directories that Zsh searches for programs.
@@ -135,13 +130,6 @@ echo "THE BEST YANTZE TO BE ZHI"
 go_libs="-lm"
 go_flags="-g -Wall -include allheads.h -O3"
 alias go_c="c99 -xc '-' $go_libs $go_flags"
-
-
-###function###
-#translate dig
-function td {
-dig "$*.jianbing.org" +short txt | perl -pe's/\\(\d{1,3})/chr $1/eg; s/(^"|"$)//g'
-}
 
 
 ### display language
