@@ -410,7 +410,7 @@ if g:isWIN
         " let g:zenburn_transparent = 1 " black
         let g:zenburn_high_Contrast = 1
         colorscheme zenburn      " grey, my fav
-        colorscheme desertEx
+        " colorscheme desertEx
 
         " set font
         set guifont=Consolas:h12
