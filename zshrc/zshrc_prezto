@@ -8,7 +8,7 @@ esac
 . ~/.dotfiles/zshrc/zshrc
 # prezto config
 . ~/.zpreztorc
-. ~/.zshrc_local
+. ~/.local/.zshrc_local
 
 
 # autocomplete functions

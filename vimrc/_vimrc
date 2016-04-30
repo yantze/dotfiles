@@ -1,6 +1,4 @@
 " Author: yantze
-" Last Change:2015-11-14
-
 " $VIM/_vimrc.bundles " the package location:
 
 " 下面的两行，配置基本保持不变,一般不需要修改,所以折叠,可以用za打开
