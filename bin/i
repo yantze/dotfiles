@@ -1,7 +1,12 @@
-#!/bin/env sh
+#!env sh
 
 # 显示 ip 地址
-ip=`ifconfig | awk '/eth0/{getline;gsub(/addr:/,"",$2);print $2}'`
-hostname=`hostname`
+if [ `uname` = "Darwin" ]
+then
+  ip=`ifconfig | awk '/en0/{getline;gsub(/addr:/,"",$2);print $2}'`
+else
+  ip=`ifconfig | awk '/eth0/{getline;gsub(/addr:/,"",$2);print $2}'`
+fi
 
+hostname=`hostname`
 echo $hostname '-' $ip
