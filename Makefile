@@ -1,9 +1,4 @@
 #wget https://raw.github.com/yantze/dotfiles/master/Makefile -O - | make -- install
-#please install below first:
-#yum install vim-common vim-enhanced vim-filesystem vim-minimal ctags
-#yum install zsh
-#yum install git
-#yum install tmux
 
 
 dotfiles=git://github.com/yantze/dotfiles.git
@@ -15,21 +10,23 @@ autojump=git://github.com/joelthelion/autojump.git
 all: 
 	@echo Dotfiles manual
 	@echo
-	@echo st-update    - subtree pull and push all prefix, vimrc,module/wiki.(push first)
+	@echo st-update    - subtree pull and push all prefix, vimrc,module/wiki.
 	@echo pull         - pull current repo.
 	@echo push         - push current repo.
 	@echo tmux 		   - ln tmux.
+	@echo zshrc 	   - ln zshrc.
+	@echo vimrc 	   - ln vimrc.
+	@echo git	 	   - ln git.
 
-install-vim: download vim
-install-zsh: download ohmyzsh autojump zsh
-install-all: tmux
+install:
+	echo you can uncomment in Makefile
+	#please install below first:
+	#yum install vim-common vim-enhanced vim-filesystem vim-minimal ctags
+	#yum install zsh
+	#yum install git
+	#yum install tmux
 
-download:
-	# @rm -rf $(dest)
-	# git clone $(dotfiles) $(dest)
-	# cd $(dest) && git submodule update --init
-
-zsh:
+zshrc:
 	ln -s $(dest)/zshrc/zshrc ~/.zshrc
 
 ohmyzsh:
@@ -40,7 +37,7 @@ autojump:
 	cd .autojump && ./install.py
 
 
-vim:
+vimrc:
 	$(dest)/vimrc/script/install_rc.sh
 
 git:
@@ -60,7 +57,6 @@ prezto:
 pull: repo-pull st-pull
 
 push: repo-push st-push
-	
 
 repo-pull:
 	git pull
@@ -68,7 +64,7 @@ repo-pull:
 repo-push:
 	git add . -A
 	git commit -a
-	git push origin master
+	git push
 
 st-update: st-pull st-push
 
