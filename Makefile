@@ -26,8 +26,10 @@ install:
 	#yum install git
 	#yum install tmux
 
+config: tmux git zshrc
+
 zshrc:
-	ln -s $(dest)/zshrc/zshrc ~/.zshrc
+	ln -s ~/.dotfiles/zshrc/zshrc ~/.zshrc
 
 ohmyzsh:
 	wget -O - $(ohmyzsh) | sh
@@ -44,8 +46,6 @@ git:
 	ln -s $(dest)/git/_gitconfig ~/.gitconfig
 	ln -s $(dest)/git/_global_ignore ~/.global_ignore
 
-tmux:
-	ln -s $(dest)/tmux/tmux.conf ~/.tmux.conf
 
 prezto:
 	setopt EXTENDED_GLOB
@@ -53,6 +53,9 @@ prezto:
 	for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
 		ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
 	done
+
+tmux:
+	ln -s $(dest)/tmux/tmux.conf ~/.tmux.conf
 
 pull: repo-pull st-pull
 
