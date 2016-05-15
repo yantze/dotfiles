@@ -15,32 +15,26 @@ all:
 	@echo push         - push current repo.
 	@echo tmux 		   - ln tmux.
 	@echo zshrc 	   - ln zshrc.
-	@echo vimrc 	   - ln vimrc.
+	@echo vim   	   - ln vimrc.
 	@echo git	 	   - ln git.
 
 install:
-	echo you can uncomment in Makefile
-	#please install below first:
-	#yum install vim-common vim-enhanced vim-filesystem vim-minimal ctags
-	#yum install zsh
-	#yum install git
-	#yum install tmux
+	sudo yum install vim-common vim-enhanced vim-filesystem vim-minimal ctags
+	sudo yum install emacs-common emacs-filesystem emacs-nox
+	sudo yum install zsh
+	sudo yum install tmux
+	sudo yum install git
 
 config: tmux git zshrc
 
 zshrc:
 	ln -s ~/.dotfiles/zshrc/zshrc ~/.zshrc
 
-ohmyzsh:
-	wget -O - $(ohmyzsh) | sh
-
-autojump:
-	git clone $(autojump) ~/.autojump
-	cd .autojump && ./install.py
-
-
-vimrc:
-	$(dest)/vimrc/script/install_rc.sh
+vim:
+	# $(dest)/vimrc/script/install_rc.sh
+	git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+	#install Bundle's Plugin
+	vim +BundleInstall +qall
 
 git:
 	ln -s $(dest)/git/_gitconfig ~/.gitconfig
@@ -78,3 +72,8 @@ st-pull:
 st-push:
 	git subtree push --prefix wiki https://github.com/yantze/wiki.git master --squash
 	git subtree push --prefix vimrc https://github.com/yantze/vimrc master --squash
+
+
+ohmyzsh:
+	wget -O - $(ohmyzsh) | sh
+
