@@ -1,14 +1,4 @@
-# If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
 
-# custom zshrc
-. ~/.dotfiles/zshrc/zshrc
-# prezto config
-. ~/.zpreztorc
-. ~/.local/.zshrc_local
 
 
 # autocomplete functions
@@ -34,4 +24,3 @@ fi
 # bindkey "$terminfo[kcud1]" history-substring-search-down
 
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

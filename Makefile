@@ -60,7 +60,9 @@ prezto:
 pull: repo-pull st-pull
 
 push: repo-push st-push
-	
+
+pyenv:
+	curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
 
 repo-pull:
 	git pull

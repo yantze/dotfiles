@@ -7,7 +7,13 @@ function fname() { find . -iname "*$@*"; }
 function mcd() { mkdir $1 && cd $1; }
 
 # cd and ls
-function cl() { builtin cd "$argv[-1]" && ls --group-directories-first --color=auto "${(@)argv[1,-2]}" }
+if { [ `uname` = "Darwin" ] } then
+    # mac
+    function cl() { builtin cd "$argv[-1]" && ls "${(@)argv[1,-2]}" }
+else
+    # linux
+    function cl() { builtin cd "$argv[-1]" && ls --group-directories-first --color=auto "${(@)argv[1,-2]}" }
+fi
 
 function psgrep() { ps axuf | grep -v grep | grep "$@" -i --color=auto; }
 

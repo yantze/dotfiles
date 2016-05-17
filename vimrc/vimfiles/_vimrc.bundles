@@ -44,7 +44,9 @@ Plugin 'joonty/vdebug'
 Plugin 'rosenfeld/conque-term'
 
 " snip综合解决方案
-Plugin 'SirVer/ultisnips'
+if v:version > 703
+    Plugin 'SirVer/ultisnips'
+endif
 Plugin 'honza/vim-snippets'
 let g:snippets_dir="$VIM/vimfiles/snippets/"
 " Trigger configuration. if comflict then change the <tab>
@@ -126,7 +128,7 @@ Plugin 'maksimr/vim-jsbeautify'
 Plugin 'einars/js-beautify'
 
 " Plugin 'pangloss/vim-javascript'
-" Plugin 'jelera/vim-javascript-syntax'
+Plugin 'jelera/vim-javascript-syntax'
 " HTML/JS混排缩进改善
 " Plugin 'lukaszb/vim-web-indent'
 " vim-web-indent包含了javascript.vim 和html.vim
