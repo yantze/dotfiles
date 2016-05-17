@@ -58,12 +58,6 @@ PATH="$SCALA_HOME/bin:$PATH"
 ANT_HOME="/usr/local/ant"
 PATH="$ANT_HOME/bin:$PATH"
 
-###linuxbrew###
-LINUXBREW="$HOME/.linuxbrew"
-export LD_LIBRARY_PATH=$LINUXBREW/lib:$LD_LIBRARY_PATH
-PATH="$LINUXBREW/bin:$PATH"
-
-
 # Git for SAE
 export GIT_FOR_SAE_ROOT=~/tools/git_svn_sae/ #此处就是你刚刚放置clone下来的项目路径
 PATH="$GIT_FOR_SAE_ROOT:$PATH"
@@ -108,8 +102,8 @@ PATH="$PATH:$HOME/.bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/s
 # autoload -U compinit && compinit -u
 
 # like autojump, based on 'frecency'.
-export _Z_CMD='j'
-. ~/.dotfiles/module/z/z.sh
+# export _Z_CMD='j'
+# . ~/.dotfiles/module/z/z.sh
 
 if { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
     # export PS1="%{$fg[cyan]%}%c$(git_prompt_info) %(!.%{$fg_bold[red]%}#.%{$fg_bold[red]%}❯)%{$reset_color%}"

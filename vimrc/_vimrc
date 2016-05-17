@@ -1,6 +1,4 @@
 " Author: yantze
-" Last Change:2015-11-14
-
 " $VIM/_vimrc.bundles " the package location:
 
 " 下面的两行，配置基本保持不变,一般不需要修改,所以折叠,可以用za打开
@@ -441,7 +439,7 @@ else
         set lines=38 columns=140
 
     else
-        set background=light
+        " set background=light
         " g:solarized_termcolors= 16 | 256
         " g:solarized_termtrans = 0 | 1
         " g:solarized_degrade = 0 | 1
@@ -451,8 +449,8 @@ else
         " g:solarized_contrast = “normal”| “high” or “low” 
         " g:solarized_visibility= “normal”| “high” or “low”
 
-        " colortheme list: ir_black grb256 BusyBee pt_black
-        colorscheme solarized
+        " colortheme list: ir_black grb256 BusyBee pt_black solarized
+        colorscheme pt_black
     endif
 endif
 " }}}
@@ -1424,5 +1422,12 @@ let Tlist_File_Fold_Auto_Close = 1             " 自动折叠
     " }}}
 " }}}
 
+" Locals {{{
+if ($VIMENV == 'windows')
+elseif ($VIMENV == 'macmini')
+    set background=light
+    colorscheme solarized
 
+endif
+" }}}
 " vim: set ts=4 sw=4 tw=0 et fdm=marker foldlevel=0 foldenable foldlevelstart=99 :
