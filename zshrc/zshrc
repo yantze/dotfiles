@@ -13,12 +13,13 @@ if { [ `uname` = "Darwin" ] } then
     echo "hello Mac!"
 else
     echo "hello Linux!"
-    # nvm for various node version
-    # git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
-    # set default : nvm alias default v5.9.1
-    export NVM_DIR="/home/yantze/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 fi
+
+# nvm for various node version
+# git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
+# set default : nvm alias default v5.9.1
+export NVM_DIR="~/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 ###JAVA###
 # export JAVA_HOME=/usr/java/jdk1.8.0_05
