@@ -122,7 +122,7 @@
             else  
                 " On mac and Windows, use * register for copy-paste
                 " windows/mac 粘贴板一起用，不方便
-                " set clipboard=unnamed
+                set clipboard=unnamed
             endif
         endif
 
