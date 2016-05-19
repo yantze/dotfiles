@@ -4,6 +4,9 @@
 ## 安装
 可以參考 makefile 裏面的安裝方法
 
+## Feature
+- common clipboard
+
 
 ## subtree 管理
 
@@ -37,4 +40,5 @@ rm -f ~/.zcompdump; compinit
 - https://github.com/jcouyang/dotfiles
 - https://github.com/rhyzx/.config
 
+[Making the clipboard work between iTerm2, tmux, vim and OS X.](https://evertpot.com/osx-tmux-vim-copy-paste-clipboard/)
 
