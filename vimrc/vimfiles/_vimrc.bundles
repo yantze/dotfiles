@@ -189,22 +189,6 @@ Plugin 'flazz/vim-colorschemes'
 " Plugin 'skammer/vim-css-color' " 每次打开php都要很久
 " 这个是vim-css-color的替代
 Plugin 'lilydjwg/colorizer'
-" Rainbows default for lisp,scheme and clojure
-Plugin 'amdt/vim-niji'
-let g:niji_matching_filetypes = ['lisp', 'scheme', 'clojure', 'php', 'ruby', 'python']
-" let g:niji_darkblood_colours = [
-"     \ ['255', '255'],
-"     \ ['253', '253'],
-"     \ ['251', '251'],
-"     \ ['249', '249'],
-"     \ ['247', '247'],
-"     \ ['245', '245'],
-"     \ ['243', '243'],
-"     \ ['241', '241'],
-"     \ ['239', '239'],
-"     \ ['237', '237'],
-"     \ ['235', '235'],
-"     \]
 
 " For Writer
 Plugin 'junegunn/goyo.vim'

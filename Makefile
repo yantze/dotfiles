@@ -17,6 +17,7 @@ all:
 	@echo zshrc 	   - ln zshrc.
 	@echo vim   	   - ln vimrc.
 	@echo git	 	   - ln git.
+	@echo emacs	 	   - install emacs configs.
 
 install:
 	sudo yum install vim-common vim-enhanced vim-filesystem vim-minimal ctags
@@ -35,6 +36,9 @@ vim:
 	git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 	#install Bundle's Plugin
 	vim +BundleInstall +qall
+
+emacs:
+	git clone https://github.com/purcell/emacs.d ~/.emacs.d
 
 git:
 	ln -s $(dest)/git/_gitconfig ~/.gitconfig

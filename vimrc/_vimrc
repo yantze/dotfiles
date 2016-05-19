@@ -1,5 +1,5 @@
-" Author: yantze
-" $VIM/_vimrc.bundles " the package location:
+" author: yantze
+" $VIM/_vimrc.bundles " the package location
 
 " 下面的两行，配置基本保持不变,一般不需要修改,所以折叠,可以用za打开
 " two lines below folded because of not often changing
@@ -1430,4 +1430,5 @@ elseif ($VIMENV == 'macmini')
 
 endif
 " }}}
+
 " vim: set ts=4 sw=4 tw=0 et fdm=marker foldlevel=0 foldenable foldlevelstart=99 :
