@@ -1,16 +1,16 @@
 一切竟在不言中
 ---
 
-## 安装
+## install
 可以參考 makefile 裏面的安裝方法
 
-## Feature
+## feature
 - common clipboard 系统级的共享粘贴板
 - global env variable 判断 ~/.bin/env 内容设置为当前的全局变量, `echo home > ~/.bin/env`
 - auto print ls 用 cd 进入目录，自动打印当前目录内容
 
 
-## subtree 管理
+## subtree
 
 ### add a subtree
 ```
@@ -37,7 +37,7 @@ fpath=(path/to/zsh-completions/src $fpath)
 rm -f ~/.zcompdump; compinit
 
 
-## 参考
+## ref
 講了用 stow 、subtree、hub、png等dotfiles 管理辦法，很強大。
 - https://github.com/jcouyang/dotfiles
 - https://github.com/rhyzx/.config
