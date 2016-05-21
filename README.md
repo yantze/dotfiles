@@ -2,7 +2,11 @@
 ---
 
 ## Install
-可以參考 makefile 裏面的安裝方法
+```
+git clone https://github.com/yantze/dotfiles ~/.dotfiles
+cd ~/.dotfiles
+make help
+```
 
 ## Feature
 - common clipboard - 系统级的共享粘贴板

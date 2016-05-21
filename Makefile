@@ -7,7 +7,7 @@ ohmyzsh=https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/in
 autojump=git://github.com/joelthelion/autojump.git
 
 
-all: 
+all help: 
 	@echo Dotfiles manual
 	@echo
 	@echo st-update    - subtree pull and push all prefix, vimrc,module/wiki.
