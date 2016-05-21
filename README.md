@@ -5,7 +5,9 @@
 可以參考 makefile 裏面的安裝方法
 
 ## Feature
-- common clipboard
+- common clipboard 系统级的共享粘贴板
+- global env variable 判断 ~/.bin/env 内容设置为当前的全局变量, `echo home > ~/.bin/env`
+- auto print ls 用 cd 进入目录，自动打印当前目录内容
 
 
 ## subtree 管理

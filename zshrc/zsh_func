@@ -9,10 +9,11 @@ function mcd() { mkdir $1 && cd $1; }
 # cd and ls
 if { [ `uname` = "Darwin" ] } then
     # mac
-    function cl() { builtin cd "$argv[-1]" && ls "${(@)argv[1,-2]}" }
+    function cl() { [[ "" = "$argv[-1]" ]] && builtin cd ~ || builtin cd "$argv[-1]" && ls "${(@)argv[1,-2]}" }
 else
     # linux
-    function cl() { builtin cd "$argv[-1]" && ls --group-directories-first --color=auto "${(@)argv[1,-2]}" }
+    # origin: function cl() { builtin cd "$argv[-1]" && ls --group-directories-first --color=auto "${(@)argv[1,-2]}" }
+    function cl() { [[ "" = "$argv[-1]" ]] && builtin cd ~ || builtin cd "$argv[-1]" && ls --group-directories-first --color=auto "${(@)argv[1,-2]}" }
 fi
 
 function psgrep() { ps axuf | grep -v grep | grep "$@" -i --color=auto; }
