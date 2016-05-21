@@ -1424,8 +1424,8 @@ let Tlist_File_Fold_Auto_Close = 1             " 自动折叠
 " }}}
 
 " Locals {{{
-if ($ENV == 'windows')
-elseif ($ENV == 'macmini')
+if ($MYENV == 'windows')
+elseif ($MYENV == 'macmini')
     set background=light
     colorscheme solarized
 

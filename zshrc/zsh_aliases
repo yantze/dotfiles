@@ -21,7 +21,7 @@ alias less='/usr/share/vim/vim74/macros/less.sh' # replace sys less
 # use `emacs --daemon` and then `emacsclient filename`
 # `-a ''` attempt to connect to an existing server, and if no server exists, start one then connect to it.
 
-if { [ `uname` = "Darwin" ] } then #if mac
+if [[ `uname` = "Darwin" ]]; then #if mac
     alias ec='emacsclient -a ""' 
 else
     alias ec='emacsclient -a "" -c'
