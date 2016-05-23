@@ -1,5 +1,5 @@
-" Author: yantze
-" $VIM/_vimrc.bundles " the package location:
+" author: yantze
+" $VIM/_vimrc.bundles " the package location
 
 " 下面的两行，配置基本保持不变,一般不需要修改,所以折叠,可以用za打开
 " two lines below folded because of not often changing
@@ -1325,8 +1325,9 @@ let Tlist_File_Fold_Auto_Close = 1             " 自动折叠
         set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.png,*.gif,*.jpeg,.DS_Store  " MacOSX/Linux
         " nnoremap <Leader>t :CtrlP getcwd()<CR>
         " nnoremap <Leader>f :CtrlPClearAllCaches<CR>
-        nnoremap <Leader>bl :CtrlPBuffer<CR>
+        " nnoremap <Leader>bl :CtrlPBuffer<CR>
         " nnoremap <Leader>j :CtrlP ~/<CR>
+        nnoremap <c-s-p> :CtrlPBuffer<CR>
         " 下面这句话是说ctrlp自动默认取消探索所有tmp目录下的文件,所以会导致在tmp目录中
         " 不能使用ctrlp,其实我发现在随便一种tmp目录下面,使用vim的 :e path/to/filename
         " 都没有作用,具体原因可能和ctrlp类似
@@ -1423,11 +1424,12 @@ let Tlist_File_Fold_Auto_Close = 1             " 自动折叠
 " }}}
 
 " Locals {{{
-if ($VIMENV == 'windows')
-elseif ($VIMENV == 'macmini')
+if ($MYENV == 'windows')
+elseif ($MYENV == 'macmini')
     set background=light
     colorscheme solarized
 
 endif
 " }}}
+
 " vim: set ts=4 sw=4 tw=0 et fdm=marker foldlevel=0 foldenable foldlevelstart=99 :
