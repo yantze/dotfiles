@@ -15,12 +15,6 @@ else
     echo "hello Linux!"
 fi
 
-# nvm for various node version
-# git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
-# set default : nvm alias default v5.9.1
-export NVM_DIR="~/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
 ###JAVA###
 # export JAVA_HOME=/usr/java/jdk1.8.0_05
 # you can download from:
@@ -73,8 +67,6 @@ export PYENV_ROOT="$HOME/.pyenv"
 PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-PATH="$PATH:$HOME/.bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin"
-
 # 这里主要是屏蔽tmux对path再次赋值，导致type command时出现两个一样的路径
 # [[ -z $TMUX ]] && export PATH
 
@@ -97,23 +89,13 @@ PATH="$PATH:$HOME/.bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/s
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 #
 
-# if you set the zsh plugin, you do not need below two lines.
-# [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
-# autoload -U compinit && compinit -u
-
-# like autojump, based on 'frecency'.
-# export _Z_CMD='j'
-# . ~/.dotfiles/module/z/z.sh
-
 if { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
     # export PS1="%{$fg[cyan]%}%c$(git_prompt_info) %(!.%{$fg_bold[red]%}#.%{$fg_bold[red]%}❯)%{$reset_color%}"
 fi
 
 
-
+PATH="$PATH:$HOME/.bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin"
 ###path PATH###
-# Set the list of directories that Zsh searches for programs.
-# /opt/homebrew-cask/Caskroom/postgres/latest/Postgres.app/Contents/MacOS/bin  #for mac
 # path=(
 #   /usr/local/{bin,sbin}
 #   /usr/local/heroku/bin

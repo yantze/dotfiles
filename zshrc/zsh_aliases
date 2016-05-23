@@ -109,6 +109,9 @@ alias cf='egrep -v "^[[:cntrl:] ]*[#;]|^[[:cntrl:] ]*$"'
 # gollum
 alias gollum="nohup  gollum --h1-title --no-edit &"
 
+# trs
+alias trans="trs -b :zh"
+
 #if mac
 if { [ `uname` = "Darwin" ] } then
     alias play='afplay'
