@@ -1,0 +1,96 @@
+# path file for path
+
+
+###JAVA###
+# export JAVA_HOME=/usr/java/jdk1.8.0_05
+# you can download from:
+# http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+# export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+# export JRE_HOME=$JAVA_HOME/jre
+# CLASSPATH=./:$JAVA_HOME/lib:$JRE_HOME/lib:$JRE_HOME/lib/tools.jar
+# export CLASSPATH
+# PATH="$JAVA_HOME/bin:$PATH"
+
+
+###PHP###
+# PHP_HOME="/usr/local/php70"
+# PATH="$PHP_HOME/bin:$PATH"
+
+###GO###
+GO_HOME="/usr/local/go"
+GOROOT=$HOME/workspace/go
+export GOPATH=$HOME/workspace/go
+PATH="$GO_HOME/bin:$GOROOT/bin:$PATH"
+
+###python###
+# PYTHON3_HOME="/usr/local/python/3.4"
+# PYTHON2_HOME="/usr/local/python/2.7"
+# PATH="$PYTHON3_HOME/bin:$PATH"
+# PATH="$PYTHON2_HOME/bin:$PATH"
+# PYENV_BIN="/home/yantze/.pyenv/shims"
+# PATH="$PYENV_BIN:$PATH"
+
+###scala###
+SCALA_HOME="/usr/local/scala"
+PATH="$SCALA_HOME/bin:$PATH"
+
+###ANT###
+ANT_HOME="/usr/local/ant"
+PATH="$ANT_HOME/bin:$PATH"
+
+# Git for SAE
+export GIT_FOR_SAE_ROOT=~/tools/git_svn_sae/ #此处就是你刚刚放置clone下来的项目路径
+PATH="$GIT_FOR_SAE_ROOT:$PATH"
+
+# Cling for centos7
+CLING_HOME="/usr/local/cling"
+PATH="$CLING_HOME/bin:$PATH"
+
+# pyenv for various python version
+# git clone https://github.com/yyuu/pyenv.git ~/.pyenv
+# pyenv global 3.4.2 2.7.8
+export PYENV_ROOT="$HOME/.pyenv"
+PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# 这里主要是屏蔽tmux对path再次赋值，导致type command时出现两个一样的路径
+# [[ -z $TMUX ]] && export PATH
+
+###配置c编译
+# export CPATH="/usr/bin/gcc"
+# export LIBRARY_PATH="/usr/lib:/usr/lib64:/usr/local/lib:/usr/local/lib64"
+# export C_INCLUDE_PATH="/usr/include:/usr/local/include"
+
+# # Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/dsa_id"
+#
+PATH="$PATH:$HOME/.bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin"
+###path PATH###
+# path=(
+#   /usr/local/{bin,sbin}
+#   /usr/local/heroku/bin
+#   $path
+# )
+
+
+###C###
+go_libs="-lm"
+go_flags="-g -Wall -include allheads.h -O3"
+alias go_c="c99 -xc '-' $go_libs $go_flags"
+
+### 设置grep的高亮颜色为土黄色
+export GREP_COLORS="01;36"
+
+### cheat
+export DEFAULT_CHEAT_DIR=~/.dotfiles/module_config/cheat
+export CHEATCOLORS=true

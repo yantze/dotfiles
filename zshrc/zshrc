@@ -1,4 +1,5 @@
 . ~/.dotfiles/zshrc/zsh_func
+. ~/.dotfiles/zshrc/zsh_path
 . ~/.dotfiles/zshrc/zsh_aliases
 
 #history max num
@@ -15,98 +16,17 @@ else
     echo "hello Linux!"
 fi
 
-###JAVA###
-# export JAVA_HOME=/usr/java/jdk1.8.0_05
-# you can download from:
-# http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
-# export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
-# export JRE_HOME=$JAVA_HOME/jre
-# CLASSPATH=./:$JAVA_HOME/lib:$JRE_HOME/lib:$JRE_HOME/lib/tools.jar
-# export CLASSPATH
-# PATH="$JAVA_HOME/bin:$PATH"
-
-
-###PHP###
-# PHP_HOME="/usr/local/php70"
-# PATH="$PHP_HOME/bin:$PATH"
-
-###GO###
-GO_HOME="/usr/local/go"
-GOROOT=$HOME/workspace/go
-export GOPATH=$HOME/workspace/go
-PATH="$GO_HOME/bin:$GOROOT/bin:$PATH"
-
-###python###
-# PYTHON3_HOME="/usr/local/python/3.4"
-# PYTHON2_HOME="/usr/local/python/2.7"
-# PATH="$PYTHON3_HOME/bin:$PATH"
-# PATH="$PYTHON2_HOME/bin:$PATH"
-# PYENV_BIN="/home/yantze/.pyenv/shims"
-# PATH="$PYENV_BIN:$PATH"
-
-###scala###
-SCALA_HOME="/usr/local/scala"
-PATH="$SCALA_HOME/bin:$PATH"
-
-###ANT###
-ANT_HOME="/usr/local/ant"
-PATH="$ANT_HOME/bin:$PATH"
-
-# Git for SAE
-export GIT_FOR_SAE_ROOT=~/tools/git_svn_sae/ #此处就是你刚刚放置clone下来的项目路径
-PATH="$GIT_FOR_SAE_ROOT:$PATH"
-
-# Cling for centos7
-CLING_HOME="/usr/local/cling"
-PATH="$CLING_HOME/bin:$PATH"
-
-# pyenv for various python version
-# git clone https://github.com/yyuu/pyenv.git ~/.pyenv
-# pyenv global 3.4.2 2.7.8
-export PYENV_ROOT="$HOME/.pyenv"
-PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
-# 这里主要是屏蔽tmux对path再次赋值，导致type command时出现两个一样的路径
-# [[ -z $TMUX ]] && export PATH
-
-###配置c编译
-# export CPATH="/usr/bin/gcc"
-# export LIBRARY_PATH="/usr/lib:/usr/lib64:/usr/local/lib:/usr/local/lib64"
-# export C_INCLUDE_PATH="/usr/include:/usr/local/include"
-
-# # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-#
 
 if { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
     # export PS1="%{$fg[cyan]%}%c$(git_prompt_info) %(!.%{$fg_bold[red]%}#.%{$fg_bold[red]%}❯)%{$reset_color%}"
+    if [[ $MYENV = "macmini" ]] ;then
+        tmux source ~/.dotfiles/tmux/tmuxcolors-light.conf
+    else
+        tmux source ~/.dotfiles/tmux/tmuxcolors-dark.conf
+    fi
 fi
 
 
-PATH="$PATH:$HOME/.bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin"
-###path PATH###
-# path=(
-#   /usr/local/{bin,sbin}
-#   /usr/local/heroku/bin
-#   $path
-# )
-
-
-###C###
-go_libs="-lm"
-go_flags="-g -Wall -include allheads.h -O3"
-alias go_c="c99 -xc '-' $go_libs $go_flags"
 
 
 ### display language
@@ -119,8 +39,6 @@ export LC_NUMERIC="en_US.UTF-8"
 export LC_TIME="en_US.UTF-8"
 # export LC_ALL=
 
-### 设置grep的高亮颜色为土黄色
-export GREP_COLORS="01;36"
 
 alias chinese='LC_ALL="zh_CN.UTF-8"'
 alias chinese2='LANG=zh_CN.UTF-8 LC_ALL="zh_CN.UTF-8"'
@@ -129,6 +47,8 @@ alias japanese2='LANG="ja_JP.UTF-8" LC_ALL="ja_JP.UTF-8"'
 # 例如: japanese vim显示的就是日语的界面 :)
 # locale -v
 
-### cheat
-export DEFAULT_CHEAT_DIR=~/.dotfiles/module_config/cheat
-export CHEATCOLORS=true
+# 一般对配置进行分类
+# 场景
+# 功能
+# 简洁
+# 模块化
