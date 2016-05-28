@@ -432,7 +432,16 @@ if g:isWIN
     endif
 else
     if g:isGUI
-        set guifont=Monaco\ 11
+        if has("gui_gtk2")
+            " set guifont=DejaVu\ Sans\ Mono\ 14
+        elseif has("gui_macvim")
+            " set guifont=DejaVu_Sans_Mono:h14
+            set guifont=Monaco:h12
+            set guifontwide=HiraginoSansGB-W3:h12
+        end
+
+        " set guifont=Monaco\ 13
+        " set guifontwide=HiraginoSansGB-W3:h15
         " set guifont=YaHei\ Consolas\ Hybrid:h13
         set background=light
         colorscheme solarized
