@@ -418,7 +418,8 @@ if g:isWIN
         " set guifont=Source\ Code\ Pro:h13
 
     else
-        colorscheme ir_black
+        colorscheme CodeFactoryv3
+        " colorscheme ir_black
         " 兼容windows下cmd的gb2312
         " set enc=cp936
         " help encoding-table
@@ -427,7 +428,6 @@ if g:isWIN
         " :e! ++enc=<the_encoding>.
         " dos里面<backspace>和<c-h>完全链接了，要取消<c-h>的映射
         iunmap <c-h>
-
 
     endif
 else
