@@ -418,7 +418,8 @@ if g:isWIN
         " set guifont=Source\ Code\ Pro:h13
 
     else
-        colorscheme ir_black
+        colorscheme CodeFactoryv3
+        " colorscheme ir_black
         " 兼容windows下cmd的gb2312
         " set enc=cp936
         " help encoding-table
@@ -428,11 +429,19 @@ if g:isWIN
         " dos里面<backspace>和<c-h>完全链接了，要取消<c-h>的映射
         iunmap <c-h>
 
-
     endif
 else
     if g:isGUI
-        set guifont=Monaco\ 11
+        if has("gui_gtk2")
+            " set guifont=DejaVu\ Sans\ Mono\ 14
+        elseif has("gui_macvim")
+            " set guifont=DejaVu_Sans_Mono:h14
+            set guifont=Monaco:h12
+            set guifontwide=HiraginoSansGB-W3:h12
+        end
+
+        " set guifont=Monaco\ 13
+        " set guifontwide=HiraginoSansGB-W3:h15
         " set guifont=YaHei\ Consolas\ Hybrid:h13
         set background=light
         colorscheme solarized
