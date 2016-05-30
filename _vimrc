@@ -548,7 +548,7 @@ set smarttab                 "在行首按TAB将加入sw个空格，否则加入
 if g:isWIN
 else
     " 在 macvim 中，不支持
-    set nu!
+    " set nu!
 endif
 if v:version > 703
     set relativenumber " 开启相对行号
