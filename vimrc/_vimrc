@@ -500,7 +500,6 @@ map ; :
 set backspace=2              " 设置退格键可用
 set autoindent               " 自动对齐
 set smartindent              " 智能自动缩进
-set nu!                      " 显示行号
 set ruler                    " 右下角显示光标位置的状态行
 set hidden                   " 允许在有未保存的修改时切换缓冲区
 set laststatus=2             " 开启状态栏信息
@@ -541,17 +540,16 @@ set expandtab                " 将Tab自动转化成空格 [需要输入真正�
 set smarttab                 "在行首按TAB将加入sw个空格，否则加入ts个空格;按Backspace可以删除4个空格
 
 
-
-" }}}
-
-" System Setting {{{
 if g:isWIN
 else
     " 在 macvim 中，不支持
     " set nu!
 endif
+
+
 if v:version > 703
-    set relativenumber " 开启相对行号
+    " set relativenumber " 开启相对行号
+    " set nu                       " 显示行号
     set undofile                 " 重新打开文件可恢复上次关闭的撤销记录,默认filename.un~, only use for `vim --version` have +persistent_undo feature
 
     " 替换原来的查找，可以同时显示多个查找关键字(Easymotion)
@@ -562,15 +560,10 @@ if v:version > 703
         endif
     endif
 endif
+
 " }}}
 
-" Local Setting {{{
-    if filereadable(expand("~/.local/.vimrc_local"))
-        source ~/.local/.vimrc_local
-    endif
-" }}}
-
-" Other {{{
+" System Setting {{{
 
 " tabn/tabp 切换tab
 " tabnew 创建新窗口
@@ -1433,12 +1426,20 @@ let Tlist_File_Fold_Auto_Close = 1             " 自动折叠
 " }}}
 
 " Locals {{{
+if filereadable(expand("~/.local/.vimrc_local"))
+    source ~/.local/.vimrc_local
+endif
+
+
 if ($MYENV == 'windows')
 elseif ($MYENV == 'macmini')
     set background=light
     colorscheme solarized
 
 endif
+
+set nu
+set relativenumber
 " }}}
 
 " vim: set ts=4 sw=4 tw=0 et fdm=marker foldlevel=0 foldenable foldlevelstart=99 :
