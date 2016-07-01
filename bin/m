@@ -16,13 +16,13 @@ else
   #   hash ag 2>/dev/null || {
        # if not installed ag
        # grep -r -n -B 1 -A 2 "$1" $manfile
-       grep --color=auto -rn -B 1 -A 2 "$1" $manfile
+       # grep --color=auto -rn -B 1 -A 2 "$1" $manfile
        # -h 隐藏文件名
        # -r 递归查找
        # -n 显示行号
   #   }
   # else
-    # ag -B 1 -A 2 "$1" $manfile
+    ag -B 1 -A 2 "$1" $manfile
   fi
 fi
 
