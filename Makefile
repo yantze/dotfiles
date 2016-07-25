@@ -10,7 +10,7 @@ autojump=git://github.com/joelthelion/autojump.git
 all help: 
 	@echo Dotfiles manual
 	@echo
-	@echo st-update    - subtree pull and push all prefix, vimrc,module/wiki.
+	@echo st-update    - subtree pull and push all prefix, vimrc.
 	@echo pull         - pull current repo.
 	@echo push         - push current repo.
 	@echo tmux 		   - ln tmux.
@@ -73,11 +73,9 @@ repo-push:
 st-update: st-pull st-push
 
 st-pull:
-	git subtree pull --prefix wiki https://github.com/yantze/wiki.git master --squash
 	git subtree pull --prefix vimrc https://github.com/yantze/vimrc master --squash
 
 st-push:
-	git subtree push --prefix wiki https://github.com/yantze/wiki.git master --squash
 	git subtree push --prefix vimrc https://github.com/yantze/vimrc master --squash
 
 
