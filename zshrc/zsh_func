@@ -31,3 +31,31 @@ function ipurl() {
   sed -n '1p' |                             # result: get first line
   sed -e 's/^.*(\([0-9\.]\{7,\}\)).*/\1/g'  # get ip in the first line
 }
+
+# put things to trash
+function put() {
+    TRASH=`echo ~/trash`
+    if [[ -d $TRASH ]]; then
+        mv $* ~/trash
+    else
+        mkdir "$TRASH"
+        mv $* ~/trash
+    fi
+}
+
+# copy by pipe without newline symboy
+function scopy() {
+    read line
+    echo -n $line | tr -d '\n' | clipcopy
+}
+
+# display hightest frequency command
+function histsum() {
+    history  |
+    awk '{CMD[$2]++;count++;}END  { for (a in CMD)print CMD[a] " "  CMD[a]/count*100 "% " a;}' |
+    grep -v "./" |
+    column -c3 -s " " -t |
+    sort -nr |
+    nl |
+    head -n30
+}

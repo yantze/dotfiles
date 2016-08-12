@@ -1,0 +1,20 @@
+#!/bin/zsh
+
+APPNAME=$1
+
+if [[ -z "$APPNAME" ]]; then
+    echo '请先指定一个appname'
+    exit 0
+fi
+
+# 获取图标名称
+ICON=$(/usr/libexec/plistbuddy -c Print:CFBundleIconFile: "/Applications/${APPNAME}.app/Contents/Info.plist")
+if [[ -z "$ICON" ]]; then
+    echo '找不到icon文件'
+    exit 0
+fi
+
+if [[ "$ICON" == *.icns ]] ICON=${ICON%.*}
+ICONPATH="/Applications/${APPNAME}.app/Contents/Resources/${ICON}.icns"
+# 转换格式
+sips -s format png "${ICONPATH}" --out ~/Desktop/appIcons/48/"${APPNAME}".png -Z 128

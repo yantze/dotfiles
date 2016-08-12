@@ -1,4 +1,30 @@
-##VIM 使用说明
+## VIM
+
+### 洗净铅华(频率最高)
+
+#### 替换 @wlken
+:1,10s/a/b/g
+:%s/a/b/g
+:`#`选中或者`v+`范围，:%s//b/g
+
+#### 文本对象 @wlken
+
+<action>a<object> or <action>i<object
+
+- a = all / i = in
+- action: dyvc
+- object: w(world) / s(sentence) / p{paragraph}
+- object: `" ' ) ] }`
+- object: tag
+- object: 装插件可扩展 l(line) / e(entire file) / i(indent)
+
+常用: `vi', vi", `vi(`, `va"`, `va{`
+
+#### 缩进
+`shift + v` 块缩进，`shift + .` 重复块缩进，而不是 `.`
+
+
+## 老的说明
 
 ###常用命令-强大且要记住的功能(适用于本vim配置)
 ####Key

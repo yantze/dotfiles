@@ -1,0 +1,13 @@
+#!/usr/bin/env php
+
+# author: yantze
+# desc: 为php程序增加调试REPL, php -a 做同样的事。
+
+# composer require d11wtq/boris dev-master
+# php -r '$boris = new \Boris\Boris("> "); $boris->start();'
+
+<?php
+$home = getenv("HOME");
+require $home . '/.composer/vendor/autoload.php';
+$boris = new \Boris\Boris('> ');
+$boris->start();

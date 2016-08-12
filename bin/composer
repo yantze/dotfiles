@@ -1,12 +1,12 @@
 #!/bin/sh
 exec php \
-    -n \
-    -d 'extension=curl.so' \
-    -d 'extension=iconv.so' \
-    -d 'extension=json.so' \
-    -d 'extension=phar.so' \
     "$(dirname $0)/composer.phar" $*
 
+#    -n \
+#    -d 'extension=curl.so' \
+#    -d 'extension=iconv.so' \
+#    -d 'extension=json.so' \
+#    -d 'extension=phar.so' \
 #    -d 'zend_extension=opcache.so' \
 #    -d 'extension=openssl.so' \
 #    -d 'extension=filter.so' \

@@ -87,8 +87,6 @@ alias ngtop='ngxtop -l /usr/local/nginx/logs/access.log'
 # if linux-centos6.7
 # alias cmake='cmake28'
 # alias ccmake='ccmake28'
-alias put='trash-put'
-alias putl='trash-list'
 
 #shadowsocks
 alias ssd='ssserver -c /etc/shadowsocks.json -d'
@@ -127,6 +125,9 @@ if { [ `uname` = "Darwin" ] } then
     alias ssp_off='networksetup -setsocksfirewallproxy "Ethernet" off'
 else
     alias play='mpg123'
+
+    alias put='trash-put'
+    alias putl='trash-list'
 fi
 
 
