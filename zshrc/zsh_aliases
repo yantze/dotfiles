@@ -10,6 +10,7 @@ alias lss='ls'
 
 ### system alias
 alias sctl='systemctl'
+alias proxy='proxychains4 -q -f ~/.proxychains/proxychains.conf'
 
 
 # Editor
@@ -30,22 +31,14 @@ fi
 
 alias et='emacsclient -t'  # 适合 GUI 时，启动一个新的 frame (-n) 
 alias en='emacsclient -n'  # 适合 终端运行(emacs --daemon) 后
+alias e='command emacs -nw' # emacs command line
 
 
 alias javac="javac -J-Dfile.encoding=utf8"
 alias grep="grep --color=auto"
-alias -s txt=vi #在shell里面直接输入txt文件，直接用vim打开
-alias -s tex=vim
-alias -s gz='tar -xzvf'
-alias -s tgz='tar -xzvf'
-alias -s zip='unzip'
-alias -s bz2='tar -xjvf'
 alias tf="tail -f"
 alias cls='clear'
 alias q='exit'
-#這個是配合command-dict的命令版本
-# alias g='dict'
-#alias sp='~/tools/.sp.sh'
 alias sp='~/soft/sh-toolkits-lib/sp.sh'
 
 # tmux
@@ -76,8 +69,6 @@ alias realpath='readlink -f'  #显示符号链接指向的真实路径((用法�
 
 ###
 alias rsyn='rsync -arvuzp'
-alias proxy_local='ALL_PROXY=socks5://127.0.0.1:1080'
-
 
 ###app###
 alias ytb='youtube-dl --proxy http://127.0.0.1:7777'
@@ -106,9 +97,6 @@ alias cf='egrep -v "^[[:cntrl:] ]*[#;]|^[[:cntrl:] ]*$"'
 
 # gollum
 alias gollum="nohup  gollum --h1-title --no-edit &"
-
-# trs
-alias trans="trs -b :zh"
 
 #if mac
 if { [ `uname` = "Darwin" ] } then
