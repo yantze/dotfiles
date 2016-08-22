@@ -17,18 +17,6 @@ else
 fi
 
 
-if { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
-    # export PS1="%{$fg[cyan]%}%c$(git_prompt_info) %(!.%{$fg_bold[red]%}#.%{$fg_bold[red]%}❯)%{$reset_color%}"
-    if [[ $MYENV = "macmini" ]] ;then
-        tmux source ~/.dotfiles/tmux/tmuxcolors-light.conf
-    else
-        tmux source ~/.dotfiles/tmux/tmuxcolors-dark.conf
-    fi
-fi
-
-
-
-
 ### display language
 export LANG="en_US.UTF-8"
 export LC_COLLATE="en_US.UTF-8"
