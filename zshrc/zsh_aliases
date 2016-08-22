@@ -31,7 +31,7 @@ fi
 
 alias et='emacsclient -t'  # 适合 GUI 时，启动一个新的 frame (-n) 
 alias en='emacsclient -n'  # 适合 终端运行(emacs --daemon) 后
-alias e='command emacs -nw' # emacs command line
+# alias e='command emacs -nw' # emacs command line
 
 
 alias javac="javac -J-Dfile.encoding=utf8"
