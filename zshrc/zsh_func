@@ -3,8 +3,15 @@
 #fname 递归查找当前目录下指定文件
 function fname() { find . -iname "*$@*"; }
 
-#创建文件夹并且cd进去
-function mcd() { mkdir $1 && cd $1; }
+#创建文件夹并且cd进去, 可以顺带放入文件进去
+function mcd() {
+    files=${@:2}
+    mkdir $1
+    if [ -n "$files" ]; then
+        mv ${@:2} $1;
+    fi
+    cd $1;
+}
 
 # 设置当前的环境变量 " test -s ~/.env && export ..."
 [ -s ~/.env ] && export MYENV=`cat ~/.env`
