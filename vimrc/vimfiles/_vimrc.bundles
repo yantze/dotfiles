@@ -319,6 +319,9 @@ Plugin 'matchit.zip'
     " call vundle#end()            " required
 " }
 
+" 语法高亮 syntax hightlight
+Plugin 'spin6lock/vim_sproto'
+
 " 列出当前buffer列表的窗口,可以同过lru等排序快速找到文件
 " Plugin 'bufexplorer.zip' "ctrlp united the file manager
 
