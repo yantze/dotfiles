@@ -42,12 +42,11 @@ function ipurl() {
 # put things to trash
 function put() {
     TRASH=`echo ~/trash`
-    if [[ -d $TRASH ]]; then
-        mv $* ~/trash
-    else
+    if [[ ! -d $TRASH ]]; then
         mkdir "$TRASH"
-        mv $* ~/trash
     fi
+
+    mv $* ~/trash
 }
 
 # copy by pipe without newline symboy
