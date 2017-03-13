@@ -18,16 +18,18 @@ function mcd() {
 function myenv() { [[ -n $argv ]] && echo $argv > ~/.env && export MYENV=$argv || echo $MYENV }
 
 # cd and ls
-if [[ `uname` = "Darwin" ]]; then
-    # mac
+if [[ `uname` = "Darwin" ]];  then # mac
+    export GENERAL_EXECUTE_PATH='/bin'
     function cl() { [[ "" = "$argv[-1]" ]] && builtin cd ~ || builtin cd "$argv[-1]" && ls "${(@)argv[1,-2]}" }
-else
-    # linux
+elif [[ `uname` = "Linux" ]]; then # linux
+    export GENERAL_EXECUTE_PATH='/usr/bin'
     # origin: function cl() { builtin cd "$argv[-1]" && ls --group-directories-first --color=auto "${(@)argv[1,-2]}" }
     function cl() { [[ "" = "$argv[-1]" ]] && builtin cd ~ || builtin cd "$argv[-1]" && ls --group-directories-first --color=auto "${(@)argv[1,-2]}" }
 fi
 
-function psgrep() { ps axuf | grep -v grep | grep "$@" -i --color=auto; }
+function psgrep() { ps aux | grep -v grep | grep "$@" -i --color=auto }
+
+
 
 # get pure ip from url
 function ipurl() {
@@ -45,6 +47,13 @@ function put() {
     if [[ ! -d $TRASH ]]; then
         mkdir "$TRASH"
     fi
+
+    for single in "$@"; do
+        if [[ -e "$TRASH/$single" ]]; then
+            echo "Delete... $TRASH/$single"
+            $GENERAL_EXECUTE_PATH/rm -r "$TRASH/$single"
+        fi
+    done
 
     mv $* ~/trash
 }

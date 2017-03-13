@@ -17,10 +17,15 @@
 # PATH="$PHP_HOME/bin:$PATH"
 
 ###GO###
-GO_HOME="/usr/local/go"
+if [[ "$OSNAME" = 'Darwin' ]] ; then
+    GOHOME="/usr/local/Cellar/go/1.8"
+else
+    GOHOME="/usr/local/go"
+fi
+
 GOROOT=$HOME/workspace/go
 export GOPATH=$HOME/workspace/go
-PATH="$GO_HOME/bin:$GOROOT/bin:$PATH"
+PATH="$GOHOME/bin:$GOROOT/bin:$PATH"
 
 ###python###
 # PYTHON3_HOME="/usr/local/python/3.4"
@@ -49,9 +54,9 @@ PATH="$CLING_HOME/bin:$PATH"
 # pyenv for various python version
 # git clone https://github.com/yyuu/pyenv.git ~/.pyenv
 # pyenv global 3.4.2 2.7.8
-export PYENV_ROOT="$HOME/.pyenv"
-PATH="$PYENV_ROOT/bin:$PATH"
-command -v pyenv && eval "$(pyenv init -)"
+# export PYENV_ROOT="$HOME/.pyenv"
+# PATH="$PYENV_ROOT/bin:$PATH"
+# command -v pyenv && eval "$(pyenv init -)"
 
 # 这里主要是屏蔽tmux对path再次赋值，导致type command时出现两个一样的路径
 # [[ -z $TMUX ]] && export PATH
