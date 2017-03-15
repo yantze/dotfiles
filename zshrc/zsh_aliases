@@ -15,7 +15,7 @@ alias proxy='proxychains4 -q -f ~/.proxychains/proxychains.conf'
 
 # Editor
 # 让vim不带插件的运行,速度非常快
-alias v='/usr/bin/vim --cmd "let g:vimrc_no_plugin=1"'
+alias v='vim --cmd "let g:no_plugin=1"'
 # alias vi='/usr/bin/vim'
 alias less='/usr/share/vim/vim74/macros/less.sh' # replace sys less
 
