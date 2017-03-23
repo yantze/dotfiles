@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-
-w3m https://www.google.com/search?q="$*"

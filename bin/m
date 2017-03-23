@@ -5,12 +5,19 @@ HOME=$DIR/$USER
 
 manfile="$HOME/wiki/ $HOME/.dotfiles/README.md"
 
-if [[ $1 == "m" ]]; then
+if [[ $1 == "m" ]]; then # cheat
   if [[ -z $2 ]]; then
     echo "require second word"
     exit;
   fi
   cheat $2
+elif [[ $1 == "w" ]]; then # web
+      open "https://github.com/yantze/wiki/search?q=$*"
+elif [[ $1 == "f" ]]; then # file
+  filepath=$(find ~/wiki -type f -name "*$2*.md" | head -n 1)
+  if [[ -n $filepath ]]; then
+    vim $filepath
+  fi
 else
   if [[ $1 ]]; then
   #   hash ag 2>/dev/null || {
@@ -25,4 +32,3 @@ else
     ag -B 1 -A 2 "$1" $manfile
   fi
 fi
-

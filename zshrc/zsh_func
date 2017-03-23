@@ -33,12 +33,12 @@ function psgrep() { ps aux | grep -v grep | grep "$@" -i --color=auto }
 
 # get pure ip from url
 function ipurl() {
-  echo $1 | 
-  sed -e 's/^.*:\/\/\(.*\)/\1/g' |          # remove http(s)://
-  awk -F/ '{print $1}' |                    # remove /query/abc?a=b
-  xargs ping -c 1 -t 1 |                    # -c only send one package, -t timeout 1s
-  sed -n '1p' |                             # result: get first line
-  sed -e 's/^.*(\([0-9\.]\{7,\}\)).*/\1/g'  # get ip in the first line
+    echo $1 | 
+    sed -e 's/^.*:\/\/\(.*\)/\1/g' |          # remove http(s)://
+    awk -F/ '{print $1}' |                    # remove /query/abc?a=b
+    xargs ping -c 1 -t 1 |                    # -c only send one package, -t timeout 1s
+    sed -n '1p' |                             # result: get first line
+    sed -e 's/^.*(\([0-9\.]\{7,\}\)).*/\1/g'  # get ip in the first line
 }
 
 # put things to trash
@@ -48,6 +48,13 @@ function put() {
         mkdir "$TRASH"
     fi
 
+    # delete trash
+    if [[ $TRASH == `echo $1` ]]; then
+        $GENERAL_EXECUTE_PATH/rm -rf $TRASH
+        exit
+    fi
+
+    # delete exist files
     for single in "$@"; do
         if [[ -e "$TRASH/$single" ]]; then
             echo "Delete... $TRASH/$single"
