@@ -3,10 +3,10 @@
 #fname 递归查找当前目录下指定文件
 function fname() { find . -iname "*$@*"; }
 
-#创建文件夹并且cd进去, 可以顺带放入文件进去
-function mcd() {
+#创建文件夹并且cd进去, 可以顺带把后面的文件放入文件夹中
+function take() {
     files=${@:2}
-    mkdir $1
+    mkdir -p $1
     if [ -n "$files" ]; then
         mv ${@:2} $1;
     fi
@@ -64,13 +64,3 @@ function scopy() {
     echo -n $line | tr -d '\n' | clipcopy
 }
 
-# display hightest frequency command
-function histsum() {
-    history  |
-    awk '{CMD[$2]++;count++;}END  { for (a in CMD)print CMD[a] " "  CMD[a]/count*100 "% " a;}' |
-    grep -v "./" |
-    column -c3 -s " " -t |
-    sort -nr |
-    nl |
-    head -n30
-}

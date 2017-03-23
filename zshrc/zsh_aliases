@@ -69,6 +69,8 @@ alias realpath='readlink -f'  #显示符号链接指向的真实路径((用法�
 
 ###
 alias rsyn='rsync -arvuzp'
+alias histsum='zsh_stats'
+alias mcd='take'
 
 ###app###
 alias ytb='youtube-dl --proxy http://127.0.0.1:7777'
