@@ -81,6 +81,11 @@ alias ngtop='ngxtop -l /usr/local/nginx/logs/access.log'
 # alias cmake='cmake28'
 # alias ccmake='ccmake28'
 
+# ~/.bin/m search wiki
+alias mw='m w'  # search web
+alias mf='m f'  # search file and open it
+alias mm='m m'  # search cheat 
+
 #shadowsocks
 alias ssd='ssserver -c /etc/shadowsocks.json -d'
 

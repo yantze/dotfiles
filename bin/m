@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# alias mw='m w'  # search web
+# alias mf='m f'  # search file and open it
+# alias mm='m m'  # search cheat 
 
 DIR=$(dirname ~)
 HOME=$DIR/$USER
