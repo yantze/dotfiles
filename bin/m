@@ -1,24 +1,25 @@
 #!/usr/bin/env bash
-# alias mw='m w'  # search web
-# alias mf='m f'  # search file and open it
-# alias mm='m m'  # search cheat 
+# alias mw='m web'   # search web
+# alias mf='m file'  # search file and open it
+# alias mm='m man'   # search cheat 
 
 DIR=$(dirname ~)
 HOME=$DIR/$USER
 WIKIHOME="$HOME/wiki/ $LOCAL_WIKI_LIST" # find with multiple directory
 
 case $1 in
-"m")
+"man")
   if [[ -z $2 ]]; then
     echo "require second word"
     exit;
   fi
+  cheat $2
   ;;
-"w")
+"web")
   search=${@:2}
   open "https://github.com/yantze/wiki/search?q=$search"
   ;;
-"f")
+"file")
   filepath=$(find $WIKIHOME -type f -name "*$2*.md" | head -n 1)
   if [[ -n $filepath ]]; then
     vim $filepath

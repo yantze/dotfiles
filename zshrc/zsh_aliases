@@ -33,9 +33,9 @@ alias ssd='ssserver -c /etc/shadowsocks.json -d'
 alias proxy='proxychains4 -q -f ~/.proxychains/proxychains.conf'
 
 # ~/.bin/m search wiki
-alias mw='m w'  # search web
-alias mf='m f'  # search file and open it
-alias mm='m m'  # search cheat 
+alias mw='m web'  # search web
+alias mf='m file'  # search file and open it
+alias mm='m man'  # search cheat manual
 
 # python
 # http/ftp only python3, use bin/pyhttp bin/pyftp
