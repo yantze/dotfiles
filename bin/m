@@ -7,21 +7,24 @@ DIR=$(dirname ~)
 HOME=$DIR/$USER
 WIKIHOME="$HOME/wiki/ $LOCAL_WIKI_LIST" # find with multiple directory
 
-if [[ $1 == "m" ]]; then # cheat
+case $1 in
+"m")
   if [[ -z $2 ]]; then
     echo "require second word"
     exit;
   fi
-  cheat $2
-elif [[ $1 == "w" ]]; then # web
+  ;;
+"w")
   search=${@:2}
   open "https://github.com/yantze/wiki/search?q=$search"
-elif [[ $1 == "f" ]]; then # file
+  ;;
+"f")
   filepath=$(find $WIKIHOME -type f -name "*$2*.md" | head -n 1)
   if [[ -n $filepath ]]; then
     vim $filepath
   fi
-else
+  ;;
+*)
   if [[ $1 ]]; then
   #   hash ag 2>/dev/null || {
        # if not installed ag
@@ -34,4 +37,5 @@ else
   # else
     ag -B 1 -A 2 "$1" $manfile
   fi
-fi
+  ;;
+esac
