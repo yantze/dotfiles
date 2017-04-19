@@ -5,8 +5,7 @@
 
 DIR=$(dirname ~)
 HOME=$DIR/$USER
-
-manfile="$HOME/wiki/ $HOME/.dotfiles/README.md"
+WIKIHOME="$HOME/wiki/ $LOCAL_WIKI_LIST" # find with multiple directory
 
 if [[ $1 == "m" ]]; then # cheat
   if [[ -z $2 ]]; then
@@ -15,9 +14,10 @@ if [[ $1 == "m" ]]; then # cheat
   fi
   cheat $2
 elif [[ $1 == "w" ]]; then # web
-      open "https://github.com/yantze/wiki/search?q=$*"
+  search=${@:2}
+  open "https://github.com/yantze/wiki/search?q=$search"
 elif [[ $1 == "f" ]]; then # file
-  filepath=$(find ~/wiki -type f -name "*$2*.md" | head -n 1)
+  filepath=$(find $WIKIHOME -type f -name "*$2*.md" | head -n 1)
   if [[ -n $filepath ]]; then
     vim $filepath
   fi

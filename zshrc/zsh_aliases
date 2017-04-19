@@ -1,94 +1,43 @@
-###require
+### default
 alias rm='rm -i'
 alias l.='ls -d .* --color=auto'
 alias cd='cl'
+alias javac="javac -J-Dfile.encoding=utf8"
+alias grep="grep --color=auto"
+alias tf="tail -f"
+alias cls='clear'
+alias q='exit'
+alias pp='pushd' #pp/po in zsh has already set
+alias po='popd'
+alias hd='od -Ax -tx1z -v' #方便的十六进制输出。 (用法举例: • hd /proc/self/cmdline | less)
+alias realpath='readlink -f'  #显示符号链接指向的真实路径((用法举例: • realpath ~/../$USER)
 
 
 ###for typo
 alias s='ls'
 alias lss='ls'
 
-### system alias
-alias sctl='systemctl'
-alias proxy='proxychains4 -q -f ~/.proxychains/proxychains.conf'
 
-
-# Editor
-# 让vim不带插件的运行,速度非常快
-alias v='vim --cmd "let g:no_plugin=1"'
-# alias vi='/usr/bin/vim'
-alias less='/usr/share/vim/vim74/macros/less.sh' # replace sys less
-
-# use `emacs --daemon` and then `emacsclient filename`
-# `-a ''` attempt to connect to an existing server, and if no server exists, start one then connect to it.
-
-if [[ `uname` = "Darwin" ]]; then #if mac
-    alias ec='emacsclient -a ""' 
-else
-    alias ec='emacsclient -a "" -c'
-fi
-
-
-alias et='emacsclient -t'  # 适合 GUI 时，启动一个新的 frame (-n) 
-alias en='emacsclient -n'  # 适合 终端运行(emacs --daemon) 后
-# alias e='command emacs -nw' # emacs command line
-
-
-alias javac="javac -J-Dfile.encoding=utf8"
-alias grep="grep --color=auto"
-alias tf="tail -f"
-alias cls='clear'
-alias q='exit'
-alias sp='~/soft/sh-toolkits-lib/sp.sh'
-
-# tmux
-#设置窗口的名字为hi
-alias t='tmux -2 -u attach || tmux -2 -u new-session -s hi'
-#新建一個有名字的窗口
-alias tn='tmux -2 -u new-session -s'
-# alias tmn='tmux new -s $(basename $(pwd))'
-alias tl='tmux list-sessions'
-#附上一個有名字的窗口
-# alias ta='tmux attach -t'
-alias ta='tmux attach -d -t'
-#设置tmux标签的名字，直到退出为止
-alias st='set-window-title'
-
-# screen 需要的时候使用
-# C-a D D (quick exit)
-# alias t='screen -R hi'
-# alias ta='screen -R'
-# alias tn='screen -S'
-# alias tl='screen -list'
-# alias st='screen -t'
-# 随便找了个可以attach的
-# alias tt='screen -dRR'
-
-alias hd='od -Ax -tx1z -v' #方便的十六进制输出。 (用法举例: • hd /proc/self/cmdline | less)
-alias realpath='readlink -f'  #显示符号链接指向的真实路径((用法举例: • realpath ~/../$USER)
-
-###
+### app ###
 alias rsyn='rsync -arvuzp'
 alias histsum='zsh_stats'
 alias mcd='take'
-
-###app###
-alias ytb='youtube-dl --proxy http://127.0.0.1:7777'
+alias sp='~/soft/sh-toolkits-lib/sp.sh'
+alias gitweb='git remote -v | awk '{print \$2}' | head -n 1 | xargs open' # open git remote first url
 alias ngtop='ngxtop -l /usr/local/nginx/logs/access.log'
 # the yasm is a rewrite interface for nasm
 # alias nasm='yasm'
-# if linux-centos6.7
-# alias cmake='cmake28'
-# alias ccmake='ccmake28'
+
+# shadowsocks
+alias ssd='ssserver -c /etc/shadowsocks.json -d'
+alias proxy='proxychains4 -q -f ~/.proxychains/proxychains.conf'
 
 # ~/.bin/m search wiki
 alias mw='m w'  # search web
 alias mf='m f'  # search file and open it
 alias mm='m m'  # search cheat 
 
-#shadowsocks
-alias ssd='ssserver -c /etc/shadowsocks.json -d'
-
+# python
 # http/ftp only python3, use bin/pyhttp bin/pyftp
 # alias pyhttp='python -mhttp.server'
 # alias pyftp='python -mpyftpdlib -w'
@@ -97,13 +46,10 @@ alias ssd='ssserver -c /etc/shadowsocks.json -d'
 # there have another:egrep -v '^#|^$' /etc/ntp.conf
 alias cf='egrep -v "^[[:cntrl:] ]*[#;]|^[[:cntrl:] ]*$"'
 
-
-#pp/po in zsh has already set
-# alias pp='pushd'
-# alias po='popd'
-
 # gollum
 alias gollum="nohup  gollum --h1-title --no-edit &"
+
+
 
 #if mac
 if { [ `uname` = "Darwin" ] } then
@@ -119,12 +65,62 @@ if { [ `uname` = "Darwin" ] } then
     alias ssp_clear='networksetup -setsocksfirewallproxy "Ethernet" "" ""'
     alias ssp_off='networksetup -setsocksfirewallproxy "Ethernet" off'
 else
+    alias sctl='systemctl'
     alias play='mpg123'
-
-    alias put='trash-put'
-    alias putl='trash-list'
+    # if linux-centos6.7
+    # alias cmake='cmake28'
+    # alias ccmake='ccmake28'
 fi
 
 
 
 
+
+# app {{{
+
+# Tmux
+#设置窗口的名字为hi
+alias t='tmux -2 -u attach || tmux -2 -u new-session -s hi'
+#新建一個有名字的窗口
+alias tn='tmux -2 -u new-session -s'
+# alias tmn='tmux new -s $(basename $(pwd))'
+alias tl='tmux list-sessions'
+#附上一個有名字的窗口
+# alias ta='tmux attach -t'
+alias ta='tmux attach -d -t'
+#设置tmux标签的名字，直到退出为止
+alias st='set-window-title'
+
+# Editor
+# 让vim不带插件的运行,速度非常快
+alias v='vim --cmd "let g:no_plugin=1"'
+# alias vi='/usr/bin/vim'
+# alias less='/usr/share/vim/vim74/macros/less.sh' # replace sys less
+
+# use `emacs --daemon` and then `emacsclient filename`
+# `-a ''` attempt to connect to an existing server, and if no server exists, start one then connect to it.
+
+if [[ `uname` = "Darwin" ]]; then #if mac
+    alias ec='emacsclient -a ""' 
+else
+    alias ec='emacsclient -a "" -c'
+fi
+
+alias et='emacsclient -t'  # 适合 GUI 时，启动一个新的 frame (-n) 
+alias en='emacsclient -n'  # 适合 终端运行(emacs --daemon) 后
+# alias e='command emacs -nw' # emacs command line
+
+
+
+# screen 需要的时候使用
+# C-a D D (quick exit)
+# alias t='screen -R hi'
+# alias ta='screen -R'
+# alias tn='screen -S'
+# alias tl='screen -list'
+# alias st='screen -t'
+# 随便找了个可以attach的
+# alias tt='screen -dRR'
+
+# }}}
+# vim: set ts=4 sw=4 tw=0 et fdm=marker foldlevel=0 foldenable foldlevelstart=99 :
