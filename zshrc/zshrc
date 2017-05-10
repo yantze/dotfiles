@@ -5,6 +5,9 @@ export SAVEHIST=10000
 export EDITOR=vim
 # set -o vi #设置shell快捷键的默认快捷键
 export OSNAME=`uname`
+export LANG=en_US.UTF-8
+# Compilation flags
+export ARCHFLAGS="-arch x86_64"
 
 echo "THE BEST YANTZE TO BE ZHI"
 if { [ "$OSNAME" = "Darwin" ] } then
@@ -24,6 +27,16 @@ export LC_NUMERIC="en_US.UTF-8"
 export LC_TIME="en_US.UTF-8"
 # export LC_ALL=
 # locale -v
+
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+    echo "in ssl connection"
+fi
+
+# if in tmux, set TERM
+if [[ -n $TMUX ]]; then
+    export TERM='screen-256color'
+fi
 
 
 . ~/.dotfiles/zshrc/zsh_func

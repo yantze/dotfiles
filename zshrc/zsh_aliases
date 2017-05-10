@@ -23,7 +23,6 @@ alias rsyn='rsync -arvuzp'
 alias histsum='zsh_stats'
 alias mcd='take'
 alias sp='~/soft/sh-toolkits-lib/sp.sh'
-alias gitweb='git remote -v | awk '{print \$2}' | head -n 1 | xargs open' # open git remote first url
 alias ngtop='ngxtop -l /usr/local/nginx/logs/access.log'
 # the yasm is a rewrite interface for nasm
 # alias nasm='yasm'
@@ -91,21 +90,18 @@ alias ta='tmux attach -d -t'
 #设置tmux标签的名字，直到退出为止
 alias st='set-window-title'
 
-# Editor
+# Vim
 # 让vim不带插件的运行,速度非常快
 alias v='vim --cmd "let g:no_plugin=1"'
 # alias vi='/usr/bin/vim'
 # alias less='/usr/share/vim/vim74/macros/less.sh' # replace sys less
 
-# use `emacs --daemon` and then `emacsclient filename`
-# `-a ''` attempt to connect to an existing server, and if no server exists, start one then connect to it.
-
+# Emacs
 if [[ `uname` = "Darwin" ]]; then #if mac
     alias ec='emacsclient -a ""' 
 else
     alias ec='emacsclient -a "" -c'
 fi
-
 alias et='emacsclient -t'  # 适合 GUI 时，启动一个新的 frame (-n) 
 alias en='emacsclient -n'  # 适合 终端运行(emacs --daemon) 后
 # alias e='command emacs -nw' # emacs command line

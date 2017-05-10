@@ -1,3 +1,3 @@
-#!/bin/env sh
+#!/usr/bin/env sh
 
 sudo python2 ~/.bin/_pyftp

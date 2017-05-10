@@ -50,6 +50,7 @@ function put() {
 
     # delete trash
     if [[ $TRASH == `echo $1` ]]; then
+        echo "Delete $TRASH"
         $GENERAL_EXECUTE_PATH/rm -rf $TRASH
         exit
     fi
@@ -71,3 +72,10 @@ function scopy() {
     echo -n $line | tr -d '\n' | clipcopy
 }
 
+# add url to safari reading list
+function toread() {
+    osascript -e "tell application \"Safari\" to add reading list item \"$1\""
+}
+function gitweb() {
+    git remote -v | awk '{print $2}' | head -n 1 | xargs open # open git remote first url
+}

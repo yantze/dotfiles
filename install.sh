@@ -5,7 +5,6 @@ echo
 echo \\t push     \\t  - push current repo.
 echo \\t tmux 		\\t  - ln tmux.
 echo \\t zshrc 	  \\t  - ln zshrc.
-echo \\t vim   	  \\t  - ln vimrc.
 echo \\t git	 	  \\t  - ln git.
 echo \\t emacs	 	\\t  - install emacs configs.
 echo
@@ -18,12 +17,6 @@ emacs_repo=https://github.com/purcell/emacs.d
 
 zshrc() {
   ln -s ~/.dotfiles/zshrc/zshrc ~/.zshrc
-}
-
-vimrc() {
-  git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-  #install Bundle's Plugin
-  vim +BundleInstall +qall
 }
 
 tmux() {
