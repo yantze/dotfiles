@@ -13,11 +13,6 @@ alias hd='od -Ax -tx1z -v' #方便的十六进制输出。 (用法举例: • hd
 alias realpath='readlink -f'  #显示符号链接指向的真实路径((用法举例: • realpath ~/../$USER)
 
 
-###for typo
-alias s='ls'
-alias lss='ls'
-
-
 ### app ###
 alias rsyn='rsync -arvuzp'
 alias histsum='zsh_stats'

@@ -36,7 +36,7 @@ case $1 in
        # -n 显示行号
   #   }
   # else
-    ag -B 1 -A 2 "$1" $WIKIHOME
+    ag --pager less -B 1 -A 2 "$1" $WIKIHOME
   fi
   ;;
 esac
