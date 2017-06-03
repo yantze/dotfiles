@@ -1,7 +1,6 @@
 ### default
 alias rm='rm -i'
 alias l.='ls -d .* --color=auto'
-alias cd='cl'
 alias javac="javac -J-Dfile.encoding=utf8"
 alias grep="grep --color=auto"
 alias tf="tail -f"
@@ -68,6 +67,8 @@ else
 fi
 
 if [[ 'zsh' = ${SHELL##*/} ]]; then
+    alias cd='cl'
+
     alias -g ND=' -pt | egrep -v /$ | head -n 20' # 配合 ls 或者 ll 使用
     alias -g O=' | xargs open'
 fi
