@@ -5,7 +5,7 @@
 
 DIR=$(dirname ~)
 HOME=$DIR/$USER
-WIKIHOME="$HOME/wiki/ $LOCAL_WIKI_LIST" # find with multiple directory
+WIKIHOME="$HOME/wiki"\ $LOCAL_WIKI_LIST # find with multiple directory
 
 case $1 in
 "man")
@@ -19,8 +19,16 @@ case $1 in
   search=${@:2}
   open "https://github.com/yantze/wiki/search?q=$search"
   ;;
+"webfile")
+  keyword=${2%.md}
+  filepath=$(find $WIKIHOME -type f -iname "*$keyword*.md" -o -iname "*$keyword*.txt" | head -n 1)
+  if [[ -n $filepath ]]; then
+    open "https://github.com/yantze/wiki/blob/master/${filepath##*wiki/}"
+  fi
+  ;;
 "file")
-  filepath=$(find $WIKIHOME -type f -name "*$2*.md" | head -n 1)
+  keyword=${2%.md}
+  filepath=$(find $WIKIHOME -type f -iname "*$keyword*.md" -o -iname "*$keyword*.txt" | head -n 1)
   if [[ -n $filepath ]]; then
     vim $filepath
   fi

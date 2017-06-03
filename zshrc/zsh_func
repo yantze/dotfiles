@@ -3,35 +3,45 @@
 #fname 递归查找当前目录下指定文件
 function fname() { find . -iname "*$@*"; }
 
-#创建文件夹并且cd进去, 可以顺带把后面的文件放入文件夹中
-function take() {
-    files=${@:2}
-    mkdir -p $1
-    if [ -n "$files" ]; then
-        mv ${@:2} $1;
-    fi
-    cd $1;
+# 设置当前的环境变量 " test -s ~/.env && export ..."
+[ -s ~/.env ] && for v in `cat ~/.env`
+do
+    export $v
+done
+
+function myenv() {
+    [[ -n $argv ]] && sed -i -e "s/MYENV=$MYENV/MYENV=$argv/" ~/.env && export MYENV=$argv || echo $MYENV
 }
 
-# 设置当前的环境变量 " test -s ~/.env && export ..."
-[ -s ~/.env ] && for v in `cat ~/.env` ; do; export $v; done
-
-function myenv() { [[ -n $argv ]] &&
-    sed -i -e "s/MYENV=$MYENV/MYENV=$argv/" ~/.env && export MYENV=$argv || echo $MYENV }
+function psgrep() {
+    ps aux | grep -v grep | grep "$@" -i --color=auto
+}
 
 
 # cd and ls
 if [[ `uname` = "Darwin" ]];  then # mac
     export GENERAL_EXECUTE_PATH='/bin'
-    function cl() { [[ "" = "$argv[-1]" ]] && builtin cd ~ || builtin cd "$argv[-1]" && ls "${(@)argv[1,-2]}" }
+    function cl() {
+        [[ "" = "$argv[-1]" ]] && builtin cd ~ || builtin cd "$argv[-1]" && ls "${(@)argv[1,-2]}"
+    }
 elif [[ `uname` = "Linux" ]]; then # linux
     export GENERAL_EXECUTE_PATH='/usr/bin'
     # origin: function cl() { builtin cd "$argv[-1]" && ls --group-directories-first --color=auto "${(@)argv[1,-2]}" }
-    function cl() { [[ "" = "$argv[-1]" ]] && builtin cd ~ || builtin cd "$argv[-1]" && ls --group-directories-first --color=auto "${(@)argv[1,-2]}" }
+    function cl() {
+        [[ "" = "$argv[-1]" ]] && builtin cd ~ || builtin cd "$argv[-1]" && ls --group-directories-first --color=auto "${(@)argv[1,-2]}"
+    }
 fi
 
-function psgrep() { ps aux | grep -v grep | grep "$@" -i --color=auto }
 
+# 创建文件夹并且cd进去, 可以顺带把后面的文件放入文件夹中
+function take() {
+    files=${@:2}
+    mkdir -p $1
+    if [ -n "$files" ]; then
+        mv $files $1;
+    fi
+    cd $1;
+}
 
 
 # get pure ip from url
@@ -66,7 +76,7 @@ function put() {
         fi
     done
 
-    mv $* ~/trash
+    mv $* $TRASH
 }
 
 # copy by pipe without newline symboy
@@ -79,6 +89,7 @@ function scopy() {
 function toread() {
     osascript -e "tell application \"Safari\" to add reading list item \"$1\""
 }
+
 function gitweb() {
-    git remote -v | awk '{print $2}' | head -n 1 | xargs open # open git remote first url
+    git remote -v | awk '{print $2}' | head -n 1
 }

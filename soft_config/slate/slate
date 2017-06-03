@@ -24,7 +24,7 @@ alias triple2 alt;ctrl;shift
 alias triple3 alt;cmd;shift
 
 # Bind command+option+b to google chrome
-bind b:cmd;alt focus 'Google Chrome'
+# bind b:cmd;alt focus 'Google Chrome'
 
 # Location bindings
 bind left:${triple} ${lefthalf}
