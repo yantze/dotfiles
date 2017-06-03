@@ -11,8 +11,6 @@ alias pp='pushd' #pp/po in zsh has already set
 alias po='popd'
 alias hd='od -Ax -tx1z -v' #方便的十六进制输出。 (用法举例: • hd /proc/self/cmdline | less)
 alias realpath='readlink -f'  #显示符号链接指向的真实路径((用法举例: • realpath ~/../$USER)
-alias -g ND=' -pt | egrep -v /$ | head -n 20' # 配合 ls 或者 ll 使用
-alias -g O=' | xargs open'
 
 
 ### app ###
@@ -49,7 +47,7 @@ alias gollum="nohup  gollum --h1-title --no-edit &"
 
 
 #if mac
-if { [ `uname` = "Darwin" ] } then
+if [[ `uname` = "Darwin" ]]; then
     alias play='afplay'
 
     export DOCKER_HOST=tcp://localhost:4243
@@ -67,6 +65,11 @@ else
     # if linux-centos6.7
     # alias cmake='cmake28'
     # alias ccmake='ccmake28'
+fi
+
+if [[ 'zsh' = ${SHELL##*/} ]]; then
+    alias -g ND=' -pt | egrep -v /$ | head -n 20' # 配合 ls 或者 ll 使用
+    alias -g O=' | xargs open'
 fi
 
 
