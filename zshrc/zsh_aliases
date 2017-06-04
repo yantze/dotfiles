@@ -11,6 +11,11 @@ alias po='popd'
 alias hd='od -Ax -tx1z -v' #方便的十六进制输出。 (用法举例: • hd /proc/self/cmdline | less)
 alias realpath='readlink -f'  #显示符号链接指向的真实路径((用法举例: • realpath ~/../$USER)
 
+alias zshrclocal='vim ~/.local/.zshrc_local'
+alias vimloc='vim ~/.local/.zshrc_local'
+alias zshrc='vim ~/.zshrc'
+alias vimrc='vim ~/.vimrc'
+alias tmuxconf='vim ~/.tmux.conf'
 
 ### app ###
 alias rsyn='rsync -arvuzp'
@@ -51,7 +56,7 @@ if [[ `uname` = "Darwin" ]]; then
 
     export DOCKER_HOST=tcp://localhost:4243
 
-    alias macvim='/Applications/MacVim.app/Contents/MacOS/MacVim'
+    # alias macvim='/Applications/MacVim.app/Contents/MacOS/MacVim'
     # alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 
     # Set the Mac OS X SOCKS proxy on the command line
@@ -67,36 +72,28 @@ else
 fi
 
 if [[ 'zsh' = ${SHELL##*/} ]]; then
-    alias cd='cl'
+    if [[ -n $SHELL_EXTEND ]]; then
+        alias cd='cl'
+    fi
 
     alias -g ND=' -pt | egrep -v /$ | head -n 20' # 配合 ls 或者 ll 使用
     alias -g O=' | xargs open'
 fi
 
-
+if [[ -n $SHELL_EXTEND ]]; then
+    alias rm='put'
+    alias grep='grep -i'
+fi
 
 
 
 # app {{{
 
-# Tmux
-#设置窗口的名字为hi
-alias t='tmux -2 -u attach || tmux -2 -u new-session -s hi'
-#新建一個有名字的窗口
-alias tn='tmux -2 -u new-session -s'
-# alias tmn='tmux new -s $(basename $(pwd))'
-alias tl='tmux list-sessions'
-#附上一個有名字的窗口
-# alias ta='tmux attach -t'
-alias ta='tmux attach -d -t'
-#设置tmux标签的名字，直到退出为止
-alias st='set-window-title'
 
 # Vim
 # 让vim不带插件的运行,速度非常快
 alias v='vim --cmd "let g:no_plugin=1"'
-# alias vi='/usr/bin/vim'
-# alias less='/usr/share/vim/vim74/macros/less.sh' # replace sys less
+alias vi='vim'
 
 # Emacs
 if [[ `uname` = "Darwin" ]]; then #if mac
@@ -108,17 +105,30 @@ alias et='emacsclient -t'  # 适合 GUI 时，启动一个新的 frame (-n)
 alias en='emacsclient -n'  # 适合 终端运行(emacs --daemon) 后
 # alias e='command emacs -nw' # emacs command line
 
-
-
-# screen 需要的时候使用
-# C-a D D (quick exit)
-# alias t='screen -R hi'
-# alias ta='screen -R'
-# alias tn='screen -S'
-# alias tl='screen -list'
-# alias st='screen -t'
-# 随便找了个可以attach的
-# alias tt='screen -dRR'
+if [[ $TERM = "screen" || $TERM_MANAGER = "screen" ]]; then
+    # screen
+    # C-a D D (quick exit)
+    alias t='screen -R hi'
+    alias ta='screen -R'
+    alias tn='screen -S'
+    alias tl='screen -list'
+    alias st='screen -t'
+    # 随便个可以attach的
+    alias tt='screen -dRR'
+else
+    # Tmux
+    #设置窗口的名字为hi
+    alias t='tmux -2 -u attach || tmux -2 -u new-session -s hi'
+    #新建一個有名字的窗口
+    alias tn='tmux -2 -u new-session -s'
+    # alias tmn='tmux new -s $(basename $(pwd))'
+    alias tl='tmux list-sessions'
+    #附上一個有名字的窗口
+    # alias ta='tmux attach -t'
+    alias ta='tmux attach -d -t'
+    #设置tmux标签的名字，直到退出为止
+    alias st='set-window-title'
+fi
 
 # }}}
 # vim: set ts=4 sw=4 tw=0 et fdm=marker foldlevel=0 foldenable foldlevelstart=99 :

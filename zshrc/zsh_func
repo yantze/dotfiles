@@ -33,6 +33,34 @@ elif [[ `uname` = "Linux" ]]; then # linux
 fi
 
 
+
+# simple git clone
+function dl()
+{
+    git_url=$1
+    local_dir=$2
+    if [[ -z $1 ]]; then
+        # echo "fatal: You must specify a repository to clone."
+        builtin cd ~/dl
+        return
+    fi
+    if [[ -z $2 ]]; then
+        local_dir=${git_url#*\.com\/*\/}
+    fi
+
+    builtin cd ~/dl
+    git clone $git_url $local_dir
+    cd $local_dir
+    pwdc
+}
+
+function pwdc() {
+    pathfile="`pwd`/$1"
+    echo $pathfile | scopy
+    echo $pathfile
+}
+
+
 # 创建文件夹并且cd进去, 可以顺带把后面的文件放入文件夹中
 function take() {
     files=${@:2}
