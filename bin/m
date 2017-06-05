@@ -8,6 +8,7 @@ HOME=$DIR/$USER
 WIKIHOME="$HOME/wiki"\ $LOCAL_WIKI_LIST # find with multiple directory
 
 case $1 in
+
 "man")
   if [[ -z $2 ]]; then
     echo "require second word"
@@ -15,10 +16,12 @@ case $1 in
   fi
   cheat $2
   ;;
+
 "web")
   search=${@:2}
   open "https://github.com/yantze/wiki/search?q=$search"
   ;;
+
 "webfile")
   keyword=${2%.md}
   filepath=$(find $WIKIHOME -type f -iname "*$keyword*.md" -o -iname "*$keyword*.txt" | head -n 1)
@@ -26,6 +29,7 @@ case $1 in
     open "https://github.com/yantze/wiki/blob/master/${filepath##*wiki/}"
   fi
   ;;
+
 "file")
   keyword=${2%.md}
   filepath=$(find $WIKIHOME -type f -iname "*$keyword*.md" -o -iname "*$keyword*.txt" | head -n 1)
@@ -33,6 +37,7 @@ case $1 in
     vim $filepath
   fi
   ;;
+
 *)
   if [[ $1 ]]; then
   #   hash ag 2>/dev/null || {
