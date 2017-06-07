@@ -72,6 +72,9 @@ else
 fi
 
 if [[ 'zsh' = ${SHELL##*/} ]]; then
+    if [[ -n $SHELL_EXTEND ]]; then
+        alias cd='cl'
+    fi
     alias -g ND=' -pt | egrep -v /$ | head -n 20' # 配合 ls 或者 ll 使用
     alias -g O=' | xargs open'
 elif [[ 'bash' = ${SHELL##*/} ]]; then
@@ -80,7 +83,6 @@ elif [[ 'bash' = ${SHELL##*/} ]]; then
 fi
 
 if [[ -n $SHELL_EXTEND ]]; then
-    alias cd='cl'
     alias rm='put'
     alias grep='grep -i'
 fi

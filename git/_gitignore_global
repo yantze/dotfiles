@@ -19,7 +19,6 @@ bundle
 .fontconfig
 .fonts
 .gem
-.gitconfig
 .global_ignore
 .gvimrc
 .inputrc

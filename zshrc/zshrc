@@ -30,11 +30,11 @@ if [[ -n $TMUX ]]; then
     export TERM='screen-256color'
 
     # 会运行多次 TODO
-    if [[ `uname` = 'Darwin' ]]; then
-        tmux source-file ~/.dotfiles/tmux/darwin.conf
-    elif [[ `uname` = 'linux' ]]; then
-        tmux source-file ~/.dotfiles/tmux/linux.conf
-    fi
+    # if [[ `uname` = 'Darwin' ]]; then
+    #     tmux source-file ~/.dotfiles/tmux/darwin.conf
+    # elif [[ `uname` = 'linux' ]]; then
+    #     tmux source-file ~/.dotfiles/tmux/linux.conf
+    # fi
 fi
 
 
