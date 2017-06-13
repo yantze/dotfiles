@@ -48,6 +48,15 @@ alias cf='egrep -v "^[[:cntrl:] ]*[#;]|^[[:cntrl:] ]*$"'
 # gem install gollum commonmarker github-markup
 alias gollum="nohup  gollum --h1-title --no-edit &"
 
+# 重新运行上一条命令，并将输出复制到剪贴板，cl = copy last
+alias cl='bash -c "$(fc -ln -1)" | pbcopy'
+
+# 复制上一条命令
+alias last='fc -ln -1 | pbcopy'
+
+# 将当前剪贴板里的内容保存到某个文件里
+alias new='pbpaste | cat >'
+alias save='pbpaste | cat >' 
 
 
 #if mac
@@ -73,7 +82,7 @@ fi
 
 if [[ 'zsh' = ${SHELL##*/} ]]; then
     if [[ -n $SHELL_EXTEND ]]; then
-        alias cd='cl'
+        alias cd='cdlist'
     fi
     alias -g ND=' -pt | egrep -v /$ | head -n 20' # 配合 ls 或者 ll 使用
     alias -g O=' | xargs open'
