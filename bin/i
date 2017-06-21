@@ -1,4 +1,4 @@
-#!env sh
+#!/usr/bin/env sh
 
 # 显示 ip 地址
 if [ `uname` = "Darwin" ]
