@@ -109,7 +109,7 @@ function put() {
     mv $* $TRASH
 }
 
-hash extract 2>/dev/null && extract () {
+hash extract 2>/dev/null || extract () {
   if [ -f $1 ] ; then
       case $1 in
           *.tar.bz2)   tar xvjf $1    ;;
