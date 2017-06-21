@@ -6,6 +6,7 @@ alias grep="grep --color=auto"
 alias tf="tail -f"
 alias cls='clear'
 alias q='exit'
+alias x='extract'
 alias pp='pushd' #pp/po in zsh has already set
 alias po='popd'
 alias hd='od -Ax -tx1z -v' #方便的十六进制输出。 (用法举例: • hd /proc/self/cmdline | less)
