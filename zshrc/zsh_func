@@ -64,11 +64,12 @@ function pwdc() {
 
 # 创建文件夹并且cd进去, 可以顺带把后面的文件放入文件夹中
 function take() {
-    files=${@:2}
     mkdir -p $1
-    if [ -n "$files" ]; then
-        mv $files $1;
-    fi
+    for file in ${@:2}; do
+        mv $file $1
+    done
+    # files=${@:2}
+    # mv $files $1; # 这里会把 $files 当作一个整体,导致问题
     cd $1;
 }
 
@@ -106,6 +107,32 @@ function put() {
     done
 
     mv $* $TRASH
+}
+
+hash extract 2>/dev/null && extract () {
+  if [ -f $1 ] ; then
+      case $1 in
+          *.tar.bz2)   tar xvjf $1    ;;
+          *.tar.gz)    tar xvzf $1    ;;
+          *.tar.xz)    tar -Jxvf $1   ;;
+          *.tar.Z)     tar zxvf $1    ;;
+          *.bz2)       bunzip2 $1     ;;
+          *.rar)       unrar x $1     ;;
+          *.gz)        gunzip $1      ;;
+          *.tar)       tar xvf $1     ;;
+          *.tbz2)      tar xvjf $1    ;;
+          *.tgz)       tar xvzf $1    ;;
+          *.zip)       unzip $1       ;;
+          *.Z)         uncompress $1  ;;
+          *.7z)        7za x $1        ;;
+          *.cab)       cabextract $1  ;;
+          *.arj)       unarj $1       ;;
+          *.lzh)       lha e $1       ;;
+          *)           echo "don't know how to extract '$1'…" ;;
+      esac
+  else
+      echo "'$1' is not a valid file!"
+  fi
 }
 
 # copy by pipe first line without newline symboy
