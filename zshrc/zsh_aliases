@@ -35,6 +35,7 @@ alias proxy='proxychains4 -q -f ~/.proxychains/proxychains.conf'
 alias mw='m web'  # search web
 alias mf='m file'  # search file and open it
 alias mm='m man'  # search cheat manual
+alias ms='m vim' # search keyword by vim ack
 
 # python
 # http/ftp only python3, use bin/pyhttp bin/pyftp

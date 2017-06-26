@@ -149,3 +149,8 @@ function toread() {
 function gitweb() {
     git remote -v | awk '{print $2}' | head -n 1
 }
+
+# ag result to vim in current path
+function agk() {
+    [[ -n $1 ]] && vim +Ack\ $1\ $(pwd)
+}
