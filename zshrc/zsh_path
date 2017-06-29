@@ -18,7 +18,7 @@
 PATH="/Users/yantze/.composer/vendor/bin:$PATH"
 
 ###GO###
-if [[ "$OSNAME" = 'Darwin' ]] ; then
+if [[ `uname` = 'Darwin' ]] ; then
     GOHOME="/usr/local/Cellar/go/1.8"
 else
     GOHOME="/usr/local/go"

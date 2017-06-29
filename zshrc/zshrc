@@ -1,11 +1,9 @@
 #history max num
-export HISTSIZE=10000
+export HISTSIZE=100000
 #history max save
-export SAVEHIST=10000
+export SAVEHIST=100000
 export EDITOR=vim
 # set -o vi #设置shell快捷键的默认快捷键
-export OSNAME=`uname`
-export LANG=en_US.UTF-8
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
 
@@ -28,13 +26,6 @@ fi
 # if in tmux, set TERM
 if [[ -n $TMUX ]]; then
     export TERM='screen-256color'
-
-    # 会运行多次 TODO
-    # if [[ `uname` = 'Darwin' ]]; then
-    #     tmux source-file ~/.dotfiles/tmux/darwin.conf
-    # elif [[ `uname` = 'linux' ]]; then
-    #     tmux source-file ~/.dotfiles/tmux/linux.conf
-    # fi
 fi
 
 
