@@ -18,7 +18,7 @@ case $1 in
   ;;
 
 "vim")
-  vim +Ack\ $2\ ~/wiki 
+  vim +Ack\ "$2"\ ~/wiki 
   ;;
 
 "web")
