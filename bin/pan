@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+Vol="/Volumes/sync"
+
+if [[ $1 = "upload" ]]; then
+  echo copy "$2" "$Vol/$3"
+  cp -iX "$2" "$vol/$3"
+elif [[ $1 = "download" ]]; then
+  echo copy "$Vol/$2" "$3"
+  cp -i "$Vol/$2" "$3"
+fi
