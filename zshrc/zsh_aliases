@@ -1,6 +1,7 @@
 ### default
 alias rm='rm -i'
 alias l.='ls -d .* --color=auto'
+alias s='ls -G'
 alias javac="javac -J-Dfile.encoding=utf8"
 alias grep="grep --color=auto"
 alias tf="tail -f"
@@ -15,7 +16,7 @@ alias realpath='readlink -f'  #显示符号链接指向的真实路径((用法�
 alias zshrclocal='vim ~/.local/.zshrc_local'
 alias vimloc='vim ~/.local/.zshrc_local'
 alias zshrc='vim ~/.zshrc'
-alias vimrc='[ -s "~/.vimrc" ] && vim ~/.vimrc || vim ~/.vim/vimrc'
+alias vimrc='[[ -s `echo ~/.vimrc` ]] && vim ~/.vimrc || vim ~/.vim/vimrc'
 alias tmuxconf='vim ~/.tmux.conf'
 
 ### app ###
