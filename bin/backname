@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+# 给文件添加日期后缀
+
+# /tmp/xx/file.tar.gz
+filepath=$1
+path=${filepath%/*} 
+base=${filepath##*/}
+pref=${base%.*}
+fext=${base##*.}
+
+newname=$base
+if [[ $fext = $pref ]]; then
+  newname=${pref}_$(date +%Y%m%d)
+else
+  newname=${pref}_$(date +%Y%m%d).$fext
+fi
+
+if [[ $path = $filepath ]]; then
+  mv "$filepath" "$newname"
+else
+  mv "$filepath" "$path/$newname"
+fi
+
