@@ -102,7 +102,7 @@ function put() {
     for single in "$@"; do
         if [[ -e "$TRASH/$single" ]]; then
             echo "Delete... $TRASH/$single"
-            $GENERAL_EXECUTE_PATH/rm -r "$TRASH/$single"
+            $GENERAL_EXECUTE_PATH/rm -rf "$TRASH/$single"
         fi
     done
 
