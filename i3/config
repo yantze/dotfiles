@@ -28,9 +28,9 @@ client.urgent               #dca3a3 #dca3a3 #DCDCCC #3f3f3f
 
 # Take a screenshot
 # scrot & gimp - root
-# bindsym Print exec scrot -e 'mv $f ~/ScreenShot.png && feh ~/ScreenShot.png'
+bindsym $mod+Shift+p exec scrot -e 'mv $f ~/ScreenShot.png && feh ~/ScreenShot.png'
 # scrot & gimp - select window or rectangle
-# bindsym Mod1+Print exec scrot -s -e 'mv $f ~/SceenShot && feh ~/ScreenShot/$f'
+# bindsym $mod+Shift+o exec scrot -s -e 'mv $f ~/SceenShot && feh ~/ScreenShot/$f'
 
 # Assigns #
 assign [class="(?i)termite"] 1: Term

@@ -20,8 +20,9 @@ echo '. ~/.dotfiles/zshrc/zshrc' >> ~/.zshrc
 - auto print ls - 用 cd 进入目录，自动打印当前目录内容
 
 ## bin 介绍
-composer - 指定 extension 来启动 composer,不用担心 debug 会影响速度.
+- composer - 指定 extension 来启动 composer,不用担心 debug 会影响速度.
+- rg - ripgrep, 
 
 ## Ref
-[Making the clipboard work between iTerm2, tmux, vim and OS X.](https://evertpot.com/osx-tmux-vim-copy-paste-clipboard/)
+- [Making the clipboard work between iTerm2, tmux, vim and OS X.](https://evertpot.com/osx-tmux-vim-copy-paste-clipboard/)
 
