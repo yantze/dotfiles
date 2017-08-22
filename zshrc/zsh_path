@@ -97,6 +97,3 @@ alias go_c="c99 -xc '-' $go_libs $go_flags"
 ### 设置grep的高亮颜色为土黄色
 export GREP_COLORS="01;36"
 
-### cheat
-export DEFAULT_CHEAT_DIR=~/.dotfiles/module_config/cheat
-export CHEATCOLORS=true
