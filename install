@@ -1,7 +1,0 @@
-# brew
-brew tap Homebrew/bundle
-brew tap caskroom/versions
-brew bundle
-
-# zsh
-git clone https://github.com/zsh-users/antigen

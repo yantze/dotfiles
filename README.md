@@ -2,17 +2,7 @@ dotfiles
 ---
 
 ## Install
-```
-
-# install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
-git clone https://github.com/yantze/dotfiles ~/.dotfiles
-ln -s ~/.dotfiles/bin ~/.bin
-ln -s ~/.dotfiles/tmux/tmux.conf ~/.tmux.conf
-echo '. ~/.dotfiles/zshrc/zshrc' >> ~/.zshrc
-
-```
+check [Install](./install.sh)
 
 ## Feature
 - common clipboard - 系统级的共享粘贴板

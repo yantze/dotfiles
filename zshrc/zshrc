@@ -33,7 +33,7 @@ fi
 # zsh plugin manager
 # git clone https://github.com/zsh-users/antigen.git
 export AUTOENV_FILE_ENTER=".env"
-source ~/.dotfiles/antigen/antigen.zsh
+source ~/.dotfiles/modules/antigen/antigen.zsh
 
 antigen bundle Tarrasch/zsh-autoenv
 antigen bundle zsh-users/zsh-syntax-highlighting

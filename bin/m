@@ -35,8 +35,8 @@ case $1 in
   ;;
 
 "file")
-  keyword=${2%.md}
-  filepath=$(find $WIKIHOME -type f -iname "*$keyword*.md" -o -iname "*$keyword*.txt" | head -n 1)
+  keyword=${2}
+  filepath=$(find $WIKIHOME -type f -iname "*$keyword*" | grep -v "un~" | head -n 1)
   if [[ -n $filepath ]]; then
     vim $filepath
   fi
