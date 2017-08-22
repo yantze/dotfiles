@@ -1,3 +1,4 @@
+```
 ctrl+p  向上翻以前使用的命令
 ctrl+n  向下翻以前使用的命令
 ctrl+a  光标移到命令行的开始
@@ -16,3 +17,4 @@ esc + f 向右跳一个单词 （同上）
 空行情况下 ctrl + d 为 logout
 
 p is alias for less
+```
