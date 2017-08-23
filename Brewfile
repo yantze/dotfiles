@@ -1,4 +1,3 @@
-brew 'ack'
 brew 'ctags'
 brew 'git'
 brew 'wget'
@@ -9,7 +8,9 @@ brew 'youtube-dl'
 brew 'hub'
 brew 'fzf'
 brew 'python3'
+brew 'jq'
 brew 'ripgrep'
+# brew 'ack'
 # brew 'the_silver_searcher'
 # brew 'neovim'
 brew 'yarn', args: ['ignore-dependencies']
@@ -23,11 +24,6 @@ cask 'dropbox'
 cask 'dash'
 cask 'appcleaner'
 cask 'megasync', args: { appdir: "/Applications" }
-# cask 'clipmenu'
-# cask 'slack'
-# cask 'alfred'
-# cask '1password'
-# cask 'boom'
 
 
 

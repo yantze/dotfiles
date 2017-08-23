@@ -1,6 +1,3 @@
-# This is the default .slate file.
-# If no ~/.slate file exists this is the file that will be used.
-
 config defaultToCurrentScreen true
 config nudgePercentOf screenSize
 config resizePercentOf screenSize
@@ -38,9 +35,6 @@ bind   down:${triple2}  ${bottomleft}
 bind  right:${triple2}  ${bottomright}
 bind   left:${triple2}  ${topleft}
 bind     up:${triple2}  ${topright}
-
-
-
 
 
 

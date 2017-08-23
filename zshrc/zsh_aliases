@@ -1,9 +1,11 @@
 ### default
+alias j='z'
 alias rm='rm -i'
 alias l.='ls -d .* --color=auto'
 alias s='ls -G'
 alias javac="javac -J-Dfile.encoding=utf8"
 alias grep="grep --color=auto"
+alias less="less -R" # raw control character
 alias tf="tail -f"
 alias cls='clear'
 alias q='exit'
@@ -15,6 +17,7 @@ alias realpath='readlink -f'  #显示符号链接指向的真实路径((用法�
 
 alias zshrclocal='vim ~/.local/.zshrc_local'
 alias vimloc='vim ~/.local/.zshrc_local'
+alias bashrc='vim ~/.bashrc'
 alias zshrc='vim ~/.zshrc'
 alias vimrc='[[ -s `echo ~/.vimrc` ]] && vim ~/.vimrc || vim ~/.vim/vimrc'
 alias tmuxconf='vim ~/.tmux.conf'
@@ -27,10 +30,6 @@ alias sp='~/soft/sh-toolkits-lib/sp.sh'
 alias ngtop='ngxtop -l /usr/local/nginx/logs/access.log'
 # the yasm is a rewrite interface for nasm
 # alias nasm='yasm'
-
-# shadowsocks
-alias ssd='ssserver -c /etc/shadowsocks.json -d'
-alias proxy='proxychains4 -q -f ~/.proxychains/proxychains.conf'
 
 # ~/.bin/m search wiki
 alias mw='m web'  # search web

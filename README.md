@@ -11,7 +11,7 @@ check [Install](./install.sh)
 
 ## bin 介绍
 - composer - 指定 extension 来启动 composer,不用担心 debug 会影响速度.
-- rg - ripgrep, 
+- rg - ripgrep, fast than ag and grep
 
 ## Ref
 - [Making the clipboard work between iTerm2, tmux, vim and OS X.](https://evertpot.com/osx-tmux-vim-copy-paste-clipboard/)

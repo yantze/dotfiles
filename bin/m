@@ -2,10 +2,12 @@
 # alias mw='m web'   # search web
 # alias mf='m file'  # search file and open it
 # alias mm='m man'   # search cheat 
+# alias ms='m vim'   # open result in vim
 
 DIR=$(dirname ~)
 HOME=$DIR/$USER
 WIKIHOME="$HOME/wiki"\ $LOCAL_WIKI_LIST # find with multiple directory
+WIKIWEB="https://github.com/yantze/wiki"
 
 case $1 in
 
@@ -30,7 +32,7 @@ case $1 in
   keyword=${2%.md}
   filepath=$(find $WIKIHOME -type f -iname "*$keyword*.md" -o -iname "*$keyword*.txt" | head -n 1)
   if [[ -n $filepath ]]; then
-    open "https://github.com/yantze/wiki/blob/master/${filepath##*wiki/}"
+    open "${WIKIWEB}/blob/master/${filepath##*wiki/}"
   fi
   ;;
 
@@ -53,7 +55,8 @@ case $1 in
        # -n 显示行号
   #   }
   # else
-    ag --pager less -B 1 -A 2 "$1" $WIKIHOME
+    # ag --pager less -B 1 -A 2 "$1" $WIKIHOME
+    rg -p -B 1 -A 2 "$1" $WIKIHOME | less
   fi
   ;;
 esac
