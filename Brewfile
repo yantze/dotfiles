@@ -24,6 +24,7 @@ cask 'dropbox'
 cask 'dash'
 cask 'appcleaner'
 cask 'megasync', args: { appdir: "/Applications" }
+cask 'wireshark'
 
 
 
