@@ -30,22 +30,21 @@ fi
     # export TERM='screen-256color'
 # fi
 
-# zsh plugin manager
-# git clone https://github.com/zsh-users/antigen.git
-export AUTOENV_FILE_ENTER=".env"
-
-if [[ -s "~/.dotfiles/modules/antigen/antigen.zsh" ]]; then
-    source ~/.dotfiles/modules/antigen/antigen.zsh
-    antigen bundle Tarrasch/zsh-autoenv
-    antigen bundle zsh-users/zsh-syntax-highlighting
-    antigen bundle robbyrussell/oh-my-zsh plugins/z
-    antigen bundle zsh-users/zsh-autosuggestions
-    antigen apply
+if [[ -n "$ZSH_VERSION" ]]; then
+    # zsh plugin manager
+    # git clone https://github.com/zsh-users/antigen.git
+    export AUTOENV_FILE_ENTER=".env"
+    if [[ -s "~/.dotfiles/modules/antigen/antigen.zsh" ]]; then
+        source ~/.dotfiles/modules/antigen/antigen.zsh
+        antigen bundle Tarrasch/zsh-autoenv
+        antigen bundle zsh-users/zsh-syntax-highlighting
+        antigen bundle robbyrussell/oh-my-zsh plugins/z
+        antigen bundle zsh-users/zsh-autosuggestions
+        antigen apply
+    fi
+elif [[ -n "$BASH_VERSION" ]]; then
 fi
-
 
 . ~/.dotfiles/zshrc/zsh_func
 . ~/.dotfiles/zshrc/zsh_path
 . ~/.dotfiles/zshrc/zsh_aliases
-
-typeset -U PATH
