@@ -18,3 +18,6 @@ esc + f 向右跳一个单词 （同上）
 
 p is alias for less
 ```
+
+自动显示按两次 Tab 的内容
+http://mimosa-pudica.net/zsh-incremental.html
