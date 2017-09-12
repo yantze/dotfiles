@@ -79,7 +79,9 @@ PATH="$CLING_HOME/bin:$PATH"
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
-#
+
+PATH="/usr/local/Cellar/ruby/2.4.1_1/bin/:$PATH"
+
 PATH="$PATH:$HOME/.bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin"
 ###path PATH###
 # path=(
