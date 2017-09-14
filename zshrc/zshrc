@@ -44,7 +44,7 @@ if [[ -n "$ZSH_VERSION" ]]; then
     fi
 
     typeset -U PATH
-elif [[ -n "$BASH_VERSION" ]]; then
+# elif [[ -n "$BASH_VERSION" ]]; then
 fi
 
 . ~/.dotfiles/zshrc/zsh_func
