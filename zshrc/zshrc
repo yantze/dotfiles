@@ -5,7 +5,7 @@ case $- in
 esac
 
 # {{{ oh-my-zsh configuration
-export ZSH=/Users/yantze/.antigen/bundles/robbyrussell/oh-my-zsh
+export ZSH="${HOME}/.antigen/bundles/robbyrussell/oh-my-zsh"
 
 
 # HYPHEN_INSENSITIVE="true"
@@ -99,7 +99,7 @@ fi
 . ~/.dotfiles/zshrc/zsh_func
 . ~/.dotfiles/zshrc/zsh_path
 . ~/.dotfiles/zshrc/zsh_aliases
-. ~/.local/.zshrc_local
+[[ -s "$HOME/.zshrc_local" ]] && . ~/.zshrc_local
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
