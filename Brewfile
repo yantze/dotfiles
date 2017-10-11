@@ -15,6 +15,7 @@ brew 'ripgrep'
 # brew 'neovim'
 brew 'yarn', args: ['ignore-dependencies']
 
+
 tap 'caskroom/cask'
 
 cask 'google-chrome'
@@ -27,4 +28,18 @@ cask 'megasync', args: { appdir: "/Applications" }
 cask 'wireshark'
 
 
-
+# https://github.com/sindresorhus/quick-look-plugins
+# finder plugins
+cask 'quicklook-json'
+cask 'qlmarkdown'
+cask 'quicklook-csv'
+# preview zip file list
+cask 'betterzipql'
+# Display image size and resolution
+cask 'qlimagesize'
+# preview apple pkg installer file
+cask 'suspicious-package'
+# preview README INSTALL Capfile CHANGELOG etc...
+cask 'qlstephen'
+# Preview source code files with syntax highlighting
+cask 'qlcolorcode'

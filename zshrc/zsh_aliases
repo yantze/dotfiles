@@ -54,7 +54,8 @@ alias gollum="nohup  gollum --h1-title --no-edit &"
 alias cl='bash -c "$(fc -ln -1)" | pbcopy'
 
 # 复制上一条命令
-alias last='fc -ln -1 | pbcopy'
+# alias last='fc -ln -1 | pbcopy'
+alias last='fc -ln -1 | scopy'
 
 # 将当前剪贴板里的内容保存到某个文件里
 alias new='pbpaste | cat >'

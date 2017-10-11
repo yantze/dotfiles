@@ -1,9 +1,54 @@
-#history max num
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+# {{{ oh-my-zsh configuration
+export ZSH=/Users/yantze/.antigen/bundles/robbyrussell/oh-my-zsh
+
+
+# HYPHEN_INSENSITIVE="true"
+# DISABLE_AUTO_UPDATE="true"
+# export UPDATE_ZSH_DAYS=13
+# DISABLE_LS_COLORS="true"
+# DISABLE_AUTO_TITLE="true"
+# ENABLE_CORRECTION="true"
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Look in ~/.oh-my-zsh/themes/
+ZSH_THEME="robbyrussell"
+
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(bundler osx git common-aliases dirhistory extract autojump zsh-navigation-tools) # web-search) # npm sudo nvm )
+# valid: rake ruby emoji fancy-ctrl-z 
+
+# nvm long time
+# stt (When using `sublime` plugin) Open current directory in Sublime Text 2/3
+# v   (When using `vi-mode` plugin) Edit current command line in Vim 
+
+source $ZSH/oh-my-zsh.sh
+# }}} oh-my-zsh done.
+
+# history max num
 export HISTSIZE=100000
-#history max save
+# history max save
 export SAVEHIST=100000
+# export HISTFILE=~/.histfile
 export EDITOR=vim
-# set -o vi #设置shell快捷键的默认快捷键
+export VISUAL=vim # for c-x e
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
 
@@ -18,17 +63,10 @@ export LC_TIME="en_US.UTF-8"
 # export LC_ALL=
 # locale -v
 
-# Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-    # export TERM='xterm-256color'
     # export TERM='screen-256color'
     echo "in ssl connection"
 fi
-
-# if in tmux, set TERM
-# if [[ -n $TMUX ]]; then
-    # export TERM='screen-256color'
-# fi
 
 if [[ -n "$ZSH_VERSION" ]]; then
     # zsh plugin manager
@@ -47,6 +85,30 @@ if [[ -n "$ZSH_VERSION" ]]; then
 # elif [[ -n "$BASH_VERSION" ]]; then
 fi
 
-. ~/.dotfiles/zshrc/zsh_func
-. ~/.dotfiles/zshrc/zsh_path
-. ~/.dotfiles/zshrc/zsh_aliases
+if [[ -n $TMUX ]]; then
+    # support italic with terminfo
+    # set -g default-terminal "tmux-256color"
+    # export TERM='screen-256color'
+
+    # auto rename tmux window
+    tmux_window_name=`tmux display-message -p '#W'`
+    # if window name length greate than 9, change name
+    if [[ ${#tmux_window_name} -gt 9 ]] && tmux rename-window `adjspecies --sep .`
+fi
+
+source "~/.dotfiles/zshrc/zsh_func"
+source "~/.dotfiles/zshrc/zsh_path"
+source "~/.dotfiles/zshrc/zsh_aliases"
+source "~/.local/.zshrc_local"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+function after_shell_exit() {
+    # save tmux layout
+    if [[ -z $TMUX ]] && tmux run-shell ${HOME}/workspace/local/tmux-resurrect/scripts/save.sh
+    exit
+}
+
+# run after shell exit
+trap 'after_shell_exit &' 0
+
