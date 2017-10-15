@@ -91,22 +91,29 @@ function put() {
         mkdir "$TRASH"
     fi
 
-    # delete trash
+    # empty trash
     if [[ $TRASH == `echo $1` ]]; then
         echo "Delete $TRASH"
         $GENERAL_EXECUTE_PATH/rm -rf $TRASH
         exit
     fi
 
+    FAILURE_FLAG=true
     # delete exist files
     for single in "$@"; do
-        if [[ -e "$TRASH/$single" ]]; then
+        RM_PATH=${PWD}/${single}
+        RM_DIR=`dirname ${RM_PATH}`
+        RM_BASENAME=`basename $single`
+
+        if [[ -e "$TRASH/$RM_BASENAME" ]]; then
             echo "Delete... $TRASH/$single"
             $GENERAL_EXECUTE_PATH/rm -rf "$TRASH/$single"
         fi
-    done
 
-    mv $* $TRASH
+        mv $RM_PATH $TRASH
+        echo "Move... $RM_PATH $TRASH"
+    done
+    # mv $* $TRASH
 }
 
 hash extract 2>/dev/null || extract () {
