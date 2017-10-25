@@ -18,7 +18,7 @@ alias realpath='readlink -f'  #显示符号链接指向的真实路径((用法�
 alias bashrc='vim ~/.bashrc'
 alias zshrc='vim ~/.zshrc'
 alias zshreload='source ~/.zshrc'
-alias zshrclocal='vim ~/.local/.zshrc_local'
+alias zshrclocal='vim ~/.zshrc_local'
 alias vimrc='[[ -s `echo ~/.vimrc` ]] && vim ~/.vimrc || vim ~/.vim/vimrc'
 alias tmuxconf='vim ~/.tmux.conf'
 
