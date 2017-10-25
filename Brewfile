@@ -1,6 +1,7 @@
 brew 'ctags'
 brew 'git'
 brew 'wget'
+brew 'aria2'
 brew 'tmux'
 brew 'reattach-to-user-namespace'
 brew 'gnu-sed'
@@ -26,7 +27,12 @@ cask 'dash'
 cask 'appcleaner'
 cask 'megasync', args: { appdir: "/Applications" }
 cask 'wireshark'
+cask 'cap' # 录制 gif
 
+# video
+cask 'mpv'
+# mpv 内核，自动下载字幕
+cask 'iina'
 
 # https://github.com/sindresorhus/quick-look-plugins
 # finder plugins
