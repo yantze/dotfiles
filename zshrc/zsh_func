@@ -111,7 +111,9 @@ function put() {
         fi
 
         mv $RM_PATH $TRASH
-        echo "Move... $RM_PATH $TRASH"
+        echo "Move... $RM_PATH"
+        echo "To... $TRASH"
+        echo "\r"
     done
     # mv $* $TRASH
 }
