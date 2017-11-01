@@ -50,7 +50,7 @@ PATH="$ANT_HOME/bin:$PATH"
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-PATH="$HOME/.composer/vendor/bin:$PATH"
+PATH="$HOME/.bin:$HOME/.composer/vendor/bin:$PATH"
 
 ### path PATH ###
 # path=(
