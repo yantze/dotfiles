@@ -29,13 +29,16 @@ cask 'megasync', args: { appdir: "/Applications" }
 cask 'wireshark'
 cask 'cap' # 录制 gif
 
+# disk
+cask 'osxfuse' # fuse setting panel
+
 # video
 cask 'mpv'
 # mpv 内核，自动下载字幕
 cask 'iina'
 
+# finder quicklook plugins
 # https://github.com/sindresorhus/quick-look-plugins
-# finder plugins
 cask 'quicklook-json'
 cask 'qlmarkdown'
 cask 'quicklook-csv'
