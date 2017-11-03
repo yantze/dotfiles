@@ -52,3 +52,7 @@ cask 'suspicious-package'
 cask 'qlstephen'
 # Preview source code files with syntax highlighting
 cask 'qlcolorcode'
+
+
+# fonts install
+tap 'caskroom/fonts'
