@@ -86,34 +86,34 @@ function ipurl() {
 
 # put things to trash
 function put() {
-    TRASH=`echo ~/.trashcli`
+    TRASH=$(echo ~/.trashcli)
+
     if [[ ! -d $TRASH ]]; then
         mkdir "$TRASH"
     fi
 
     # empty trash
-    if [[ $TRASH == `echo $1` ]]; then
+    if [[ $TRASH == $(echo $1) ]]; then
         echo "Delete $TRASH"
-        $GENERAL_EXECUTE_PATH/rm -rf $TRASH
-        exit
+        "$GENERAL_EXECUTE_PATH/rm" -rf "$TRASH"
+        return 0
     fi
 
-    FAILURE_FLAG=true
     # delete exist files
     for single in "$@"; do
         RM_PATH=${PWD}/${single}
-        RM_DIR=`dirname ${RM_PATH}`
-        RM_BASENAME=`basename $single`
+        # RM_DIR=$(dirname ${RM_PATH})
+        RM_BASENAME=$(basename "$single")
 
         if [[ -e "$TRASH/$RM_BASENAME" ]]; then
             echo "Delete... $TRASH/$single"
-            $GENERAL_EXECUTE_PATH/rm -rf "$TRASH/$single"
+            "$GENERAL_EXECUTE_PATH/rm" -rf "$TRASH/$single"
         fi
 
-        mv $RM_PATH $TRASH
+        mv "$RM_PATH" "$TRASH"
         echo "Move... $RM_PATH"
         echo "To... $TRASH"
-        echo "\r"
+        echo ""
     done
     # mv $* $TRASH
 }
