@@ -105,7 +105,8 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 function after_shell_exit() {
     # save tmux layout
-    if [[ -z $TMUX ]] && tmux run-shell ${HOME}/workspace/local/tmux-resurrect/scripts/save.sh
+    TMUX_SAVE="${HOME}/workspace/local/tmux-resurrect/scripts/save.sh"
+    [[ -z $TMUX ]] && [[ -s ${TMUX_SAVE} ]] && tmux run-shell ${TMUX_SAVE}
     exit
 }
 
