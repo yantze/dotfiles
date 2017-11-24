@@ -21,7 +21,14 @@ alias triple2 alt;ctrl;shift
 alias triple3 alt;cmd;shift
 
 # Bind command+option+b to google chrome
-# bind b:cmd;alt focus 'Google Chrome'
+bind 1:alt focus 'Google Chrome'
+bind 2:alt focus '终端'
+# bind 2:alt focus 'Terminal'
+bind 3:alt focus 'Code'
+bind e:alt focus 'Finder'
+# alt + cmd + l  Download Folder
+# cmd + shift + d Desktop Folder
+
 
 # Location bindings
 bind   left:${triple}   ${lefthalf}

@@ -56,3 +56,7 @@ cask 'qlcolorcode'
 
 # fonts install
 tap 'caskroom/fonts'
+
+# optional software
+# window manage
+# cask slate
