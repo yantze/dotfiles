@@ -18,26 +18,19 @@ brew 'yarn', args: ['ignore-dependencies']
 
 
 tap 'caskroom/cask'
-
 cask 'google-chrome'
-cask 'dropbox'
-cask 'amazon-music'
-cask 'dropbox'
-cask 'dash'
 cask 'appcleaner'
 cask 'megasync', args: { appdir: "/Applications" }
-cask 'wireshark'
-cask 'cap' # 录制 gif
 
-# disk
+# Disk
 cask 'osxfuse' # fuse setting panel
 
-# video
+# Video
 cask 'mpv'
 # mpv 内核，自动下载字幕
 cask 'iina'
 
-# finder quicklook plugins
+# Finder quicklook plugins
 # https://github.com/sindresorhus/quick-look-plugins
 cask 'quicklook-json'
 cask 'qlmarkdown'
@@ -54,9 +47,14 @@ cask 'qlstephen'
 cask 'qlcolorcode'
 
 
-# fonts install
+# Fonts install
 tap 'caskroom/fonts'
 
-# optional software
-# window manage
-# cask slate
+# Optional software
+# cask 'slate' # replacement: Hammerspoon
+# cask 'dropbox'
+# cask 'amazon-music'
+# cask 'dropbox'
+# cask 'dash'
+# cask 'wireshark'
+# cask 'cap' # 录制 gif
