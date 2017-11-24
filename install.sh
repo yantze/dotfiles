@@ -18,3 +18,6 @@ chsh -s /bin/zsh
 
 # tmux
 ln -s ~/.dotfiles/tmux/tmux.conf ~/.tmux.conf
+
+# slate
+ln -s ~/.dotfiles/slate/slate ~/.slate

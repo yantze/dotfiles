@@ -58,3 +58,6 @@ tap 'caskroom/fonts'
 # cask 'dash'
 # cask 'wireshark'
 # cask 'cap' # 录制 gif
+
+# cask 'wifi-explorer'
+# search sqlpro
