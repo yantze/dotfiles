@@ -60,4 +60,8 @@ tap 'caskroom/fonts'
 # cask 'cap' # 录制 gif
 
 # cask 'wifi-explorer'
+# cask 'numi'
+# cask 'postman'
+# check & inspect pkg installer
+# cask 'suspicious-package'
 # search sqlpro
