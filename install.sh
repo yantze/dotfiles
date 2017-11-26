@@ -1,3 +1,6 @@
+echo "Copy yourself code, Nothing to do."
+return
+
 # install
 git clone https://github.com/yantze/dotfiles ~/.dotfiles
 ln -s ~/.dotfiles/bin ~/.bin
@@ -11,6 +14,10 @@ brew bundle
 # zsh
 git clone https://github.com/zsh-users/antigen ~/.dotfiles/modules/antigen
 echo '. ~/.dotfiles/zshrc/zshrc' >> ~/.zshrc
+chsh -s /bin/zsh
 
 # tmux
 ln -s ~/.dotfiles/tmux/tmux.conf ~/.tmux.conf
+
+# slate
+ln -s ~/.dotfiles/slate/slate ~/.slate

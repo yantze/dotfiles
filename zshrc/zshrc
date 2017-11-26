@@ -93,7 +93,7 @@ if [[ -n $TMUX ]]; then
     # auto rename tmux window
     tmux_window_name=`tmux display-message -p '#W'`
     # if window name length greate than 9, change name
-    if [[ ${#tmux_window_name} -gt 9 ]] && tmux rename-window `adjspecies --sep .`
+    [[ -x "$(command -v adjspecies)" ]] && [[ ${#tmux_window_name} -gt 9 ]] && tmux rename-window `adjspecies --sep .`
 fi
 
 . ~/.dotfiles/zshrc/zsh_func
@@ -105,7 +105,8 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 function after_shell_exit() {
     # save tmux layout
-    if [[ -z $TMUX ]] && tmux run-shell ${HOME}/workspace/local/tmux-resurrect/scripts/save.sh
+    TMUX_SAVE="${HOME}/workspace/local/tmux-resurrect/scripts/save.sh"
+    [[ -z $TMUX ]] && [[ -s ${TMUX_SAVE} ]] && tmux run-shell ${TMUX_SAVE}
     exit
 }
 
