@@ -15,12 +15,14 @@ brew 'ripgrep'
 # brew 'the_silver_searcher'
 # brew 'neovim'
 brew 'yarn', args: ['ignore-dependencies']
+brew 'node'
 
 
 tap 'caskroom/cask'
 cask 'google-chrome'
 cask 'appcleaner'
 cask 'megasync', args: { appdir: "/Applications" }
+cask 'visual-studio-code'
 
 # Disk
 cask 'osxfuse' # fuse setting panel
