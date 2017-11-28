@@ -1,0 +1,9 @@
+// Place your settings in this file to overwrite the default settings
+{
+    "workbench.colorTheme": "Solarized Light",
+    "files.exclude": {
+        "**/*.pyc": true,
+        "**/__pycache__": true,
+        "**/.*.un~": true
+    }
+}
