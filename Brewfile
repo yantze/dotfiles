@@ -63,6 +63,7 @@ tap 'caskroom/fonts'
 # cask 'wireshark'
 # cask 'cap' # 录制 gif
 # cask 'postman'
+# cask 'eudic'
 
 # cask 'wifi-explorer'
 # search sqlpro

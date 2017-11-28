@@ -1,0 +1,9 @@
+DotJoshJohnson.xml
+dbaeumer.vscode-eslint
+eamodio.gitlens
+eg2.tslint
+eriklynd.json-tools
+heberalmeida.vue-snippets-js-html-pug-razor
+msjsdiag.debugger-for-chrome
+octref.vetur
+vscodevim.vim
