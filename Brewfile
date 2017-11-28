@@ -16,6 +16,8 @@ brew 'ripgrep'
 # brew 'neovim'
 brew 'yarn', args: ['ignore-dependencies']
 brew 'node'
+brew 'vim'
+
 
 
 tap 'caskroom/cask'
@@ -60,6 +62,7 @@ tap 'caskroom/fonts'
 # cask 'dash'
 # cask 'wireshark'
 # cask 'cap' # 录制 gif
+# cask 'postman'
 
 # cask 'wifi-explorer'
 # search sqlpro
