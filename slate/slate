@@ -27,6 +27,7 @@ bind 2:alt focus 'Terminal'
 bind 3:alt focus 'Code'
 bind e:alt focus 'Finder'
 bind 4:alt focus 'WorkFlowy'
+bind esc:shift:ctrl focus 'Activity Monitor'
 # alt + cmd + l  Download Folder
 # cmd + shift + d Desktop Folder
 

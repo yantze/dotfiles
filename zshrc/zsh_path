@@ -10,14 +10,14 @@
 
 ### GO ###
 if [[ `uname` = 'Darwin' ]] ; then
-    GOHOME="/usr/local/Cellar/go/1.8"
+    # GOHOME="/usr/local/Cellar/go/1.8"
 else
-    GOHOME="/usr/local/go"
+    # GOHOME="/usr/local/go"
 fi
 
 GOROOT=$HOME/workspace/go
-export GOPATH=$HOME/workspace/go
-PATH="$GOHOME/bin:$GOROOT/bin:$PATH"
+export GOPATH=$GOROOT
+PATH="$GOROOT/bin:$PATH"
 
 ### python ###
 # PYTHON3_HOME="/usr/local/python/3.4"
