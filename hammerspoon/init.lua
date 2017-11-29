@@ -1,3 +1,8 @@
+-- ref:
+-- https://spinscale.de/posts/2016-11-08-creating-a-productive-osx-environment-hammerspoon.html
+
+hs.window.animationDuration = 0
+
 --[[ function factory that takes the multipliers of screen width
 and height to produce the window's x pos, y pos, width, and height ]]
 function baseMove(x, y, w, h)
@@ -32,3 +37,15 @@ hs.hotkey.bind({'ctrl', 'alt', 'cmd'}, 'L', baseMove(0.5, 0, 0.5, 1))
 hs.hotkey.bind({'ctrl', 'alt', 'cmd'}, 'J', baseMove(0, 0.5, 1, 0.5))
 hs.hotkey.bind({'ctrl', 'alt', 'cmd'}, 'K', baseMove(0, 0, 1, 0.5))
 
+
+-- quick jump to important applications
+hs.grid.setMargins({0, 0})
+hs.hotkey.bind({'alt'}, '1', function () hs.application.launchOrFocus("Google Chrome") end)
+-- even though the app is named iTerm2, iterm is the correct name
+hs.hotkey.bind({'alt'}, '2', function () hs.application.launchOrFocus("iTerm") end)
+hs.hotkey.bind({'alt'}, '3', function () hs.application.launchOrFocus("WorkFlowy (🐶)") end)
+hs.hotkey.bind({'ctrl', 'shift'}, 'escape', function () hs.application.launchOrFocus("Activity Monitor") end)
+
+
+-- Load config notification
+hs.notify.new({title="Hammerspoon config reloaded", informativeText="Manually via menu click"}):send()

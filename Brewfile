@@ -55,7 +55,7 @@ cask 'qlcolorcode'
 tap 'caskroom/fonts'
 
 # Optional software
-# cask 'slate' # replacement: Hammerspoon
+# cask 'slate' # replacement: Hammerspoon, Spectacle
 # cask 'dropbox'
 # cask 'amazon-music'
 # cask 'dropbox'
