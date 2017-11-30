@@ -27,7 +27,7 @@
       "after": [],
       "commands": [
         {
-          "command": "workbench.action.showCommands",
+          "command": "extension.showCmdLine",
           "args": []
         }
       ]
@@ -42,5 +42,6 @@
     "suppressNoRepositoryWarning": false,
     "suppressUpdateNotice": false,
     "suppressWelcomeNotice": true
-  }
+  },
+  "vim.useSystemClipboard": true
 }

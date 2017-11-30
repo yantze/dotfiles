@@ -7,7 +7,7 @@
 	// Example:
 */
 	"Print to console": {
-		"prefix": "logl",
+		"prefix": "cl",
 		"body": [
 			"console.log('$1')"
 		],
