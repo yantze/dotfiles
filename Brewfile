@@ -64,7 +64,7 @@ tap 'caskroom/fonts'
 # cask 'cap' # 录制 gif
 # cask 'postman'
 # cask 'eudic'
-# cask 'github'
+# cask 'github' # replacement: gitkraken
 # cask 'squirrel'
 
 # cask 'wifi-explorer'
