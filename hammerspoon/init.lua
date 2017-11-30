@@ -41,10 +41,14 @@ hs.hotkey.bind({'ctrl', 'alt', 'cmd'}, 'K', baseMove(0, 0, 1, 0.5))
 -- quick jump to important applications
 hs.grid.setMargins({0, 0})
 hs.hotkey.bind({'alt'}, '1', function () hs.application.launchOrFocus("Google Chrome") end)
--- even though the app is named iTerm2, iterm is the correct name
-hs.hotkey.bind({'alt'}, '2', function () hs.application.launchOrFocus("iTerm") end)
-hs.hotkey.bind({'alt'}, '3', function () hs.application.launchOrFocus("WorkFlowy (🐶)") end)
+-- even though the app is named iTerm2, iTerm is the correct name
+-- hs.hotkey.bind({'alt'}, '2', function () hs.application.launchOrFocus("iTerm") end)
+hs.hotkey.bind({'alt'}, '2', function () hs.application.launchOrFocus("Terminal") end)
+hs.hotkey.bind({'alt'}, '3', function () hs.application.launchOrFocusByBundleID("com.google.Chrome.app.Default-koegeopamaoljbmhnfjbclbocehhgmkm") end)
 hs.hotkey.bind({'ctrl', 'shift'}, 'escape', function () hs.application.launchOrFocus("Activity Monitor") end)
+hs.hotkey.bind({'alt'}, 'e', function () hs.application.launchOrFocus("Finder") end)
+hs.hotkey.bind({'alt'}, 'w', function () hs.application.launchOrFocus("Visual Studio Code") end)
+hs.hotkey.bind({'alt'}, 'q', function () hs.application.launchOrFocus("Telegram") end)
 
 
 -- Load config notification

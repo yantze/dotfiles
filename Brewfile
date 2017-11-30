@@ -65,6 +65,7 @@ tap 'caskroom/fonts'
 # cask 'postman'
 # cask 'eudic'
 # cask 'github'
+# cask 'squirrel'
 
 # cask 'wifi-explorer'
 # search sqlpro
