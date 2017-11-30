@@ -1,8 +1,3 @@
--- ref:
--- https://spinscale.de/posts/2016-11-08-creating-a-productive-osx-environment-hammerspoon.html
-
-hs.window.animationDuration = 0
-
 --[[ function factory that takes the multipliers of screen width
 and height to produce the window's x pos, y pos, width, and height ]]
 function baseMove(x, y, w, h)
@@ -36,7 +31,6 @@ hs.hotkey.bind({'ctrl', 'alt', 'cmd'}, 'H', baseMove(0, 0, 0.5, 1))
 hs.hotkey.bind({'ctrl', 'alt', 'cmd'}, 'L', baseMove(0.5, 0, 0.5, 1))
 hs.hotkey.bind({'ctrl', 'alt', 'cmd'}, 'J', baseMove(0, 0.5, 1, 0.5))
 hs.hotkey.bind({'ctrl', 'alt', 'cmd'}, 'K', baseMove(0, 0, 1, 0.5))
-
 
 -- quick jump to important applications
 hs.grid.setMargins({0, 0})
