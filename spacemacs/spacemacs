@@ -31,6 +31,8 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     markdown
+     markdown
      lua
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
@@ -38,6 +40,7 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      helm
+     ;; ivy
      ;; auto-completion
      ;; better-defaults
      emacs-lisp
@@ -56,6 +59,7 @@ values."
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '()
+   ;; dotspacemacs-additional-packages '(color-theme-solarized)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -314,6 +318,13 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+
+  ; (set-terminal-parameter nil 'background-mode 'dark)
+  ; (set-frame-parameter nil 'background-mode 'dark)
+  ; (spacemacs/load-theme 'solarized)
+  
+  ;; SPC h d k
+  ;; (define-key evil-normal-state-map ";" '(evil-ex &optional INITIAL-INPUT))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
