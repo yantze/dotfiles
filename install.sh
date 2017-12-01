@@ -15,8 +15,9 @@ brew bundle
 
 # zsh
 git clone https://github.com/zsh-users/antigen ~/.dotfiles/modules/antigen
-echo '. ~/.dotfiles/zshrc/zshrc' >> ~/.zshrc
+echo '. ~/.dotfiles/zshrc/zshrc' >> ~/.zprofile
 chsh -s /bin/zsh
+# ui shell config should not put in ~/.zshrc
 
 # tmux
 ln -s ~/.dotfiles/tmux/tmux.conf ~/.tmux.conf
