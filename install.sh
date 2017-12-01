@@ -1,5 +1,7 @@
-echo "Copy yourself code, Nothing to do."
-return
+#!/usr/bin/env bash
+
+echo "Copy to yourself code, Nothing to do."
+exit 0
 
 # install
 git clone https://github.com/yantze/dotfiles ~/.dotfiles
@@ -21,3 +23,6 @@ ln -s ~/.dotfiles/tmux/tmux.conf ~/.tmux.conf
 
 # slate
 ln -s ~/.dotfiles/slate/slate ~/.slate
+
+# spacemacs
+ln -s ~/.dotfiles/spacemacs/spacemacs ~/.spacemacs
