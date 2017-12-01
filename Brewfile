@@ -66,6 +66,7 @@ tap 'caskroom/fonts'
 # cask 'eudic'
 # cask 'github' # replacement: gitkraken
 # cask 'squirrel'
+# cask 'iTerm'
 
 # cask 'wifi-explorer'
 # search sqlpro

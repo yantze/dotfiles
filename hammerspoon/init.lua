@@ -45,8 +45,8 @@ hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()
 -- quick jump to important applications
 hs.hotkey.bind({'alt'}, '1', function () hs.application.launchOrFocus("Google Chrome") end)
 -- even though the app is named iTerm2, iTerm is the correct name
--- hs.hotkey.bind({'alt'}, '2', function () hs.application.launchOrFocus("iTerm") end)
-hs.hotkey.bind({'alt'}, '2', function () hs.application.launchOrFocus("Terminal") end)
+hs.hotkey.bind({'alt'}, '2', function () hs.application.launchOrFocus("iTerm") end)
+-- hs.hotkey.bind({'alt'}, '2', function () hs.application.launchOrFocus("Terminal") end)
 -- get Bundle ID by: osascript -e 'id of app "Finder"'
 -- or try this way: /usr/libexec/PlistBuddy -c 'Print CFBundleIdentifier' /Applications/Safari.app/Contents/Info.plist
 -- more way: https://superuser.com/questions/346369/getting-the-bundle-identifier-of-an-os-x-application-in-a-shell-script
