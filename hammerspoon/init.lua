@@ -1,4 +1,5 @@
 
+hs.grid.setMargins({0, 0})
 --[[ function factory that takes the multipliers of screen width
 and height to produce the window's x pos, y pos, width, and height ]]
 function baseMove(x, y, w, h)
@@ -42,7 +43,6 @@ hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()
 
 
 -- quick jump to important applications
-hs.grid.setMargins({0, 0})
 hs.hotkey.bind({'alt'}, '1', function () hs.application.launchOrFocus("Google Chrome") end)
 -- even though the app is named iTerm2, iTerm is the correct name
 -- hs.hotkey.bind({'alt'}, '2', function () hs.application.launchOrFocus("iTerm") end)
