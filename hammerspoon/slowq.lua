@@ -7,17 +7,11 @@
 -- luasocket, which has to be installed with Lua 5.3 and luarocks to work with
 -- Hammerspoon.
 
-socket = require "socket"
-
 pressedQTime = 0
 
 function pressedQ()
     hs.alert.show("⌘Q")
-    if socket then
-        pressedQTime = socket.gettime()
-    else
-        pressedQTime = os.time()
-    end
+    pressedQTime = os.time()
 end
 
 function releasedQ()
@@ -25,18 +19,10 @@ function releasedQ()
 end
 
 function repeatQ()
-    if socket then
-        if pressedQTime > 0 and socket.gettime() - pressedQTime > 0.01 then
-            pressedQTime = 0
-            hs.application.frontmostApplication():kill()
-            hs.alert.closeAll()
-        end
-    else
-        if pressedQTime > 0 and os.time() - pressedQTime > 0 then
-            pressedQTime = 0
-            hs.application.frontmostApplication():kill()
-            hs.alert.closeAll()
-        end
+    if pressedQTime > 0 and os.time() - pressedQTime > 0 then
+        pressedQTime = 0
+        hs.application.frontmostApplication():kill()
+        hs.alert.closeAll()
     end
 end
 

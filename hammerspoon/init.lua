@@ -1,4 +1,8 @@
+-- require "clipboard"
+-- require "slowq"
 
+
+hs.window.animationDuration = 0 -- disable animations
 hs.grid.setMargins({0, 0})
 --[[ function factory that takes the multipliers of screen width
 and height to produce the window's x pos, y pos, width, and height ]]
@@ -55,3 +59,17 @@ hs.hotkey.bind({'ctrl', 'shift'}, 'escape', function () hs.application.launchOrF
 hs.hotkey.bind({'alt'}, 'e', function () hs.application.launchOrFocus("Finder") end)
 hs.hotkey.bind({'alt'}, 'w', function () hs.application.launchOrFocus("Visual Studio Code") end)
 hs.hotkey.bind({'alt'}, 'q', function () hs.application.launchOrFocus("Telegram") end)
+
+
+-- utils
+
+--- lock screen shortcut
+hs.hotkey.bind({'alt', 'cmd'}, 'L', function() hs.caffeinate.startScreensaver() end)
+
+-- TODO force quit app
+-- hs
+
+-- TODO hold cmd and move window by mouse
+-- TODO change screen bright
+-- TODO change sound vol
+-- TODO change screen display
