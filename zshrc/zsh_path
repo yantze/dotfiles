@@ -9,17 +9,11 @@
 # PATH="$JAVA_HOME/bin:$PATH"
 
 ### GO ###
-if [[ `uname` = 'Darwin' ]] ; then
-    # GOHOME="/usr/local/Cellar/go/1.8"
-else
-    # GOHOME="/usr/local/go"
-fi
-
-GOROOT=$HOME/workspace/go
+GOROOT=$HOME/.local/go
 export GOPATH=$GOROOT
 PATH="$GOROOT/bin:$PATH"
 
-### python ###
+### Python ###
 # PYTHON3_HOME="/usr/local/python/3.4"
 # PYTHON2_HOME="/usr/local/python/2.7"
 # PATH="$PYTHON3_HOME/bin:$PATH"
@@ -27,13 +21,22 @@ PATH="$GOROOT/bin:$PATH"
 # PYENV_BIN="/home/yantze/.pyenv/shims"
 # PATH="$PYENV_BIN:$PATH"
 
-### scala ###
+### Scala ###
 SCALA_HOME="/usr/local/scala"
 PATH="$SCALA_HOME/bin:$PATH"
 
-### ANT ###
-ANT_HOME="/usr/local/ant"
-PATH="$ANT_HOME/bin:$PATH"
+
+### 配置c编译
+# export CPATH="/usr/bin/gcc"
+# export LIBRARY_PATH="/usr/lib:/usr/lib64:/usr/local/lib:/usr/local/lib64"
+# export C_INCLUDE_PATH="/usr/include:/usr/local/include"
+
+###C###
+go_libs="-lm"
+go_flags="-g -Wall -include allheads.h -O3"
+alias go_c="c99 -xc '-' $go_libs $go_flags"
+
+### END ###
 
 # Cling for centos7
 # CLING_HOME="/usr/local/cling"
@@ -41,11 +44,6 @@ PATH="$ANT_HOME/bin:$PATH"
 
 # 这里主要是屏蔽tmux对path再次赋值，导致type command时出现两个一样的路径
 # [[ -z $TMUX ]] && export PATH
-
-### 配置c编译
-# export CPATH="/usr/bin/gcc"
-# export LIBRARY_PATH="/usr/lib:/usr/lib64:/usr/local/lib:/usr/local/lib64"
-# export C_INCLUDE_PATH="/usr/include:/usr/local/include"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -59,12 +57,6 @@ PATH="$HOME/.bin:$HOME/.composer/vendor/bin:$PATH"
 #   $path
 # )
 
-
-
-###C###
-go_libs="-lm"
-go_flags="-g -Wall -include allheads.h -O3"
-alias go_c="c99 -xc '-' $go_libs $go_flags"
 
 ### 设置grep的高亮颜色为土黄色
 export GREP_COLORS="01;36"
