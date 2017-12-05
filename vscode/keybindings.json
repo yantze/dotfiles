@@ -21,13 +21,23 @@
     "when": "!inDebugMode"
   },
   {
-    "key": "shift+cmd+r",
+    "key": "alt+cmd+r",
     "command": "workbench.action.debug.stop",
     "when": "inDebugMode"
   },
   {
     "key": "shift+f5",
     "command": "-workbench.action.debug.stop",
+    "when": "inDebugMode"
+  },
+  {
+    "key": "shift+cmd+r",
+    "command": "workbench.action.debug.restart",
+    "when": "inDebugMode"
+  },
+  {
+    "key": "shift+cmd+f5",
+    "command": "-workbench.action.debug.restart",
     "when": "inDebugMode"
   }
 ]
