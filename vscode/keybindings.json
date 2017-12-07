@@ -39,5 +39,15 @@
     "key": "shift+cmd+f5",
     "command": "-workbench.action.debug.restart",
     "when": "inDebugMode"
+  },
+  {
+    "key": "ctrl+shift+n",
+    "command": "extension.vim_ctrl+n",
+    "when": "editorTextFocus && vim.active && vim.use<C-n> && !inDebugRepl"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "-extension.vim_ctrl+n",
+    "when": "editorTextFocus && vim.active && vim.use<C-n> && !inDebugRepl"
   }
 ]

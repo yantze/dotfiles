@@ -1,5 +1,6 @@
 brew 'ctags'
 brew 'git'
+brew 'git-lfs'
 brew 'wget'
 brew 'aria2'
 brew 'tmux'
@@ -55,12 +56,11 @@ cask 'qlcolorcode'
 tap 'caskroom/fonts'
 
 # Optional software
-# cask 'slate' # replacement: Hammerspoon, Spectacle
-# cask 'dropbox'
-# cask 'amazon-music'
-# cask 'dropbox'
+# cask 'hammerspoon' # replacement: slate, Spectacle
 # cask 'dash'
+# cask 'dropbox'
 # cask 'wireshark'
+# cask 'amazon-music'
 # cask 'cap' # 录制 gif
 # cask 'postman'
 # cask 'eudic'
