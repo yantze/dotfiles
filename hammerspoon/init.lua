@@ -1,5 +1,6 @@
--- require "clipboard"
--- require "slowq"
+-- require 'clipboard'
+-- require 'slowq'
+require 'vim'
 
 
 hs.window.animationDuration = 0 -- disable animations
@@ -63,6 +64,7 @@ hs.hotkey.bind({'alt'}, 'q', function () hs.application.launchOrFocus("Telegram"
 
 
 -- utils
+-- hs.hotkey.bind({'cmd'}, 'j', function () hs.eventtap.keyStroke({}, "down") end)
 
 --- lock screen shortcut
 hs.hotkey.bind({'alt', 'cmd'}, 'L', function() hs.caffeinate.startScreensaver() end)
