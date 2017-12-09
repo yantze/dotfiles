@@ -40,7 +40,7 @@
     "suppressGitVersionWarning": false,
     "suppressLineUncommittedWarning": false,
     "suppressNoRepositoryWarning": false,
-    "suppressUpdateNotice": false,
+    "suppressUpdateNotice": true,
     "suppressWelcomeNotice": true
   },
   "vim.useSystemClipboard": true,
