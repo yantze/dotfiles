@@ -16,6 +16,7 @@ brew bundle
 # zsh
 git clone https://github.com/zsh-users/antigen ~/.dotfiles/modules/antigen
 echo '. ~/.dotfiles/zshrc/zshrc' >> ~/.zprofile
+# echo '. ~/.dotfiles/zshrc/zshrc' >> ~/.bash_profile
 chsh -s /bin/zsh
 # ui shell config should not put in ~/.zshrc
 
