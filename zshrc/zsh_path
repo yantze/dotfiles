@@ -1,3 +1,5 @@
+# You appear to be setting environment variables ("PATH") in your .bashrc or .zshrc: those files are only read by interactive shells, so you should instead set environment variables in startup files like .profile, .bash_profile or .zshenv.
+#
 ### JAVA ###
 # export JAVA_HOME=/usr/java/jdk1.8.0_05
 # you can download from:
