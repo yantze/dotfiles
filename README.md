@@ -2,7 +2,11 @@ dotfiles
 ---
 
 ## Install
-check [Install](./install.sh)
+Check [Install Script](./install.sh)
+
+## Summary
+- ~/.config 用户配置文件目录
+- ~/.local 本系统适配的软件目录
 
 ## Feature
 - common clipboard - 系统级的共享粘贴板

@@ -1,0 +1,10 @@
+austin.code-gnu-global
+dbaeumer.vscode-eslint
+eamodio.gitlens
+eg2.tslint
+hollowtree.vue-snippets
+lukehoban.Go
+ms-python.python
+ms-vscode.cpptools
+msjsdiag.debugger-for-chrome
+vscodevim.vim

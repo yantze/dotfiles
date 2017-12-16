@@ -49,8 +49,6 @@ export SAVEHIST=100000
 # export HISTFILE=~/.histfile
 export EDITOR=vim
 export VISUAL=vim # for c-x e
-# Compilation flags
-export ARCHFLAGS="-arch x86_64"
 
 ### display language
 export LANG="en_US.UTF-8"
@@ -96,12 +94,16 @@ if [[ -n $TMUX ]]; then
     [[ -x "$(command -v adjspecies)" ]] && [[ ${#tmux_window_name} -gt 9 ]] && tmux rename-window `adjspecies --sep .`
 fi
 
-. ~/.dotfiles/zshrc/zsh_func
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+
 . ~/.dotfiles/zshrc/zsh_path
+. ~/.dotfiles/zshrc/zsh_func
 . ~/.dotfiles/zshrc/zsh_aliases
 [[ -s "$HOME/.zshrc_local" ]] && . ~/.zshrc_local
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# Compilation flags
+export ARCHFLAGS="-arch x86_64"
 
 function after_shell_exit() {
     # save tmux layout

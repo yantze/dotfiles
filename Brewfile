@@ -1,5 +1,6 @@
 brew 'ctags'
 brew 'git'
+brew 'git-lfs'
 brew 'wget'
 brew 'aria2'
 brew 'tmux'
@@ -15,12 +16,16 @@ brew 'ripgrep'
 # brew 'the_silver_searcher'
 # brew 'neovim'
 brew 'yarn', args: ['ignore-dependencies']
+brew 'node'
+brew 'vim'
+
 
 
 tap 'caskroom/cask'
 cask 'google-chrome'
 cask 'appcleaner'
 cask 'megasync', args: { appdir: "/Applications" }
+cask 'visual-studio-code'
 
 # Disk
 cask 'osxfuse' # fuse setting panel
@@ -51,13 +56,18 @@ cask 'qlcolorcode'
 tap 'caskroom/fonts'
 
 # Optional software
-# cask 'slate' # replacement: Hammerspoon
-# cask 'dropbox'
-# cask 'amazon-music'
-# cask 'dropbox'
+# cask 'hammerspoon' # replacement: slate, Spectacle
 # cask 'dash'
+# cask 'dropbox'
 # cask 'wireshark'
+# cask 'amazon-music'
 # cask 'cap' # 录制 gif
+# cask 'postman'
+# cask 'eudic'
+# cask 'github' # replacement: gitkraken
+# cask 'squirrel'
+# cask 'iTerm'
+# cask 'smcfancontrol'
 
 # cask 'wifi-explorer'
 # cask 'numi'
