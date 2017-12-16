@@ -164,13 +164,17 @@ function agk() {
     [[ -n $1 ]] && vim +Ack\ $1\ $(pwd)
 }
 
-proxyoff () {
+proxyon () {
     # HOST_PROXY=127.0.0.1
     # HTPT_PROXY=6152 # HTTP PORT
     # HSPT_PROXY=6152 # HTTPS PORT
     # SSPT_PROXY=6153 # SOCKS PORT
-    # export http_proxy=http://$HOST_PROXY:$HTPT_PROXY
-    # export https_proxy=http://$HOST_PROXY:$HSPT_PROXY
+    export http_proxy=http://$HOST_PROXY:$HTPT_PROXY
+    export https_proxy=http://$HOST_PROXY:$HSPT_PROXY
+    echo "Proxy on"
+}
+
+proxyoff () {
     unset http_proxy
     unset https_proxy
     echo "Proxy off"
