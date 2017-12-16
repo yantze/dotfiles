@@ -48,7 +48,7 @@ hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()
 
 
 -- quick jump to important applications
-hs.hotkey.bind({'alt'}, '1', function () hs.application.launchOrFocus("Google Chrome") end)
+hs.hotkey.bind({'alt'}, '1', function () hs.application.launchOrFocusByBundleID("com.google.Chrome") end)
 -- even though the app is named iTerm2, iTerm is the correct name
 hs.hotkey.bind({'alt'}, '2', function () hs.application.launchOrFocus("iTerm") end)
 -- hs.hotkey.bind({'alt'}, '2', function () hs.application.launchOrFocus("Terminal") end)
@@ -61,6 +61,7 @@ hs.hotkey.bind({'ctrl', 'shift'}, 'escape', function () hs.application.launchOrF
 hs.hotkey.bind({'alt'}, 'e', function () hs.application.launchOrFocus("Finder") end)
 hs.hotkey.bind({'alt'}, 'w', function () hs.application.launchOrFocus("Visual Studio Code") end)
 hs.hotkey.bind({'alt'}, 'q', function () hs.application.launchOrFocus("Telegram") end)
+hs.hotkey.bind({'alt'}, 'v', function () hs.application.launchOrFocusByBundleID("org.vim.MacVim") end)
 
 
 -- utils
@@ -76,3 +77,7 @@ hs.hotkey.bind({'alt', 'cmd'}, 'L', function() hs.caffeinate.startScreensaver() 
 -- TODO change screen bright
 -- TODO change sound vol
 -- TODO change screen display
+-- TODO funcstion list
+--      copy file path
+--      show file md5
+--      show file sha1
