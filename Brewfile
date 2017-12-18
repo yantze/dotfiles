@@ -68,6 +68,7 @@ tap 'caskroom/fonts'
 # cask 'squirrel'
 # cask 'iTerm'
 # cask 'virtualbox'
+# cask 'smcfancontrol'
 
 # cask 'wifi-explorer'
 # search sqlpro
