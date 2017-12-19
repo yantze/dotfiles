@@ -30,7 +30,7 @@
   "gitlens.advanced.messages": {
     "suppressCommitHasNoPreviousCommitWarning": false,
     "suppressCommitNotFoundWarning": false,
-    "suppressFileNotUnderSourceControlWarning": false,
+    "suppressFileNotUnderSourceControlWarning": true,
     "suppressGitVersionWarning": false,
     "suppressLineUncommittedWarning": false,
     "suppressNoRepositoryWarning": false,
