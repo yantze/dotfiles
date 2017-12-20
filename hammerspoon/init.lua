@@ -71,8 +71,8 @@ hs.hotkey.bind({'alt'}, 'v', function () hs.application.launchOrFocusByBundleID(
 
 
 
-hs.hotkey.bind({'cmd'}, 'j', function () hs.eventtap.event.newScrollEvent({0, 8}, {}, 'line'):post() end)
-hs.hotkey.bind({'cmd'}, 'k', function () hs.eventtap.event.newScrollEvent({0, -8}, {}, 'line'):post() end)
+hs.hotkey.bind({'cmd'}, 'j', function () hs.eventtap.event.newScrollEvent({0, 6}, {}, 'line'):post() end)
+hs.hotkey.bind({'cmd'}, 'k', function () hs.eventtap.event.newScrollEvent({0, -6}, {}, 'line'):post() end)
 
 
 
@@ -84,6 +84,8 @@ hs.hotkey.bind({'alt', 'cmd'}, 'L', function() hs.caffeinate.startScreensaver() 
 
 -- TODO hold cmd and move window by mouse
 -- TODO change screen bright
+-- TODO sleep system
+-- TODO lock screen And wake require password
 -- TODO change sound vol
 -- TODO change screen display
 -- TODO funcstion list
