@@ -8,35 +8,29 @@
     "**/.*.un~": true
   },
   "vim.leader": ",",
-  "vim.insertModeKeyBindings": [
-    {
-      "before": [
-        "j",
-        "j"
-      ],
-      "after": [
-        "<Esc>"
-      ]
-    }
-  ],
-  "vim.otherModesKeyBindingsNonRecursive": [
-    {
-      "before": [
-        ";"
-      ],
-      "after": [],
-      "commands": [
-        {
-          "command": "extension.showCmdLine",
-          "args": []
-        }
-      ]
-    }
-  ],
+  "vim.insertModeKeyBindings": [{
+    "before": [
+      "j",
+      "j"
+    ],
+    "after": [
+      "<Esc>"
+    ]
+  }],
+  "vim.otherModesKeyBindingsNonRecursive": [{
+    "before": [
+      ";"
+    ],
+    "after": [],
+    "commands": [{
+      "command": "extension.showCmdLine",
+      "args": []
+    }]
+  }],
   "gitlens.advanced.messages": {
     "suppressCommitHasNoPreviousCommitWarning": false,
     "suppressCommitNotFoundWarning": false,
-    "suppressFileNotUnderSourceControlWarning": false,
+    "suppressFileNotUnderSourceControlWarning": true,
     "suppressGitVersionWarning": false,
     "suppressLineUncommittedWarning": false,
     "suppressNoRepositoryWarning": false,
@@ -44,5 +38,6 @@
     "suppressWelcomeNotice": true
   },
   "vim.useSystemClipboard": true,
-  "editor.lineNumbers": "relative"
+  "editor.lineNumbers": "relative",
+  "workbench.editor.enablePreviewFromQuickOpen": false
 }
