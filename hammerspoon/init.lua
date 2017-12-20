@@ -1,6 +1,8 @@
 -- require 'clipboard'
 -- require 'slowq'
-require 'vim'
+-- require 'vim'
+-- local vimouse = require('vimouse')
+-- vimouse('cmd', 'm')
 
 
 hs.window.animationDuration = 0 -- disable animations
@@ -66,6 +68,13 @@ hs.hotkey.bind({'alt'}, 'v', function () hs.application.launchOrFocusByBundleID(
 
 -- utils
 -- hs.hotkey.bind({'cmd'}, 'j', function () hs.eventtap.keyStroke({}, "down") end)
+
+
+
+hs.hotkey.bind({'cmd'}, 'j', function () hs.eventtap.event.newScrollEvent({0, 8}, {}, 'line'):post() end)
+hs.hotkey.bind({'cmd'}, 'k', function () hs.eventtap.event.newScrollEvent({0, -8}, {}, 'line'):post() end)
+
+
 
 --- lock screen shortcut
 hs.hotkey.bind({'alt', 'cmd'}, 'L', function() hs.caffeinate.startScreensaver() end)
