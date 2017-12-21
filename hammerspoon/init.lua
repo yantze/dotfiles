@@ -71,21 +71,55 @@ hs.hotkey.bind({'alt'}, 'v', function () hs.application.launchOrFocusByBundleID(
 
 
 
+-- scroll down
 hs.hotkey.bind({'cmd'}, 'j', function () hs.eventtap.event.newScrollEvent({0, 6}, {}, 'line'):post() end)
+-- scroll up
 hs.hotkey.bind({'cmd'}, 'k', function () hs.eventtap.event.newScrollEvent({0, -6}, {}, 'line'):post() end)
 
 
 
---- lock screen shortcut
+-- lock screen shortcut
 hs.hotkey.bind({'alt', 'cmd'}, 'L', function() hs.caffeinate.startScreensaver() end)
+
+-- sleep system immediately
+hs.hotkey.bind({'alt', 'cmd'}, 'f15', function() hs.caffeinate.systemSleep() end)
 
 -- TODO force quit app
 -- hs
 
+function brightPlus()
+  local current = hs.brightness.get()
+  if current < 0 then -- unsupport change brightness
+    return
+  end
+
+  local bright = current + 5
+  if (bright > 100) then
+    hs.brightness.set(100)
+  else
+    hs.brightness.set(bright)
+  end
+end
+
+function brightMinus()
+  local current = hs.brightness.get()
+  if (current < 0) then
+    return
+  end
+
+  local bright = current - 5
+  if (current < 0) then
+    hs.brightness.set(0)
+  else
+    hs.brightness.set(bright)
+  end
+end
+
+hs.hotkey.bind({'alt', 'cmd'}, '-', brightPlus)
+hs.hotkey.bind({'alt', 'cmd'}, '=', brightMinus)
+
+
 -- TODO hold cmd and move window by mouse
--- TODO change screen bright
--- TODO sleep system
--- TODO lock screen And wake require password
 -- TODO change sound vol
 -- TODO change screen display
 -- TODO funcstion list
