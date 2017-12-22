@@ -72,9 +72,9 @@ hs.hotkey.bind({'alt'}, 'v', function () hs.application.launchOrFocusByBundleID(
 
 
 -- scroll down
-hs.hotkey.bind({'cmd'}, 'j', function () hs.eventtap.event.newScrollEvent({0, 6}, {}, 'line'):post() end)
+hs.hotkey.bind({'cmd'}, 'k', function () hs.eventtap.event.newScrollEvent({0, 6}, {}, 'line'):post() end)
 -- scroll up
-hs.hotkey.bind({'cmd'}, 'k', function () hs.eventtap.event.newScrollEvent({0, -6}, {}, 'line'):post() end)
+hs.hotkey.bind({'cmd'}, 'j', function () hs.eventtap.event.newScrollEvent({0, -6}, {}, 'line'):post() end)
 
 
 

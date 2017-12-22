@@ -24,8 +24,8 @@ brew 'vim'
 tap 'caskroom/cask'
 cask 'google-chrome'
 cask 'appcleaner'
-cask 'megasync', args: { appdir: "/Applications" }
 cask 'visual-studio-code'
+cask 'iTerm'
 
 # Disk
 cask 'osxfuse' # fuse setting panel
@@ -60,15 +60,16 @@ tap 'caskroom/fonts'
 # cask 'dash'
 # cask 'dropbox'
 # cask 'wireshark'
-# cask 'amazon-music'
 # cask 'cap' # 录制 gif
 # cask 'postman'
 # cask 'eudic'
 # cask 'github' # replacement: gitkraken
-# cask 'squirrel'
-# cask 'iTerm'
 # cask 'virtualbox'
-# cask 'smcfancontrol'
+# cask 'squirrel'
+# cask 'docker'
 
+# cask 'amazon-music'
+# cask 'smcfancontrol'
 # cask 'wifi-explorer'
 # search sqlpro
+# cask 'megasync', args: { appdir: "/Applications" }
