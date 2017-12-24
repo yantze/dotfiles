@@ -49,5 +49,15 @@
     "key": "ctrl+n",
     "command": "-extension.vim_ctrl+n",
     "when": "editorTextFocus && vim.active && vim.use<C-n> && !inDebugRepl"
+  },
+  {
+    "key": "cmd+r",
+    "command": "workbench.action.debug.continue",
+    "when": "inDebugMode"
+  },
+  {
+    "key": "f5",
+    "command": "-workbench.action.debug.continue",
+    "when": "inDebugMode"
   }
 ]

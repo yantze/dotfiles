@@ -30,7 +30,7 @@
   "gitlens.advanced.messages": {
     "suppressCommitHasNoPreviousCommitWarning": false,
     "suppressCommitNotFoundWarning": false,
-    "suppressFileNotUnderSourceControlWarning": false,
+    "suppressFileNotUnderSourceControlWarning": true,
     "suppressGitVersionWarning": false,
     "suppressLineUncommittedWarning": false,
     "suppressNoRepositoryWarning": false,
@@ -39,5 +39,6 @@
   },
   "vim.useSystemClipboard": true,
   "editor.lineNumbers": "relative",
-  "workbench.editor.enablePreviewFromQuickOpen": false
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "editor.minimap.enabled": false
 }

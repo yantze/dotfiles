@@ -1,6 +1,8 @@
 -- require 'clipboard'
--- require 'slowq'
-require 'vim'
+require 'slowq'
+-- require 'vim'
+-- local vimouse = require('vimouse')
+-- vimouse('cmd', 'm')
 
 
 hs.window.animationDuration = 0 -- disable animations
@@ -67,14 +69,74 @@ hs.hotkey.bind({'alt'}, 'v', function () hs.application.launchOrFocusByBundleID(
 -- utils
 -- hs.hotkey.bind({'cmd'}, 'j', function () hs.eventtap.keyStroke({}, "down") end)
 
---- lock screen shortcut
-hs.hotkey.bind({'alt', 'cmd'}, 'L', function() hs.caffeinate.startScreensaver() end)
+
+function scrollLine(x, y)
+  return function ()
+    hs.eventtap.event.newScrollEvent({x, y}, {}, 'line'):post()
+  end
+end
+-- scroll down
+hs.hotkey.bind({'cmd'}, 'k', scrollLine(0, 6), nil, scrollLine(0, 6))
+-- scroll up
+hs.hotkey.bind({'cmd'}, 'j', scrollLine(0, -6), nil, scrollLine(0, -6))
+
+
+
+-- lock screen and start screensaver
+-- hs.hotkey.bind({'alt', 'ctrl'}, 'L', function() hs.caffeinate.startScreensaver() end)
+
+-- sleep system immediately
+hs.hotkey.bind({'alt', 'cmd'}, 'f15', function() hs.caffeinate.systemSleep() end)
 
 -- TODO force quit app
 -- hs
 
+function brightPlus()
+  local current = hs.brightness.get()
+  if current < 0 then -- unsupport change brightness
+    return
+  end
+
+  local bright = current + 5
+  if (bright > 100) then
+    hs.brightness.set(100)
+  else
+    hs.brightness.set(bright)
+  end
+end
+
+function brightMinus()
+  local current = hs.brightness.get()
+  if (current < 0) then
+    return
+  end
+
+  local bright = current - 5
+  if (current < 0) then
+    hs.brightness.set(0)
+  else
+    hs.brightness.set(bright)
+  end
+end
+
+hs.hotkey.bind({'alt', 'cmd'}, '-', brightPlus)
+hs.hotkey.bind({'alt', 'cmd'}, '=', brightMinus)
+
+--
+-- hs.hotkey.bind({'ctrl', 'cmd'}, '1', function ()
+--   hs.eventtap.keyStroke({},'escape')
+--   hs.eventtap.keyStroke({},'shift')
+-- end)
+
+-- rcmd_tap = hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function(event)
+--     local whichFlags = event:getFlags()
+--     if whichFlags['cmd'] then
+--         hs.eventtap.keyStroke({"alt"}, "")
+--     end
+-- end)
+
+
 -- TODO hold cmd and move window by mouse
--- TODO change screen bright
 -- TODO change sound vol
 -- TODO change screen display
 -- TODO funcstion list
