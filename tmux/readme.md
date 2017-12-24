@@ -43,3 +43,9 @@ bind-key u capture-pane \; save-buffer /tmp/tmux-buffer \; run-shell "$SHELL -c 
 # bind R neww -n repl -t 3 \; send 'rails c' 'C-m'
 # bind S source-file ~/.local/tmux/session1
 ```
+
+## show-buffer, save-buffer, loadb
+show-buffer will do octal encoding of C0 control characters and non-ASCII bytes (e.g. accented Latin characters, etc.)
+
+## Res
+- https://unix.stackexchange.com/questions/56477/how-to-copy-from-to-the-tmux-clipboard-with-shell-pipes

@@ -2,15 +2,11 @@
 
 # Notice: There have a problem tmux loadb will set twice
 
-if [[ "$OSTYPE" = darwin* ]]; then
-    pbcopy
-    # copy data to cloud
-    [[ -n $CLOUD_COPY ]] && pbpaste | pan clipboard
-    # copy data to tmux
-    [[ -n $TMUX_COPY ]] && pbpaste | tmux loadb -
-else
-    cat - > ~/.clipboard
-    [[ -n $CLOUD_COPY ]] && cat ~/.clipboard | pan clipboard
-    [[ -n $TMUX_COPY ]] && cat ~/.clipboard | tmux loadb -
+cat - > ~/.clipboard
 
-fi
+# 如果存在 pan 命令，就自动上传到 pan 中
+test pan && pan clipboard < ~/.clipboard
+# 在 tmux 自己的 copy-pipe-and-cancel 命令中，不会去读取 ~/.zshenv 的变量
+[[ -z $TMUX_COPY ]] && tmux loadb - < ~/.clipboard
+
+[[ "$OSTYPE" = darwin* ]] && pbcopy < ~/.clipboard
