@@ -122,6 +122,10 @@ end
 hs.hotkey.bind({'alt', 'cmd'}, '-', brightPlus)
 hs.hotkey.bind({'alt', 'cmd'}, '=', brightMinus)
 
+-- hs.hotkey.bind(nil, 'capslock', function ()
+--   hs.eventtap.keyStroke(nil,'escape')
+--   hs.eventtap.keyStroke(nil,'shift')
+-- end)
 
 -- TODO hold cmd and move window by mouse
 -- TODO change sound vol
