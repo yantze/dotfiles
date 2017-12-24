@@ -1,0 +1,9 @@
+# 可用的功能标识量
+
+export SHELL_EXTEND=true
+export CLOUD_COPY=true
+export TMUX_COPY=true
+
+export WEBDAV="http://xxx.com"
+export DAVUSER="username"
+export DAVPASS="password"
