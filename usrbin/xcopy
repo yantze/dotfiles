@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# Notice: There have a problem tmux loadb will set twice
+
+if [[ "$OSTYPE" = darwin* ]]; then
+    pbcopy
+    # copy data to cloud
+    [[ -n $CLOUD_COPY ]] && pbpaste | pan clipboard
+    # copy data to tmux
+    [[ -n $TMUX_COPY ]] && pbpaste | tmux loadb -
+else
+    cat - > ~/.clipboard
+    [[ -n $CLOUD_COPY ]] && cat ~/.clipboard | pan clipboard
+    [[ -n $TMUX_COPY ]] && cat ~/.clipboard | tmux loadb -
+
+fi

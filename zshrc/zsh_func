@@ -57,7 +57,7 @@ function dl()
 
 function pwdc() {
     pathfile="`pwd`/$1"
-    echo $pathfile | scopy
+    echo $pathfile | xcopy
     echo $pathfile
 }
 
@@ -186,18 +186,24 @@ function scopy() {
     echo -n $line | tr -d '\n' | xcopy
 }
 
-function xcopy() {
-   if [[ "$OSTYPE" = darwin* ]]; then
-       pbcopy
-   else
-       cat - > ~/.clipboard
-   fi
-}
+# function xcopy() {
+#     if [[ "$OSTYPE" = darwin* ]]; then
+#         pbcopy
+#         [[ -n $CLOUD_COPY ]] && pbpaste | pan clipboard
+#     else
+#         cat - > ~/.clipboard
+#         [[ -n $CLOUD_COPY ]] && cat ~/.clipboard | pan clipboard
+#     fi
+# }
 
-function xpaste() {
-   if [[ "$OSTYPE" = darwin* ]]; then
-       pbpaste
-   else
-       cat ~/.clipboard
-   fi
-}
+# function xpaste() {
+#    if [[ "$OSTYPE" = darwin* ]]; then
+#        pbpaste
+#    else
+#        cat ~/.clipboard
+#    fi
+# }
+
+# function cpaste() {
+#     pan clipboard
+# }

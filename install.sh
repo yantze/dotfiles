@@ -23,8 +23,19 @@ chsh -s /bin/zsh
 # tmux
 ln -s ~/.dotfiles/tmux/tmux.conf ~/.tmux.conf
 
+# install tmux lastest manually
+# git clone https://github.com/tmux/tmux.git
+# cd tmux
+# sh autogen.sh
+# ./configure && make
+
 # slate
 ln -s ~/.dotfiles/slate/slate ~/.slate
 
 # spacemacs
 ln -s ~/.dotfiles/spacemacs/spacemacs ~/.spacemacs
+
+# link xcopy , xpaste and cpaste
+ln -sf ~/.dotfiles/usrbin/xcopy /usr/local/bin/
+ln -sf ~/.dotfiles/usrbin/xpaste /usr/local/bin/
+ln -sf ~/.dotfiles/usrbin/cpaste /usr/local/bin/

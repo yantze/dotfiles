@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [[ "$OSTYPE" = darwin* ]]; then
+    pbpaste
+else
+    cat ~/.clipboard
+fi
