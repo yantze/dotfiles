@@ -1,5 +1,5 @@
 -- require 'clipboard'
--- require 'slowq'
+require 'slowq'
 -- require 'vim'
 -- local vimouse = require('vimouse')
 -- vimouse('cmd', 'm')
@@ -70,11 +70,15 @@ hs.hotkey.bind({'alt'}, 'v', function () hs.application.launchOrFocusByBundleID(
 -- hs.hotkey.bind({'cmd'}, 'j', function () hs.eventtap.keyStroke({}, "down") end)
 
 
-
+function scrollLine(x, y)
+  return function ()
+    hs.eventtap.event.newScrollEvent({x, y}, {}, 'line'):post()
+  end
+end
 -- scroll down
-hs.hotkey.bind({'cmd'}, 'k', function () hs.eventtap.event.newScrollEvent({0, 6}, {}, 'line'):post() end)
+hs.hotkey.bind({'cmd'}, 'k', scrollLine(0, 6), nil, scrollLine(0, 6))
 -- scroll up
-hs.hotkey.bind({'cmd'}, 'j', function () hs.eventtap.event.newScrollEvent({0, -6}, {}, 'line'):post() end)
+hs.hotkey.bind({'cmd'}, 'j', scrollLine(0, -6), nil, scrollLine(0, -6))
 
 
 
