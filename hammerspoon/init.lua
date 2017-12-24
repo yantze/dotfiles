@@ -82,8 +82,8 @@ hs.hotkey.bind({'cmd'}, 'j', scrollLine(0, -6), nil, scrollLine(0, -6))
 
 
 
--- lock screen shortcut
-hs.hotkey.bind({'alt', 'cmd'}, 'L', function() hs.caffeinate.startScreensaver() end)
+-- lock screen and start screensaver
+-- hs.hotkey.bind({'alt', 'ctrl'}, 'L', function() hs.caffeinate.startScreensaver() end)
 
 -- sleep system immediately
 hs.hotkey.bind({'alt', 'cmd'}, 'f15', function() hs.caffeinate.systemSleep() end)
@@ -122,10 +122,19 @@ end
 hs.hotkey.bind({'alt', 'cmd'}, '-', brightPlus)
 hs.hotkey.bind({'alt', 'cmd'}, '=', brightMinus)
 
--- hs.hotkey.bind(nil, 'capslock', function ()
---   hs.eventtap.keyStroke(nil,'escape')
---   hs.eventtap.keyStroke(nil,'shift')
+--
+-- hs.hotkey.bind({'ctrl', 'cmd'}, '1', function ()
+--   hs.eventtap.keyStroke({},'escape')
+--   hs.eventtap.keyStroke({},'shift')
 -- end)
+
+-- rcmd_tap = hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function(event)
+--     local whichFlags = event:getFlags()
+--     if whichFlags['cmd'] then
+--         hs.eventtap.keyStroke({"alt"}, "")
+--     end
+-- end)
+
 
 -- TODO hold cmd and move window by mouse
 -- TODO change sound vol
