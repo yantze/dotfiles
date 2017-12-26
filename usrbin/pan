@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+# author: yantze
+
+# 三个行为:
+# 一个参数，无流，参数为远程相对路径，获取文件内容
+# 一个参数，读取流文件，参数为远程相对路径
+# 两个参数，第一参数本地路径，第二参数远程相对路径
+# 服务器和使用方法可以看：https://vastiny.com/post/ji-zhu/nginx_webdav
+
+WEBDAV="http://xxx.com"
+DAVUSER="username"
+DAVPASS="password"
+
+# Get file content
+if [[ $# -eq 1 && -t 0 ]]; then
+  curl -su "$DAVUSER:$DAVPASS" "$WEBDAV/$1"
+
+# Upload file
+elif [[ $# -eq 1 && -n $1 ]]; then
+  curl -X PUT -u "$DAVUSER:$DAVPASS" "$WEBDAV/$1" --data-binary @-
+  echo "$WEBDAV/$1"
+elif [[ $# -eq 2 && -n $1 && -n $2 ]]; then
+  LOCALFILE="$(\cd "$(\dirname "$1")" && \pwd)/$(\basename "$1")"
+  curl -X PUT -u "$DAVUSER:$DAVPASS" "$WEBDAV/$2" --data-binary @"$LOCALFILE"
+  echo "$WEBDAV/$1"
+fi
