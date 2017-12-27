@@ -25,7 +25,9 @@ tap 'caskroom/cask'
 cask 'google-chrome'
 cask 'appcleaner'
 cask 'visual-studio-code'
-cask 'iTerm'
+cask 'iterm2'
+cask 'telegram'
+cask 'sourcetree'
 
 # Disk
 cask 'osxfuse' # fuse setting panel
@@ -41,7 +43,7 @@ cask 'quicklook-json'
 cask 'qlmarkdown'
 cask 'quicklook-csv'
 # preview zip file list
-cask 'betterzipql'
+cask 'betterzip'
 # Display image size and resolution
 cask 'qlimagesize'
 # preview apple pkg installer file
@@ -56,18 +58,18 @@ cask 'qlcolorcode'
 tap 'caskroom/fonts'
 
 # Optional software
-# cask 'hammerspoon' # replacement: slate, Spectacle
-# cask 'dash'
-# cask 'dropbox'
+cask 'hammerspoon' # replacement: slate, Spectacle
+cask 'dash'
+cask 'dropbox'
+cask 'eudic'
+cask 'github' # replacement: gitkraken
+cask 'virtualbox'
+cask 'squirrel'
+cask 'docker'
+
 # cask 'wireshark'
 # cask 'cap' # 录制 gif
 # cask 'postman'
-# cask 'eudic'
-# cask 'github' # replacement: gitkraken
-# cask 'virtualbox'
-# cask 'squirrel'
-# cask 'docker'
-
 # cask 'amazon-music'
 # cask 'smcfancontrol'
 # cask 'wifi-explorer'

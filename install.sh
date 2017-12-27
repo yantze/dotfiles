@@ -15,7 +15,7 @@ brew bundle
 
 # zsh
 git clone https://github.com/zsh-users/antigen ~/.dotfiles/modules/antigen
-echo '. ~/.dotfiles/zshrc/zshrc' >> ~/.zprofile
+echo '. ~/.dotfiles/zshrc/zshrc' >> ~/.zshrc
 # echo '. ~/.dotfiles/zshrc/zshrc' >> ~/.bash_profile
 chsh -s /bin/zsh
 # ui shell config should not put in ~/.zshrc
@@ -29,8 +29,8 @@ ln -s ~/.dotfiles/tmux/tmux.conf ~/.tmux.conf
 # sh autogen.sh
 # ./configure && make
 
-# slate
-ln -s ~/.dotfiles/slate/slate ~/.slate
+# hammerspoon
+ln -s ~/.dotfiles/hammerspoon/ ~/.hammerspoon
 
 # spacemacs
 ln -s ~/.dotfiles/spacemacs/spacemacs ~/.spacemacs
@@ -39,3 +39,6 @@ ln -s ~/.dotfiles/spacemacs/spacemacs ~/.spacemacs
 ln -sf ~/.dotfiles/usrbin/xcopy /usr/local/bin/
 ln -sf ~/.dotfiles/usrbin/xpaste /usr/local/bin/
 ln -sf ~/.dotfiles/usrbin/cpaste /usr/local/bin/
+
+# link vscode
+source ~/.dotfiles/vscode/link_settings.sh
