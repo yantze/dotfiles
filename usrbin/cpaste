@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
 
-pan clipboard
+if [[ $1 = "sync" ]]; then
+  pan clipboard | xcopy
+else
+  pan clipboard
+fi
