@@ -1,16 +1,18 @@
 [user]
 	name = yantze
+	email = yantze@xmind.net
 
 [core]
 	excludesfile = ~/.gitignore_global
 
 [alias]
-    co = checkout
+    s = status
+    c = commit -am
     cm = !git add -A && git commit -m
-    ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+    co = checkout
+    lg = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
     ec = config --global -e
     up = !git pull --rebase --prune $@ && git submodule update --init --recursive
-    cob = checkout -b
     save = !git add -A && git commit -m 'SAVEPOINT'
     wip = !git add -u && git commit -m "WIP"
     undo = reset HEAD~1 --mixed
