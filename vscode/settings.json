@@ -40,5 +40,6 @@
   "vim.useSystemClipboard": true,
   "editor.lineNumbers": "relative",
   "workbench.editor.enablePreviewFromQuickOpen": false,
-  "editor.minimap.enabled": false
+  "editor.minimap.enabled": false,
+  "explorer.confirmDelete": false
 }

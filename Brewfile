@@ -18,6 +18,7 @@ brew 'ripgrep'
 brew 'yarn', args: ['ignore-dependencies']
 brew 'node'
 brew 'vim'
+brew 'rclone'
 
 
 
