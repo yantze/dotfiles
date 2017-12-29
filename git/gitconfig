@@ -1,5 +1,6 @@
 [user]
 	name = yantze
+    email = yantze@126.com
 
 [core]
 	excludesfile = ~/.gitignore_global
