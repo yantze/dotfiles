@@ -1,6 +1,5 @@
 [user]
 	name = yantze
-	email = yantze@xmind.net
 
 [core]
 	excludesfile = ~/.gitignore_global
