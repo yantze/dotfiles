@@ -75,7 +75,6 @@ cask 'docker'
 # cask 'smcfancontrol'
 # cask 'wifi-explorer'
 # cask 'numi'
-# cask 'postman'
 # check & inspect pkg installer
 # cask 'suspicious-package'
 # search sqlpro
