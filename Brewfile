@@ -51,7 +51,7 @@ cask 'betterzip'
 cask 'qlimagesize'
 # preview apple pkg installer file
 cask 'suspicious-package'
-# preview README INSTALL Capfile CHANGELOG etc...
+# preview README INSTALL eapfile CHANGELOG etc...
 cask 'qlstephen'
 # Preview source code files with syntax highlighting
 cask 'qlcolorcode'
@@ -71,8 +71,9 @@ cask 'squirrel'
 cask 'docker'
 
 # cask 'wireshark'
-# cask 'cap' # 录制 gif
+# cask 'charles'
 # cask 'postman'
+# cask 'cap' # 录制 gif
 # cask 'amazon-music'
 # cask 'smcfancontrol'
 # cask 'wifi-explorer'
