@@ -20,6 +20,8 @@ brew 'node'
 brew 'vim'
 brew 'rclone'
 
+# less
+# brew 'fontconfig'
 
 
 tap 'caskroom/cask'
