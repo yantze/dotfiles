@@ -1,6 +1,6 @@
 [user]
 	name = yantze
-    email = yantze@126.com
+	email = yantze@126.com
 
 [core]
 	excludesfile = ~/.gitignore_global
@@ -26,3 +26,11 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/yantze/.stCommitMsg
