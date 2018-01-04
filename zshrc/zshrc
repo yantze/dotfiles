@@ -91,7 +91,7 @@ if [[ -n $TMUX ]]; then
     # auto rename tmux window
     tmux_window_name=`tmux display-message -p '#W'`
     # if window name length greate than 9, change name
-    [[ -x "$(command -v adjspecies)" ]] && [[ ${#tmux_window_name} -gt 9 ]] && tmux rename-window `adjspecies --sep .`
+    [[ -x "$(command -v adjspecies)" ]] && [[ ${#tmux_window_name} -gt 9 ]] && tmux rename-window '-' # `adjspecies --sep .`
 fi
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
