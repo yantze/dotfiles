@@ -119,8 +119,8 @@ function brightMinus()
   end
 end
 
-hs.hotkey.bind({'alt', 'cmd'}, '-', brightPlus)
-hs.hotkey.bind({'alt', 'cmd'}, '=', brightMinus)
+hs.hotkey.bind({'alt', 'cmd'}, '-', brightMinus)
+hs.hotkey.bind({'alt', 'cmd'}, '=', brightPlus)
 
 --
 -- hs.hotkey.bind({'ctrl', 'cmd'}, '1', function ()
