@@ -16,9 +16,8 @@ brew bundle
 # zsh
 git clone https://github.com/zsh-users/antigen ~/.local/antigen
 echo '. ~/.dotfiles/zshrc/zshrc' >> ~/.zshrc
-# echo '. ~/.dotfiles/zshrc/zshrc' >> ~/.bash_profile
+# echo '. ~/.dotfiles/zshrc/zshrc' >> ~/.bashrc
 chsh -s /bin/zsh
-# ui shell config should not put in ~/.zshrc
 
 # tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -42,4 +41,4 @@ ln -sf ~/.dotfiles/usrbin/xpaste /usr/local/bin/
 ln -sf ~/.dotfiles/usrbin/cpaste /usr/local/bin/
 
 # link vscode
-source ~/.dotfiles/vscode/link_settings.sh
+bash ~/.dotfiles/vscode/link_settings.sh
