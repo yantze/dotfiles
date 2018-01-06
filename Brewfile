@@ -78,7 +78,6 @@ cask 'docker'
 # cask 'smcfancontrol'
 # cask 'wifi-explorer'
 # cask 'numi'
-# check & inspect pkg installer
-# cask 'suspicious-package'
-# search sqlpro
 # cask 'megasync', args: { appdir: "/Applications" }
+# cask 'suspicious-package' # check & inspect pkg installer
+# cask 'db-browser-for-sqlite' # 在 app store 安装 sqlpro-for-sqlite lite
