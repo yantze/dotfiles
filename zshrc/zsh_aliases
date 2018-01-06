@@ -1,7 +1,6 @@
 ### default
 alias j='z'
 alias rm='rm -i'
-alias l.='ls -d .* --color=auto'
 alias s='ls -G'
 alias javac="javac -J-Dfile.encoding=utf8"
 alias grep="grep --color=auto"
@@ -14,6 +13,8 @@ alias pp='pushd' #pp/po in zsh has already set
 alias po='popd'
 alias hd='od -Ax -tx1z -v' #方便的十六进制输出。 (用法举例: • hd /proc/self/cmdline | less)
 alias realpath='readlink -f'  #显示符号链接指向的真实路径((用法举例: • realpath ~/../$USER)
+alias llf='ls -al -pt | egrep -v /$ | head -n 20'
+alias lld='ls -al -pt | egrep /$ | head -n 20'
 
 alias p3='python3'
 alias n='npm run'
@@ -93,6 +94,7 @@ if [[ 'zsh' = ${SHELL##*/} ]]; then
         alias cd='cdlist'
     fi
     alias -g ND=' -pt | egrep -v /$ | head -n 20' # 配合 ls 或者 ll 使用
+    alias -g HD=' -pt | egrep /$ | head -n 20' # 配合 ls 或者 ll 使用
     alias -g O=' | xargs open'
 elif [[ 'bash' = ${SHELL##*/} ]]; then
     alias ..='cd ..'
