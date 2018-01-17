@@ -138,6 +138,33 @@ hs.hotkey.bind({'alt', 'cmd'}, '=', brightPlus)
 -- end)
 
 
+-- muteOutput() - Mute sound output on all output devices.
+--
+function muteOutput()
+    audioDevices = hs.audiodevice.allOutputDevices()
+    for i = 1, #audioDevices do
+        device = audioDevices[i]
+        device:setMuted(true)
+    end
+    hs.notify.new( {title="Hammerspoon", subTitle="Sound Muted"} ):send()
+end
+hs.hotkey.bind({'alt', 'ctrl', 'cmd'}, 'o', muteOutput)
+
+-- toggleMicrophoneMute() - toggle mute on the default "Input Device" (probably the microphone).
+--
+function toggleMicrophoneMute()
+    device = hs.audiodevice.defaultInputDevice()
+    local newState = not device:muted()
+
+    local message = newState == true and "Muted microphone" or "Un-muted microphone"
+    --hs.notify.new( {title="Hammerspoon", subTitle=message} ):send()
+    hs.alert.show(message, 0.5)
+
+    device:setMuted(newState) -- true/false toggles muted state
+end
+hs.hotkey.bind({'alt', 'ctrl', 'cmd'}, 'i', toggleMicrophoneMute)
+
+
 -- TODO hold cmd and move window by mouse
 -- TODO change sound vol
 -- TODO change screen display
