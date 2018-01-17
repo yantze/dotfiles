@@ -4,6 +4,7 @@
 
 [core]
 	excludesfile = ~/.gitignore_global
+	autocrlf = false
 
 [alias]
     s = status
@@ -34,3 +35,6 @@
 	trustExitCode = true
 [commit]
 	template = /Users/yantze/.stCommitMsg
+
+# 对于某些 repo ，可在库中设置
+# git config core.autocrlf
