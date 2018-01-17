@@ -2,7 +2,11 @@
 
 # Notice: There have a problem tmux loadb will set twice
 
-cat - > ~/.clipboard
+if [[ $1 = "sync" ]]; then
+  pan clipboard
+else
+  cat - > ~/.clipboard
+fi
 
 # 如果存在 pan 命令，就自动上传到 pan 中
 test pan && pan clipboard < ~/.clipboard
