@@ -1,3 +1,5 @@
+brew 'coreutils' # brew info coreutils
+brew 'gnu-sed'
 brew 'ctags'
 brew 'git'
 brew 'git-lfs'
@@ -5,7 +7,6 @@ brew 'wget'
 brew 'aria2'
 brew 'tmux'
 brew 'reattach-to-user-namespace'
-brew 'gnu-sed'
 brew 'youtube-dl'
 brew 'hub'
 brew 'fzf'
@@ -70,6 +71,7 @@ cask 'virtualbox'
 cask 'squirrel'
 cask 'docker'
 
+# cask 'java' # include jdk9
 # cask 'wireshark'
 # cask 'charles'
 # cask 'postman'
