@@ -8,25 +8,31 @@
     "**/.*.un~": true
   },
   "vim.leader": ",",
-  "vim.insertModeKeyBindings": [{
-    "before": [
-      "j",
-      "j"
-    ],
-    "after": [
-      "<Esc>"
-    ]
-  }],
-  "vim.otherModesKeyBindingsNonRecursive": [{
-    "before": [
-      ";"
-    ],
-    "after": [],
-    "commands": [{
-      "command": "extension.showCmdLine",
-      "args": []
-    }]
-  }],
+  "vim.insertModeKeyBindings": [
+    {
+      "before": [
+        "j",
+        "j"
+      ],
+      "after": [
+        "<Esc>"
+      ]
+    }
+  ],
+  "vim.otherModesKeyBindingsNonRecursive": [
+    {
+      "before": [
+        ";"
+      ],
+      "after": [],
+      "commands": [
+        {
+          "command": "extension.showCmdLine",
+          "args": []
+        }
+      ]
+    }
+  ],
   "gitlens.advanced.messages": {
     "suppressCommitHasNoPreviousCommitWarning": false,
     "suppressCommitNotFoundWarning": false,
@@ -39,7 +45,8 @@
   },
   "vim.useSystemClipboard": true,
   "editor.lineNumbers": "relative",
-  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.editor.enablePreviewFromQuickOpen": true,
   "editor.minimap.enabled": false,
-  "explorer.confirmDelete": false
+  "explorer.confirmDelete": false,
+  "editor.fontFamily": "Menlo, Monaco, 'Monaco for Powerline', 'Courier New', monospace"
 }
