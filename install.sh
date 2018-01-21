@@ -24,7 +24,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ln -s ~/.dotfiles/tmux/tmux.conf ~/.tmux.conf
 
 # install tmux lastest manually
-# git clone https://github.com/tmux/tmux.git
+# git clone https://github.com/tmux/tmux.git ~/.local/tmux-build
 # cd tmux
 # sh autogen.sh
 # ./configure && make
