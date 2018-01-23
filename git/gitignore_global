@@ -204,3 +204,5 @@ nohup.out
 .idea
 
 *.zwc
+
+package-lock.json

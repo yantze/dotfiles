@@ -71,7 +71,7 @@ if [[ -n "$ZSH_VERSION" ]]; then
     # git clone https://github.com/zsh-users/antigen.git
     export AUTOENV_FILE_ENTER=".env"
     if [[ -s "$HOME/.local/antigen/antigen.zsh" ]]; then
-        source ~/.dotfiles/modules/antigen/antigen.zsh
+        source ~/.local/antigen/antigen.zsh
         antigen bundle Tarrasch/zsh-autoenv
         antigen bundle zsh-users/zsh-syntax-highlighting
         antigen bundle robbyrussell/oh-my-zsh plugins/z

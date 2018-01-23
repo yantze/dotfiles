@@ -71,7 +71,10 @@ cask 'virtualbox'
 cask 'squirrel'
 cask 'docker'
 
+# cask 'helium'
+# cask 'endurance'
 # cask 'java' # include jdk9
+# cask 'real-vnc'
 # cask 'wireshark'
 # cask 'charles'
 # cask 'postman'
