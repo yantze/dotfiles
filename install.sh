@@ -43,4 +43,6 @@ ln -sf ~/.dotfiles/usrbin/cpaste /usr/local/bin/
 # link vscode
 bash ~/.dotfiles/vscode/link_settings.sh
 
-
+# git
+ln -sf ~/.dotfiles/git/gitconfig ~/.gitconfig
+ln -sf ~/.dotfiles/git/gitignore_global ~/.gitignore_global
