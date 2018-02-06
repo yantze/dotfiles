@@ -3,7 +3,7 @@
 # Notice: There have a problem tmux loadb will set twice
 
 if [[ $1 = "sync" ]]; then
-  pan clipboard
+  pan clipboard > ~/.clipboard
 else
   cat - > ~/.clipboard
 fi
