@@ -21,6 +21,8 @@ brew 'node'
 brew 'vim'
 brew 'rclone'
 
+brew 'pyenv'
+
 # less
 # brew 'fontconfig'
 
@@ -86,3 +88,6 @@ cask 'docker'
 # cask 'megasync', args: { appdir: "/Applications" }
 # cask 'suspicious-package' # check & inspect pkg installer
 # cask 'db-browser-for-sqlite' # 在 app store 安装 sqlpro-for-sqlite lite
+
+# 暂时不能用 app store 软件的
+# casilla # hide all application
