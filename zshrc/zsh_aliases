@@ -85,8 +85,6 @@ else
     # if linux-centos6.7
     # alias cmake='cmake28'
     # alias ccmake='ccmake28'
-
-    alias qshell='/Users/yantze/workspace/local/qshell-v2.0.5/qshell_darwin_amd64'
 fi
 
 if [[ 'zsh' = ${SHELL##*/} ]]; then
