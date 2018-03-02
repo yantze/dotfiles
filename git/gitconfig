@@ -38,3 +38,5 @@
 
 # 对于某些 repo ，可在库中设置
 # git config core.autocrlf
+[push]
+	default = simple
