@@ -50,7 +50,7 @@ alias go_c="c99 -xc '-' $go_libs $go_flags"
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-PATH="$HOME/.bin:$HOME/.composer/vendor/bin:$PATH"
+PATH="$HOME/.local/bin:$HOME/.bin:$HOME/.composer/vendor/bin:$PATH"
 
 ### path PATH ###
 # path=(
@@ -58,7 +58,6 @@ PATH="$HOME/.bin:$HOME/.composer/vendor/bin:$PATH"
 #   /usr/local/heroku/bin
 #   $path
 # )
-
 
 ### 设置grep的高亮颜色为土黄色
 export GREP_COLORS="01;36"
