@@ -51,6 +51,11 @@ hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()
 
 -- quick jump to important applications
 hs.hotkey.bind({'alt'}, '1', function () hs.application.launchOrFocusByBundleID("com.google.Chrome") end)
+-- hs.hotkey.bind({'alt'}, '1', function () hs.osascript.applescript([[
+--     tell application "Google Chrome"
+--         activate
+--     end tell
+--   ]]) end)
 -- even though the app is named iTerm2, iTerm is the correct name
 hs.hotkey.bind({'alt'}, '2', function () hs.application.launchOrFocus("iTerm") end)
 -- hs.hotkey.bind({'alt'}, '2', function () hs.application.launchOrFocus("Terminal") end)
@@ -59,8 +64,8 @@ hs.hotkey.bind({'alt'}, '2', function () hs.application.launchOrFocus("iTerm") e
 -- or try this way: /usr/libexec/PlistBuddy -c 'Print CFBundleIdentifier' /Applications/Safari.app/Contents/Info.plist
 -- more way: https://superuser.com/questions/346369/getting-the-bundle-identifier-of-an-os-x-application-in-a-shell-script
 hs.hotkey.bind({'alt'}, '3', function () hs.application.launchOrFocusByBundleID("com.google.Chrome.app.Default-koegeopamaoljbmhnfjbclbocehhgmkm") end)
-hs.hotkey.bind({'alt'}, '4', function () hs.application.launchOrFocusByBundleID("com.google.Chrome.app.Profile-4-koegeopamaoljbmhnfjbclbocehhgmkm") end)
-hs.hotkey.bind({'alt'}, '5', function () hs.application.launchOrFocusByBundleID("com.culturedcode.ThingsMac") end)
+-- hs.hotkey.bind({'alt'}, '4', function () hs.application.launchOrFocusByBundleID("com.google.Chrome.app.Profile-4-koegeopamaoljbmhnfjbclbocehhgmkm") end)
+hs.hotkey.bind({'alt'}, '4', function () hs.application.launchOrFocusByBundleID("com.culturedcode.ThingsMac") end)
 hs.hotkey.bind({'ctrl', 'shift'}, 'escape', function () hs.application.launchOrFocus("Activity Monitor") end)
 hs.hotkey.bind({'alt'}, 'e', function () hs.application.launchOrFocus("Finder") end)
 hs.hotkey.bind({'alt'}, 'w', function () hs.application.launchOrFocus("Visual Studio Code") end)
