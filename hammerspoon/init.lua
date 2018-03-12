@@ -169,6 +169,8 @@ function toggleMicrophoneMute()
 end
 hs.hotkey.bind({'alt', 'ctrl', 'cmd'}, 'i', toggleMicrophoneMute)
 
+-- Do not Disturb
+-- System Preferences -> keyboard shortcuts -> Turn Do Not Disturb On/Off
 
 -- TODO hold cmd and move window by mouse
 -- TODO change sound vol
