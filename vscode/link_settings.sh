@@ -7,11 +7,12 @@ else
   SETTING_HOME=~/.config/Code/User
 fi
 
-ln -s $CURRENT_EXECUTE_HOME/snippets $SETTING_HOME/Code/User
+# link
 
+ln -s $CURRENT_EXECUTE_HOME/snippets $SETTING_HOME/Code/User
 
 for file in `ls       \
   *.json              \
   `; do
-  ln -s "$CURRENT_EXECUTE_HOME/$file" ~/Library/Application\ Support/Code/User
+  ln -s "$CURRENT_EXECUTE_HOME/$file" $SETTING_HOME/Code/User
 done

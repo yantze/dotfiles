@@ -48,5 +48,8 @@
   "workbench.editor.enablePreviewFromQuickOpen": true,
   "editor.minimap.enabled": false,
   "explorer.confirmDelete": false,
-  "editor.fontFamily": "Menlo, Monaco, 'Monaco for Powerline', 'Courier New', monospace"
+  "editor.fontFamily": "Menlo, Monaco, 'Monaco for Powerline', 'Courier New', monospace",
+  "extensions.ignoreRecommendations": false,
+  "diffEditor.ignoreTrimWhitespace": true,
+  "gitlens.keymap": "alternate"
 }
