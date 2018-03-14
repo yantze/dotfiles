@@ -179,3 +179,4 @@ hs.hotkey.bind({'alt', 'ctrl', 'cmd'}, 'i', toggleMicrophoneMute)
 --      copy file path
 --      show file md5
 --      show file sha1
+

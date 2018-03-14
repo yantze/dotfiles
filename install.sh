@@ -46,3 +46,7 @@ bash ~/.dotfiles/vscode/link_settings.sh
 # git
 ln -sf ~/.dotfiles/git/gitconfig ~/.gitconfig
 ln -sf ~/.dotfiles/git/gitignore_global ~/.gitignore_global
+
+# mutt
+git clone https://github.com/altercation/mutt-colors-solarized ~/.local/mutt-colors-solarized
+ln -s ~/.dotfiles/mutt/muttrc ~/.muttrc
