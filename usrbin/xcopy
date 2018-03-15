@@ -2,8 +2,10 @@
 
 # Notice: There have a problem tmux loadb will set twice
 
-if [[ $1 = "sync" ]]; then
+if [[ $1 = "sremote" ]]; then
   pan clipboard > ~/.clipboard
+elif [[ $1 = "slocal" ]]; then
+  [[ "$OSTYPE" = darwin* ]] && pbpaste > ~/.clipboard
 else
   cat - > ~/.clipboard
 fi
