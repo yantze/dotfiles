@@ -1,9 +1,8 @@
 -- require 'clipboard'
 -- require 'slowq'
--- require 'vim'
+require 'vim'
 -- local vimouse = require('vimouse')
 -- vimouse('cmd', 'm')
-
 
 hs.window.animationDuration = 0 -- disable animations
 hs.grid.setMargins({0, 0})
@@ -25,14 +24,15 @@ function baseMove(x, y, w, h)
     end
 end
 
+super = {"ctrl", "alt", "cmd"}
 -- feature spectacle/another window sizing apps
-hs.hotkey.bind({'ctrl', 'alt', 'cmd'}, 'Left', baseMove(0, 0, 0.5, 1))
-hs.hotkey.bind({'ctrl', 'alt', 'cmd'}, 'Right', baseMove(0.5, 0, 0.5, 1))
-hs.hotkey.bind({'ctrl', 'alt', 'cmd'}, 'Down', baseMove(0, 0.5, 1, 0.5))
-hs.hotkey.bind({'ctrl', 'alt', 'cmd'}, 'Up', baseMove(0, 0, 1, 0.5))
+hs.hotkey.bind(super, 'Left', baseMove(0, 0, 0.5, 1))
+hs.hotkey.bind(super, 'Right', baseMove(0.5, 0, 0.5, 1))
+hs.hotkey.bind(super, 'Down', baseMove(0, 0.5, 1, 0.5))
+hs.hotkey.bind(super, 'Up', baseMove(0, 0, 1, 0.5))
 
-hs.hotkey.bind({'ctrl', 'alt', 'cmd'}, 'M', hs.grid.maximizeWindow)
-hs.hotkey.bind({'ctrl', 'alt', 'cmd'}, 'C', baseMove(0.25, 0.25, 0.5, 0.5))
+hs.hotkey.bind(super, 'M', hs.grid.maximizeWindow)
+hs.hotkey.bind(super, 'C', baseMove(0.25, 0.25, 0.5, 0.5))
 
 hs.hotkey.bind({'ctrl', 'cmd'}, 'Left', baseMove(0, 0, 1/3, 1))
 hs.hotkey.bind({'ctrl', 'cmd'}, 'Right', baseMove(2/3, 0, 1/3, 1))
@@ -45,7 +45,7 @@ function reloadConfig(files) -- `files` available in pathwatcher
   hs.notify.new({title="Hammerspoon config reloaded", informativeText="By user operation"}):send()
   -- hs.alert.show("loaded")
 end
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "R", reloadConfig)
+hs.hotkey.bind(super, "R", reloadConfig)
 hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()
 
 
@@ -83,9 +83,9 @@ function scrollLine(x, y)
   end
 end
 -- scroll down
-hs.hotkey.bind({'cmd'}, 'k', scrollLine(0, 6), nil, scrollLine(0, 6))
+-- hs.hotkey.bind({'cmd'}, 'k', scrollLine(0, 6), nil, scrollLine(0, 6))
 -- scroll up
-hs.hotkey.bind({'cmd'}, 'j', scrollLine(0, -6), nil, scrollLine(0, -6))
+-- hs.hotkey.bind({'cmd'}, 'j', scrollLine(0, -6), nil, scrollLine(0, -6))
 
 
 
@@ -153,7 +153,7 @@ function muteOutput()
     end
     hs.notify.new( {title="Hammerspoon", subTitle="Sound Muted"} ):send()
 end
-hs.hotkey.bind({'alt', 'ctrl', 'cmd'}, 'o', muteOutput)
+hs.hotkey.bind(super, 'o', muteOutput)
 
 -- toggleMicrophoneMute() - toggle mute on the default "Input Device" (probably the microphone).
 --
@@ -167,7 +167,7 @@ function toggleMicrophoneMute()
 
     device:setMuted(newState) -- true/false toggles muted state
 end
-hs.hotkey.bind({'alt', 'ctrl', 'cmd'}, 'i', toggleMicrophoneMute)
+hs.hotkey.bind(super, 'i', toggleMicrophoneMute)
 
 -- Do not Disturb
 -- System Preferences -> keyboard shortcuts -> Turn Do Not Disturb On/Off
