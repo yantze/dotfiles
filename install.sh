@@ -33,6 +33,7 @@ ln -s ~/.dotfiles/tmux/tmux.conf ~/.tmux.conf
 ln -s ~/.dotfiles/hammerspoon/ ~/.hammerspoon
 
 # spacemacs
+git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 ln -s ~/.dotfiles/spacemacs/spacemacs ~/.spacemacs
 
 # link xcopy , xpaste and cpaste
