@@ -83,9 +83,9 @@ function scrollLine(x, y)
   end
 end
 -- scroll down
--- hs.hotkey.bind({'cmd'}, 'k', scrollLine(0, 6), nil, scrollLine(0, 6))
+hs.hotkey.bind({'cmd'}, 'k', scrollLine(0, 6), nil, scrollLine(0, 6))
 -- scroll up
--- hs.hotkey.bind({'cmd'}, 'j', scrollLine(0, -6), nil, scrollLine(0, -6))
+hs.hotkey.bind({'cmd'}, 'j', scrollLine(0, -6), nil, scrollLine(0, -6))
 
 
 
