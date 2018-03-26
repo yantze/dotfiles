@@ -4,9 +4,10 @@ import os
 import sys
 
 if sys.version_info.major > 2:
-    os.system('pys3')
+    os.system('python ~/.dotfiles/bin/py3upload ' + sys.argv[1])
 else:
-    os.system('pys2')
+    os.system('python ~/.dotfiles/bin/py2upload ' + sys.argv[1])
 
 
-
+# os.system('python3 -mhttp.server ' + sys.argv[1])
+# os.system('python2 -mSimpleHTTPServer ' + sys.argv[1])

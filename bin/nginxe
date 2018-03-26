@@ -1,3 +1,0 @@
-#!/bin/env sh
-
-sudo vim /opt/nginx-1.8.0/conf/vhost.d/default_g.vastiny.com.conf

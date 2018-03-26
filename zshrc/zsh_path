@@ -50,7 +50,7 @@ alias go_c="c99 -xc '-' $go_libs $go_flags"
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-PATH="$HOME/.local/bin:$HOME/.bin:$HOME/.composer/vendor/bin:$PATH"
+PATH="$HOME/.dotfiles/bin:$HOME/.local/bin:$HOME/.bin:$HOME/.composer/vendor/bin:$PATH"
 
 ### path PATH ###
 # path=(

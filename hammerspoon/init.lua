@@ -76,16 +76,34 @@ hs.hotkey.bind({'alt'}, 'v', function () hs.application.launchOrFocusByBundleID(
 -- utils
 -- hs.hotkey.bind({'cmd'}, 'j', function () hs.eventtap.keyStroke({}, "down") end)
 
+-- Mouse modal keyboard shortcut environment
+local mouseModal = hs.hotkey.modal.new()
+function toggleMouseModal()
+  if mouseModalEntered then
+    mouseModal:exit()
+  else
+    mouseModal:enter()
+  end
+end
+toggleMouseModal()
+function mouseModal:entered()
+  mouseModalEntered = true
+  hs.alert.show('Enter mouse mode')
+end
+function mouseModal:exited()
+  mouseModalEntered = false
+  hs.alert.show('Exit mouse mode')
+end
+
 
 function scrollLine(x, y)
   return function ()
     hs.eventtap.event.newScrollEvent({x, y}, {}, 'line'):post()
   end
 end
--- scroll down
-hs.hotkey.bind({'cmd'}, 'k', scrollLine(0, 6), nil, scrollLine(0, 6))
--- scroll up
-hs.hotkey.bind({'cmd'}, 'j', scrollLine(0, -6), nil, scrollLine(0, -6))
+mouseModal:bind({'cmd'}, 'j', scrollLine(0, -6), nil, scrollLine(0, -6)) -- scroll down
+mouseModal:bind({'cmd'}, 'k', scrollLine(0, 6), nil, scrollLine(0, 6)) -- scroll up
+hs.hotkey.bind({'alt', 'cmd'}, '\\', toggleMouseModal )
 
 
 

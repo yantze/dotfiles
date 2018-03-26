@@ -1,3 +1,0 @@
-#!/bin/env sh
-echo 'now, you are root!'
-sudo su -c zsh

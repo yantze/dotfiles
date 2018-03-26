@@ -1,32 +1,28 @@
 ### default
-alias j='z'
 alias rm='rm -i'
 alias s='ls -G'
 alias javac="javac -J-Dfile.encoding=utf8"
 alias grep="grep --color=auto"
 alias less="less -R" # raw control character
-alias tf="tail -f"
 alias cls='clear'
 alias q='exit'
 alias x='extract'
-alias pp='pushd' #pp/po in zsh has already set
+alias pp='pushd'
 alias po='popd'
-alias hd='od -Ax -tx1z -v' #方便的十六进制输出。 (用法举例: • hd /proc/self/cmdline | less)
-alias realpath='readlink -f'  #显示符号链接指向的真实路径((用法举例: • realpath ~/../$USER)
+alias hd='od -Ax -tx1z -v' # 方便的十六进制输出。 (用法举例: hd /proc/self/cmdline | less)
+alias realpath='readlink -f'  # 显示符号链接指向的真实路径((用法举例: realpath ~/../$USER)
 alias llf='ls -al -pt | egrep -v /$ | head -n 20'
 alias lld='ls -al -pt | egrep /$ | head -n 20'
 
-alias p3='python3'
+### app ###
+alias j='z'
 alias n='npm run'
-
 alias bashrc='vim ~/.bashrc'
 alias zshrc='vim ~/.zshrc'
 alias zshreload='source ~/.zshrc'
 alias zshrclocal='vim ~/.zshrc_local'
 alias vimrc='[[ -s `echo ~/.vimrc` ]] && vim ~/.vimrc || vim ~/.vim/vimrc'
 alias tmuxconf='vim ~/.tmux.conf'
-
-### app ###
 alias rsyn='rsync -arvuzp'
 alias histsum='zsh_stats'
 alias mcd='take'
@@ -41,18 +37,9 @@ alias mf='m file'  # search file and open it
 alias mm='m man'  # search cheat manual
 alias ms='m vim' # search keyword by vim ack
 
-# python
-# http/ftp only python3, use bin/pyhttp bin/pyftp
-# alias pyhttp='python -mhttp.server'
-# alias pyftp='python -mpyftpdlib -w'
-
 # view config file whitout empty line(s),spaces(s) ,tab(s) ,'#' or ;
 # there have another:egrep -v '^#|^$' /etc/ntp.conf
 alias cf='egrep -v "^[[:cntrl:] ]*[#;]|^[[:cntrl:] ]*$"'
-
-# gollum
-# gem install gollum commonmarker github-markup
-alias gollum="nohup  gollum --h1-title --no-edit &"
 
 # 重新运行上一条命令，并将输出复制到剪贴板，cl = copy last
 alias cl='bash -c "$(fc -ln -1)" | pbcopy'

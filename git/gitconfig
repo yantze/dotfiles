@@ -3,7 +3,7 @@
 	email = yantze@126.com
 
 [core]
-	excludesfile = ~/.gitignore_global
+	excludesfile = /Users/yantze/.gitignore_global
 	autocrlf = false
 
 [alias]
