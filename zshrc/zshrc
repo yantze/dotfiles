@@ -114,5 +114,3 @@ function after_shell_exit() {
 
 # run after shell exit
 trap 'after_shell_exit &' 0
-
-alias grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'

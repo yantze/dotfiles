@@ -1,5 +1,4 @@
 ### default
-alias rm='rm -i'
 alias s='ls -G'
 alias javac="javac -J-Dfile.encoding=utf8"
 alias grep="grep --color=auto"
@@ -88,7 +87,7 @@ fi
 
 if [[ -n $SHELL_EXTEND ]]; then
     alias rm='put'
-    alias grep='grep -i'
+    alias grep='grep -i --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 fi
 
 
