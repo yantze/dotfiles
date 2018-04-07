@@ -40,6 +40,8 @@
     "suppressGitVersionWarning": false,
     "suppressLineUncommittedWarning": false,
     "suppressNoRepositoryWarning": false,
+    "suppressResultsExplorerNotice": false,
+    "suppressShowKeyBindingsNotice": true,
     "suppressUpdateNotice": true,
     "suppressWelcomeNotice": true
   },
@@ -51,4 +53,7 @@
   "explorer.confirmDelete": false,
   "editor.fontFamily": "Menlo, Monaco, 'Monaco for Powerline', 'Courier New', monospace",
   "diffEditor.ignoreTrimWhitespace": true,
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": false,
+  "editor.formatOnType": false,
 }
