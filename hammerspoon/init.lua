@@ -80,14 +80,14 @@ hs.hotkey.bind({'alt'}, '2', function () hs.application.launchOrFocus("iTerm") e
 -- get Bundle ID by: osascript -e 'id of app "Finder"'
 -- or try this way: /usr/libexec/PlistBuddy -c 'Print CFBundleIdentifier' /Applications/Safari.app/Contents/Info.plist
 -- more way: https://superuser.com/questions/346369/getting-the-bundle-identifier-of-an-os-x-application-in-a-shell-script
-hs.hotkey.bind({'alt'}, '3', function () hs.application.launchOrFocusByBundleID("com.google.Chrome.app.Default-koegeopamaoljbmhnfjbclbocehhgmkm") end)
+hs.hotkey.bind({'alt'}, '3', function () hs.application.launchOrFocusByBundleID("com.google.Chrome.app.Profile-1-koegeopamaoljbmhnfjbclbocehhgmkm") end)
 -- hs.hotkey.bind({'alt'}, '4', function () hs.application.launchOrFocusByBundleID("com.google.Chrome.app.Profile-4-koegeopamaoljbmhnfjbclbocehhgmkm") end)
 hs.hotkey.bind({'alt'}, '4', function () hs.application.launchOrFocusByBundleID("com.culturedcode.ThingsMac") end)
 hs.hotkey.bind({'ctrl', 'shift'}, 'escape', function () hs.application.launchOrFocus("Activity Monitor") end)
 hs.hotkey.bind({'alt'}, 'e', function () hs.application.launchOrFocus("Finder") end)
 hs.hotkey.bind({'alt'}, 'w', function () hs.application.launchOrFocus("Visual Studio Code") end)
 hs.hotkey.bind({'alt'}, 'q', function () hs.application.launchOrFocus("Telegram") end)
-hs.hotkey.bind({'alt'}, 'v', function () hs.application.launchOrFocusByBundleID("org.vim.MacVim") end)
+-- hs.hotkey.bind({'alt'}, 'v', function () hs.application.launchOrFocusByBundleID("org.vim.MacVim") end)
 
 
 -- utils
@@ -217,7 +217,7 @@ end)
 -- Type Browser Link
 -- TODO: url 要用 Shift+Enter 实现
 
-hs.hotkey.bind({'alt', 'command'}, 'v', function()
+hs.hotkey.bind({'alt'}, 'v', function()
   local safari_running = hs.application.applicationsForBundleID("com.apple.Safari")
   local chrome_running = hs.application.applicationsForBundleID("com.google.Chrome")
   if #safari_running > 0 then
