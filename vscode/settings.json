@@ -33,18 +33,18 @@
       ]
     }
   ],
-  "gitlens.advanced.messages": {
-    "suppressCommitHasNoPreviousCommitWarning": false,
-    "suppressCommitNotFoundWarning": false,
-    "suppressFileNotUnderSourceControlWarning": true,
-    "suppressGitVersionWarning": false,
-    "suppressLineUncommittedWarning": false,
-    "suppressNoRepositoryWarning": false,
-    "suppressResultsExplorerNotice": false,
-    "suppressShowKeyBindingsNotice": true,
-    "suppressUpdateNotice": true,
-    "suppressWelcomeNotice": true
-  },
+  // "gitlens.advanced.messages": {
+  //   "suppressCommitHasNoPreviousCommitWarning": false,
+  //   "suppressCommitNotFoundWarning": false,
+  //   "suppressFileNotUnderSourceControlWarning": true,
+  //   "suppressGitVersionWarning": false,
+  //   "suppressLineUncommittedWarning": false,
+  //   "suppressNoRepositoryWarning": false,
+  //   "suppressResultsExplorerNotice": false,
+  //   "suppressShowKeyBindingsNotice": true,
+  //   "suppressUpdateNotice": true,
+  //   "suppressWelcomeNotice": true
+  // },
   "vim.useSystemClipboard": true,
   "editor.lineNumbers": "relative",
   "workbench.editor.enablePreviewFromQuickOpen": true,
@@ -53,7 +53,11 @@
   "explorer.confirmDelete": false,
   "editor.fontFamily": "Menlo, Monaco, 'Monaco for Powerline', 'Courier New', monospace",
   "diffEditor.ignoreTrimWhitespace": true,
-  "editor.formatOnPaste": false,
-  "editor.formatOnSave": false,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
   "editor.formatOnType": false,
+  "eslint.autoFixOnSave": true,
+  "gitlens.advanced.messages": {
+    "suppressShowKeyBindingsNotice": true
+  },
 }

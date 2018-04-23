@@ -25,13 +25,13 @@ function obj:init()
         elseif event:getFlags()['fn'] and event:getCharacters() == "k" then
             return true, {hs.eventtap.event.newKeyEvent({}, "up", true)}
         elseif event:getFlags()['fn'] and event:getCharacters() == "y" then
-            return true, {hs.eventtap.event.newScrollEvent({3, 0}, {}, "line")}
+            return true, {hs.eventtap.event.newScrollEvent({10, 0}, {}, "line")}
         elseif event:getFlags()['fn'] and event:getCharacters() == "o" then
-            return true, {hs.eventtap.event.newScrollEvent({-3, 0}, {}, "line")}
+            return true, {hs.eventtap.event.newScrollEvent({-10, 0}, {}, "line")}
         elseif event:getFlags()['fn'] and event:getCharacters() == "u" then
-            return true, {hs.eventtap.event.newScrollEvent({0, -3}, {}, "line")}
+            return true, {hs.eventtap.event.newScrollEvent({0, -10}, {}, "line")}
         elseif event:getFlags()['fn'] and event:getCharacters() == "i" then
-            return true, {hs.eventtap.event.newScrollEvent({0, 3}, {}, "line")}
+            return true, {hs.eventtap.event.newScrollEvent({0, 10}, {}, "line")}
         elseif event:getFlags()['fn'] and event:getCharacters() == "," then
             local currentpos = hs.mouse.getAbsolutePosition()
             return true, {hs.eventtap.leftClick(currentpos)}
