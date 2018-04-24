@@ -291,9 +291,7 @@ end
 
 -- TODO hold cmd and move window by mouse
 -- TODO change sound vol
--- TODO change screen display
+-- TODO move app to another desktop
+-- TODO move app to another screen display
 -- TODO funcstion list
---      copy file path
---      show file md5
---      show file sha1
 
