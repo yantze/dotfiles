@@ -60,4 +60,5 @@
   "gitlens.advanced.messages": {
     "suppressShowKeyBindingsNotice": true
   },
+  "extensions.ignoreRecommendations": true,
 }
