@@ -57,8 +57,12 @@
   "editor.formatOnSave": true,
   "editor.formatOnType": false,
   "eslint.autoFixOnSave": true,
+  "extensions.ignoreRecommendations": true,
+  "emmet.showSuggestionsAsSnippets": true,
+  "editor.snippetSuggestions": "top",
+  // 自动完成时，自动添加双括号
+  "python.autoComplete.addBrackets": true,
   "gitlens.advanced.messages": {
     "suppressShowKeyBindingsNotice": true
-  },
-  "extensions.ignoreRecommendations": true,
+  }
 }
