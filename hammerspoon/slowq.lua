@@ -3,9 +3,7 @@
 
 -- Keep holding Cmd-Q to close apps, so you don't do it accidentally.
 
--- Replaces apps like CommandQ and SlowQuitApps. This works better if you have
--- luasocket, which has to be installed with Lua 5.3 and luarocks to work with
--- Hammerspoon.
+-- Replaces apps like CommandQ and SlowQuitApps.
 
 pressedQTime = 0
 
