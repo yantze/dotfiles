@@ -33,18 +33,18 @@
       ]
     }
   ],
-  // "gitlens.advanced.messages": {
-  //   "suppressCommitHasNoPreviousCommitWarning": false,
-  //   "suppressCommitNotFoundWarning": false,
-  //   "suppressFileNotUnderSourceControlWarning": true,
-  //   "suppressGitVersionWarning": false,
-  //   "suppressLineUncommittedWarning": false,
-  //   "suppressNoRepositoryWarning": false,
-  //   "suppressResultsExplorerNotice": false,
-  //   "suppressShowKeyBindingsNotice": true,
-  //   "suppressUpdateNotice": true,
-  //   "suppressWelcomeNotice": true
-  // },
+  "gitlens.advanced.messages": {
+    "suppressCommitHasNoPreviousCommitWarning": false,
+    "suppressCommitNotFoundWarning": false,
+    "suppressFileNotUnderSourceControlWarning": true,
+    "suppressGitVersionWarning": false,
+    "suppressLineUncommittedWarning": false,
+    "suppressNoRepositoryWarning": false,
+    "suppressResultsExplorerNotice": false,
+    "suppressShowKeyBindingsNotice": true,
+    "suppressUpdateNotice": true,
+    "suppressWelcomeNotice": true
+  },
   "vim.useSystemClipboard": true,
   "editor.lineNumbers": "relative",
   "workbench.editor.enablePreviewFromQuickOpen": true,
@@ -62,7 +62,5 @@
   "editor.snippetSuggestions": "top",
   // 自动完成时，自动添加双括号
   "python.autoComplete.addBrackets": true,
-  "gitlens.advanced.messages": {
-    "suppressShowKeyBindingsNotice": true
-  }
+  "workbench.activityBar.visible": false
 }

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "Copy to yourself code, Nothing to do."
+echo "Copy to your own code, nothing to do."
 exit 0
 
 # install
