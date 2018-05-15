@@ -208,4 +208,5 @@ package-lock.json
 node_modules/
 
 .python-version
+.python-version_
 
