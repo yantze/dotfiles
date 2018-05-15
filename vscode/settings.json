@@ -62,5 +62,12 @@
   "editor.snippetSuggestions": "top",
   // 自动完成时，自动添加双括号
   "python.autoComplete.addBrackets": true,
-  "workbench.activityBar.visible": false
+  "workbench.activityBar.visible": false,
+  "antlr4.generation": {
+    "mode": "external",
+    "language": "Cpp",
+    "outputDir": "antlr4-runtime",
+    "listeners": true,
+    "visitors": true
+  }
 }
