@@ -87,5 +87,15 @@
   {
     "key": "cmd+k p",
     "command": "-workbench.action.files.copyPathOfActiveFile"
+  },
+  {
+    "key": "cmd+k g",
+    "command": "workbench.view.scm",
+    "when": "gitlens:enabled && gitlens:keymap == 'chorded'"
+  },
+  {
+    "key": "ctrl+shift+g g",
+    "command": "-workbench.view.scm",
+    "when": "gitlens:enabled && gitlens:keymap == 'chorded'"
   }
 ]

@@ -1,6 +1,8 @@
 // Place your settings in this file to overwrite the default settings
 {
   "workbench.colorTheme": "Solarized Light",
+  "workbench.editor.enablePreviewFromQuickOpen": true,
+  "workbench.activityBar.visible": false,
   "window.zoomLevel": 0,
   "files.exclude": {
     "**/*.pyc": true,
@@ -47,7 +49,6 @@
   },
   "vim.useSystemClipboard": true,
   "editor.lineNumbers": "relative",
-  "workbench.editor.enablePreviewFromQuickOpen": true,
   // 编辑窗口右边缩略图
   "editor.minimap.enabled": false,
   "explorer.confirmDelete": false,
@@ -62,12 +63,7 @@
   "editor.snippetSuggestions": "top",
   // 自动完成时，自动添加双括号
   "python.autoComplete.addBrackets": true,
-  "workbench.activityBar.visible": false,
-  "antlr4.generation": {
-    "mode": "external",
-    "language": "Cpp",
-    "outputDir": "antlr4-runtime",
-    "listeners": true,
-    "visitors": true
-  }
+  "gitlens.historyExplorer.enabled": true,
+  "editor.tabCompletion": true,
+  "gitlens.gitExplorer.files.layout": "auto"
 }
