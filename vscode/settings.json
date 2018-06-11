@@ -10,31 +10,25 @@
     "**/.*.un~": true
   },
   "vim.leader": ",",
-  "vim.insertModeKeyBindings": [
-    {
-      "before": [
-        "j",
-        "j"
-      ],
-      "after": [
-        "<Esc>"
-      ]
-    }
-  ],
-  "vim.otherModesKeyBindingsNonRecursive": [
-    {
-      "before": [
-        ";"
-      ],
-      "after": [],
-      "commands": [
-        {
-          "command": "extension.showCmdLine",
-          "args": []
-        }
-      ]
-    }
-  ],
+  "vim.insertModeKeyBindings": [{
+    "before": [
+      "j",
+      "j"
+    ],
+    "after": [
+      "<Esc>"
+    ]
+  }],
+  "vim.otherModesKeyBindingsNonRecursive": [{
+    "before": [
+      ";"
+    ],
+    "after": [],
+    "commands": [{
+      "command": "extension.showCmdLine",
+      "args": []
+    }]
+  }],
   "gitlens.advanced.messages": {
     "suppressCommitHasNoPreviousCommitWarning": false,
     "suppressCommitNotFoundWarning": false,
@@ -65,5 +59,29 @@
   "python.autoComplete.addBrackets": true,
   "gitlens.historyExplorer.enabled": true,
   "editor.tabCompletion": true,
-  "gitlens.gitExplorer.files.layout": "auto"
+  "gitlens.gitExplorer.files.layout": "auto",
+  "editor.renderWhitespace": "none",
+  "vim.foldfix": true,
+  "vim.disableExtension": false,
+  "vim.statusBarColorControl": true,
+  "vim.statusBarColors": {
+    "normal": [
+      "#8FBCBB",
+      "#434C5E"
+    ],
+    "insert": "#BF616A",
+    "visual": "#B48EAD",
+    "visualline": "#B48EAD",
+    "visualblock": "#A3BE8C",
+    "replace": "#D08770"
+  },
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#8FBCBB",
+    "statusBar.noFolderBackground": "#8FBCBB",
+    "statusBar.debuggingBackground": "#8FBCBB",
+    "statusBar.foreground": "#434C5E"
+  },
+  "vim.hlsearch": true,
+  "gitlens.statusBar.enabled": false,
+  "vim.sneak": true
 }

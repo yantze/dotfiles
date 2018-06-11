@@ -97,5 +97,9 @@
     "key": "ctrl+shift+g g",
     "command": "-workbench.view.scm",
     "when": "gitlens:enabled && gitlens:keymap == 'chorded'"
+  },
+  {
+    "key": "alt+cmd+'",
+    "command": "toggleVim"
   }
 ]
