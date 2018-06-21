@@ -10,6 +10,10 @@
     "**/.*.un~": true
   },
   "vim.leader": ",",
+  "vim.disableExtension": false,
+  "vim.hlsearch": true,
+  "vim.useSystemClipboard": true,
+  // "vim.foldfix": true,
   "vim.insertModeKeyBindings": [
     {
       "before": [
@@ -21,7 +25,7 @@
       ]
     }
   ],
-  "vim.otherModesKeyBindingsNonRecursive": [
+  "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": [
         ";"
@@ -50,7 +54,6 @@
   "gitlens.historyExplorer.enabled": true,
   "gitlens.gitExplorer.files.layout": "auto",
   "gitlens.statusBar.enabled": false,
-  "vim.useSystemClipboard": true,
   "editor.lineNumbers": "relative",
   // 编辑窗口右边缩略图
   "editor.minimap.enabled": false,
@@ -68,10 +71,9 @@
   "python.autoComplete.addBrackets": true,
   "editor.tabCompletion": true,
   "editor.renderWhitespace": "none",
-  "vim.foldfix": true,
-  "vim.disableExtension": false,
-  "vim.hlsearch": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
+  "kite.editorMetricsEnabled": "no",
+  "kite.showDocsNotificationOnStartup": false,
   // "vim.sneak": true
   // "vim.statusBarColorControl": true,
   // "vim.statusBarColors": {
