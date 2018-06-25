@@ -72,8 +72,6 @@
   "editor.tabCompletion": true,
   "editor.renderWhitespace": "none",
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "kite.editorMetricsEnabled": "no",
-  "kite.showDocsNotificationOnStartup": false,
   // "vim.sneak": true
   // "vim.statusBarColorControl": true,
   // "vim.statusBarColors": {

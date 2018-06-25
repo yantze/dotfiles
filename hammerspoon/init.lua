@@ -1,5 +1,5 @@
 -- require 'clipboard'
-require 'slowq'
+-- require 'slowq'
 -- require 'vim'
 -- local vimouse = require('vimouse')
 -- vimouse('cmd', 'm')
