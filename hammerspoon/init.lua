@@ -320,11 +320,13 @@ drag_event = hs.eventtap.new({ hs.eventtap.event.types.mouseMoved }, function(e)
     local mods = hs.eventtap.checkKeyboardModifiers()
 
     -- Ctrl + Shift to move the window under cursor
-    if dragging_mode == 1 and mods.ctrl and mods.shift then
+    -- if dragging_mode == 1 and mods.ctrl and mods.shift then
+    if dragging_mode == 1 and mods.cmd then
       dragging_win:move({dx, dy}, nil, false, 0)
 
     -- Alt + Shift to resize the window under cursor
-    elseif mods.alt and mods.shift then
+    -- elseif mods.alt and mods.shift then
+    elseif mods.cmd then
       local sz = dragging_win:size()
       local w1 = sz.w + dx
       local h1 = sz.h + dy
@@ -336,11 +338,12 @@ end)
 
 flags_event = hs.eventtap.new({ hs.eventtap.event.types.flagsChanged }, function(e)
   local flags = e:getFlags()
-  if flags.ctrl and flags.shift and dragging_win == nil then
+  -- if flags.ctrl and flags.shift and dragging_win == nil then
+  if flags.cmd and dragging_win == nil then
     dragging_win = get_window_under_mouse()
     dragging_mode = 1
     drag_event:start()
-  elseif flags.alt and flags.shift and dragging_win == nil then
+  elseif flags.cmd and dragging_win == nil then
     dragging_win = get_window_under_mouse()
     dragging_mode = 2
     drag_event:start()

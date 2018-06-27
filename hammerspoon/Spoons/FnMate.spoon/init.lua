@@ -38,6 +38,10 @@ function obj:init()
             return true, {hs.eventtap.event.newKeyEvent({}, "up", true)}
 
 
+        elseif event:getFlags()['fn'] and event:getCharacters() == "n" then
+            return true, {hs.eventtap.event.newKeyEvent({}, "down", true)}
+        elseif event:getFlags()['fn'] and event:getCharacters() == "p" then
+            return true, {hs.eventtap.event.newKeyEvent({}, "up", true)}
         elseif event:getFlags()['fn'] and event:getCharacters() == "y" then
             return true, {hs.eventtap.event.newScrollEvent({10, 0}, {}, "line")}
         elseif event:getFlags()['fn'] and event:getCharacters() == "o" then
