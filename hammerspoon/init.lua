@@ -81,7 +81,7 @@ hs.hotkey.bind({'alt'}, '2', function () hs.application.launchOrFocus("iTerm") e
 -- or try this way: /usr/libexec/PlistBuddy -c 'Print CFBundleIdentifier' /Applications/Safari.app/Contents/Info.plist
 -- more way: https://superuser.com/questions/346369/getting-the-bundle-identifier-of-an-os-x-application-in-a-shell-script
 -- hs.hotkey.bind({'alt'}, '3', function () hs.application.launchOrFocusByBundleID("com.google.Chrome.app.Default-koegeopamaoljbmhnfjbclbocehhgmkm") end)
-hs.hotkey.bind({'alt'}, '3', function () hs.application.launchOrFocusByBundleID("com.google.Chrome.app.Profile-5-koegeopamaoljbmhnfjbclbocehhgmkm") end)
+hs.hotkey.bind({'alt'}, '3', function () hs.application.launchOrFocusByBundleID("com.google.Chrome.app.Profile-1-koegeopamaoljbmhnfjbclbocehhgmkm") end)
 hs.hotkey.bind({'alt'}, '4', function () hs.application.launchOrFocusByBundleID("com.culturedcode.ThingsMac") end)
 hs.hotkey.bind({'ctrl', 'shift'}, 'escape', function () hs.application.launchOrFocus("Activity Monitor") end)
 hs.hotkey.bind({'alt'}, 'e', function () hs.application.launchOrFocus("Finder") end)
@@ -321,12 +321,12 @@ drag_event = hs.eventtap.new({ hs.eventtap.event.types.mouseMoved }, function(e)
 
     -- Ctrl + Shift to move the window under cursor
     -- if dragging_mode == 1 and mods.ctrl and mods.shift then
-    if dragging_mode == 1 and mods.cmd then
+    if dragging_mode == 1 and mods.alt then
       dragging_win:move({dx, dy}, nil, false, 0)
 
     -- Alt + Shift to resize the window under cursor
     -- elseif mods.alt and mods.shift then
-    elseif mods.cmd then
+    elseif mods.alt then
       local sz = dragging_win:size()
       local w1 = sz.w + dx
       local h1 = sz.h + dy
