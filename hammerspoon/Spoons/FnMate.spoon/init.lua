@@ -37,6 +37,8 @@ function obj:init()
             -- hs.alert.show("ctrl:" .. tostring(event:getFlags()['ctrl']), 0.5)
             return true, {hs.eventtap.event.newKeyEvent({}, "up", true)}
 
+        -- elseif event:getFlags()['fn'] and event:getFlags()['shift'] and event:getCharacters() == "n" then
+        --     return true, {hs.eventtap.event.newKeyEvent({'shift'}, "down", true)}
 
         elseif event:getFlags()['fn'] and event:getCharacters() == "n" then
             return true, {hs.eventtap.event.newKeyEvent({}, "down", true)}

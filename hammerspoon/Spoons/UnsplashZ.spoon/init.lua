@@ -18,7 +18,7 @@ local function curl_callback(exitCode, stdOut, stdErr)
     if exitCode == 0 then
         obj.task = nil
         obj.last_pic = hs.http.urlParts(obj.pic_url).lastPathComponent
-        local localpath = os.getenv("HOME") .. "/.Trash/" .. hs.http.urlParts(obj.pic_url).lastPathComponent
+        local localpath = os.getenv("HOME") .. "/.background/" .. hs.http.urlParts(obj.pic_url).lastPathComponent
 
         hs.screen.mainScreen():desktopImageURL("file://" .. localpath)
     else
@@ -34,7 +34,7 @@ local function unsplashRequest()
             obj.task:terminate()
             obj.task = nil
         end
-        local localpath = os.getenv("HOME") .. "/.Trash/" .. hs.http.urlParts(obj.pic_url).lastPathComponent
+        local localpath = os.getenv("HOME") .. "/.background/" .. hs.http.urlParts(obj.pic_url).lastPathComponent
         obj.task = hs.task.new("/usr/bin/curl", curl_callback, {"-A", user_agent_str, obj.pic_url, "-o", localpath})
         obj.task:start()
     end

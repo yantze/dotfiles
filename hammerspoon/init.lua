@@ -87,6 +87,7 @@ hs.hotkey.bind({'ctrl', 'shift'}, 'escape', function () hs.application.launchOrF
 hs.hotkey.bind({'alt'}, 'e', function () hs.application.launchOrFocus("Finder") end)
 hs.hotkey.bind({'alt'}, 'w', function () hs.application.launchOrFocus("Visual Studio Code") end)
 hs.hotkey.bind({'alt'}, 'q', function () hs.application.launchOrFocus("Telegram") end)
+hs.hotkey.bind({'cmd', 'shift'}, '0', function () hs.application.launchOrFocus("DevDocs") end)
 -- hs.hotkey.bind({'alt'}, 'v', function () hs.application.launchOrFocusByBundleID("org.vim.MacVim") end)
 
 
