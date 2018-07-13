@@ -34,7 +34,7 @@ function baseMove(x, y, w, h)
 
         -- add max.x so it stays on the same screen, works with my second screen
         f.x = max.w * x + max.x
-        f.y = max.h * y
+        f.y = max.h * y + max.y
         f.w = max.w * w
         f.h = max.h * h
         win:setFrame(f, 0)
