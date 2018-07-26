@@ -225,12 +225,17 @@ end)
 hs.hotkey.bind({'alt'}, 'v', function()
   local safari_running = hs.application.applicationsForBundleID("com.apple.Safari")
   local chrome_running = hs.application.applicationsForBundleID("com.google.Chrome")
+  local stat, data
   if #safari_running > 0 then
-    local stat, data = hs.applescript('tell application "Safari" to get {URL, name} of current tab of window 1')
-    if stat then hs.eventtap.keyStrokes("[" .. data[2] .. "](" .. data[1] .. ")") end
+    stat, data = hs.applescript('tell application "Safari" to get {URL, name} of current tab of window 1')
   elseif #chrome_running > 0 then
-    local stat, data = hs.applescript('tell application "Google Chrome" to get {URL, title} of active tab of window 1')
-    if stat then hs.eventtap.keyStrokes("[" .. data[2] .. "](" .. data[1] .. ")") end
+    stat, data = hs.applescript('tell application "Google Chrome" to get {URL, title} of active tab of window 1')
+  end
+
+  if stat then
+    hs.eventtap.keyStrokes(data[2])
+    hs.eventtap.keyStroke({"shift"}, "return")
+    hs.eventtap.keyStrokes(data[1])
   end
 end)
 
