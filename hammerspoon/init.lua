@@ -82,7 +82,21 @@ hs.hotkey.bind({'alt'}, '2', function () hs.application.launchOrFocus("iTerm") e
 -- more way: https://superuser.com/questions/346369/getting-the-bundle-identifier-of-an-os-x-application-in-a-shell-script
 -- hs.hotkey.bind({'alt'}, '3', function () hs.application.launchOrFocusByBundleID("com.google.Chrome.app.Default-koegeopamaoljbmhnfjbclbocehhgmkm") end)
 hs.hotkey.bind({'alt'}, '3', function () hs.application.launchOrFocusByBundleID("com.google.Chrome.app.Profile-1-koegeopamaoljbmhnfjbclbocehhgmkm") end)
-hs.hotkey.bind({'alt'}, '4', function () hs.application.launchOrFocusByBundleID("com.culturedcode.ThingsMac") end)
+hs.hotkey.bind({'alt'}, '4', function ()
+  hs.application.launchOrFocusByBundleID("com.culturedcode.ThingsMac")
+
+
+  -- https://gist.github.com/dropmeaword/ddf7b5b3a0e81ef1142f446f3f91075a
+  function applicationWatcher(appName, eventType, appObject)
+      if (eventType == hs.application.watcher.activated) then
+          if (appName == "Things") then
+              appObject:selectMenuItem({"Window", "Bring All to Front"})
+          end
+      end
+  end
+  local appWatcher = hs.application.watcher.new(applicationWatcher)
+  appWatcher:start()
+end)
 hs.hotkey.bind({'ctrl', 'shift'}, 'escape', function () hs.application.launchOrFocus("Activity Monitor") end)
 hs.hotkey.bind({'alt'}, 'e', function () hs.application.launchOrFocus("Finder") end)
 hs.hotkey.bind({'alt'}, 'w', function () hs.application.launchOrFocus("Visual Studio Code") end)
@@ -217,10 +231,8 @@ hs.hotkey.bind({'alt'}, 'tab', function()
 end)
 
 ----------------------------------------------------------------------------------------------------
--- Register browser tab typist: Type URL of current tab of running browser in markdown format. i.e. [title](link)
--- https://github.com/ashfinal/awesome-hammerspoon
 -- Type Browser Link
--- TODO: url 要用 Shift+Enter 实现
+-- Change from https://github.com/ashfinal/awesome-hammerspoon
 
 hs.hotkey.bind({'alt'}, 'v', function()
   local safari_running = hs.application.applicationsForBundleID("com.apple.Safari")
@@ -361,6 +373,50 @@ flags_event = hs.eventtap.new({ hs.eventtap.event.types.flagsChanged }, function
 end)
 flags_event:start()
 ----------------------------------------------------------------------------------------------------
+-- check mac awake and sleep
+function sleepWatch(eventType)
+	if (eventType == hs.caffeinate.watcher.systemWillSleep) then
+		hs.alert.show("Going to sleep!")
+	elseif (eventType == hs.caffeinate.watcher.systemDidWake) then
+		hs.alert.show("Waking up!")
+	end
+end
+
+local sleepWatcher = hs.caffeinate.watcher.new(sleepWatch)
+sleepWatcher:start()
+----------------------------------------------------------------------------------------------------
+
+-- Circle mouse pointer on CMD+ALT+SHIFT+D
+-- https://gist.github.com/dropmeaword/ddf7b5b3a0e81ef1142f446f3f91075a
+-- invalid code
+local mouseCircle = nil
+local mouseCircleTimer = nil
+
+function mouseHighlight()
+    -- Delete an existing highlight if it exists
+    if mouseCircle then
+        mouseCircle:delete()
+        if mouseCircleTimer then
+            mouseCircleTimer:stop()
+        end
+    end
+    -- Get the current co-ordinates of the mouse pointer
+    mousepoint = hs.mouse.getAbsolutePosition()
+
+    -- Prepare a big red circle around the mouse pointer
+    mouseCircle = hs.drawing.circle(hs.geometry.rect(mousepoint.x-40, mousepoint.y-40, 80, 80))
+    mouseCircle:setStrokeColor({["red"]=1,["blue"]=0,["green"]=0,["alpha"]=1})
+    mouseCircle:setFill(false)
+    mouseCircle:setStrokeWidth(5)
+    mouseCircle:show()
+
+    -- Set a timer to delete the circle after 3 seconds
+    mouseCircleTimer = hs.timer.doAfter(3, function() mouseCircle:delete() end)
+end
+hs.hotkey.bind({"cmd","alt","shift"}, "D", mouseHighlight)
+
+----------------------------------------------------------------------------------------------------
+
 
 -- TODO change sound vol
 -- TODO move app to another desktop
