@@ -25,17 +25,14 @@
       ]
     }
   ],
+  // "vim.showcmd": false,
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": [
         ";"
       ],
-      "after": [],
       "commands": [
-        {
-          "command": "extension.showCmdLine",
-          "args": []
-        }
+        "vim.showQuickpickCmdLine"
       ]
     }
   ],
