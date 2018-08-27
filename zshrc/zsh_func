@@ -57,6 +57,7 @@ function dl()
 
 function pwdc() {
     pathfile="`pwd`/$1"
+    echo -n $pathfile | scopy
     echo -n $pathfile | xcopy
     echo $pathfile
 }

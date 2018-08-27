@@ -1,8 +1,8 @@
 // Place your settings in this file to overwrite the default settings
 {
-  "workbench.colorTheme": "Solarized Light",
+  "workbench.colorTheme": "Nova",
   "workbench.editor.enablePreviewFromQuickOpen": true,
-  "workbench.activityBar.visible": false,
+  "workbench.activityBar.visible": true,
   "window.zoomLevel": 0,
   "files.exclude": {
     "**/*.pyc": true,
@@ -15,15 +15,15 @@
   "vim.useSystemClipboard": true,
   // "vim.foldfix": true,
   "vim.insertModeKeyBindings": [
-    {
-      "before": [
-        "j",
-        "j"
-      ],
-      "after": [
-        "<Esc>"
-      ]
-    }
+    // {
+    //   "before": [
+    //     "j",
+    //     "j"
+    //   ],
+    //   "after": [
+    //     "<Esc>"
+    //   ]
+    // },
   ],
   // "vim.showcmd": false,
   "vim.normalModeKeyBindingsNonRecursive": [
@@ -33,6 +33,24 @@
       ],
       "commands": [
         "vim.showQuickpickCmdLine"
+      ]
+    },
+    {
+      "before": [
+        "j",
+      ],
+      "after": [
+        "g",
+        "j"
+      ]
+    },
+    {
+      "before": [
+        "k",
+      ],
+      "after": [
+        "g",
+        "k"
       ]
     }
   ],
