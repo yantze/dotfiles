@@ -14,18 +14,8 @@
   "vim.hlsearch": true,
   "vim.useSystemClipboard": true,
   // "vim.foldfix": true,
-  "vim.insertModeKeyBindings": [
-    // {
-    //   "before": [
-    //     "j",
-    //     "j"
-    //   ],
-    //   "after": [
-    //     "<Esc>"
-    //   ]
-    // },
-  ],
   // "vim.showcmd": false,
+  "vim.insertModeKeyBindings": [],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": [
@@ -87,23 +77,4 @@
   "editor.tabCompletion": true,
   "editor.renderWhitespace": "none",
   "javascript.updateImportsOnFileMove.enabled": "always",
-  // "vim.sneak": true
-  // "vim.statusBarColorControl": true,
-  // "vim.statusBarColors": {
-  //   "normal": [
-  //     "#8FBCBB",
-  //     "#434C5E"
-  //   ],
-  //   "insert": "#BF616A",
-  //   "visual": "#B48EAD",
-  //   "visualline": "#B48EAD",
-  //   "visualblock": "#A3BE8C",
-  //   "replace": "#D08770"
-  // },
-  // "workbench.colorCustomizations": {
-  //   "statusBar.background": "#8FBCBB",
-  //   "statusBar.noFolderBackground": "#8FBCBB",
-  //   "statusBar.debuggingBackground": "#8FBCBB",
-  //   "statusBar.foreground": "#434C5E"
-  // },
 }
