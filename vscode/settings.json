@@ -9,6 +9,14 @@
     "**/__pycache__": true,
     "**/.*.un~": true
   },
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": false,
+  "eslint.autoFixOnSave": true,
+  "editor.tabSize": 4,
+  "editor.formatOnSave": true,
+  "editor.insertSpaces": true,
+  "files.eol": "\n",
+  "files.trimTrailingWhitespace": true,
   "vim.leader": ",",
   "vim.disableExtension": false,
   "vim.hlsearch": true,
@@ -18,30 +26,24 @@
   "vim.insertModeKeyBindings": [],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": [
-        ";"
-      ],
-      "commands": [
-        "vim.showQuickpickCmdLine"
-      ]
+      "before": [";"],
+      "commands": ["vim.showQuickpickCmdLine"]
     },
     {
-      "before": [
-        "j",
-      ],
-      "after": [
-        "g",
-        "j"
-      ]
+      "before": ["j"],
+      "after": ["g", "j"]
     },
     {
-      "before": [
-        "k",
-      ],
-      "after": [
-        "g",
-        "k"
-      ]
+      "before": ["k"],
+      "after": ["g", "k"]
+    },
+    {
+      "before": ["<leader>", "q"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    },
+    {
+      "before": ["<leader>", "t", "l"],
+      "commands": ["workbench.action.terminal.toggleTerminal"]
     }
   ],
   "gitlens.advanced.messages": {
@@ -65,10 +67,6 @@
   "explorer.confirmDelete": false,
   "editor.fontFamily": "Menlo, Monaco, 'Monaco for Powerline', 'Courier New', monospace",
   "diffEditor.ignoreTrimWhitespace": true,
-  "editor.formatOnPaste": true,
-  "editor.formatOnSave": true,
-  "editor.formatOnType": false,
-  "eslint.autoFixOnSave": true,
   "extensions.ignoreRecommendations": true,
   "emmet.showSuggestionsAsSnippets": true,
   "editor.snippetSuggestions": "top",
@@ -77,4 +75,18 @@
   "editor.tabCompletion": true,
   "editor.renderWhitespace": "none",
   "javascript.updateImportsOnFileMove.enabled": "always",
+  // "vetur.format.defaultFormatter.js": "vscode-typescript",
+  // "vetur.format.defaultFormatter.html": "js-beautify-html",
+  // "vetur.format.defaultFormatterOptions": {
+  //   "js-beautify-html": {
+  //     "wrap_attributes": "force-aligned"
+  //   }
+  // },
+  "tslint.autoFixOnSave": true,
+  "prettier.semi": false,
+  "prettier.trailingComma": "all",
+  "formattingToggle.activateFor": [
+    "formatOnPaste",
+    "formatOnSave"
+  ]
 }
