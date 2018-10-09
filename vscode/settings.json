@@ -1,6 +1,6 @@
 // Place your settings in this file to overwrite the default settings
 {
-  "workbench.colorTheme": "Nova",
+  "workbench.colorTheme": "Solarized Light",
   "workbench.editor.enablePreviewFromQuickOpen": true,
   "workbench.activityBar.visible": true,
   "window.zoomLevel": 0,
@@ -23,27 +23,53 @@
   "vim.useSystemClipboard": true,
   // "vim.foldfix": true,
   // "vim.showcmd": false,
+  "vim.smartcase": false,
   "vim.insertModeKeyBindings": [],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": [";"],
-      "commands": ["vim.showQuickpickCmdLine"]
+      "before": [
+        ";"
+      ],
+      "commands": [
+        "vim.showQuickpickCmdLine"
+      ]
     },
     {
-      "before": ["j"],
-      "after": ["g", "j"]
+      "before": [
+        "j"
+      ],
+      "after": [
+        "g",
+        "j"
+      ]
     },
     {
-      "before": ["k"],
-      "after": ["g", "k"]
+      "before": [
+        "k"
+      ],
+      "after": [
+        "g",
+        "k"
+      ]
     },
     {
-      "before": ["<leader>", "q"],
-      "commands": ["workbench.action.closeActiveEditor"]
+      "before": [
+        "<leader>",
+        "q"
+      ],
+      "commands": [
+        "workbench.action.closeActiveEditor"
+      ]
     },
     {
-      "before": ["<leader>", "t", "l"],
-      "commands": ["workbench.action.terminal.toggleTerminal"]
+      "before": [
+        "<leader>",
+        "t",
+        "l"
+      ],
+      "commands": [
+        "workbench.action.terminal.toggleTerminal"
+      ]
     }
   ],
   "gitlens.advanced.messages": {
@@ -88,5 +114,8 @@
   "formattingToggle.activateFor": [
     "formatOnPaste",
     "formatOnSave"
-  ]
+  ],
+  "prettier.tslintIntegration": true,
+  "prettier.tabWidth": 4,
+  "prettier.eslintIntegration": true,
 }
