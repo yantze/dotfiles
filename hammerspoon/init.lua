@@ -19,6 +19,8 @@ for _, v in pairs(hspoon_list) do
     hs.loadSpoon(v)
 end
 
+local logger = hs.logger.new("User", 5)
+
 -- 
 
 hs.window.animationDuration = 0 -- disable animations
@@ -85,7 +87,6 @@ hs.hotkey.bind({'alt'}, '3', function () hs.application.launchOrFocusByBundleID(
 hs.hotkey.bind({'alt'}, '4', function ()
   hs.application.launchOrFocusByBundleID("com.culturedcode.ThingsMac")
 
-
   -- https://gist.github.com/dropmeaword/ddf7b5b3a0e81ef1142f446f3f91075a
   function applicationWatcher(appName, eventType, appObject)
       if (eventType == hs.application.watcher.activated) then
@@ -95,6 +96,11 @@ hs.hotkey.bind({'alt'}, '4', function ()
       end
   end
   local appWatcher = hs.application.watcher.new(applicationWatcher)
+  -- local delayed = hs.timer.delayed.new(2000, function ()
+  --   logger:w("ceshi")
+  --   appWatcher:start()
+  -- end)
+  -- delayed:start()
   appWatcher:start()
 end)
 hs.hotkey.bind({'ctrl', 'shift'}, 'escape', function () hs.application.launchOrFocus("Activity Monitor") end)
