@@ -19,5 +19,14 @@
             "console.warn('$1')"
         ],
         "description": "Log warning to console"
+    },
+    "Print dev juggle": {
+        "prefix": "dev",
+        "body": [
+            "if (process.env.NODE_ENV === 'development') {",
+            "   $1",
+            "}"
+        ],
+        "description": "Input development env"
     }
 }
