@@ -1,105 +1,115 @@
 // Place your key bindings in this file to overwrite the defaults
 [
-  {
-    "key": "cmd+r",
-    "command": "workbench.action.debug.start",
-    "when": "!inDebugMode"
-  },
-  {
-    "key": "f5",
-    "command": "-workbench.action.debug.start",
-    "when": "!inDebugMode"
-  },
-  {
-    "key": "ctrl+cmd+r",
-    "command": "workbench.action.debug.run",
-    "when": "!inDebugMode"
-  },
-  {
-    "key": "ctrl+f5",
-    "command": "-workbench.action.debug.run",
-    "when": "!inDebugMode"
-  },
-  {
-    "key": "alt+cmd+r",
-    "command": "workbench.action.debug.stop",
-    "when": "inDebugMode"
-  },
-  {
-    "key": "shift+f5",
-    "command": "-workbench.action.debug.stop",
-    "when": "inDebugMode"
-  },
-  {
-    "key": "shift+cmd+r",
-    "command": "workbench.action.debug.restart",
-    "when": "inDebugMode"
-  },
-  {
-    "key": "shift+cmd+f5",
-    "command": "-workbench.action.debug.restart",
-    "when": "inDebugMode"
-  },
-  {
-    "key": "ctrl+shift+n",
-    "command": "extension.vim_ctrl+n",
-    "when": "editorTextFocus && vim.active && vim.use<C-n> && !inDebugRepl"
-  },
-  {
-    "key": "ctrl+n",
-    "command": "-extension.vim_ctrl+n",
-    "when": "editorTextFocus && vim.active && vim.use<C-n> && !inDebugRepl"
-  },
-  {
-    "key": "cmd+r",
-    "command": "workbench.action.debug.continue",
-    "when": "inDebugMode"
-  },
-  {
-    "key": "f5",
-    "command": "-workbench.action.debug.continue",
-    "when": "inDebugMode"
-  },
-  {
-    "key": "ctrl+shift+alt+cmd+c",
-    "command": "toggleFindCaseSensitive",
-    "when": "editorFocus"
-  },
-  {
-    "key": "alt+cmd+c",
-    "command": "-toggleFindCaseSensitive",
-    "when": "editorFocus"
-  },
-  {
-    "key": "alt+cmd+c",
-    "command": "copyFilePath",
-    "when": "explorerViewletFocus && explorerViewletVisible && !inputFocus"
-  },
-  {
-    "key": "alt+cmd+c",
-    "command": "-copyFilePath",
-    "when": "explorerViewletFocus && explorerViewletVisible && !inputFocus"
-  },
-  {
-    "key": "alt+cmd+c",
-    "command": "workbench.action.files.copyPathOfActiveFile"
-  },
-  {
-    "key": "cmd+k p",
-    "command": "-workbench.action.files.copyPathOfActiveFile"
-  },
-  {
-    "key": "cmd+k g",
-    "command": "workbench.view.scm",
-    "when": "gitlens:enabled && gitlens:keymap == 'chorded'"
-  },
-  {
-    "key": "ctrl+shift+g g",
-    "command": "-workbench.view.scm",
-    "when": "gitlens:enabled && gitlens:keymap == 'chorded'"
-  },
-  {
-    "key": "alt+cmd+'",
-    "command": "toggleVim"
-  }
+    {
+        "key": "cmd+r",
+        "command": "workbench.action.debug.start",
+        "when": "!inDebugMode"
+    },
+    {
+        "key": "f5",
+        "command": "-workbench.action.debug.start",
+        "when": "!inDebugMode"
+    },
+    {
+        "key": "ctrl+cmd+r",
+        "command": "workbench.action.debug.run",
+        "when": "!inDebugMode"
+    },
+    {
+        "key": "ctrl+f5",
+        "command": "-workbench.action.debug.run",
+        "when": "!inDebugMode"
+    },
+    {
+        "key": "alt+cmd+r",
+        "command": "workbench.action.debug.stop",
+        "when": "inDebugMode"
+    },
+    {
+        "key": "shift+f5",
+        "command": "-workbench.action.debug.stop",
+        "when": "inDebugMode"
+    },
+    {
+        "key": "shift+cmd+r",
+        "command": "workbench.action.debug.restart",
+        "when": "inDebugMode"
+    },
+    {
+        "key": "shift+cmd+f5",
+        "command": "-workbench.action.debug.restart",
+        "when": "inDebugMode"
+    },
+    {
+        "key": "ctrl+shift+n",
+        "command": "extension.vim_ctrl+n",
+        "when": "editorTextFocus && vim.active && vim.use<C-n> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+n",
+        "command": "-extension.vim_ctrl+n",
+        "when": "editorTextFocus && vim.active && vim.use<C-n> && !inDebugRepl"
+    },
+    {
+        "key": "cmd+r",
+        "command": "workbench.action.debug.continue",
+        "when": "inDebugMode"
+    },
+    {
+        "key": "f5",
+        "command": "-workbench.action.debug.continue",
+        "when": "inDebugMode"
+    },
+    {
+        "key": "ctrl+shift+alt+cmd+c",
+        "command": "toggleFindCaseSensitive",
+        "when": "editorFocus"
+    },
+    {
+        "key": "alt+cmd+c",
+        "command": "-toggleFindCaseSensitive",
+        "when": "editorFocus"
+    },
+    {
+        "key": "alt+cmd+c",
+        "command": "copyFilePath",
+        "when": "explorerViewletFocus && explorerViewletVisible && !inputFocus"
+    },
+    {
+        "key": "alt+cmd+c",
+        "command": "-copyFilePath",
+        "when": "explorerViewletFocus && explorerViewletVisible && !inputFocus"
+    },
+    {
+        "key": "alt+cmd+c",
+        "command": "workbench.action.files.copyPathOfActiveFile"
+    },
+    {
+        "key": "cmd+k p",
+        "command": "-workbench.action.files.copyPathOfActiveFile"
+    },
+    {
+        "key": "cmd+k g",
+        "command": "workbench.view.scm",
+        "when": "gitlens:enabled && gitlens:keymap == 'chorded'"
+    },
+    {
+        "key": "ctrl+shift+g g",
+        "command": "-workbench.view.scm",
+        "when": "gitlens:enabled && gitlens:keymap == 'chorded'"
+    },
+    {
+        "key": "alt+cmd+'",
+        "command": "toggleVim"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "-extension.vim_ctrl+e",
+        "when": "editorTextFocus && vim.active && vim.use<C-e> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+a",
+        "command": "-extension.vim_ctrl+a",
+        "when": "editorTextFocus && vim.active && vim.use<C-a> && !inDebugRepl"
+    }
 ]
