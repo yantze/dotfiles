@@ -1,121 +1,94 @@
 // Place your settings in this file to overwrite the default settings
 {
-  "workbench.colorTheme": "Solarized Light",
-  "workbench.editor.enablePreviewFromQuickOpen": true,
-  "workbench.activityBar.visible": true,
-  "window.zoomLevel": 0,
-  "files.exclude": {
-    "**/*.pyc": true,
-    "**/__pycache__": true,
-    "**/.*.un~": true
-  },
-  "editor.formatOnPaste": true,
-  "editor.formatOnType": false,
-  "eslint.autoFixOnSave": true,
-  "editor.tabSize": 4,
-  "editor.formatOnSave": true,
-  "editor.insertSpaces": true,
-  "files.eol": "\n",
-  "files.trimTrailingWhitespace": true,
-  "vim.leader": ",",
-  "vim.disableExtension": false,
-  "vim.hlsearch": true,
-  "vim.useSystemClipboard": true,
-  // "vim.foldfix": true,
-  // "vim.showcmd": false,
-  "vim.smartcase": false,
-  "vim.insertModeKeyBindings": [],
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": [
-        ";"
-      ],
-      "commands": [
-        "vim.showQuickpickCmdLine"
-      ]
+    "workbench.colorTheme": "Red",
+    "workbench.editor.enablePreviewFromQuickOpen": true,
+    "workbench.activityBar.visible": false,
+    "window.zoomLevel": 0,
+    "files.exclude": {
+        "**/*.pyc": true,
+        "**/__pycache__": true,
+        "**/.*.un~": true
     },
-    {
-      "before": [
-        "j"
-      ],
-      "after": [
-        "g",
-        "j"
-      ]
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": false,
+    "eslint.autoFixOnSave": true,
+    "editor.tabSize": 4,
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": true,
+    "files.eol": "\n",
+    "files.trimTrailingWhitespace": true,
+    "vim.leader": ",",
+    "vim.disableExtension": false,
+    "vim.hlsearch": true,
+    "vim.useSystemClipboard": true,
+    // "vim.foldfix": true,
+    // "vim.showcmd": false,
+    // 调到上一个停顿点快捷键： ''
+    "vim.smartcase": false,
+    "vim.insertModeKeyBindings": [],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [";"],
+            "commands": ["vim.showQuickpickCmdLine"]
+        },
+        {
+            "before": ["j"],
+            "after": ["g", "j"]
+        },
+        {
+            "before": ["k"],
+            "after": ["g", "k"]
+        },
+        {
+            "before": ["<leader>", "q"],
+            "commands": ["workbench.action.closeActiveEditor"]
+        },
+        {
+            "before": ["<leader>", "t", "l"],
+            "commands": ["workbench.action.terminal.toggleTerminal"]
+        }
+    ],
+    "gitlens.advanced.messages": {
+        "suppressCommitHasNoPreviousCommitWarning": false,
+        "suppressCommitNotFoundWarning": false,
+        "suppressFileNotUnderSourceControlWarning": true,
+        "suppressGitVersionWarning": false,
+        "suppressLineUncommittedWarning": false,
+        "suppressNoRepositoryWarning": false,
+        "suppressResultsExplorerNotice": false,
+        "suppressShowKeyBindingsNotice": true,
+        "suppressUpdateNotice": true,
+        "suppressWelcomeNotice": true
     },
-    {
-      "before": [
-        "k"
-      ],
-      "after": [
-        "g",
-        "k"
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "q"
-      ],
-      "commands": [
-        "workbench.action.closeActiveEditor"
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "t",
-        "l"
-      ],
-      "commands": [
-        "workbench.action.terminal.toggleTerminal"
-      ]
-    }
-  ],
-  "gitlens.advanced.messages": {
-    "suppressCommitHasNoPreviousCommitWarning": false,
-    "suppressCommitNotFoundWarning": false,
-    "suppressFileNotUnderSourceControlWarning": true,
-    "suppressGitVersionWarning": false,
-    "suppressLineUncommittedWarning": false,
-    "suppressNoRepositoryWarning": false,
-    "suppressResultsExplorerNotice": false,
-    "suppressShowKeyBindingsNotice": true,
-    "suppressUpdateNotice": true,
-    "suppressWelcomeNotice": true
-  },
-  "gitlens.historyExplorer.enabled": true,
-  "gitlens.gitExplorer.files.layout": "auto",
-  "gitlens.statusBar.enabled": false,
-  "editor.lineNumbers": "relative",
-  // 编辑窗口右边缩略图
-  "editor.minimap.enabled": false,
-  "explorer.confirmDelete": false,
-  "editor.fontFamily": "Menlo, Monaco, 'Monaco for Powerline', 'Courier New', monospace",
-  "diffEditor.ignoreTrimWhitespace": true,
-  "extensions.ignoreRecommendations": true,
-  "emmet.showSuggestionsAsSnippets": true,
-  "editor.snippetSuggestions": "top",
-  // 自动完成时，自动添加双括号
-  "python.autoComplete.addBrackets": true,
-  "editor.tabCompletion": true,
-  "editor.renderWhitespace": "none",
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  // "vetur.format.defaultFormatter.js": "vscode-typescript",
-  // "vetur.format.defaultFormatter.html": "js-beautify-html",
-  // "vetur.format.defaultFormatterOptions": {
-  //   "js-beautify-html": {
-  //     "wrap_attributes": "force-aligned"
-  //   }
-  // },
-  "tslint.autoFixOnSave": true,
-  "prettier.semi": false,
-  "prettier.trailingComma": "all",
-  "formattingToggle.activateFor": [
-    "formatOnPaste",
-    "formatOnSave"
-  ],
-  "prettier.tslintIntegration": true,
-  "prettier.tabWidth": 4,
-  "prettier.eslintIntegration": true,
+    "gitlens.historyExplorer.enabled": true,
+    "gitlens.gitExplorer.files.layout": "auto",
+    "gitlens.statusBar.enabled": false,
+    "editor.lineNumbers": "relative",
+    // 编辑窗口右边缩略图
+    "editor.minimap.enabled": false,
+    "explorer.confirmDelete": false,
+    "editor.fontFamily": "Menlo, Monaco, 'Monaco for Powerline', 'Courier New', monospace",
+    "diffEditor.ignoreTrimWhitespace": true,
+    "extensions.ignoreRecommendations": true,
+    "emmet.showSuggestionsAsSnippets": true,
+    "editor.snippetSuggestions": "top",
+    // 自动完成时，自动添加双括号
+    "python.autoComplete.addBrackets": true,
+    "editor.tabCompletion": true,
+    "editor.renderWhitespace": "none",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    // "vetur.format.defaultFormatter.js": "vscode-typescript",
+    // "vetur.format.defaultFormatter.html": "js-beautify-html",
+    // "vetur.format.defaultFormatterOptions": {
+    //   "js-beautify-html": {
+    //     "wrap_attributes": "force-aligned"
+    //   }
+    // },
+    "tslint.autoFixOnSave": true,
+    "prettier.semi": false,
+    "prettier.trailingComma": "all",
+    "formattingToggle.activateFor": ["formatOnPaste", "formatOnSave"],
+    "prettier.tslintIntegration": true,
+    "prettier.tabWidth": 4,
+    "prettier.eslintIntegration": true
 }
