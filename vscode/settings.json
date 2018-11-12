@@ -1,6 +1,6 @@
 // Place your settings in this file to overwrite the default settings
 {
-    "workbench.colorTheme": "Red",
+    "workbench.colorTheme": "Solarized Light",
     "workbench.editor.enablePreviewFromQuickOpen": true,
     "workbench.activityBar.visible": false,
     "window.zoomLevel": 0,
