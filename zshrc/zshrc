@@ -39,8 +39,10 @@ plugins=(bundler osx git common-aliases dirhistory extract autojump zsh-navigati
 # stt (When using `sublime` plugin) Open current directory in Sublime Text 2/3
 # v   (When using `vi-mode` plugin) Edit current command line in Vim 
 
-source $ZSH/oh-my-zsh.sh
+test -e "$ZSH/oh-my-zsh.sh" && source "$ZSH/oh-my-zsh.sh"
 # }}} oh-my-zsh done.
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # history max num
 export HISTSIZE=100000
@@ -95,7 +97,14 @@ if [[ -n $TMUX ]]; then
     [[ -x "$(command -v adjspecies)" ]] && [[ ${#tmux_window_name} -gt 9 ]] && tmux rename-window '-' # `adjspecies --sep .`
 fi
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# For bash
+# preserve ahead word
+# bind '"\e[A": history-search-backward'
+# bind '"\e[B": history-search-forward'
+
+# https://superuser.com/questions/212446/binding-backward-kill-word-to-ctrlw
+# stty werase undef
+# bind '"\C-w": backward-kill-word'
 
 
 . ~/.dotfiles/zshrc/zsh_path
