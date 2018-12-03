@@ -11,9 +11,10 @@
 # PATH="$JAVA_HOME/bin:$PATH"
 
 ### GO ###
-export GOPATH=$HOME/go
-export GOROOT=$HOME/.local/go
-PATH="$GOROOT/bin:$GOPATH/bin::$PATH"
+export GOPATH=$HOME/.local/go
+# export GOROOT=$HOME/.local/go
+# PATH="$GOROOT/bin:$GOPATH/bin::$PATH"
+PATH="$GOPATH/bin:$PATH"
 
 ### Python ###
 # PYTHON3_HOME="/usr/local/python/3.4"
