@@ -11,6 +11,7 @@ DAVPATH="/bird"
 DAVUSER="username"
 DAVPASS="password"
 
+# Manual update self by push and pull
 if [[ $1 = "push" ]]; then
   curl -X PUT -u "$DAVUSER:$DAVPASS" "$WEBDAV/pan" --data-binary @/usr/local/bin/pan
   exit 0
@@ -20,14 +21,16 @@ elif [[ $1 = "pull" ]]; then
 fi
 
 
-# Get file content
-if [[ $# -eq 1 && -t 0 ]]; then
+# Get file content.
+# At hammerspoon hs.execute , -t 0 is invalid, so add magic variable __get__
+# -t 0 ,check name $1 if is a file or pipe
+if [[ $# -eq 1 && -t 0 || $# -eq 2 && $2 = "__GET__" ]]; then
   curl -su "$DAVUSER:$DAVPASS" "$WEBDAV/$1"
 
 # Upload file
 elif [[ $# -eq 1 && -n $1 ]]; then
   curl -X PUT -u "$DAVUSER:$DAVPASS" "$WEBDAV/$1" --data-binary @-
-  echo "$WEBDAV/$1"
+  # echo "$WEBDAV/$1"
 elif [[ $# -eq 2 && -n $1 && -n $2 ]]; then
   LOCALFILE="$(\cd "$(\dirname "$1")" && \pwd)/$(\basename "$1")"
   curl -X PUT -u "$DAVUSER:$DAVPASS" "$WEBDAV/$2" --data-binary @"$LOCALFILE"

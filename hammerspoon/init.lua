@@ -243,7 +243,7 @@ end)
 -- Type Browser Link
 -- Change from https://github.com/ashfinal/awesome-hammerspoon
 
-hs.hotkey.bind({'alt'}, 'v', function()
+hs.hotkey.bind({'alt'}, 'i', function()
   local safari_running = hs.application.applicationsForBundleID("com.apple.Safari")
   local chrome_running = hs.application.applicationsForBundleID("com.google.Chrome")
   local stat, data
@@ -261,6 +261,15 @@ hs.hotkey.bind({'alt'}, 'v', function()
 end)
 
 ----------------------------------------------------------------------------------------------------
+-- Type remote clipboard
+
+hs.hotkey.bind({'alt'}, 'v', function () hs.eventtap.keyStrokes(hs.execute('/usr/local/bin/pan clipboard __GET__')) end)
+hs.hotkey.bind({'alt'}, 'c', function ()
+  hs.execute('echo "' .. hs.pasteboard.readString() .. '" | /usr/local/bin/pan clipboard')
+end)
+
+
+----------------------------------------------------------------------------------------------------
 -- https://github.com/ashfinal/awesome-hammerspoon
 -- Register Hammerspoon console
 hs.hotkey.bind({'alt'}, 'z', function()
@@ -271,11 +280,11 @@ end)
 ----------------------------------------------------------------------------------------------------
 -- check mac awake and sleep
 function sleepWatch(eventType)
-	if (eventType == hs.caffeinate.watcher.systemWillSleep) then
-		hs.alert.show("Going to sleep!")
-	elseif (eventType == hs.caffeinate.watcher.systemDidWake) then
-		hs.alert.show("Waking up!")
-	end
+  if (eventType == hs.caffeinate.watcher.systemWillSleep) then
+    hs.alert.show("Going to sleep!")
+  elseif (eventType == hs.caffeinate.watcher.systemDidWake) then
+    hs.alert.show("Waking up!")
+  end
 end
 
 local sleepWatcher = hs.caffeinate.watcher.new(sleepWatch)
@@ -437,7 +446,33 @@ hs.hotkey.bind({"cmd","alt","shift"}, "D", mouseHighlight)
 }}} --]]
 
 
+--[[ Study hammerspoon
+-- timer
+hs.timer.doAfter(3, function()
+  print('print after 3s.')
+end):start()
+
+-- manipulate menu
+--   for k, v in pairs( hs.window.visibleWindows() ) do
+--    print(k, v)
+--   end
+--   print('==============================')
+
+--   -- check if application activate event (vs. close?)
+--   if (eventType == hs.application.watcher.activated) then
+--       hs.alert.show(appName)
+--       if (appName == "Finder") then
+--         --Bring all Finder windows forward when one gets activated
+--         appObject:selectMenuItem({"Window", "Bring All to Front"})
+--       end
+--   end
+--
+-- Ref:
+-- https://github.com/KyleKing/My_Local_Hammerspoon/blob/91e18aefb762aabd1886ec8fb8540e8f4d1a98cb/Other/z_untracked.lua
+--]]
+
 -- TODO move app to another desktop
 -- from: https://github.com/Hammerspoon/hammerspoon/issues/235
 -- TODO move app to another screen display
 
+-- vim: set ts=4 sw=4 tw=0 et fdm=marker foldmarker={{{,}}} foldlevel=0 foldenable foldlevelstart=99 :
