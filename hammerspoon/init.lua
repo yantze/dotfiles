@@ -1,3 +1,4 @@
+-- Basic extension {{{
 -- require 'clipboard'
 -- require 'slowq'
 -- require 'vim'
@@ -7,10 +8,10 @@
 -- Define default Spoons which will be loaded later
 if not hspoon_list then
     hspoon_list = {
-        "ClipShow",
-        "WinWin",
+        -- "ClipShow",
+        -- "WinWin",
         "FnMate",
-        "UnsplashZ"
+        -- "UnsplashZ"
     }
 end
 
@@ -21,7 +22,9 @@ end
 
 local logger = hs.logger.new("User", 5)
 
--- 
+-- }}}
+
+-- Resize windows {{{
 
 hs.window.animationDuration = 0 -- disable animations
 hs.grid.setMargins({0, 0})
@@ -58,7 +61,10 @@ hs.hotkey.bind({'ctrl', 'cmd'}, 'Right', baseMove(2/3, 0, 1/3, 1))
 hs.hotkey.bind({'alt', 'shift', 'cmd'}, 'Left', baseMove(0, 0, 2/3, 1))
 hs.hotkey.bind({'alt', 'shift', 'cmd'}, 'Right', baseMove(1/3, 0, 2/3, 1))
 
--- reload config
+-- }}}
+
+--[[ {{{ Reload config
+
 function reloadConfig(files) -- `files` available in pathwatcher
   hs.reload()
   hs.notify.new({title="Hammerspoon config reloaded", informativeText="By user operation"}):send()
@@ -67,8 +73,9 @@ end
 hs.hotkey.bind(super, "R", reloadConfig)
 hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()
 
+}}} --]]
 
--- quick jump to important applications
+-- Quick jump to important applications {{{
 hs.hotkey.bind({'alt'}, '1', function () hs.application.launchOrFocusByBundleID("com.google.Chrome") end)
 -- hs.hotkey.bind({'alt'}, '1', function () hs.osascript.applescript([[
 --     tell application "Google Chrome"
@@ -86,22 +93,14 @@ hs.hotkey.bind({'alt'}, '2', function () hs.application.launchOrFocus("iTerm") e
 hs.hotkey.bind({'alt'}, '3', function () hs.application.launchOrFocusByBundleID("com.google.Chrome.app.Profile-1-koegeopamaoljbmhnfjbclbocehhgmkm") end)
 hs.hotkey.bind({'alt'}, '4', function ()
   hs.application.launchOrFocusByBundleID("com.culturedcode.ThingsMac")
+  -- Show all window when Things is actived
+  -- local windows = hs.application.find("Things"):findWindow("")
+  -- logger:w('--------------------:', windows)
+  -- for i = 1, #windows do
+  --   logger:w('--------------------:', windows[i])
+  --   windows[i]:focus()
+  -- end
 
-  -- https://gist.github.com/dropmeaword/ddf7b5b3a0e81ef1142f446f3f91075a
-  function applicationWatcher(appName, eventType, appObject)
-      if (eventType == hs.application.watcher.activated) then
-          if (appName == "Things") then
-              appObject:selectMenuItem({"Window", "Bring All to Front"})
-          end
-      end
-  end
-  local appWatcher = hs.application.watcher.new(applicationWatcher)
-  -- local delayed = hs.timer.delayed.new(2000, function ()
-  --   logger:w("ceshi")
-  --   appWatcher:start()
-  -- end)
-  -- delayed:start()
-  appWatcher:start()
 end)
 hs.hotkey.bind({'ctrl', 'shift'}, 'escape', function () hs.application.launchOrFocus("Activity Monitor") end)
 hs.hotkey.bind({'alt'}, 'e', function () hs.application.launchOrFocus("Finder") end)
@@ -110,9 +109,9 @@ hs.hotkey.bind({'alt'}, 'q', function () hs.application.launchOrFocus("Telegram"
 hs.hotkey.bind({'cmd', 'shift'}, '0', function () hs.application.launchOrFocus("DevDocs") end)
 -- hs.hotkey.bind({'alt'}, 'v', function () hs.application.launchOrFocusByBundleID("org.vim.MacVim") end)
 
+-- }}}
 
--- utils
--- hs.hotkey.bind({'cmd'}, 'j', function () hs.eventtap.keyStroke({}, "down") end)
+--[[ {{{
 
 -- Mouse modal keyboard shortcut environment
 local mouseModal = hs.hotkey.modal.new()
@@ -147,7 +146,10 @@ mouseModal:bind({}, 'space', scrollLine(0, -6), nil, scrollLine(0, -6)) -- scrol
 mouseModal:bind({}, 'i', toggleMouseModal)
 hs.hotkey.bind({'alt', 'cmd'}, '\\', toggleMouseModal )
 
+}}} --]]
 
+-- utils {{{
+-- hs.hotkey.bind({'cmd'}, 'j', function () hs.eventtap.keyStroke({}, "down") end)
 
 -- lock screen and start screensaver
 -- hs.hotkey.bind({'alt', 'ctrl'}, 'L', function() hs.caffeinate.startScreensaver() end)
@@ -155,9 +157,6 @@ hs.hotkey.bind({'alt', 'cmd'}, '\\', toggleMouseModal )
 
 -- sleep system immediately
 hs.hotkey.bind({'alt', 'cmd'}, 'f15', function() hs.caffeinate.systemSleep() end)
-
--- TODO force quit app
--- hs
 
 function brightPlus()
   local current = hs.brightness.get()
@@ -189,6 +188,9 @@ end
 
 hs.hotkey.bind({'alt', 'cmd'}, '-', brightMinus)
 hs.hotkey.bind({'alt', 'cmd'}, '=', brightPlus)
+
+-- TODO force quit app
+-- hs
 
 --
 -- hs.hotkey.bind({'ctrl', 'cmd'}, '1', function ()
@@ -236,6 +238,7 @@ hs.hotkey.bind({'alt'}, 'tab', function()
   hs.hints.windowHints()
 end)
 
+
 ----------------------------------------------------------------------------------------------------
 -- Type Browser Link
 -- Change from https://github.com/ashfinal/awesome-hammerspoon
@@ -264,8 +267,25 @@ hs.hotkey.bind({'alt'}, 'z', function()
   hs.toggleConsole()
 end)
 
-
 --[[
+----------------------------------------------------------------------------------------------------
+-- check mac awake and sleep
+function sleepWatch(eventType)
+	if (eventType == hs.caffeinate.watcher.systemWillSleep) then
+		hs.alert.show("Going to sleep!")
+	elseif (eventType == hs.caffeinate.watcher.systemDidWake) then
+		hs.alert.show("Waking up!")
+	end
+end
+
+local sleepWatcher = hs.caffeinate.watcher.new(sleepWatch)
+sleepWatcher:start()
+----------------------------------------------------------------------------------------------------
+--]]
+
+-- }}}
+
+--[[ {{{
 ----------------------------------------------------------------------------------------------------
 -- resizeM modal environment
 if spoon.WinWin then
@@ -315,8 +335,9 @@ if spoon.WinWin then
     end
 end
 
---]]
+}}} --]]
 
+--[[ {{{
 ----------------------------------------------------------------------------------------------------
 -- https://gist.github.com/kizzx2/e542fa74b80b7563045a
 -- Inspired by Linux alt-drag or Better Touch Tools move/resize functionality
@@ -378,20 +399,11 @@ flags_event = hs.eventtap.new({ hs.eventtap.event.types.flagsChanged }, function
   return nil
 end)
 flags_event:start()
-----------------------------------------------------------------------------------------------------
--- check mac awake and sleep
-function sleepWatch(eventType)
-	if (eventType == hs.caffeinate.watcher.systemWillSleep) then
-		hs.alert.show("Going to sleep!")
-	elseif (eventType == hs.caffeinate.watcher.systemDidWake) then
-		hs.alert.show("Waking up!")
-	end
-end
 
-local sleepWatcher = hs.caffeinate.watcher.new(sleepWatch)
-sleepWatcher:start()
 ----------------------------------------------------------------------------------------------------
+}}} --]]
 
+--[[ {{{
 -- Circle mouse pointer on CMD+ALT+SHIFT+D
 -- https://gist.github.com/dropmeaword/ddf7b5b3a0e81ef1142f446f3f91075a
 -- invalid code
@@ -422,9 +434,9 @@ end
 hs.hotkey.bind({"cmd","alt","shift"}, "D", mouseHighlight)
 
 ----------------------------------------------------------------------------------------------------
+}}} --]]
 
 
--- TODO change sound vol
 -- TODO move app to another desktop
 -- from: https://github.com/Hammerspoon/hammerspoon/issues/235
 -- TODO move app to another screen display

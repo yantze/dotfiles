@@ -9,11 +9,11 @@
         "**/__pycache__": true,
         "**/.*.un~": true
     },
-    "editor.formatOnPaste": false,
+    "editor.formatOnPaste": true,
     "editor.formatOnType": false,
     "eslint.autoFixOnSave": true,
     "editor.tabSize": 4,
-    "editor.formatOnSave": false,
+    "editor.formatOnSave": true,
     "editor.insertSpaces": true,
     "files.eol": "\n",
     "files.trimTrailingWhitespace": true,
@@ -90,5 +90,14 @@
     "formattingToggle.activateFor": ["formatOnPaste", "formatOnSave"],
     "prettier.tslintIntegration": true,
     "prettier.tabWidth": 4,
-    "prettier.eslintIntegration": true
+    "prettier.eslintIntegration": true,
+    "gitlens.views.repositories.files.layout": "auto",
+    "gitlens.views.fileHistory.enabled": true,
+    "gitlens.views.lineHistory.enabled": true,
+    "prettier.singleQuote": true,
+    "cSpell.userWords": [
+        "fileutils",
+        "systeminformation",
+        "xmind"
+    ]
 }

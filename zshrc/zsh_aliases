@@ -10,8 +10,8 @@ alias pp='pushd'
 alias po='popd'
 alias hd='od -Ax -tx1z -v' # 方便的十六进制输出。 (用法举例: hd /proc/self/cmdline | less)
 alias realpath='readlink -f'  # 显示符号链接指向的真实路径((用法举例: realpath ~/../$USER)
-alias llf='ls -al -pt | egrep -v /$ | head -n 20'
-alias lld='ls -al -pt | egrep /$ | head -n 20'
+alias llf='ls -al -pt | egrep -v /$' # | head -n 20'
+alias lld='ls -al -pt | egrep /$' # | head -n 20'
 
 ### app ###
 alias j='z'

@@ -2,9 +2,9 @@
 
 # Notice: There have a problem tmux loadb will set twice
 
-if [[ $1 = "getremote" ]]; then # get from remote
+if [[ $1 = "get" ]]; then # get from remote
   pan clipboard > ~/.clipboard
-elif [[ $1 = "getlocal" ]]; then # get from naive os
+elif [[ $1 = "put" ]]; then # get from naive os
   [[ "$OSTYPE" = darwin* ]] && pbpaste > ~/.clipboard
 else
   cat - > ~/.clipboard
