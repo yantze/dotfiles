@@ -1,17 +1,5 @@
-#functions
-
-#fname 递归查找当前目录下指定文件
+# fname 递归查找当前目录下指定文件
 function fname() { find . -iname "*$@*"; }
-
-# 设置当前的环境变量 " test -s ~/.env && export ..."
-[ -s ~/.env ] && for v in `cat ~/.env`
-do
-    export $v
-done
-
-function myenv() {
-    [[ -n $argv ]] && sed -i -e "s/MYENV=$MYENV/MYENV=$argv/" ~/.env && export MYENV=$argv || echo $MYENV
-}
 
 function psgrep() {
     ps aux | grep -v grep | grep "$@" -i --color=auto
@@ -145,12 +133,6 @@ hash extract 2>/dev/null || extract () {
   fi
 }
 
-# copy by pipe first line without newline symboy
-function scopy() {
-    read line
-    echo -n $line | tr -d '\n' | clipcopy
-}
-
 # add url to safari reading list
 function toread() {
     osascript -e "tell application \"Safari\" to add reading list item \"$1\""
@@ -188,24 +170,3 @@ function scopy() {
     echo -n $line | tr -d '\n' | xcopy
 }
 
-# function xcopy() {
-#     if [[ "$OSTYPE" = darwin* ]]; then
-#         pbcopy
-#         [[ -n $CLOUD_COPY ]] && pbpaste | pan clipboard
-#     else
-#         cat - > ~/.clipboard
-#         [[ -n $CLOUD_COPY ]] && cat ~/.clipboard | pan clipboard
-#     fi
-# }
-
-# function xpaste() {
-#    if [[ "$OSTYPE" = darwin* ]]; then
-#        pbpaste
-#    else
-#        cat ~/.clipboard
-#    fi
-# }
-
-# function cpaste() {
-#     pan clipboard
-# }

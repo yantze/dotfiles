@@ -10,12 +10,6 @@
 # export CLASSPATH
 # PATH="$JAVA_HOME/bin:$PATH"
 
-### GO ###
-export GOPATH=$HOME/.local/go
-# export GOROOT=$HOME/.local/go
-# PATH="$GOROOT/bin:$GOPATH/bin::$PATH"
-PATH="$GOPATH/bin:$PATH"
-
 ### Python ###
 # PYTHON3_HOME="/usr/local/python/3.4"
 # PYTHON2_HOME="/usr/local/python/2.7"
@@ -25,21 +19,20 @@ PATH="$GOPATH/bin:$PATH"
 # PATH="$PYENV_BIN:$PATH"
 
 ### Scala ###
-SCALA_HOME="/usr/local/scala"
-PATH="$SCALA_HOME/bin:$PATH"
+# SCALA_HOME="/usr/local/scala"
+# PATH="$SCALA_HOME/bin:$PATH"
 
-
-### 配置c编译
+### 配置 C 编译
 # export CPATH="/usr/bin/gcc"
 # export LIBRARY_PATH="/usr/lib:/usr/lib64:/usr/local/lib:/usr/local/lib64"
 # export C_INCLUDE_PATH="/usr/include:/usr/local/include"
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
 
-###C###
-go_libs="-lm"
-go_flags="-g -Wall -include allheads.h -O3"
-alias go_c="c99 -xc '-' $go_libs $go_flags"
-
-### END ###
+### C ###
+# go_libs="-lm"
+# go_flags="-g -Wall -include allheads.h -O3"
+# alias go_c="c99 -xc '-' $go_libs $go_flags"
 
 # Cling for centos7
 # CLING_HOME="/usr/local/cling"
@@ -48,11 +41,6 @@ alias go_c="c99 -xc '-' $go_libs $go_flags"
 # 这里主要是屏蔽tmux对path再次赋值，导致type command时出现两个一样的路径
 # [[ -z $TMUX ]] && export PATH
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-PATH="$HOME/.dotfiles/bin:$HOME/.local/bin:$HOME/.bin:$HOME/.composer/vendor/bin:$PATH"
-
 ### path PATH ###
 # path=(
 #   /usr/local/{bin,sbin}
@@ -60,6 +48,11 @@ PATH="$HOME/.dotfiles/bin:$HOME/.local/bin:$HOME/.bin:$HOME/.composer/vendor/bin
 #   $path
 # )
 
-### 设置grep的高亮颜色为土黄色
-export GREP_COLORS="01;36"
+### GO ###
+export GOPATH=$HOME/.local/go
+# export GOROOT=$HOME/.local/go
+# PATH="$GOROOT/bin:$GOPATH/bin::$PATH"
+PATH="$GOPATH/bin:$PATH"
 
+
+PATH="$HOME/.dotfiles/bin:$HOME/.local/bin:$HOME/.bin:$HOME/.composer/vendor/bin:$PATH"
