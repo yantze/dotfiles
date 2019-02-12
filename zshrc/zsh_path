@@ -41,12 +41,16 @@
 # 这里主要是屏蔽tmux对path再次赋值，导致type command时出现两个一样的路径
 # [[ -z $TMUX ]] && export PATH
 
+### PHP ###
+# $HOME/.composer/vendor/bin
+
 ### path PATH ###
 # path=(
 #   /usr/local/{bin,sbin}
 #   /usr/local/heroku/bin
 #   $path
 # )
+
 
 ### GO ###
 export GOPATH=$HOME/.local/go
@@ -55,4 +59,4 @@ export GOPATH=$HOME/.local/go
 PATH="$GOPATH/bin:$PATH"
 
 
-PATH="$HOME/.dotfiles/bin:$HOME/.local/bin:$HOME/.bin:$HOME/.composer/vendor/bin:$PATH"
+PATH="$HOME/.dotfiles/bin:$HOME/.local/bin:$HOME/.bin:$PATH"

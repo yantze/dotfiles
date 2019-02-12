@@ -170,3 +170,8 @@ function scopy() {
     echo -n $line | tr -d '\n' | xcopy
 }
 
+function notify() {
+    # https://apple.stackexchange.com/questions/57412/how-can-i-trigger-a-notification-center-notification-from-an-applescript-or-shel
+    # https://code-maven.com/display-notification-from-the-mac-command-line
+    osascript -e "display notification \"$2\" with title \"$1\" subtitle \"$3\""
+}
