@@ -118,5 +118,21 @@ function after_shell_exit() {
     exit
 }
 
+function proxy_sys_on() {
+    NETWORK="Wi-Fi"
+    networksetup -setwebproxy $NETWORK $HOST_PROXY $HTPT_PROXY
+    networksetup -setsecurewebproxy $NETWORK $HOST_PROXY $HSPT_PROXY
+    networksetup -setsocksfirewallproxy $NETWORK $HOST_PROXY $SSPT_PROXY
+}
+
+function proxy_sys_off() {
+    NETWORK="Wi-Fi"
+    networksetup -setsocksfirewallproxystate $NETWORK off
+    networksetup -setwebproxystate $NETWORK off
+    networksetup -setsecurewebproxystate $NETWORK off
+}
+
+
+
 # run after shell exit
 trap 'after_shell_exit &' 0
