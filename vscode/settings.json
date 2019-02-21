@@ -9,11 +9,11 @@
         "**/__pycache__": true,
         "**/.*.un~": true
     },
-    "editor.formatOnPaste": true,
+    "editor.formatOnPaste": false,
     "editor.formatOnType": false,
     "eslint.autoFixOnSave": true,
     "editor.tabSize": 4,
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": false,
     "editor.insertSpaces": true,
     "files.eol": "\n",
     "files.trimTrailingWhitespace": true,
