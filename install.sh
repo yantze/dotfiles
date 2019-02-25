@@ -51,3 +51,6 @@ ln -sf ~/.dotfiles/git/gitignore_global ~/.gitignore_global
 # mutt
 git clone https://github.com/altercation/mutt-colors-solarized ~/.local/mutt-colors-solarized
 ln -s ~/.dotfiles/mutt/muttrc ~/.muttrc
+
+# npm
+npm install -g eslint eslint-plugin-standard eslint-plugin-promise eslint-config-standard  # requirement by vim and vscode

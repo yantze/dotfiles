@@ -1,5 +1,5 @@
 # You appear to be setting environment variables ("PATH") in your .bashrc or .zshrc: those files are only read by interactive shells, so you should instead set environment variables in startup files like .profile, .bash_profile or .zshenv.
-#
+
 ### JAVA ###
 # export JAVA_HOME=/usr/java/jdk1.8.0_05
 # you can download from:
@@ -50,6 +50,19 @@
 #   /usr/local/heroku/bin
 #   $path
 # )
+
+
+### NVM ###
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
+
+
+### PYENV ###
+export PYTHON_CONFIGURE_OPTS="--enable-framework"
+export PYENV_ROOT="$HOME/.pyenv"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
 
 
 ### GO ###
