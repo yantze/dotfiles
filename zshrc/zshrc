@@ -1,18 +1,11 @@
-# If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
-
 # {{{ oh-my-zsh configuration
 export ZSH="${HOME}/.antigen/bundles/robbyrussell/oh-my-zsh"
-
 
 # HYPHEN_INSENSITIVE="true"
 # DISABLE_AUTO_UPDATE="true"
 # export UPDATE_ZSH_DAYS=13
 # DISABLE_LS_COLORS="true"
-DISABLE_AUTO_TITLE="true"
+# DISABLE_AUTO_TITLE="true"
 # ENABLE_CORRECTION="true"
 # COMPLETION_WAITING_DOTS="true"
 
@@ -34,10 +27,6 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(bundler osx git common-aliases dirhistory extract autojump zsh-navigation-tools) # web-search) # npm sudo nvm )
 # valid: rake ruby emoji fancy-ctrl-z 
-
-# nvm long time
-# stt (When using `sublime` plugin) Open current directory in Sublime Text 2/3
-# v   (When using `vi-mode` plugin) Edit current command line in Vim 
 
 test -e "$ZSH/oh-my-zsh.sh" && source "$ZSH/oh-my-zsh.sh"
 # }}} oh-my-zsh done.
@@ -62,6 +51,7 @@ export LC_TIME="en_US.UTF-8"
 # export LC_ALL=
 # locale -v
 
+
 if [[ -n $SSH_CONNECTION ]]; then
     # export TERM='screen-256color'
     echo "in ssl connection"
@@ -82,6 +72,17 @@ if [[ -n "$ZSH_VERSION" ]]; then
 
     # typeset -U PATH
 # elif [[ -n "$BASH_VERSION" ]]; then
+else
+
+    # For bash
+    # preserve ahead word
+    bind '"\e[A": history-search-backward'
+    bind '"\e[B": history-search-forward'
+
+    # https://superuser.com/questions/212446/binding-backward-kill-word-to-ctrlw
+    # stty werase undef
+    bind '"\C-w": backward-kill-word'
+
 fi
 
 if [[ -n $TMUX ]]; then
@@ -97,42 +98,9 @@ fi
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# For bash
-# preserve ahead word
-# bind '"\e[A": history-search-backward'
-# bind '"\e[B": history-search-forward'
-
-# https://superuser.com/questions/212446/binding-backward-kill-word-to-ctrlw
-# stty werase undef
-# bind '"\C-w": backward-kill-word'
-
 . ~/.dotfiles/zshrc/zsh_path
 . ~/.dotfiles/zshrc/zsh_func
 . ~/.dotfiles/zshrc/zsh_aliases
 [[ -s "$HOME/.zshrc_local" ]] && . ~/.zshrc_local
 
-function after_shell_exit() {
-    # save tmux layout
-    TMUX_SAVE="${HOME}/workspace/local/tmux-resurrect/scripts/save.sh"
-    [[ -z $TMUX ]] && [[ -s ${TMUX_SAVE} ]] && tmux run-shell ${TMUX_SAVE}
-    exit
-}
-
-function proxy_sys_on() {
-    NETWORK="Wi-Fi"
-    networksetup -setwebproxy $NETWORK $HOST_PROXY $HTPT_PROXY
-    networksetup -setsecurewebproxy $NETWORK $HOST_PROXY $HSPT_PROXY
-    networksetup -setsocksfirewallproxy $NETWORK $HOST_PROXY $SSPT_PROXY
-}
-
-function proxy_sys_off() {
-    NETWORK="Wi-Fi"
-    networksetup -setsocksfirewallproxystate $NETWORK off
-    networksetup -setwebproxystate $NETWORK off
-    networksetup -setsecurewebproxystate $NETWORK off
-}
-
-
-
-# run after shell exit
-trap 'after_shell_exit &' 0
+unset DOCKER_HOST

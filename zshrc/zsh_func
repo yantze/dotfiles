@@ -164,6 +164,22 @@ proxyoff () {
     echo "Proxy off"
 }
 
+function proxy_sys_on() {
+    NETWORK="Wi-Fi"
+    echo networksetup -setwebproxy $NETWORK $HOST_PROXY $HTPT_PROXY
+    echo networksetup -setsecurewebproxy $NETWORK $HOST_PROXY $HSPT_PROXY
+    echo networksetup -setsocksfirewallproxy $NETWORK $HOST_PROXY $SSPT_PROXY
+}
+
+function proxy_sys_off() {
+    NETWORK="Wi-Fi"
+    echo networksetup -setsocksfirewallproxystate $NETWORK off
+    echo networksetup -setwebproxystate $NETWORK off
+    echo networksetup -setsecurewebproxystate $NETWORK off
+}
+
+
+
 # copy by pipe first line without newline symboy
 function scopy() {
     read line
