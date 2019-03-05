@@ -98,7 +98,9 @@ fi
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-. ~/.dotfiles/zshrc/zsh_path
+# . ~/.dotfiles/zshrc/zsh_path
+PATH="$HOME/.dotfiles/bin:$HOME/.local/bin:$HOME/.bin:$PATH"
+
 . ~/.dotfiles/zshrc/zsh_func
 . ~/.dotfiles/zshrc/zsh_aliases
 [[ -s "$HOME/.zshrc_local" ]] && . ~/.zshrc_local
