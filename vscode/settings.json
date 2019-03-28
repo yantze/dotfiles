@@ -9,11 +9,11 @@
         "**/__pycache__": true,
         "**/.*.un~": true
     },
-    "editor.formatOnPaste": false,
+    "editor.formatOnPaste": true,
     "editor.formatOnType": false,
     "eslint.autoFixOnSave": true,
     "editor.tabSize": 4,
-    "editor.formatOnSave": false,
+    "editor.formatOnSave": true,
     "editor.insertSpaces": true,
     "files.eol": "\n",
     "files.trimTrailingWhitespace": true,
@@ -28,24 +28,58 @@
     "vim.insertModeKeyBindings": [],
     "vim.normalModeKeyBindingsNonRecursive": [
         {
-            "before": [";"],
-            "commands": ["vim.showQuickpickCmdLine"]
+            "before": [
+                ";"
+            ],
+            "commands": [
+                "vim.showQuickpickCmdLine"
+            ]
         },
         {
-            "before": ["j"],
-            "after": ["g", "j"]
+            "before": [
+                "j"
+            ],
+            "after": [
+                "g",
+                "j"
+            ]
         },
         {
-            "before": ["k"],
-            "after": ["g", "k"]
+            "before": [
+                "k"
+            ],
+            "after": [
+                "g",
+                "k"
+            ]
         },
         {
-            "before": ["<leader>", "q"],
-            "commands": ["workbench.action.closeActiveEditor"]
+            "before": [
+                "<space>"
+            ],
+            "after": [
+                "z",
+                "o"
+            ]
         },
         {
-            "before": ["<leader>", "t", "l"],
-            "commands": ["workbench.action.terminal.toggleTerminal"]
+            "before": [
+                "<leader>",
+                "q"
+            ],
+            "commands": [
+                "workbench.action.closeActiveEditor"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "t",
+                "l"
+            ],
+            "commands": [
+                "workbench.action.terminal.toggleTerminal"
+            ]
         }
     ],
     "gitlens.advanced.messages": {
@@ -87,7 +121,10 @@
     "tslint.autoFixOnSave": true,
     "prettier.semi": false,
     "prettier.trailingComma": "all",
-    "formattingToggle.activateFor": ["formatOnPaste", "formatOnSave"],
+    "formattingToggle.activateFor": [
+        "formatOnPaste",
+        "formatOnSave"
+    ],
     "prettier.tslintIntegration": true,
     "prettier.tabWidth": 4,
     "prettier.eslintIntegration": true,
@@ -96,8 +133,19 @@
     "gitlens.views.lineHistory.enabled": true,
     "prettier.singleQuote": true,
     "cSpell.userWords": [
+        "doc",
+        "docx",
         "fileutils",
+        "leetcode",
+        "nodebuffer",
+        "resaving",
+        "snowbrush",
+        "struct",
         "systeminformation",
+        "testcase",
+        "urllib",
+        "vuex",
         "xmind"
-    ]
+    ],
+    "leetcode.defaultLanguage": "javascript"
 }
