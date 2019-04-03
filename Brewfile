@@ -1,5 +1,6 @@
 brew 'coreutils' # brew info coreutils
-brwe 'bzip2' # 一些工具的基础
+brew 'bzip2' # 一些工具的基础
+brew 'bunzip2'
 brew 'gnu-sed'
 brew 'ctags'
 brew 'git'
@@ -11,7 +12,6 @@ brew 'reattach-to-user-namespace'
 brew 'youtube-dl'
 brew 'hub'
 brew 'fzf'
-brwe 'bunzip2'
 brew 'python3'
 brew 'jq'
 brew 'ripgrep'
