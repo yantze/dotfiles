@@ -1,35 +1,19 @@
-# {{{ oh-my-zsh configuration
+# oh-my-zsh configuration
 export ZSH="${HOME}/.antigen/bundles/robbyrussell/oh-my-zsh"
 
-# HYPHEN_INSENSITIVE="true"
-# DISABLE_AUTO_UPDATE="true"
-# export UPDATE_ZSH_DAYS=13
-# DISABLE_LS_COLORS="true"
-# DISABLE_AUTO_TITLE="true"
-# ENABLE_CORRECTION="true"
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
+ENABLE_CORRECTION="true"
+COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Look in ~/.oh-my-zsh/themes/
 ZSH_THEME="robbyrussell"
 
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Add wisely, as too many plugins slow down shell startup.
 plugins=(bundler osx git common-aliases dirhistory extract autojump zsh-navigation-tools) # web-search) # npm sudo nvm )
 # valid: rake ruby emoji fancy-ctrl-z 
 
 test -e "$ZSH/oh-my-zsh.sh" && source "$ZSH/oh-my-zsh.sh"
-# }}} oh-my-zsh done.
+# oh-my-zsh done.
 
 # history max num
 export HISTSIZE=100000
@@ -63,8 +47,8 @@ if [[ -n "$ZSH_VERSION" ]]; then
     export AUTOENV_FILE_ENTER=".env"
     if [[ -s "$HOME/.local/antigen/antigen.zsh" ]]; then
         source $HOME/.local/antigen/antigen.zsh
-        antigen bundle Tarrasch/zsh-autoenv
-        antigen bundle zsh-users/zsh-syntax-highlighting
+        # antigen bundle Tarrasch/zsh-autoenv
+        # antigen bundle zsh-users/zsh-syntax-highlighting
         antigen bundle robbyrussell/oh-my-zsh plugins/z
         antigen bundle zsh-users/zsh-autosuggestions
         antigen apply
@@ -98,11 +82,11 @@ fi
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# . ~/.dotfiles/zshrc/zsh_path
-PATH="$HOME/.dotfiles/bin:$HOME/.local/bin:$HOME/.bin:$PATH"
+PATH="$HOME/.pyenv/shims:$HOME/.dotfiles/bin:$HOME/.local/bin:$HOME/.bin:$PATH"
+
+unset DOCKER_HOST
 
 . ~/.dotfiles/zshrc/zsh_func
 . ~/.dotfiles/zshrc/zsh_aliases
 [[ -s "$HOME/.zshrc_local" ]] && . ~/.zshrc_local
 
-unset DOCKER_HOST
