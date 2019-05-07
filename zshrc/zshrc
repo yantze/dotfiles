@@ -1,7 +1,7 @@
 # oh-my-zsh configuration
 export ZSH="${HOME}/.antigen/bundles/robbyrussell/oh-my-zsh"
 
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
