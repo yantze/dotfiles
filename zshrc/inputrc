@@ -1,4 +1,11 @@
 set completion-ignore-case on
 
-# configure ctrl-w (delete word)
-bind '"\C-w":backward-kill-word'
+# configure ctrl-w (delete word), disable `stty werase undef`
+# https://superuser.com/questions/212446/binding-backward-kill-word-to-ctrlw
+set bind-tty-special-chars off
+"\C-u": kill-whole-line
+"\C-w": backward-kill-word
+
+# preserve ahead word
+"\e[A": history-search-backward
+"\e[B": history-search-forward
