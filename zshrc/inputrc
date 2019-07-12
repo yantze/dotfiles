@@ -1,0 +1,4 @@
+set completion-ignore-case on
+
+# configure ctrl-w (delete word)
+bind '"\C-w":backward-kill-word'

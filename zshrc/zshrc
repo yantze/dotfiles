@@ -90,4 +90,4 @@ unset DOCKER_HOST
 . ~/.dotfiles/zshrc/zsh_aliases
 [[ -s "$HOME/.zshrc_local" ]] && . ~/.zshrc_local
 
-proxyon
+# proxyon
