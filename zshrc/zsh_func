@@ -10,7 +10,7 @@ function psgrep() {
 if [[ `uname` = "Darwin" ]];  then # mac
     export GENERAL_EXECUTE_PATH='/bin'
     function cdlist() {
-        [[ "" = "${argv[-1]}" ]] && builtin cd ~ || builtin cd "${argv[-1]}" && ls "${(@)argv[1,-2]}"
+        [[ "" = "${argv[-1]}" ]] && builtin cd ~ || builtin cd "${argv[-1]}" && command ls "${(@)argv[1,-2]}"
     }
 elif [[ `uname` = "Linux" ]]; then # linux
     export GENERAL_EXECUTE_PATH='/usr/bin'
