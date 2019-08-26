@@ -23,7 +23,10 @@
     bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs git branch -d; }; f"
     bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
 	branches = branch -a
+    # 最近切换的分支记录
     br = "for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
+    # 向上游新建远程分支
+    pus = !git push --set-upstream origin $(git symbolic-ref --short HEAD)
 
 [filter "lfs"]
 	process = git-lfs filter-process
@@ -34,6 +37,8 @@
 	tool = vscode
 [difftool "vscode"]
 	cmd = code --wait --diff \"$LOCAL\" \"$REMOTE\"
+[mergetool "vscode"]
+	cmd = code --wait \"$MERGED\"
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
