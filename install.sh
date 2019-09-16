@@ -16,8 +16,11 @@ brew bundle
 # zsh
 git clone https://github.com/zsh-users/antigen ~/.local/antigen
 echo '. ~/.dotfiles/zshrc/zshrc' >> ~/.zshrc
-# echo '. ~/.dotfiles/zshrc/zshrc' >> ~/.bashrc
 chsh -s /bin/zsh
+
+# bash
+echo '. ~/.dotfiles/zshrc/zshrc' >> ~/.bashrc
+ln -s ~/.dotfiles/zshrc/inputrc ~/.inputrc
 
 # tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
