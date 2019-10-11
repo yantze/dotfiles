@@ -43,6 +43,9 @@ cask 'osxfuse' # fuse setting panel
 cask 'mpv'
 # mpv 内核，自动下载字幕
 cask 'iina'
+# 让麦克风的声音传到扬声器中，用来录制视频的时候录制系统播放的声音
+# https://www.zhihu.com/question/26032781
+cask 'soundflower'
 
 # Finder quicklook plugins
 # https://github.com/sindresorhus/quick-look-plugins
