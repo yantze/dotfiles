@@ -1,7 +1,7 @@
 -- Basic extension {{{
 -- require 'clipboard'
 -- require 'slowq'
--- require 'vim'
+require 'nextkey'
 -- local vimouse = require('vimouse')
 -- vimouse('cmd', 'm')
 
@@ -51,7 +51,7 @@ super = {"ctrl", "alt", "cmd"}
 hs.hotkey.bind(super, 'Left', baseMove(0, 0, 0.5, 1))
 hs.hotkey.bind(super, 'Right', baseMove(0.5, 0, 0.5, 1))
 hs.hotkey.bind(super, 'Down', baseMove(0, 0.5, 1, 0.5))
-hs.hotkey.bind(super, 'Up', baseMove(0, 0, 1, 0.5))
+hs.hotkey.bind(super, 'Up', baseMove(0, 0, 1, 0.8))
 
 hs.hotkey.bind(super, 'M', hs.grid.maximizeWindow)
 hs.hotkey.bind(super, 'C', baseMove(0.25, 0.25, 0.5, 0.5))
@@ -63,7 +63,8 @@ hs.hotkey.bind({'alt', 'shift', 'cmd'}, 'Right', baseMove(1/3, 0, 2/3, 1))
 
 -- }}}
 
---[[ {{{ Reload config
+--{{{ Reload config
+--[[
 
 function reloadConfig(files) -- `files` available in pathwatcher
   hs.reload()
@@ -75,7 +76,7 @@ hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()
 
 }}} --]]
 
--- Quick jump to important applications {{{
+-- Quick jump to applications {{{
 hs.hotkey.bind({'alt'}, '1', function () hs.application.launchOrFocusByBundleID("com.google.Chrome") end)
 -- hs.hotkey.bind({'alt'}, '1', function () hs.osascript.applescript([[
 --     tell application "Google Chrome"
@@ -91,6 +92,7 @@ hs.hotkey.bind({'alt'}, '2', function () hs.application.launchOrFocus("iTerm") e
 -- more way: https://superuser.com/questions/346369/getting-the-bundle-identifier-of-an-os-x-application-in-a-shell-script
 -- hs.hotkey.bind({'alt'}, '3', function () hs.application.launchOrFocusByBundleID("com.google.Chrome.app.Default-koegeopamaoljbmhnfjbclbocehhgmkm") end)
 hs.hotkey.bind({'alt'}, '3', function () hs.application.launchOrFocusByBundleID("com.google.Chrome.app.Profile-1-koegeopamaoljbmhnfjbclbocehhgmkm") end)
+hs.hotkey.bind({'alt'}, '7', function () hs.application.launchOrFocusByBundleID("com.workflowy.desktop") end)
 hs.hotkey.bind({'alt'}, '4', function ()
   hs.application.launchOrFocusByBundleID("com.culturedcode.ThingsMac")
   -- Show all window when Things is actived
@@ -105,6 +107,7 @@ end)
 hs.hotkey.bind({'ctrl', 'shift'}, 'escape', function () hs.application.launchOrFocus("Activity Monitor") end)
 hs.hotkey.bind({'alt'}, 'e', function () hs.application.launchOrFocus("Finder") end)
 hs.hotkey.bind({'alt'}, 'w', function () hs.application.launchOrFocus("Visual Studio Code") end)
+-- hs.hotkey.bind({'alt'}, 'w', function () hs.application.launchOrFocus("Visual Studio Code - Insiders") end)
 hs.hotkey.bind({'alt'}, 'q', function () hs.application.launchOrFocus("Telegram") end)
 hs.hotkey.bind({'cmd', 'shift'}, '0', function () hs.application.launchOrFocus("DevDocs") end)
 -- hs.hotkey.bind({'alt'}, 'v', function () hs.application.launchOrFocusByBundleID("org.vim.MacVim") end)
@@ -244,12 +247,13 @@ end)
 -- Change from https://github.com/ashfinal/awesome-hammerspoon
 
 hs.hotkey.bind({'alt'}, 'i', function()
-  local safari_running = hs.application.applicationsForBundleID("com.apple.Safari")
+  -- local safari_running = hs.application.applicationsForBundleID("com.apple.Safari")
   local chrome_running = hs.application.applicationsForBundleID("com.google.Chrome")
   local stat, data
-  if #safari_running > 0 then
-    stat, data = hs.applescript('tell application "Safari" to get {URL, name} of current tab of window 1')
-  elseif #chrome_running > 0 then
+  -- if #safari_running > 0 then
+  --   stat, data = hs.applescript('tell application "Safari" to get {URL, name} of current tab of window 1')
+  -- elseif #chrome_running > 0 then
+  if #chrome_running > 0 then
     stat, data = hs.applescript('tell application "Google Chrome" to get {URL, title} of active tab of window 1')
   end
 
@@ -445,8 +449,7 @@ hs.hotkey.bind({"cmd","alt","shift"}, "D", mouseHighlight)
 ----------------------------------------------------------------------------------------------------
 }}} --]]
 
-
---[[ Study hammerspoon
+--[[ {{{ Study hammerspoon
 -- timer
 hs.timer.doAfter(3, function()
   print('print after 3s.')
@@ -474,5 +477,6 @@ end):start()
 -- TODO move app to another desktop
 -- from: https://github.com/Hammerspoon/hammerspoon/issues/235
 -- TODO move app to another screen display
+-- }}}
 
 -- vim: set ts=4 sw=4 tw=0 et fdm=marker foldmarker={{{,}}} foldlevel=0 foldenable foldlevelstart=99 :
