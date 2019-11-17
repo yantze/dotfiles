@@ -28,5 +28,10 @@
             "}"
         ],
         "description": "Input development env"
+    },
+    "Insert a debugger": {
+        "prefix": "de",
+        "body": "if (true) debugger",
+        "description": "insert a not auto delete debugger"
     }
 }
