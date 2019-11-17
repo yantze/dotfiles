@@ -1,7 +1,0 @@
-#!env bash
-if [ -z $* ]
-then
-    php -S 127.0.0.1:3000
-else
-    php -S 127.0.0.1:$*
-fi
