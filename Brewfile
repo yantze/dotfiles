@@ -11,18 +11,22 @@ brew 'tmux'
 brew 'reattach-to-user-namespace'
 brew 'youtube-dl'
 brew 'hub'
-brew 'fzf'
 brew 'python3'
 brew 'jq'
-brew 'ripgrep'
-# brew 'ack'
-# brew 'the_silver_searcher'
 # brew 'neovim'
 brew 'yarn', args: ['ignore-dependencies']
 brew 'node'
 brew 'vim'
 brew 'rclone'
 brew 'pyenv'
+brew 'watch' # mac no watch command
+
+# Search
+brew 'fzf'
+brew 'fd' # instead of find
+# brew 'the_silver_searcher'
+brew 'ripgrep' # rg
+# brew 'ack'
 
 # less
 # brew 'fontconfig'

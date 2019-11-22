@@ -3,7 +3,7 @@
 	email = yantze@126.com
 
 [core]
-	excludesfile = /Users/yantze/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	autocrlf = false
 	editor = code --wait
 
@@ -46,7 +46,7 @@
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [commit]
-	template = /Users/yantze/.stCommitMsg
+	template = ~/.stCommitMsg
 
 # 对于某些 repo ，可在库中设置
 # git config core.autocrlf
