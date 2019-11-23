@@ -5,16 +5,6 @@ export ZSH="${HOME}/.antigen/bundles/robbyrussell/oh-my-zsh"
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Look in ~/.oh-my-zsh/themes/
-ZSH_THEME="robbyrussell"
-
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(bundler osx git common-aliases dirhistory extract autojump zsh-navigation-tools) # web-search) # npm sudo nvm )
-# valid: rake ruby emoji fancy-ctrl-z 
-
-test -e "$ZSH/oh-my-zsh.sh" && source "$ZSH/oh-my-zsh.sh"
-# oh-my-zsh done.
-
 # history max num
 export HISTSIZE=100000
 # history max save
@@ -35,13 +25,21 @@ export LC_TIME="en_US.UTF-8"
 # export LC_ALL=
 # locale -v
 
-
 if [[ -n $SSH_CONNECTION ]]; then
     # export TERM='screen-256color'
     echo "in ssl connection"
 fi
 
 if [[ -n "$ZSH_VERSION" ]]; then
+    # Look in ~/.oh-my-zsh/themes/
+    ZSH_THEME="robbyrussell"
+
+    # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+    plugins=(bundler osx git common-aliases dirhistory extract zsh-navigation-tools)
+    # valid: rake ruby emoji fancy-ctrl-z web-search npm sudo nvm autojump zsh-navigation-tools
+
+    test -e "$ZSH/oh-my-zsh.sh" && source "$ZSH/oh-my-zsh.sh"
+
     # zsh plugin manager
     # git clone https://github.com/zsh-users/antigen.git
     export AUTOENV_FILE_ENTER=".env"
@@ -70,10 +68,11 @@ fi
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-PATH="$HOME/.pyenv/shims:$HOME/.dotfiles/bin:$HOME/.local/bin:$HOME/.bin:$PATH"
-
-unset DOCKER_HOST
+PATH="$HOME/.dotfiles/bin:$HOME/.local/bin:$HOME/.bin:$PATH"
 
 . ~/.dotfiles/zshrc/zsh_func
 . ~/.dotfiles/zshrc/zsh_aliases
 [[ -s "$HOME/.zshrc_local" ]] && . ~/.zshrc_local
+[[ -s ~/.fzf.zsh ]] && . ~/.fzf.zsh
+
+
