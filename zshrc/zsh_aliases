@@ -36,6 +36,7 @@ alias mw='m web'  # search web
 alias mf='m file'  # search file and open it
 alias mm='m man'  # search cheat manual
 alias ms='m vim' # search keyword by vim ack
+alias mff='vim +FZF ~/wiki'
 
 # view config file whitout empty line(s),spaces(s) ,tab(s) ,'#' or ;
 # there have another:egrep -v '^#|^$' /etc/ntp.conf
@@ -54,7 +55,7 @@ alias save='pbpaste | cat >'
 
 
 #if mac
-if [[ `uname` = "Darwin" ]]; then
+if [[ `uname -s` = "Darwin" ]]; then
     alias play='afplay'
 
     export DOCKER_HOST=tcp://localhost:4243
