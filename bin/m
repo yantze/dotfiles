@@ -6,7 +6,7 @@
 
 DIR=$(dirname ~)
 HOME=$DIR/$USER
-WIKIHOME="$HOME/wiki"\ $LOCAL_WIKI_LIST # find with multiple directory
+WIKIHOME="$HOME/wiki"
 WIKIWEB="https://github.com/yantze/wiki"
 
 case $1 in
@@ -46,7 +46,7 @@ case $1 in
   else
     keyword="*${2}*"
   fi
-  filepath=$(find $WIKIHOME -type f -iname "$keyword" | grep -v "un~" | grep -v "\.git/" | head -n 1)
+  filepath=$(find "$WIKIHOME" -type f \( -iname "$keyword" -not -iname "*.js" \) -not -path "$WIKIHOME/node_modules/*" | grep -v "un~" | grep -v "\.git/" | head -n 1)
   if [[ -n $filepath ]]; then
     vim $filepath
   fi
