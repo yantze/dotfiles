@@ -46,7 +46,7 @@ function dl()
 function pwdc() {
     pathfile="`pwd`/$1"
     echo -n $pathfile | scopy
-    echo -n $pathfile | xcopy
+    # echo -n $pathfile | xcopy
     echo $pathfile
 }
 
@@ -147,6 +147,15 @@ function agk() {
     [[ -n $1 ]] && vim +Ack\ $1\ $(pwd)
 }
 
+# start a web server by php
+function phphttp() {
+    if [ -z $* ]; then
+        php -S 127.0.0.1:3000
+    else
+        php -S 127.0.0.1:$*
+    fi
+}
+
 proxyon () {
     # HOST_PROXY=127.0.0.1
     # HTPT_PROXY=6152 # HTTP PORT
@@ -154,7 +163,7 @@ proxyon () {
     # SSPT_PROXY=6153 # SOCKS PORT
     export http_proxy=http://$HOST_PROXY:$HTPT_PROXY
     export https_proxy=http://$HOST_PROXY:$HTPT_PROXY
-    export all_proxy=socks5://$HOST_PROXY:$HSPT_PROXY
+    export all_proxy=
     export no_proxy="127.0.0.1, localhost, *.domain.com, 192.168.1.10, domain.com:8080"
     echo "Proxy on"
 }
@@ -196,9 +205,40 @@ function notify() {
 
 # 类似 rg 的命令，不找二进制文件
 function rg() {
-    # 这里可以使用正则，类似 egrep 预发，也可以查找多个字符串 httpd\|vsftpd
+    # 这里可以使用正则，类似 egrep 语法，也可以查找多个字符串，例如 httpd\|vsftpd
     search_string="$1"
     # 如果没有第二个参数，就在当前文件夹查找
     search_path=`[[ $2 == "" ]] && echo "." || echo "$2"`
-    grep -RI --byte-offset --exclude-dir={dist,node_modules,.bzr,CVS,.git,.hg,.svn} -E $search_string $search_path
+    grep -RIi --byte-offset --exclude-dir={dist,.bzr,CVS,.git,.hg,.svn} -E $search_string $search_path $3 $4
+    # -R 递归查找，相比 -r 可以查找软链
+    # -I 忽略二进制文件
+    # -i 忽略大小写
+    # -b, --byte-offset 显示文件中的字符偏移量
+    # -E 支持扩展正则, (supporting `?`, `+`, `{}`, `()` and `|`)
+}
+
+function miniprompt() {
+  PS1="$ "
+}
+
+# https://github.com/junegunn/dotfiles/blob/master/bashrc
+# 有一个 preserved 也是 repeat，可以执行 repeat 3 ls, 但很弱
+function repeatCount() {
+  local _
+  for _ in $(seq $1); do
+    eval "$2"
+  done
+}
+# v - open files in ~/.viminfo
+function viminfo() {
+  local files
+  files=$(grep '^>' ~/.viminfo | cut -c3- |
+          while read line; do
+            [ -f "${line/\~/$HOME}" ] && echo "$line"
+          done | fzf -d -m -q "$*" -1) && vim ${files//\~/$HOME}
+}
+# https://stackoverflow.com/a/18787544/755334
+function rpmx() {
+  # brew install rpm2cpio
+  rpm2cpio.pl "$1" | cpio -idmv
 }

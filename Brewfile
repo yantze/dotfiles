@@ -99,3 +99,7 @@ cask 'docker'
 
 # 暂时不能用 app store 软件的
 # casilla # hide all application
+
+# android
+# cask android-sdk
+# cask android-platform-tools

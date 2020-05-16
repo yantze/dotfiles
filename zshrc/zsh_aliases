@@ -99,7 +99,7 @@ fi
 
 # Vim
 # 让vim不带插件的运行,速度非常快
-alias v='vim --cmd "let g:no_plugin=1"'
+alias v='vim --cmd "let g:no_vimrc_bundles=1"'
 alias vi='vim'
 
 # Emacs
