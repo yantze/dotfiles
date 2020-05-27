@@ -7,16 +7,16 @@ set -eu
 # 两个参数，第一参数本地路径，第二参数远程相对路径
 
 WEBDAV="http://xxx.com"
-DAVPATH="/bird"
+DAVPATH="bird"
 DAVUSER="username"
 DAVPASS="password"
 
 # Manual update self by push and pull
 if [[ $1 = "push" ]]; then
-  curl -X PUT -u "$DAVUSER:$DAVPASS" "$WEBDAV/pan" --data-binary @/usr/local/bin/pan
+  curl -X PUT -u "$DAVUSER:$DAVPASS" "$WEBDAV/$DAVPATH" --data-binary @/usr/local/bin/pan
   exit 0
 elif [[ $1 = "pull" ]]; then
-  sudo curl -su "$DAVUSER:$DAVPASS" "$WEBDAV/pan" -o /usr/local/bin/pan
+  sudo curl -su "$DAVUSER:$DAVPASS" "$WEBDAV/$DAVPATH" -o /usr/local/bin/pan
   exit 0
 fi
 

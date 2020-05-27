@@ -2,19 +2,18 @@
 {
     "workbench.colorTheme": "Solarized Light",
     "workbench.editor.enablePreviewFromQuickOpen": true,
-    "workbench.activityBar.visible": false,
+    "workbench.activityBar.visible": true,
     "window.zoomLevel": 0,
     "files.exclude": {
         "**/*.pyc": true,
         "**/__pycache__": true,
-        "**/.*.un~": true
+        "**/.*.un~": true,
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
     },
-    "editor.formatOnPaste": true,
-    "editor.formatOnType": false,
-    "eslint.autoFixOnSave": true,
-    "tslint.autoFixOnSave": true,
     "editor.tabSize": 4,
-    "editor.formatOnSave": true,
     "editor.insertSpaces": true,
     "files.eol": "\n",
     "files.trimTrailingWhitespace": true,
@@ -22,35 +21,66 @@
     "vim.disableExtension": false,
     "vim.hlsearch": true,
     "vim.useSystemClipboard": true,
-    // "vim.foldfix": true,
-    // "vim.showcmd": false,
-    // 调到上一个停顿点快捷键： ''
-    "vim.smartcase": false,
+    "vim.easymotion": true,
+    "vim.foldfix": true,
+    // "vim.sneak": true,
+    // "vim.sneakReplacesF": true,
+    // "vim.sneakUseIgnorecaseAndSmartcase": true
     "vim.insertModeKeyBindings": [],
     "vim.normalModeKeyBindingsNonRecursive": [
         {
-            "before": [";"],
-            "commands": ["vim.showQuickpickCmdLine"]
+            "before": [
+                ";"
+            ],
+            "commands": [
+                "vim.showQuickpickCmdLine"
+            ]
         },
         {
-            "before": ["j"],
-            "after": ["g", "j"]
+            "before": [
+                "j"
+            ],
+            "after": [
+                "g",
+                "j"
+            ]
         },
         {
-            "before": ["k"],
-            "after": ["g", "k"]
+            "before": [
+                "k"
+            ],
+            "after": [
+                "g",
+                "k"
+            ]
         },
         {
-            "before": ["<space>"],
-            "after": ["z", "o"]
+            "before": [
+                "<space>"
+            ],
+            "after": [
+                "z",
+                "o"
+            ]
         },
         {
-            "before": ["<leader>", "q"],
-            "commands": ["workbench.action.closeActiveEditor"]
+            "before": [
+                "<leader>",
+                "q"
+            ],
+            "commands": [
+                "workbench.action.closeActiveEditor"
+            ]
         },
         {
-            "before": ["<leader>", "t", "l"],
-            "commands": ["workbench.action.terminal.toggleTerminal"]
+            "before": [
+                "<leader>",
+                "t",
+                "l"
+            ],
+            "commands": [
+                "workbench.action.terminal.toggleTerminal"
+            ]
         }
     ],
     "gitlens.advanced.messages": {
@@ -67,7 +97,6 @@
     },
     "gitlens.historyExplorer.enabled": true,
     "gitlens.gitExplorer.files.layout": "auto",
-    "gitlens.statusBar.enabled": false,
     "editor.lineNumbers": "relative",
     // 编辑窗口右边缩略图
     "editor.minimap.enabled": false,
@@ -81,27 +110,41 @@
     // "python.autoComplete.addBrackets": true,
     "editor.tabCompletion": "on",
     "editor.renderWhitespace": "none",
-    "javascript.updateImportsOnFileMove.enabled": "always",
-    // "vetur.format.defaultFormatter.js": "vscode-typescript",
-    // "vetur.format.defaultFormatter.html": "js-beautify-html",
-    // "vetur.format.defaultFormatterOptions": {
-    //   "js-beautify-html": {
-    //     "wrap_attributes": "force-aligned"
-    //   }
-    // },
+    "javascript.updateImportsOnFileMove.enabled": "always", //让vue中的js按编辑器自带的ts格式进行格式化
+    "vetur.format.defaultFormatterOptions": {
+        "js-beautify-html": {
+            "wrap_attributes": "force-aligned" //属性强制折行对齐
+        }
+    },
     "prettier.semi": false,
     "prettier.trailingComma": "all",
-    "prettier.tslintIntegration": true,
     "prettier.tabWidth": 4,
-    "prettier.eslintIntegration": true,
     "prettier.singleQuote": true,
-    "formattingToggle.activateFor": ["formatOnPaste", "formatOnSave"],
+    // "eslint.autoFixOnSave": true,
+    // "tslint.autoFixOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": false,
+    "formattingToggle.affects": [
+        // "formatOnPaste",
+        "formatOnSave",
+        // "formatOnType"
+    ],
+    "vetur.format.defaultFormatter.js": "vscode-typescript",
+    "vetur.format.defaultFormatter.html": "prettier",
+    // "editor.codeActionsOnSave": {
+    //     "source.fixAll.eslint": true
+    // },
     "gitlens.views.repositories.files.layout": "auto",
     "gitlens.views.fileHistory.enabled": true,
     "gitlens.views.lineHistory.enabled": true,
     "cSpell.userWords": [
+        "LSTM",
+        "NAPI",
         "Powerline",
+        "caixin",
         "callout",
+        "datetime",
         "devtools",
         "doc",
         "docx",
@@ -119,9 +162,12 @@
         "foldmarker",
         "fullscreenable",
         "gitlens",
+        "googleplay",
         "hljs",
         "hlsearch",
         "interop",
+        "itunes",
+        "keras",
         "leetcode",
         "menlo",
         "mixins",
@@ -130,11 +176,14 @@
         "monospace",
         "multiline",
         "nodebuffer",
+        "numpy",
         "nums",
         "outliner",
         "parens",
+        "plotly",
         "promisify",
         "pycache",
+        "pymysql",
         "querystring",
         "quickpick",
         "quotemark",
@@ -145,6 +194,8 @@
         "singleline",
         "smartcase",
         "snowbrush",
+        "spotify",
+        "strftime",
         "strs",
         "struct",
         "systeminformation",
@@ -153,25 +204,59 @@
         "touchpad",
         "trackpad",
         "urllib",
+        "vastiny",
         "vetur",
         "vim",
         "vuex",
+        "webdav",
         "xmind",
         "yantze"
     ],
     "leetcode.defaultLanguage": "javascript",
+    "editor.defaultFormatter": null,
     "[json]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        // "editor.defaultFormatter": "esbenp.prettier-vscode"
+        // "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[xml]": {
+        "editor.defaultFormatter": "redhat.vscode-xml"
+    },
+    "[python]": {},
     "git.ignoreMissingGitWarning": true,
     "breadcrumbs.enabled": true,
     "workbench.editor.showTabs": true,
     "git.ignoreLegacyWarning": true,
-    "[javascript]": {
-        "editor.defaultFormatter": "vscode.typescript-language-features"
-    },
     "leetcode.hint.configWebviewMarkdown": false,
     "leetcode.hint.commandShortcut": false,
     "leetcode.workspaceFolder": "/Users/yantze/work/practice/js/demo",
-    "leetcode.hint.commentDescription": false
+    "leetcode.hint.commentDescription": false,
+    "python.linting.pylintArgs": [
+        "--extension-pkg-whitelist=cv2"
+    ],
+    "java.errors.incompleteClasspath.severity": "ignore",
+    "C_Cpp.updateChannel": "Insiders",
+    "gitlens.statusBar.enabled": false,
+    "gitlens.views.repositories.location": "gitlens",
+    "gitlens.views.fileHistory.location": "gitlens",
+    "gitlens.views.lineHistory.location": "gitlens",
+    "gitlens.views.compare.location": "gitlens",
+    "gitlens.views.search.location": "gitlens",
+    "editor.renderControlCharacters": true,
+    "task.problemMatchers.neverPrompt": {
+        "npm": true
+    },
+    "python.jediEnabled": false,
+    "javascript.format.insertSpaceBeforeFunctionParenthesis": true, //让函数(名)和后面的括号之间加个空格
+    "diffEditor.renderSideBySide": false,
+    "aws.profile": "profile:default",
+    "aws.samcli.location": "/usr/local/bin/sam",
+    // "vetur.format.defaultFormatter.js": "vscode-typescript",
+    "vetur.format.defaultFormatter.ts": "vscode-typescript",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    // "vetur.format.defaultFormatter.less": "none",
+    // "vetur.format.defaultFormatter.html": "js-beautify-html",
 }

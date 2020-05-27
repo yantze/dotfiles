@@ -51,7 +51,7 @@ super = {"ctrl", "alt", "cmd"}
 hs.hotkey.bind(super, 'Left', baseMove(0, 0, 0.5, 1))
 hs.hotkey.bind(super, 'Right', baseMove(0.5, 0, 0.5, 1))
 hs.hotkey.bind(super, 'Down', baseMove(0, 0.5, 1, 0.5))
-hs.hotkey.bind(super, 'Up', baseMove(0, 0, 1, 0.8))
+hs.hotkey.bind(super, 'Up', baseMove(0, 0, 1, 0.84))
 
 hs.hotkey.bind(super, 'M', hs.grid.maximizeWindow)
 hs.hotkey.bind(super, 'C', baseMove(0.25, 0.25, 0.5, 0.5))
@@ -91,8 +91,8 @@ hs.hotkey.bind({'alt'}, '2', function () hs.application.launchOrFocus("iTerm") e
 -- or try this way: /usr/libexec/PlistBuddy -c 'Print CFBundleIdentifier' /Applications/Safari.app/Contents/Info.plist
 -- more way: https://superuser.com/questions/346369/getting-the-bundle-identifier-of-an-os-x-application-in-a-shell-script
 -- hs.hotkey.bind({'alt'}, '3', function () hs.application.launchOrFocusByBundleID("com.google.Chrome.app.Default-koegeopamaoljbmhnfjbclbocehhgmkm") end)
-hs.hotkey.bind({'alt'}, '3', function () hs.application.launchOrFocusByBundleID("com.google.Chrome.app.Profile-1-koegeopamaoljbmhnfjbclbocehhgmkm") end)
-hs.hotkey.bind({'alt'}, '7', function () hs.application.launchOrFocusByBundleID("com.workflowy.desktop") end)
+-- hs.hotkey.bind({'alt'}, '3', function () hs.application.launchOrFocusByBundleID("com.google.Chrome.app.Profile-1-koegeopamaoljbmhnfjbclbocehhgmkm") end)
+hs.hotkey.bind({'alt'}, '3', function () hs.application.launchOrFocusByBundleID("com.workflowy.desktop") end)
 hs.hotkey.bind({'alt'}, '4', function ()
   hs.application.launchOrFocusByBundleID("com.culturedcode.ThingsMac")
   -- Show all window when Things is actived

@@ -156,5 +156,22 @@
         "key": "ctrl+n",
         "command": "-extension.vim_ctrl+n",
         "when": "editorTextFocus && vim.active && vim.use<C-n> && !inDebugRepl || vim.active && vim.use<C-n> && !inDebugRepl && vim.mode == 'CommandlineInProgress' || vim.active && vim.use<C-n> && !inDebugRepl && vim.mode == 'SearchInProgressMode'"
+    },
+    {
+        "key": "shift+cmd+j",
+        "command": "workbench.action.toggleMaximizedPanel",
+        "when": "!searchViewletVisible"
+    },
+    {
+        "key": "cmd+j",
+        "command": "-workbench.action.togglePanel"
+    },
+    {
+        "key": "cmd+j",
+        "command": "workbench.action.terminal.toggleTerminal"
+    },
+    {
+        "key": "ctrl+`",
+        "command": "-workbench.action.terminal.toggleTerminal"
     }
 ]
