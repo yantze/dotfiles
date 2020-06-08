@@ -17,6 +17,10 @@ Check [Install Script](./install.sh)
 - composer - 指定 extension 来启动 composer,不用担心 debug 会影响速度.
 - rg - ripgrep, fast than ag and grep
 
+## 需要手动设置快捷键
+- 设置 Don't not Distrib 快捷键： `Ctrl+Option+Command+\`
+- 设置 Chrome 固定标签页 快捷键： `Ctron+Option+Command+p`
+
 ## Ref
 - [Making the clipboard work between iTerm2, tmux, vim and OS X.](https://evertpot.com/osx-tmux-vim-copy-paste-clipboard/)
 
