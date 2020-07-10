@@ -82,26 +82,37 @@ function put() {
     fi
 
     # empty trash
-    if [[ $TRASH == $(echo $1) ]]; then
-        echo "Delete $TRASH"
-        "$GENERAL_EXECUTE_PATH/rm" -rf "$TRASH"
-        return 0
-    fi
+    # if [[ $TRASH == $(echo $1) ]]; then
+    #     echo "Delete $TRASH"
+    #     "$GENERAL_EXECUTE_PATH/rm" -rf "$TRASH"
+    #     return 0
+    # fi
 
     # delete exist files
     for single in "$@"; do
-        RM_PATH=${PWD}/${single}
+        if [[ $single == "/*" ]]; then
+            RM_PATH=${single}
+        else
+            RM_PATH=${PWD}/${single}
+        fi
+
         # RM_DIR=$(dirname ${RM_PATH})
         RM_BASENAME=$(basename "$single")
 
-        if [[ -e "$TRASH/$RM_BASENAME" ]]; then
-            echo "Delete... $TRASH/$single"
-            "$GENERAL_EXECUTE_PATH/rm" -rf "$TRASH/$single"
+        # 删除已经存在的文件目录
+        # if [[ -e "$TRASH/$RM_BASENAME" ]]; then
+        #     echo "Delete... $TRASH/$single"
+        #     "$GENERAL_EXECUTE_PATH/rm" -rf "$TRASH/$single"
+        # fi
+
+        TRASH_TMP="$TRASH/$(date +'%m%d-%H%M%S')"
+        if [[ ! -d $TRASH_TMP ]]; then
+            mkdir $TRASH_TMP
         fi
 
-        mv "$RM_PATH" "$TRASH"
+        mv "$RM_PATH" "$TRASH_TMP"
         echo "Move  ... $RM_PATH"
-        echo "To    ... $TRASH"
+        echo "To    ... $TRASH_TMP"
         echo ""
     done
     # mv $* $TRASH
