@@ -16,7 +16,7 @@ else
 fi
 
 # 如果存在 pan 命令，就自动上传到 pan 中
-test pan && pan clipboard < ~/.clipboard &
+test -x "$(command -v pan)" && pan clipboard < ~/.clipboard &
 # 在 tmux 自己的 copy-pipe-and-cancel 命令中，不会去读取 ~/.zshenv 的变量
 [[ -n $TMUX ]] && tmux loadb - < ~/.clipboard
 

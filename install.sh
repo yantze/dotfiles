@@ -10,7 +10,6 @@ ln -s ~/.dotfiles/bin ~/.bin
 # brew
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew tap Homebrew/bundle
-brew tap caskroom/versions
 brew bundle
 
 # zsh
@@ -56,4 +55,8 @@ git clone https://github.com/altercation/mutt-colors-solarized ~/.local/mutt-col
 ln -s ~/.dotfiles/mutt/muttrc ~/.muttrc
 
 # npm
-npm install -g eslint eslint-plugin-standard eslint-plugin-promise eslint-config-standard  # requirement by vim and vscode
+# Set only one bin
+npm config set prefix ~/.npm-global
+echo 'export PATH="~/.npm-global/bin:$PATH"' >> ~/.zshrc
+# echo 'export PATH="~/.npm-global/bin:$PATH"' >> ~/.bashrc
+npm install -g fixjson  # requirement by vim

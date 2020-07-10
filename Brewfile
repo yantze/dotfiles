@@ -39,6 +39,7 @@ cask 'visual-studio-code'
 cask 'iterm2'
 cask 'telegram'
 cask 'sourcetree'
+cask 'tableplus'
 
 # Disk
 cask 'osxfuse' # fuse setting panel

@@ -15,7 +15,7 @@ Check [Install Script](./install.sh)
 
 ## bin 介绍
 - composer - 指定 extension 来启动 composer,不用担心 debug 会影响速度.
-- rg - ripgrep, fast than ag and grep
+- rg - 使用 grep warp 了一个方法，使用起来类似 ripgrep
 
 ## 需要手动设置快捷键
 - 设置 Don't not Distrib 快捷键： `Ctrl+Option+Command+\`

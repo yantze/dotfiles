@@ -17,6 +17,7 @@ alias p="ps -ef"
 ### app ###
 alias j='z'
 alias n='npm run'
+alias ns='cat package.json | jq .scripts'
 alias bashrc='vim ~/.bashrc'
 alias zshrc='vim ~/.zshrc'
 alias zshreload='source ~/.zshrc'
