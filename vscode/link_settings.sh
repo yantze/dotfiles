@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# vscode extension dir
+# ~/.vscode/extensions/
+
 CURRENT_EXECUTE_HOME=$(pwd -P)
 if [[ `uname` = "Darwin" ]]; then #if mac
   SETTING_HOME=~/Library/Application\ Support
