@@ -76,3 +76,4 @@ PATH="$HOME/.dotfiles/bin:$HOME/.local/bin:$HOME/.bin:$PATH"
 [[ -s ~/.fzf.zsh ]] && . ~/.fzf.zsh
 
 
+export GIT_TERMINAL_PROMPT=1

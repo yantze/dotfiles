@@ -114,7 +114,7 @@ hs.hotkey.bind({'cmd', 'shift'}, '0', function () hs.application.launchOrFocus("
 
 -- }}}
 
---[[ {{{
+-- [[ {{{
 
 -- Mouse modal keyboard shortcut environment
 local mouseModal = hs.hotkey.modal.new()
@@ -149,7 +149,7 @@ mouseModal:bind({}, 'space', scrollLine(0, -6), nil, scrollLine(0, -6)) -- scrol
 mouseModal:bind({}, 'i', toggleMouseModal)
 hs.hotkey.bind({'alt', 'cmd'}, '\\', toggleMouseModal )
 
-}}} --]]
+-- ]] }}}
 
 -- utils {{{
 -- hs.hotkey.bind({'cmd'}, 'j', function () hs.eventtap.keyStroke({}, "down") end)

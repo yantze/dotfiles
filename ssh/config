@@ -1,3 +1,11 @@
+Host local
+    user username
+    hostname 127.0.0.1
+    port 22
+    ProxyCommand nc -X 5 -x 127.0.0.1:1080 -w 180 %h %p
+
+
+
 # Intro.
 # you can change port by /etc/ssh/sshd_config
 # Port 443 or other
