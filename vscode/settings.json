@@ -1,6 +1,6 @@
 // Place your settings in this file to overwrite the default settings
 {
-    "workbench.colorTheme": "Solarized Light",
+    "workbench.colorTheme": "Solarized Dark",
     "workbench.editor.enablePreviewFromQuickOpen": true,
     "workbench.activityBar.visible": true,
     "window.zoomLevel": 0,
@@ -118,7 +118,7 @@
     },
     "prettier.semi": false,
     "prettier.trailingComma": "all",
-    "prettier.tabWidth": 4,
+    "prettier.tabWidth": 2,
     "prettier.singleQuote": true,
     // "eslint.autoFixOnSave": true,
     // "tslint.autoFixOnSave": true,
@@ -218,7 +218,7 @@
         "editor.defaultFormatter": "vscode.json-language-features"
     },
     "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "vscode.typescript-language-features"
         // "editor.defaultFormatter": "esbenp.prettier-vscode"
         // "editor.defaultFormatter": "vscode.typescript-language-features"
     },
