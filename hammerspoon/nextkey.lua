@@ -7,7 +7,7 @@ local normal = hs.hotkey.modal.new()
 -- Enter & Exit mode {{{2
 -- <c-[> - enter Normal mode
 -- I don't remap <esc> because it's too risky
-enterNormal = hs.hotkey.bind({"ctrl"}, "[", function()
+enterNormal = hs.hotkey.bind({"ctrl", "shift"}, "[", function()
     normal:enter()
 end)
 function normal:entered() hs.alert.show('Enter (Next Mode)') end

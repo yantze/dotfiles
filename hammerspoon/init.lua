@@ -31,14 +31,18 @@ hs.grid.setMargins({0, 0})
 --[[ function factory that takes the multipliers of screen width
 and height to produce the window's x pos, y pos, width, and height ]]
 function baseMove(x, y, w, h)
+-- s:currentMode().scale
+
     return function()
         local win = hs.window.focusedWindow()
         local f = win:frame()
         local screen = win:screen()
         local max = screen:frame()
+        -- 如果是高分屏，偏移位置不一样
+        local hidpi = screen:currentMode().scale == 2.0
 
         -- add max.x so it stays on the same screen, works with my second screen
-        f.x = max.w * x + max.x
+        f.x = max.w * x + max.x + (hidpi and 4 or 2)
         f.y = max.h * y + max.y
         f.w = max.w * w
         f.h = max.h * h
