@@ -60,3 +60,7 @@ npm config set prefix ~/.npm-global
 echo 'export PATH="~/.npm-global/bin:$PATH"' >> ~/.zshrc
 # echo 'export PATH="~/.npm-global/bin:$PATH"' >> ~/.bashrc
 npm install -g fixjson  # requirement by vim
+
+# mac
+# 支持快速重复按键
+# defaults write -g ApplePressAndHoldEnabled 0
