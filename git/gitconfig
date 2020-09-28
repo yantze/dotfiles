@@ -52,3 +52,5 @@
 # git config core.autocrlf
 [push]
 	default = simple
+[pull]
+	ff = only

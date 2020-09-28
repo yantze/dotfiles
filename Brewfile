@@ -1,9 +1,10 @@
+# 安装方式：brew bundle
+
 brew 'coreutils' # brew info coreutils
 brew 'bzip2' # 一些工具的基础
-brew 'bunzip2'
 brew 'gnu-sed'
-brew 'ctags'
-brew 'git'
+# brew 'ctags'
+# brew 'git'
 brew 'git-lfs'
 brew 'wget'
 brew 'aria2'
@@ -14,73 +15,86 @@ brew 'hub'
 brew 'python3'
 brew 'jq'
 # brew 'neovim'
-brew 'yarn', args: ['ignore-dependencies']
+# brew 'yarn', args: ['ignore-dependencies']
 brew 'node'
 brew 'vim'
 brew 'rclone'
 brew 'pyenv'
-brew 'watch' # mac no watch command
+# brew 'watch' # mac no watch command
 
 # Search
 brew 'fzf'
-brew 'fd' # instead of find
+# brew 'fd' # instead of find
 # brew 'the_silver_searcher'
-brew 'ripgrep' # rg
+# brew 'ripgrep' # rg
 # brew 'ack'
+
+
+######################################################################
+# Shell: iTerm2, zsh, oh-my-zsh plugins and themes                   #
+######################################################################
+
+cask 'iterm2'
+brew 'zsh'
+brew 'zsh-autosuggestions'
+
+tap 'homebrew/cask-fonts'
+cask 'font-menlo-for-powerline'
 
 # less
 # brew 'fontconfig'
 
 
-tap 'caskroom/cask'
+cask "macpass"
 cask 'google-chrome'
 cask 'appcleaner'
+cask 'alfred'
 cask 'visual-studio-code'
 cask 'iterm2'
 cask 'telegram'
-cask 'sourcetree'
+# cask 'sourcetree'
 cask 'tableplus'
 
 # Disk
-cask 'osxfuse' # fuse setting panel
+# cask 'osxfuse' # fuse setting panel
 
 # Video
-cask 'mpv'
+# cask 'mpv'
 # mpv 内核，自动下载字幕
 cask 'iina'
 # 让麦克风的声音传到扬声器中，用来录制视频的时候录制系统播放的声音
 # https://www.zhihu.com/question/26032781
-cask 'soundflower'
+# cask 'soundflower'
 
 # Finder quicklook plugins
 # https://github.com/sindresorhus/quick-look-plugins
-cask 'quicklook-json'
-cask 'qlmarkdown'
-cask 'quicklook-csv'
+# cask 'quicklook-json'
+# cask 'qlmarkdown'
+# cask 'quicklook-csv'
 # preview zip file list
-cask 'betterzip'
+# cask 'betterzip'
 # Display image size and resolution
-cask 'qlimagesize'
+# cask 'qlimagesize'
 # preview apple pkg installer file
-cask 'suspicious-package'
+# cask 'suspicious-package'
 # preview README INSTALL eapfile CHANGELOG etc...
-cask 'qlstephen'
+# cask 'qlstephen'
 # Preview source code files with syntax highlighting
-cask 'qlcolorcode'
+# cask 'qlcolorcode'
 
 
 # Fonts install
-tap 'caskroom/fonts'
+# tap 'caskroom/fonts'
 
 # Optional software
 cask 'hammerspoon' # replacement: slate, Spectacle
-cask 'dash'
+# cask 'dash'
 cask 'dropbox'
 cask 'eudic'
-cask 'github' # replacement: gitkraken
-cask 'virtualbox'
+# cask 'github' # replacement: gitkraken
+# cask 'virtualbox'
 cask 'squirrel'
-cask 'docker'
+# cask 'docker'
 
 # cask 'helium'
 # cask 'endurance'
@@ -88,7 +102,7 @@ cask 'docker'
 # cask 'real-vnc'
 # cask 'wireshark'
 # cask 'charles'
-# cask 'postman'
+cask 'postman'
 # cask 'cap' # 录制 gif
 # cask 'amazon-music'
 # cask 'smcfancontrol'
@@ -104,3 +118,13 @@ cask 'docker'
 # android
 # cask android-sdk
 # cask android-platform-tools
+
+
+# 学习看看这些软件
+# cask "seashore"               # simple image editing for everyone
+# cask "imageoptim"             # shrinking all kinds of images
+# cask "imagealpha"             # PNG optimizer
+# cask "krita"
+# cask "paintbrush"
+#
+# cask "quicksilver"            # productivity app (a better Spotlight)

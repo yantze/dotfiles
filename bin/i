@@ -3,10 +3,9 @@
 # 显示 ip 地址
 if [ `uname` = "Darwin" ]
 then
-  ip=`ifconfig | awk '/en0/{getline;gsub(/addr:/,"",$2);print $2}'`
+  ip=`ifconfig | awk '/en1/{getline;gsub(/addr:/,"",$2);print $2}'`
 else
   ip=`ifconfig | awk '/eth0/{getline;gsub(/addr:/,"",$2);print $2}'`
 fi
 
-hostname=`hostname`
-echo $hostname '-' $ip
+echo $ip
