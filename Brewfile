@@ -128,3 +128,9 @@ cask 'postman'
 # cask "paintbrush"
 #
 # cask "quicksilver"            # productivity app (a better Spotlight)
+
+# mas install
+# gifbrewery # git video 转换
+# bear
+# reeder
+#

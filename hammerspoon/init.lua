@@ -265,7 +265,7 @@ hs.hotkey.bind({'alt'}, 'i', function()
 
   if stat then
     hs.eventtap.keyStrokes(data[2])
-    hs.timer.doAfter(0.8, function ()
+    hs.timer.doAfter(1, function ()
         hs.eventtap.keyStroke({"shift"}, "return")
         hs.eventtap.keyStrokes(data[1])
     end)
