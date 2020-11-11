@@ -45,16 +45,17 @@ cask 'font-menlo-for-powerline'
 # less
 # brew 'fontconfig'
 
-
 cask "macpass"
 cask 'google-chrome'
 cask 'appcleaner'
 cask 'alfred'
 cask 'visual-studio-code'
-cask 'iterm2'
 cask 'telegram'
 # cask 'sourcetree'
 cask 'tableplus'
+cask 'cyberduck'
+cask 'tiger-trade'
+# cask 'wpsoffice' # english version
 
 # Disk
 # cask 'osxfuse' # fuse setting panel
@@ -100,7 +101,7 @@ cask 'squirrel'
 # cask 'helium'
 # cask 'endurance'
 # cask 'java' # include jdk9
-# cask 'real-vnc'
+# cask 'vnc-viewer'
 # cask 'wireshark'
 # cask 'charles'
 cask 'postman'
