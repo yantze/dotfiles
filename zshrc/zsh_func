@@ -111,6 +111,7 @@ function put() {
         fi
 
         mv "$RM_PATH" "$TRASH_TMP"
+        [ $? -eq 0 ] || return
         echo "Move  ... $RM_PATH"
         echo "To    ... $TRASH_TMP"
         echo ""

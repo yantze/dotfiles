@@ -20,6 +20,7 @@ brew 'node'
 brew 'vim'
 brew 'rclone'
 brew 'pyenv'
+brew 'ccat' # 类似 cat 但输出彩色
 # brew 'watch' # mac no watch command
 
 # Search

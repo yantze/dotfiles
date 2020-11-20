@@ -16,6 +16,8 @@ Check [Install Script](./install.sh)
 ## bin 介绍
 - composer - 指定 extension 来启动 composer,不用担心 debug 会影响速度.
 - rg - 使用 grep warp 了一个方法，使用起来类似 ripgrep
+- c - 复制命令输出
+- xpl - 用系统的文件管理器 ui 打开指定目录
 
 ## 需要手动设置快捷键
 - 设置 Don't not Distrib 快捷键： `Ctrl+Option+Command+\`
