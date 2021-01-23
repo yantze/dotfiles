@@ -59,6 +59,7 @@ cask 'tiger-trade'
 
 # Disk
 # cask 'osxfuse' # fuse setting panel
+# cask 'omnidisksweeper'
 
 # Video
 # cask 'mpv'
