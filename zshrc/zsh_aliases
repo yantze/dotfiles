@@ -15,7 +15,7 @@ alias lld='ls -al -pt | egrep /$' # | head -n 20'
 alias p="ps -ef"
 
 ### app ###
-alias j='z'
+# alias j='z' # use _Z_CMD=j
 alias n='npm run'
 alias ns='cat package.json | jq .scripts'
 alias bashrc='vim ~/.bashrc'

@@ -1,6 +1,3 @@
-# oh-my-zsh configuration
-export ZSH="${HOME}/.antigen/bundles/robbyrussell/oh-my-zsh"
-
 # ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
@@ -34,15 +31,22 @@ if [[ -n "$ZSH_VERSION" ]]; then
     # Look in ~/.oh-my-zsh/themes/
     ZSH_THEME="robbyrussell"
 
+    # plugins/z
+    _Z_CMD=j
+
+    # plugins/zsh-autoenv
+    AUTOENV_FILE_ENTER=".env"
+
     # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
     plugins=(bundler osx git common-aliases dirhistory extract zsh-navigation-tools)
     # valid: rake ruby emoji fancy-ctrl-z web-search npm sudo nvm autojump zsh-navigation-tools
 
+    # configuration
+    ZSH="${HOME}/.antigen/bundles/robbyrussell/oh-my-zsh"
     test -e "$ZSH/oh-my-zsh.sh" && source "$ZSH/oh-my-zsh.sh"
 
     # zsh plugin manager
     # git clone https://github.com/zsh-users/antigen.git
-    export AUTOENV_FILE_ENTER=".env"
     if [[ -s "$HOME/.local/antigen/antigen.zsh" ]]; then
         source $HOME/.local/antigen/antigen.zsh
         # antigen bundle Tarrasch/zsh-autoenv
@@ -63,7 +67,7 @@ if [[ -n $TMUX ]]; then
     # export TERM='screen-256color'
 
     # auto rename tmux window
-    tmux rename-window '-'
+    tmux rename-window ''
 fi
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
