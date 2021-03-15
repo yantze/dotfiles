@@ -68,7 +68,6 @@ hs.hotkey.bind({'alt', 'shift', 'cmd'}, 'Right', baseMove(1/3, 0, 2/3, 1))
 -- }}}
 
 --{{{ Reload config
---[[
 
 function reloadConfig(files) -- `files` available in pathwatcher
   hs.reload()
@@ -78,7 +77,7 @@ end
 hs.hotkey.bind(super, "R", reloadConfig)
 hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()
 
-}}} --]]
+--}}}
 
 -- Quick jump to applications {{{
 hs.hotkey.bind({'alt'}, '1', function () hs.application.launchOrFocusByBundleID("com.google.Chrome") end)
@@ -111,6 +110,7 @@ end)
 hs.hotkey.bind({'ctrl', 'shift'}, 'escape', function () hs.application.launchOrFocus("Activity Monitor") end)
 hs.hotkey.bind({'alt'}, 'e', function () hs.application.launchOrFocus("Finder") end)
 -- hs.hotkey.bind({'alt'}, 'w', function () hs.application.launchOrFocus("O2") end)
+-- hs.hotkey.bind({'alt'}, 'w', function () hs.application.launchOrFocusByBundleID("com.jetbrains.intellij.ce") end)
 hs.hotkey.bind({'alt'}, 'w', function () hs.application.launchOrFocus("Visual Studio Code") end)
 -- hs.hotkey.bind({'alt'}, 'w', function () hs.application.launchOrFocus("Visual Studio Code - Insiders") end)
 hs.hotkey.bind({'alt'}, 'q', function () hs.application.launchOrFocus("DingTalk") end)

@@ -90,7 +90,7 @@ function put() {
 
     # delete exist files
     for single in "$@"; do
-        if [[ $single == "/*" ]]; then
+        if [[ $single =~ "^/.*" ]]; then
             RM_PATH=${single}
         else
             RM_PATH=${PWD}/${single}

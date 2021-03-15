@@ -77,7 +77,5 @@ PATH="$HOME/.dotfiles/bin:$HOME/.local/bin:$HOME/.bin:$PATH"
 . ~/.dotfiles/zshrc/zsh_func
 . ~/.dotfiles/zshrc/zsh_aliases
 [[ -s "$HOME/.zshrc_local" ]] && . ~/.zshrc_local
-[[ -s ~/.fzf.zsh ]] && . ~/.fzf.zsh
-
 
 export GIT_TERMINAL_PROMPT=1

@@ -54,6 +54,7 @@ alias last='fc -ln -1 | scopy'
 alias new='pbpaste | cat >'
 alias save='pbpaste | cat >' 
 
+alias plist="/usr/libexec/PlistBuddy -c 'Print'"
 
 #if mac
 if [[ `uname -s` = "Darwin" ]]; then

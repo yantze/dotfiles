@@ -64,3 +64,7 @@ npm install -g fixjson  # requirement by vim
 # mac
 # 支持快速重复按键
 # defaults write -g ApplePressAndHoldEnabled 0
+
+# fzf
+brew install fzf
+$(brew --prefix)/opt/fzf/install

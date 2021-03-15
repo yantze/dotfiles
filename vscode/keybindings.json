@@ -159,8 +159,7 @@
     },
     {
         "key": "shift+cmd+j",
-        "command": "workbench.action.toggleMaximizedPanel",
-        "when": "!searchViewletVisible"
+        "command": "workbench.action.toggleMaximizedPanel"
     },
     {
         "key": "cmd+j",

@@ -45,6 +45,9 @@ cask 'font-menlo-for-powerline'
 # less
 # brew 'fontconfig'
 
+brew 'imagemagick' # 图像编辑
+
+
 cask "macpass"
 cask 'google-chrome'
 cask 'appcleaner'
@@ -131,6 +134,7 @@ cask 'postman'
 # cask "paintbrush"
 #
 # cask "quicksilver"            # productivity app (a better Spotlight)
+
 
 # mas install
 # gifbrewery # git video 转换
