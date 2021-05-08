@@ -257,6 +257,7 @@
     // "vetur.format.defaultFormatter.js": "vscode-typescript",
     "vetur.format.defaultFormatter.ts": "vscode-typescript",
     "typescript.updateImportsOnFileMove.enabled": "always",
+    "python.languageServer": "Pylance",
     // "vetur.format.defaultFormatter.less": "none",
     // "vetur.format.defaultFormatter.html": "js-beautify-html",
 }
