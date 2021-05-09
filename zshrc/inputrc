@@ -1,3 +1,6 @@
+# Include original
+$include /etc/inputrc
+
 set completion-ignore-case on
 
 # configure ctrl-w (delete word), disable `stty werase undef`
