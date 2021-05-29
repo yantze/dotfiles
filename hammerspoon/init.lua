@@ -87,8 +87,8 @@ hs.hotkey.bind({'alt'}, '1', function () hs.application.launchOrFocusByBundleID(
 --     end tell
 --   ]]) end)
 -- even though the app is named iTerm2, iTerm is the correct name
-hs.hotkey.bind({'alt'}, '2', function () hs.application.launchOrFocus("iTerm") end)
--- hs.hotkey.bind({'alt'}, '2', function () hs.application.launchOrFocus("Terminal") end)
+-- hs.hotkey.bind({'alt'}, '2', function () hs.application.launchOrFocus("iTerm") end)
+hs.hotkey.bind({'alt'}, '2', function () hs.application.launchOrFocus("Terminal") end)
 -- get all Process Name: osascript -e 'tell application "System Events" to get name of every process'
 -- get Bundle ID by: osascript -e 'id of app "Finder"'
 -- or try this way: /usr/libexec/PlistBuddy -c 'Print CFBundleIdentifier' /Applications/Safari.app/Contents/Info.plist
@@ -113,8 +113,8 @@ hs.hotkey.bind({'alt'}, 'e', function () hs.application.launchOrFocus("Finder") 
 -- hs.hotkey.bind({'alt'}, 'w', function () hs.application.launchOrFocusByBundleID("com.jetbrains.intellij.ce") end)
 hs.hotkey.bind({'alt'}, 'w', function () hs.application.launchOrFocus("Visual Studio Code") end)
 -- hs.hotkey.bind({'alt'}, 'w', function () hs.application.launchOrFocus("Visual Studio Code - Insiders") end)
-hs.hotkey.bind({'alt'}, 'q', function () hs.application.launchOrFocus("DingTalk") end)
-hs.hotkey.bind({'alt', 'shift'}, 'q', function () hs.application.launchOrFocus("Telegram") end)
+-- hs.hotkey.bind({'alt'}, 'q', function () hs.application.launchOrFocus("DingTalk") end)
+hs.hotkey.bind({'alt'}, 'q', function () hs.application.launchOrFocus("Telegram") end)
 hs.hotkey.bind({'cmd', 'shift'}, '0', function () hs.application.launchOrFocus("DevDocs") end)
 -- hs.hotkey.bind({'alt'}, 'v', function () hs.application.launchOrFocusByBundleID("org.vim.MacVim") end)
 

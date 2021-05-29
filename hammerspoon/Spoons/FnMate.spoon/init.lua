@@ -69,9 +69,9 @@ function obj:init()
         --     hs.alert.show(hs.inspect(event:getKeyCode()))
         --     return true, { changeVolume(-3) }
         elseif event:getFlags()['fn'] and event:getKeyCode() == 115 then -- Fn + Left
-            return true, { changeBright(5) }
-        elseif event:getFlags()['fn'] and event:getKeyCode() == 119 then -- Fn + Right
             return true, { changeBright(-5) }
+        elseif event:getFlags()['fn'] and event:getKeyCode() == 119 then -- Fn + Right
+            return true, { changeBright(5) }
         elseif event:getFlags()['fn'] and event:getKeyCode() == 116 then -- Fn + Up
             return true, { changeVolume(3) }
         elseif event:getFlags()['fn'] and event:getKeyCode() == 121 then -- Fn + Down
