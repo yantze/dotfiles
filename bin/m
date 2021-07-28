@@ -37,6 +37,11 @@ case $1 in
   ;;
 
 "file")
+  if [[ -z $2 ]]; then
+    vim +FZF "$WIKIHOME"
+    exit
+  fi
+
   if [[ ${2: -1} = "!" ]]; then
     keyword="${2%?}" # full name search
   elif [[ ${2: -1} = "$" ]]; then

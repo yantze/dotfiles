@@ -8,7 +8,7 @@ export HISTSIZE=100000
 export SAVEHIST=100000
 # export HISTFILE=~/.histfile
 export EDITOR=vim
-export VISUAL=vim # for c-x e
+export VISUAL=vim # for c-x c-e
 
 ### display language
 export LANG="en_US.UTF-8"
@@ -29,7 +29,7 @@ fi
 
 if [[ -n "$ZSH_VERSION" ]]; then
     # Look in ~/.oh-my-zsh/themes/
-    ZSH_THEME="robbyrussell"
+    # ZSH_THEME="robbyrussell"
 
     # plugins/z
     _Z_CMD=j
@@ -70,12 +70,12 @@ if [[ -n $TMUX ]]; then
     tmux rename-window ''
 fi
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# The go command runs git commands for multiple repositories concurrently. By default, it sets GIT_TERMINAL_PROMPT=0.
+# export GIT_TERMINAL_PROMPT=1
 
 PATH="$HOME/.dotfiles/bin:$HOME/.local/bin:$HOME/.bin:$PATH"
 
-. ~/.dotfiles/zshrc/zsh_func
-. ~/.dotfiles/zshrc/zsh_aliases
-[[ -s "$HOME/.zshrc_local" ]] && . ~/.zshrc_local
+source $HOME/.dotfiles/zshrc/zsh_func
+source $HOME/.dotfiles/zshrc/zsh_aliases
+test -e "$HOME/.zshrc_local" && source ~/.zshrc_local
 
-export GIT_TERMINAL_PROMPT=1

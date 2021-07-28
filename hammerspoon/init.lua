@@ -31,8 +31,6 @@ hs.grid.setMargins({0, 0})
 --[[ function factory that takes the multipliers of screen width
 and height to produce the window's x pos, y pos, width, and height ]]
 function baseMove(x, y, w, h)
--- s:currentMode().scale
-
     return function()
         local win = hs.window.focusedWindow()
         local f = win:frame()
@@ -42,11 +40,29 @@ function baseMove(x, y, w, h)
         local hidpi = screen:currentMode().scale == 2.0
 
         -- add max.x so it stays on the same screen, works with my second screen
-        f.x = max.w * x + max.x + (hidpi and 4 or 2)
+        f.x = max.w * x + max.x + (hidpi and 2 or 1)
         f.y = max.h * y + max.y
         f.w = max.w * w
         f.h = max.h * h
         win:setFrame(f, 0)
+    end
+end
+
+-- bind hotkey
+function nextWindow()
+    return function()
+        -- get the focused window
+        local win = hs.window.focusedWindow()
+
+        if win == nil then
+            return
+        end
+
+        -- get the screen where the focused window is displayed, a.k.a. current screen
+        local screen = win:screen()
+        -- compute the unitRect of the focused window relative to the current screen
+        -- and move the window to the next screen setting the same unitRect 
+        win:move(win:frame():toUnitRect(screen:frame()), screen:next(), true, 0)
     end
 end
 
@@ -64,6 +80,9 @@ hs.hotkey.bind({'ctrl', 'cmd'}, 'Left', baseMove(0, 0, 1/3, 1))
 hs.hotkey.bind({'ctrl', 'cmd'}, 'Right', baseMove(2/3, 0, 1/3, 1))
 hs.hotkey.bind({'alt', 'shift', 'cmd'}, 'Left', baseMove(0, 0, 2/3, 1))
 hs.hotkey.bind({'alt', 'shift', 'cmd'}, 'Right', baseMove(1/3, 0, 2/3, 1))
+
+hs.hotkey.bind(super, 'n', nextWindow())
+
 
 -- }}}
 
@@ -153,7 +172,7 @@ mouseModal:bind({}, 'j', scrollLine(0, -6), nil, scrollLine(0, -6)) -- scroll do
 mouseModal:bind({}, 'k', scrollLine(0, 6), nil, scrollLine(0, 6)) -- scroll up
 mouseModal:bind({}, 'space', scrollLine(0, -6), nil, scrollLine(0, -6)) -- scroll down
 mouseModal:bind({}, 'i', toggleMouseModal)
-hs.hotkey.bind({'alt', 'cmd'}, '\\', toggleMouseModal )
+hs.hotkey.bind({'alt', 'cmd', 'shift'}, '\\', toggleMouseModal )
 
 -- ]] }}}
 

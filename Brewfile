@@ -25,7 +25,7 @@ brew 'ccat' # 类似 cat 但输出彩色
 
 # Search
 brew 'fzf'
-# brew 'fd' # instead of find
+brew 'fd' # instead of find
 # brew 'the_silver_searcher'
 # brew 'ripgrep' # rg
 # brew 'ack'
@@ -135,9 +135,11 @@ cask 'postman'
 #
 # cask "quicksilver"            # productivity app (a better Spotlight)
 
-
+# ==============
 # mas install
 # gifbrewery # git video 转换
 # bear
 # reeder
 #
+# =============
+# url scheme, 列出磁盘所有的 app，https://github.com/Lord-Kamina/SwiftDefaultApps

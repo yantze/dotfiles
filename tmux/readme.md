@@ -1,4 +1,21 @@
-tmux another config
+# Tmux Config
+
+打印所有的颜色
+```bash
+for i in {0..255}; do
+    printf "\x1b[38;5;${i}mcolour${i}\x1b[0m\n"
+done
+
+# 一样
+for i in {0..255}; do
+    printf "\x1b[38;5;${i}mcolor%-5i\x1b[0m" $i
+    if ! (( ($i + 1 ) % 8 ))
+        then echo
+    fi
+done
+```
+
+
 ```
 # 执行命令，比如看 Manpage、查 Perl 函数
 bind m command-prompt "splitw -h 'exec man %%'"

@@ -37,7 +37,6 @@ alias mw='m web'  # search web
 alias mf='m file'  # search file and open it
 alias mm='m man'  # search cheat manual
 alias ms='m vim' # search keyword by vim ack
-alias mff='vim +FZF ~/wiki'
 
 # view config file whitout empty line(s),spaces(s) ,tab(s) ,'#' or ;
 # there have another:egrep -v '^#|^$' /etc/ntp.conf
@@ -139,6 +138,11 @@ else
     alias st='set-window-title'
 fi
 
+if [ -x "$(command -v exa)" ]; then
+    alias ls="exa"
+    alias la="exa --long --all --group"
+fi
+
 # JAVA
 # alias /usr/libexec/java_home='echo $JAVA_HOME'
 # unalias /usr/libexec/java_home
@@ -155,4 +159,5 @@ fi
 # export PATH=$PATH:$JAVA_HOME/bin
 
 # }}}
+
 # vim: set ts=4 sw=4 tw=0 et fdm=marker foldlevel=0 foldenable foldlevelstart=99 :
