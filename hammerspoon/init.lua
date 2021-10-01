@@ -116,7 +116,8 @@ hs.hotkey.bind({'alt'}, '2', function () hs.application.launchOrFocus("Terminal"
 -- hs.hotkey.bind({'alt'}, '3', function () hs.application.launchOrFocusByBundleID("com.google.Chrome.app.Profile-1-koegeopamaoljbmhnfjbclbocehhgmkm") end)
 hs.hotkey.bind({'alt'}, '3', function () hs.application.launchOrFocusByBundleID("com.workflowy.desktop") end)
 hs.hotkey.bind({'alt'}, '4', function ()
-  hs.application.launchOrFocusByBundleID("com.culturedcode.ThingsMac")
+  -- hs.application.launchOrFocusByBundleID("com.culturedcode.ThingsMac")
+  hs.application.launchOrFocusByBundleID("notion.id")
   -- Show all window when Things is actived
   -- local windows = hs.application.find("Things"):findWindow("")
   -- logger:w('--------------------:', windows)

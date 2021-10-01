@@ -38,6 +38,10 @@ brew 'fd' # instead of find
 cask 'iterm2'
 brew 'zsh'
 brew 'zsh-autosuggestions'
+# 菜单栏隐藏部分应用 icon
+brew 'hiddenbar'
+brew 'bob'
+brew 'popclip'
 
 tap 'homebrew/cask-fonts'
 cask 'font-menlo-for-powerline'
@@ -117,6 +121,7 @@ cask 'postman'
 # cask 'megasync', args: { appdir: "/Applications" }
 # cask 'suspicious-package' # check & inspect pkg installer
 # cask 'db-browser-for-sqlite' # 在 app store 安装 sqlpro-for-sqlite lite
+cask 'scroll-reverser'
 
 # 暂时不能用 app store 软件的
 # casilla # hide all application

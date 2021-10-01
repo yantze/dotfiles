@@ -95,12 +95,10 @@
     },
     "gitlens.historyExplorer.enabled": true,
     "gitlens.gitExplorer.files.layout": "auto",
-    "editor.lineNumbers": "relative",
+    "editor.lineNumbers": "on",
     // 编辑窗口右边缩略图
     "editor.minimap.enabled": false,
     "explorer.confirmDelete": false,
-    "editor.fontFamily": "Menlo, Monaco, 'Monaco for Powerline', 'Courier New', monospace",
-    "diffEditor.ignoreTrimWhitespace": true,
     "extensions.ignoreRecommendations": true,
     "emmet.showSuggestionsAsSnippets": true,
     "editor.snippetSuggestions": "top",
