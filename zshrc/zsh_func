@@ -65,7 +65,7 @@ function take() {
 
 # get pure ip from url
 function ipurl() {
-    echo $1 | 
+    echo $1 |
     sed -e 's/^.*:\/\/\(.*\)/\1/g' |          # remove http(s)://
     awk -F/ '{print $1}' |                    # remove /query/abc?a=b
     xargs ping -c 1 -t 1 |                    # -c only send one package, -t timeout 1s
@@ -173,9 +173,9 @@ proxyon () {
     # HTPT_PROXY=6152 # HTTP PORT
     # HSPT_PROXY=6152 # HTTPS PORT
     # SSPT_PROXY=6153 # SOCKS PORT
-    export http_proxy=http://$HOST_PROXY:$HTPT_PROXY
-    export https_proxy=http://$HOST_PROXY:$HTPT_PROXY
-    export all_proxy=
+    export http_proxy=http://$PROXY_HOST:$PROXY_PORT
+    export https_proxy=http://$PROXY_HOST:$PROXY_PORT
+    # export all_proxy=socks5://$PROXY_HOST:$PROXY_SOCKS_PORT
     export no_proxy="127.0.0.1, localhost, *.domain.com, 192.168.1.10, domain.com:8080"
     echo "Proxy on"
 }

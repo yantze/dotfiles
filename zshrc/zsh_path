@@ -67,10 +67,10 @@ fi
 
 
 ### GO ###
-export GOPATH=$HOME/.local/go
-# export GOROOT=$HOME/.local/go
-# PATH="$GOROOT/bin:$GOPATH/bin::$PATH"
-PATH="$GOPATH/bin:$PATH"
+export GOPATH=$HOME/.local/gopkg
+export GOROOT=$HOME/.local/go
+PATH="$GOROOT/bin:$GOPATH/bin::$PATH"
+# PATH="$GOPATH/bin:$PATH"
 
 
 PATH="$HOME/.dotfiles/bin:$HOME/.local/bin:$HOME/.bin:$PATH"
