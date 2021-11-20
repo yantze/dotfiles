@@ -68,3 +68,10 @@ npm install -g fixjson  # requirement by vim
 # fzf
 brew install fzf
 $(brew --prefix)/opt/fzf/install
+
+# node
+# node package manager
+curl -L https://git.io/n-install | bash
+n 14
+export PATH="$HOME/n/bin:$PATH"
+npm i -g pm2

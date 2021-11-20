@@ -1,30 +1,35 @@
 # 安装方式：brew bundle
 
+# Linux
+brew 'wget'
+brew 'tmux'
+brew 'jq'
+brew 'vim'
+brew 'rclone'
+brew 'fzf'
+brew 'zsh'
+brew 'zsh-autosuggestions'
+
+# macOS
 brew 'coreutils' # brew info coreutils
 brew 'bzip2' # 一些工具的基础
 brew 'gnu-sed'
 # brew 'ctags'
 # brew 'git'
 brew 'git-lfs'
-brew 'wget'
 brew 'aria2'
-brew 'tmux'
 brew 'reattach-to-user-namespace'
 brew 'youtube-dl'
 brew 'hub'
 brew 'python3'
-brew 'jq'
 # brew 'neovim'
 # brew 'yarn', args: ['ignore-dependencies']
 brew 'node'
-brew 'vim'
-brew 'rclone'
 brew 'pyenv'
 brew 'ccat' # 类似 cat 但输出彩色
 # brew 'watch' # mac no watch command
 
 # Search
-brew 'fzf'
 brew 'fd' # instead of find
 # brew 'the_silver_searcher'
 # brew 'ripgrep' # rg
