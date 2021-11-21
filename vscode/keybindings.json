@@ -187,5 +187,9 @@
         "key": "shift+cmd+g",
         "command": "workbench.view.scm",
         "when": "workbench.scm.active"
+    },
+    {
+        "key": "cmd+k cmd+b",
+        "command": "workbench.files.action.focusFilesExplorer"
     }
 ]

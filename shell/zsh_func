@@ -82,11 +82,11 @@ function put() {
     fi
 
     # empty trash
-    # if [[ $TRASH == $(echo $1) ]]; then
-    #     echo "Delete $TRASH"
-    #     "$GENERAL_EXECUTE_PATH/rm" -rf "$TRASH"
-    #     return 0
-    # fi
+    if [[ $TRASH == $(echo $1) ]]; then
+        echo "$GENERAL_EXECUTE_PATH/rm" -rf "$TRASH"
+        "$GENERAL_EXECUTE_PATH/rm" -rf "$TRASH"
+        return 0
+    fi
 
     # delete exist files
     for single in "$@"; do

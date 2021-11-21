@@ -141,6 +141,7 @@ fi
 if [ -x "$(command -v exa)" ]; then
     alias ls="exa"
     alias la="exa --long --all --group"
+    alias ll="exa --long -s=newest"
 fi
 
 # JAVA

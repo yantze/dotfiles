@@ -38,7 +38,9 @@ if [[ -n "$ZSH_VERSION" ]]; then
     AUTOENV_FILE_ENTER=".env"
 
     # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-    plugins=(bundler osx git common-aliases dirhistory extract zsh-navigation-tools)
+    # custom plugin1
+    # git clone --depth=1 https://github.com/mbenford/zsh-tmux-auto-title ${ZSH_CUSTOM}/plugins/zsh-tmux-auto-title
+    plugins=(bundler macos git common-aliases dirhistory extract zsh-navigation-tools zsh-tmux-auto-title)
     # valid: rake ruby emoji fancy-ctrl-z web-search npm sudo nvm autojump zsh-navigation-tools
 
     # configuration
@@ -66,8 +68,12 @@ if [[ -n $TMUX ]]; then
     # set -g default-terminal "tmux-256color"
     # export TERM='screen-256color'
 
-    # auto rename tmux window
-    tmux rename-window ''
+    # count tmux current window panes
+    panes=$(tmux display-message -p '#{window_panes}')
+    if [[ $panes = 1 ]]; then
+        # auto rename tmux window is off
+        tmux rename-window ''
+    fi
 fi
 
 # The go command runs git commands for multiple repositories concurrently. By default, it sets GIT_TERMINAL_PROMPT=0.
