@@ -216,7 +216,7 @@ function notify() {
 }
 
 # 类似 rg 的命令，不找二进制文件
-function rg() {
+function rrg() {
     # 这里可以使用正则，类似 egrep 语法，也可以查找多个字符串，例如 httpd\|vsftpd
     search_string="$1"
     # 如果没有第二个参数，就在当前文件夹查找
@@ -253,4 +253,34 @@ function viminfo() {
 function rpmx() {
   # brew install rpm2cpio
   rpm2cpio.pl "$1" | cpio -idmv
+}
+
+
+# c - browse chrome history
+c() {
+  local cols sep
+  export cols=$(( COLUMNS / 3 ))
+  export sep='{::}'
+
+  cp -f ~/Library/Application\ Support/Google/Chrome/Default/History /tmp/h
+  sqlite3 -separator $sep /tmp/h \
+    "select title, url from urls order by last_visit_time desc" |
+  ruby -ne '
+    cols = ENV["cols"].to_i
+    title, url = $_.split(ENV["sep"])
+    len = 0
+    puts "\x1b[36m" + title.each_char.take_while { |e|
+      if len < cols
+        len += e =~ /\p{Han}|\p{Katakana}|\p{Hiragana}|\p{Hangul}/ ? 2 : 1
+      end
+    }.join + " " * (2 + cols - len) + "\x1b[m" + url' |
+  fzf --ansi --multi --no-hscroll --tiebreak=index |
+  sed 's#.*\(https*://\)#\1#' | xargs open
+}
+
+nvm() {
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+  nvm "$@"
 }

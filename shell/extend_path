@@ -52,11 +52,20 @@
 # )
 
 
-### NVM ###
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
-[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"
-
+# JAVA
+# alias /usr/libexec/java_home='echo $JAVA_HOME'
+# unalias /usr/libexec/java_home
+#
+# export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
+# export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
+#
+# alias java8='export JAVA_HOME=$JAVA_8_HOME'
+# alias java11='export JAVA_HOME=$JAVA_11_HOME'
+#
+# alias /usr/libexec/java_home='echo $JAVA_HOME'
+#
+# export JAVA_HOME=$JAVA_8_HOME
+# export PATH=$PATH:$JAVA_HOME/bin
 
 ### PYENV ###
 export PYTHON_CONFIGURE_OPTS="--enable-framework"
@@ -64,7 +73,6 @@ export PYENV_ROOT="$HOME/.pyenv"
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
-
 
 ### GO ###
 export GOPATH=$HOME/.local/gopkg

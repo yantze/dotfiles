@@ -15,7 +15,6 @@ alias lld='ls -al -pt | egrep /$' # | head -n 20'
 alias p="ps -ef"
 
 ### app ###
-# alias j='z' # use _Z_CMD=j
 alias n='npm run'
 alias ns='cat package.json | jq .scripts'
 alias bashrc='vim ~/.bashrc'
@@ -51,52 +50,51 @@ alias last='fc -ln -1 | scopy'
 
 # 将当前剪贴板里的内容保存到某个文件里
 alias new='pbpaste | cat >'
-alias save='pbpaste | cat >' 
+alias save='pbpaste | cat >'
 
 alias plist="/usr/libexec/PlistBuddy -c 'Print'"
 
 #if mac
 if [[ `uname -s` = "Darwin" ]]; then
-    alias play='afplay'
+  alias play='afplay'
 
-    export DOCKER_HOST=tcp://localhost:4243
+  export DOCKER_HOST=tcp://localhost:4243
 
-    # alias macvim='/Applications/MacVim.app/Contents/MacOS/MacVim'
-    # alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
+  # alias macvim='/Applications/MacVim.app/Contents/MacOS/MacVim'
+  # alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 
-    # Set the Mac OS X SOCKS proxy on the command line
-    alias ssp_on='networksetup -setsocksfirewallproxy "Ethernet" 127.0.0.1 1080'
-    alias ssp_clear='networksetup -setsocksfirewallproxy "Ethernet" "" ""'
-    alias ssp_off='networksetup -setsocksfirewallproxy "Ethernet" off'
+  # Set the Mac OS X SOCKS proxy on the command line
+  alias ssp_on='networksetup -setsocksfirewallproxy "Ethernet" 127.0.0.1 1080'
+  alias ssp_clear='networksetup -setsocksfirewallproxy "Ethernet" "" ""'
+  alias ssp_off='networksetup -setsocksfirewallproxy "Ethernet" off'
 else
-    alias sctl='systemctl'
-    alias play='mpg123'
-    # if linux-centos6.7
-    # alias cmake='cmake28'
-    # alias ccmake='ccmake28'
+  alias sctl='systemctl'
+  alias play='mpg123'
+  # if linux-centos6.7
+  # alias cmake='cmake28'
+  # alias ccmake='ccmake28'
 fi
 
-if [[ 'zsh' = ${SHELL##*/} ]]; then
-    if [[ -n $SHELL_EXTEND ]]; then
-        alias cd='cdlist'
-    fi
-    alias -g ND=' -pt | egrep -v /$ | head -n 20' # 配合 ls 或者 ll 使用
-    alias -g HD=' -pt | egrep /$ | head -n 20' # 配合 ls 或者 ll 使用
-    alias -g O=' | xargs open'
-elif [[ 'bash' = ${SHELL##*/} ]]; then
+if [[ -n "$ZSH_VERSION" ]]; then
+  alias -g ND=' -pt | egrep -v /$ | head -n 20' # 配合 ls 或者 ll 使用
+  alias -g HD=' -pt | egrep /$ | head -n 20' # 配合 ls 或者 ll 使用
+  alias -g O=' | xargs open'
+
+  if [[ -n "$BASH_VERSION" ]]; then
     alias ..='cd ..'
     alias ...='cd ../..'
-fi
+    alias ....='cd ../../..'
+    alias .....='cd ../../../..'
+  fi
 
-if [[ -n $SHELL_EXTEND ]]; then
+  if [[ -n $SHELL_EXTEND ]]; then
+    alias cd='cdlist'
     alias rm='put'
     alias grep='grep -i --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
+  fi
 fi
 
-
-
 # app {{{
-
 
 # Vim
 # 让vim不带插件的运行,速度非常快
@@ -105,60 +103,45 @@ alias vi='vim'
 
 # Emacs
 if [[ `uname` = "Darwin" ]]; then #if mac
-    alias ec='emacsclient -a ""' 
+  alias ec='emacsclient -a ""'
 else
-    alias ec='emacsclient -a "" -c'
+  alias ec='emacsclient -a "" -c'
 fi
-alias et='emacsclient -t'  # 适合 GUI 时，启动一个新的 frame (-n) 
+alias et='emacsclient -t'  # 适合 GUI 时，启动一个新的 frame (-n)
 alias en='emacsclient -n'  # 适合 终端运行(emacs --daemon) 后
 # alias e='command emacs -nw' # emacs command line
 
 if [[ $TERM = "screen" || $TERM_MANAGER = "screen" ]]; then
-    # screen
-    # C-a D D (quick exit)
-    alias t='screen -R hi'
-    alias ta='screen -R'
-    alias tn='screen -S'
-    alias tl='screen -list'
-    alias st='screen -t'
-    # 随便个可以attach的
-    alias tt='screen -dRR'
+  # screen
+  # C-a D D (quick exit)
+  alias t='screen -R hi'
+  alias ta='screen -R'
+  alias tn='screen -S'
+  alias tl='screen -list'
+  alias st='screen -t'
+  # 随便个可以attach的
+  alias tt='screen -dRR'
 else
-    # Tmux
-    #设置窗口的名字为hi
-    alias t='tmux -2 -u attach || tmux -2 -u new-session -s hi'
-    #新建一個有名字的窗口
-    alias tn='tmux -2 -u new-session -s'
-    # alias tmn='tmux new -s $(basename $(pwd))'
-    alias tl='tmux list-sessions'
-    #附上一個有名字的窗口
-    # alias ta='tmux attach -t'
-    alias ta='tmux attach -d -t'
-    #设置tmux标签的名字，直到退出为止
-    alias st='set-window-title'
+  # Tmux
+  #设置窗口的名字为hi
+  alias t='tmux -2 -u attach || tmux -2 -u new-session -s hi'
+  #新建一個有名字的窗口
+  alias tn='tmux -2 -u new-session -s'
+  # alias tmn='tmux new -s $(basename $(pwd))'
+  alias tl='tmux list-sessions'
+  #附上一個有名字的窗口
+  # alias ta='tmux attach -t'
+  alias ta='tmux attach -d -t'
+  #设置tmux标签的名字，直到退出为止
+  alias st='set-window-title'
 fi
 
 if [ -x "$(command -v exa)" ]; then
-    alias ls="exa"
-    alias la="exa --long --all --group"
-    alias ll="exa --long -s=newest"
+  alias ls="exa"
+  alias la="exa --long --all --group"
+  alias ll="exa --long -s=newest"
 fi
-
-# JAVA
-# alias /usr/libexec/java_home='echo $JAVA_HOME'
-# unalias /usr/libexec/java_home
-#
-# export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
-# export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
-#
-# alias java8='export JAVA_HOME=$JAVA_8_HOME'
-# alias java11='export JAVA_HOME=$JAVA_11_HOME'
-#
-# alias /usr/libexec/java_home='echo $JAVA_HOME'
-#
-# export JAVA_HOME=$JAVA_8_HOME
-# export PATH=$PATH:$JAVA_HOME/bin
 
 # }}}
 
-# vim: set ts=4 sw=4 tw=0 et fdm=marker foldlevel=0 foldenable foldlevelstart=99 :
+# vim: set ts=2 sw=2 tw=0 et ft=zsh fdm=marker foldlevel=0 foldenable foldlevelstart=99
