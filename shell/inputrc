@@ -2,6 +2,7 @@
 $include /etc/inputrc
 
 set completion-ignore-case on
+set show-all-if-ambiguous on
 
 # configure ctrl-w (delete word), disable `stty werase undef`
 # https://superuser.com/questions/212446/binding-backward-kill-word-to-ctrlw

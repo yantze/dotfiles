@@ -1,6 +1,8 @@
 # 第一次 source zshrc 之后，接着进入 tmux 后，设置的 Shell 扩展功能才会开启
 export SHELL_EXTEND=true
 
+# source ~/.dotfiles/env
+
 # =================================
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.

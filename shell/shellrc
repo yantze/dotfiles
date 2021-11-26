@@ -35,12 +35,12 @@ if [[ -n "$ZSH_VERSION" ]]; then
     _Z_CMD=j
 
     # plugins/zsh-autoenv
-    AUTOENV_FILE_ENTER=".env"
+    # AUTOENV_FILE_ENTER=".env"
 
     # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
     # custom plugin1
     # git clone --depth=1 https://github.com/mbenford/zsh-tmux-auto-title ${ZSH_CUSTOM}/plugins/zsh-tmux-auto-title
-    plugins=(bundler macos git common-aliases dirhistory extract zsh-navigation-tools zsh-tmux-auto-title)
+    plugins=(bundler macos git common-aliases dirhistory extract zsh-navigation-tools copyfile) # zsh-tmux-auto-title)
     # valid: rake ruby emoji fancy-ctrl-z web-search npm sudo nvm autojump zsh-navigation-tools
 
     # configuration
@@ -69,19 +69,16 @@ if [[ -n $TMUX ]]; then
     # export TERM='screen-256color'
 
     # count tmux current window panes
-    panes=$(tmux display-message -p '#{window_panes}')
-    if [[ $panes = 1 ]]; then
-        # auto rename tmux window is off
-        tmux rename-window ''
-    fi
+    # pane_count=$(tmux display-message -p '#{window_panes}')
+    # if [[ $pane_count = 1 ]]; then
+    #     # auto rename tmux window is off
+    #     # tmux rename-window ''
+    # fi
 fi
-
-# The go command runs git commands for multiple repositories concurrently. By default, it sets GIT_TERMINAL_PROMPT=0.
-# export GIT_TERMINAL_PROMPT=1
 
 PATH="$HOME/.dotfiles/bin:$HOME/.local/bin:$HOME/.bin:$PATH"
 
-source $HOME/.dotfiles/zshrc/zsh_func
-source $HOME/.dotfiles/zshrc/zsh_aliases
+source $HOME/.dotfiles/shell/extend_func
+source $HOME/.dotfiles/shell/extend_alias
 test -e "$HOME/.zshrc_local" && source ~/.zshrc_local
 
