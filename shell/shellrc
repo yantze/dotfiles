@@ -43,7 +43,7 @@ fi
 
 if [[ -n "$ZSH_VERSION" ]]; then
   # Look in ~/.oh-my-zsh/themes/
-  # ZSH_THEME="robbyrussell"
+  ZSH_THEME="robbyrussell"
 
   # plugins/z
   _Z_CMD=j

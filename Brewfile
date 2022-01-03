@@ -1,6 +1,7 @@
 # 安装方式：brew bundle
 
 # Linux
+brew 'curl'
 brew 'wget'
 brew 'tmux'
 brew 'jq'
