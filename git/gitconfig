@@ -12,7 +12,7 @@
     c = commit -am
     cm = !git add -A && git commit -m
     co = checkout
-    lg = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+    lg = log --graph --format=\"%C(auto)%h%d %s %C(black)%C(bold)[%cn] %cr\" --decorate
     ec = config --global -e
     up = !git pull --rebase --prune $@ && git submodule update --init --recursive
     save = !git add -A && git commit -m 'SAVEPOINT'

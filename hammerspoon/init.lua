@@ -40,7 +40,9 @@ function baseMove(x, y, w, h)
         local hidpi = screen:currentMode().scale == 2.0
 
         -- add max.x so it stays on the same screen, works with my second screen
-        f.x = max.w * x + max.x + (hidpi and 2 or 1)
+        -- 如果 x 是 0，就让 x 最小值是 0
+        f.x = max.w * x + max.x + (hidpi and 2 or 1) * (x == 0 and 0 or 1)
+        -- hs.notify.new({title="Hammerspoon display", informativeText=(tostring(f.x))}):send()
         f.y = max.h * y + max.y
         f.w = max.w * w
         f.h = max.h * h
@@ -70,10 +72,11 @@ super = {"ctrl", "alt", "cmd"}
 -- feature spectacle/another window sizing apps
 hs.hotkey.bind(super, 'Left', baseMove(0, 0, 0.5, 1))
 hs.hotkey.bind(super, 'Right', baseMove(0.5, 0, 0.5, 1))
-hs.hotkey.bind(super, 'Down', baseMove(0, 0.5, 1, 0.5))
-hs.hotkey.bind(super, 'Up', baseMove(0, 0, 1, 0.84))
+hs.hotkey.bind(super, 'Down', baseMove(0, 0.7, 1, 0.3))
+hs.hotkey.bind(super, 'Up', baseMove(0, 0, 1, 0.7))
 
 hs.hotkey.bind(super, 'M', hs.grid.maximizeWindow)
+-- hs.hotkey.bind(super, 'C', baseMove(0.1, 0.1, 0.7, 0.75))
 hs.hotkey.bind(super, 'C', baseMove(0.25, 0.25, 0.5, 0.5))
 
 hs.hotkey.bind({'ctrl', 'cmd'}, 'Left', baseMove(0, 0, 1/3, 1))

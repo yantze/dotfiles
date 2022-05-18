@@ -47,14 +47,6 @@ fi
 
 # =================================
 
-# node
-export PATH="/usr/local/opt/node@14/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/node@14/lib"
-export CPPFLAGS="-I/usr/local/opt/node@14/include"
-
-# npm
-export PATH=~/.npm-global/bin:$PATH
-
 # py
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/shims:$PATH"

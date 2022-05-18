@@ -38,7 +38,7 @@ export LC_TIME="en_US.UTF-8"
 
 if [[ -n $SSH_CONNECTION ]]; then
   # export TERM='screen-256color'
-  echo "in ssl connection"
+  echo "in ssh"
 fi
 
 if [[ -n "$ZSH_VERSION" ]]; then
@@ -54,8 +54,8 @@ if [[ -n "$ZSH_VERSION" ]]; then
   # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
   # custom plugin1
   # git clone --depth=1 https://github.com/mbenford/zsh-tmux-auto-title ${ZSH_CUSTOM}/plugins/zsh-tmux-auto-title
-  plugins=(bundler macos git common-aliases dirhistory extract zsh-navigation-tools copyfile) # zsh-tmux-auto-title)
-  # valid: rake ruby emoji fancy-ctrl-z web-search npm sudo nvm autojump zsh-navigation-tools
+  plugins=(bundler macos git common-aliases dirhistory extract zsh-navigation-tools copyfile zsh-tmux-auto-title)
+  # valid: rake ruby emoji fancy-ctrl-z web-search npm sudo nvm autojump
 
   # configuration
   ZSH="${HOME}/.antigen/bundles/robbyrussell/oh-my-zsh"
