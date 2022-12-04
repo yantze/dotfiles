@@ -241,7 +241,7 @@ function repeatCount() {
     eval "$2"
   done
 }
-# v - open files in ~/.viminfo
+# v - open recent files from ~/.viminfo
 function viminfo() {
   local files
   files=$(grep '^>' ~/.viminfo | cut -c3- |
@@ -276,11 +276,4 @@ c() {
     }.join + " " * (2 + cols - len) + "\x1b[m" + url' |
   fzf --ansi --multi --no-hscroll --tiebreak=index |
   sed 's#.*\(https*://\)#\1#' | xargs open
-}
-
-nvm() {
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-  nvm "$@"
 }
