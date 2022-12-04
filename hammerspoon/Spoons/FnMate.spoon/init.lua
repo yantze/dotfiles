@@ -24,6 +24,15 @@ function obj:init()
             return true, {hs.eventtap.event.newKeyEvent({"cmd"}, "left", true)}
         elseif event:getFlags()['fn'] and event:getFlags()['cmd'] and event:getCharacters() == "l" then
             return true, {hs.eventtap.event.newKeyEvent({"cmd"}, "right", true)}
+        elseif event:getFlags()['fn'] and event:getKeyCode() == 115 then -- Fn + Left
+            return true, { changeBright(-5) }
+        elseif event:getFlags()['fn'] and event:getKeyCode() == 119 then -- Fn + Right
+            return true, { changeBright(5) }
+        elseif event:getFlags()['fn'] and event:getKeyCode() == 116 then -- Fn + Up
+            return true, { changeVolume(3) }
+        elseif event:getFlags()['fn'] and event:getKeyCode() == 121 then -- Fn + Down
+            return true, { changeVolume(-3) }
+        end
         -- elseif event:getFlags()['fn'] and event:getCharacters() == "h" then
         --     return true, {hs.eventtap.event.newKeyEvent({}, "left", true)}
         -- elseif event:getFlags()['fn'] and event:getCharacters() == "l" then
@@ -68,15 +77,6 @@ function obj:init()
         -- elseif event:getFlags()['fn'] then
         --     hs.alert.show(hs.inspect(event:getKeyCode()))
         --     return true, { changeVolume(-3) }
-        elseif event:getFlags()['fn'] and event:getKeyCode() == 115 then -- Fn + Left
-            return true, { changeBright(-5) }
-        elseif event:getFlags()['fn'] and event:getKeyCode() == 119 then -- Fn + Right
-            return true, { changeBright(5) }
-        elseif event:getFlags()['fn'] and event:getKeyCode() == 116 then -- Fn + Up
-            return true, { changeVolume(3) }
-        elseif event:getFlags()['fn'] and event:getKeyCode() == 121 then -- Fn + Down
-            return true, { changeVolume(-3) }
-        end
     end
     fn_tapper = hs.eventtap.new({hs.eventtap.event.types.keyDown}, catcher):start()
 end

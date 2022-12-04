@@ -175,8 +175,11 @@ proxyon () {
     # SSPT_PROXY=6153 # SOCKS PORT
     export http_proxy=http://$PROXY_HOST:$PROXY_PORT
     export https_proxy=http://$PROXY_HOST:$PROXY_PORT
+    export HTTP_PROXY=http://$PROXY_HOST:$PROXY_PORT
+    export HTTPS_PROXY=http://$PROXY_HOST:$PROXY_PORT
     # export all_proxy=socks5://$PROXY_HOST:$PROXY_SOCKS_PORT
     export no_proxy="127.0.0.1, localhost, *.domain.com, 192.168.1.10, domain.com:8080"
+    export NO_PROXY="127.0.0.1, localhost, *.domain.com, 192.168.1.10, domain.com:8080"
     echo "Proxy on"
 }
 
@@ -184,6 +187,9 @@ proxyoff () {
     unset http_proxy
     unset https_proxy
     unset all_proxy
+    unset HTTP_PROXY
+    unset HTTPS_PROXY
+    unset ALL_PROXY
     echo "Proxy off"
 }
 
@@ -276,4 +282,12 @@ c() {
     }.join + " " * (2 + cols - len) + "\x1b[m" + url' |
   fzf --ansi --multi --no-hscroll --tiebreak=index |
   sed 's#.*\(https*://\)#\1#' | xargs open
+}
+
+# Kills a process running on a specified tcp port
+killport() {
+  for port in "$@"
+  do
+    lsof -i tcp:$port | awk 'NR!=1 {print $2}' | xargs kill -9
+  done
 }

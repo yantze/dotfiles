@@ -51,3 +51,7 @@
     ff = only
 [init]
     defaultBranch = master
+
+# 如果是目录后缀一定斜杠结尾
+[includeIf "gitdir:~/personal/"]
+    path = ~/.gitconfig-yantze
