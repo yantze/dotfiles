@@ -14,16 +14,22 @@ brew bundle
 
 # zsh
 git clone https://github.com/zsh-users/antigen ~/.local/antigen
-echo '. ~/.dotfiles/zshrc/zshrc' >> ~/.zshrc
+echo '. ~/.dotfiles/shell/zshrc' >> ~/.zshrc
 chsh -s /bin/zsh
 
 # bash
-echo '. ~/.dotfiles/zshrc/zshrc' >> ~/.bashrc
-ln -s ~/.dotfiles/zshrc/inputrc ~/.inputrc
+echo '. ~/.dotfiles/shell/zshrc' >> ~/.bashrc
+ln -s ~/.dotfiles/shell/inputrc ~/.inputrc
 
 # tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ln -s ~/.dotfiles/tmux/tmux.conf ~/.tmux.conf
+
+# autojump / z for bash
+git clone https://github.com/rupa/z ~/.local_tmp/z
+cd ~/.local_tmp/z
+make
+
 
 # install tmux lastest manually
 # git clone https://github.com/tmux/tmux.git ~/.local/tmux-build
