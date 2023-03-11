@@ -173,12 +173,14 @@ proxyon () {
     # HTPT_PROXY=6152 # HTTP PORT
     # HSPT_PROXY=6152 # HTTPS PORT
     # SSPT_PROXY=6153 # SOCKS PORT
+
     export http_proxy=http://$PROXY_HOST:$PROXY_PORT
     export https_proxy=http://$PROXY_HOST:$PROXY_PORT
-    export HTTP_PROXY=http://$PROXY_HOST:$PROXY_PORT
-    export HTTPS_PROXY=http://$PROXY_HOST:$PROXY_PORT
     # export all_proxy=socks5://$PROXY_HOST:$PROXY_SOCKS_PORT
     export no_proxy="127.0.0.1, localhost, *.domain.com, 192.168.1.10, domain.com:8080"
+
+    export HTTP_PROXY=http://$PROXY_HOST:$PROXY_PORT
+    export HTTPS_PROXY=http://$PROXY_HOST:$PROXY_PORT
     export NO_PROXY="127.0.0.1, localhost, *.domain.com, 192.168.1.10, domain.com:8080"
     echo "Proxy on"
 }
