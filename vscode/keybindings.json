@@ -191,5 +191,9 @@
     {
         "key": "cmd+k cmd+b",
         "command": "workbench.files.action.focusFilesExplorer"
+    },
+    {
+        "key": "cmd+y",
+        "command": "workbench.action.tasks.runTask"
     }
 ]

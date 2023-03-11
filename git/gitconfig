@@ -5,6 +5,7 @@
 [core]
     excludesfile = ~/.gitignore_global
     autocrlf = false
+	ignorecase = false
     # editor = code --wait
 
 [alias]
