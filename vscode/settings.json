@@ -9,7 +9,8 @@
         "**/.classpath": true,
         "**/.project": true,
         "**/.settings": true,
-        "**/.factorypath": true
+        "**/.factorypath": true,
+        "**/node_modules/_*": true
     },
     "editor.tabSize": 2,
     "editor.insertSpaces": true,
@@ -24,7 +25,17 @@
     // "vim.sneak": true,
     // "vim.sneakReplacesF": true,
     // "vim.sneakUseIgnorecaseAndSmartcase": true
-    "vim.insertModeKeyBindings": [],
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "f",
+                "d"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": [
@@ -87,15 +98,9 @@
         "suppressFileNotUnderSourceControlWarning": true,
         "suppressGitVersionWarning": false,
         "suppressLineUncommittedWarning": false,
-        "suppressNoRepositoryWarning": false,
-        "suppressResultsExplorerNotice": false,
-        "suppressShowKeyBindingsNotice": true,
-        "suppressUpdateNotice": true,
-        "suppressWelcomeNotice": true
+        "suppressNoRepositoryWarning": false
     },
-    "gitlens.historyExplorer.enabled": true,
-    "gitlens.gitExplorer.files.layout": "auto",
-    "editor.lineNumbers": "on",
+    "editor.lineNumbers": "relative",
     // 编辑窗口右边缩略图
     "editor.minimap.enabled": false,
     "explorer.confirmDelete": false,
@@ -105,7 +110,6 @@
     // 自动完成时，自动添加双括号
     // "python.autoComplete.addBrackets": true,
     "editor.tabCompletion": "on",
-    "editor.renderWhitespace": "none",
     "javascript.updateImportsOnFileMove.enabled": "always", //让vue中的js按编辑器自带的ts格式进行格式化
     "vetur.format.defaultFormatterOptions": {
         "js-beautify-html": {
