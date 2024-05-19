@@ -130,8 +130,6 @@ if [[ -n $TMUX ]]; then
   echo in tmux
 fi
 
-PATH="$HOME/.dotfiles/bin:$HOME/.local/bin:$HOME/.bin:$PATH"
-
 source $HOME/.dotfiles/shell/extend_func
 source $HOME/.dotfiles/shell/extend_alias
 test -e "$HOME/.zshrc_local" && source ~/.zshrc_local

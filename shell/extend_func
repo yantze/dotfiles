@@ -169,10 +169,9 @@ function phphttp() {
 }
 
 proxyon () {
-    # HOST_PROXY=127.0.0.1
-    # HTPT_PROXY=6152 # HTTP PORT
-    # HSPT_PROXY=6152 # HTTPS PORT
-    # SSPT_PROXY=6153 # SOCKS PORT
+    # PROXY_HOST=127.0.0.1
+    # PROXY_PORT=6152 # HTTP PORT
+    # PROXY_SOCKS_PORT=6153 # SOCKS PORT
 
     export http_proxy=http://$PROXY_HOST:$PROXY_PORT
     export https_proxy=http://$PROXY_HOST:$PROXY_PORT
