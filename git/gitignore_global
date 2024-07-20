@@ -147,8 +147,6 @@ cscope.po.out
 *.rbc
 *.pyc
 
-cache/
-
 # -*- mode: gitignore; -*-
 *~
 \#*\#

@@ -32,19 +32,20 @@ function obj:init()
             return true, { changeVolume(3) }
         elseif event:getFlags()['fn'] and event:getKeyCode() == 121 then -- Fn + Down
             return true, { changeVolume(-3) }
+        elseif event:getFlags()['fn'] and event:getCharacters() == "h" then
+            return true, {hs.eventtap.event.newKeyEvent({}, "left", true)}
+        elseif event:getFlags()['fn'] and event:getCharacters() == "l" then
+            return true, {hs.eventtap.event.newKeyEvent({}, "right", true)}
+        elseif event:getFlags()['fn'] and event:getCharacters() == "j" then
+            return true, {hs.eventtap.event.newKeyEvent({}, "down", true)}
+        elseif event:getFlags()['fn'] and event:getCharacters() == "k" then
+            return true, {hs.eventtap.event.newKeyEvent({}, "up", true)}
         end
-        -- elseif event:getFlags()['fn'] and event:getCharacters() == "h" then
-        --     return true, {hs.eventtap.event.newKeyEvent({}, "left", true)}
-        -- elseif event:getFlags()['fn'] and event:getCharacters() == "l" then
-        --     return true, {hs.eventtap.event.newKeyEvent({}, "right", true)}
-        -- elseif event:getFlags()['fn'] and event:getCharacters() == "j" then
-        --     return true, {hs.eventtap.event.newKeyEvent({}, "down", true)}
-        -- elseif event:getFlags()['fn'] and event:getCharacters() == "k" then
+
             -- hs.alert.show("cmd:" .. tostring(event:getFlags()['cmd']), 0.5)
             -- hs.alert.show("alt:" .. tostring(event:getFlags()['alt']), 0.5)
             -- hs.alert.show("shift:" .. tostring(event:getFlags()['shift']), 0.5)
             -- hs.alert.show("ctrl:" .. tostring(event:getFlags()['ctrl']), 0.5)
-            -- return true, {hs.eventtap.event.newKeyEvent({}, "up", true)}
 
         -- elseif event:getFlags()['fn'] and event:getKeyCode() == hs.keycodes.map['Lfet'] then
             -- hs.alert.show(hs.inspect(event:getKeyCode()))

@@ -48,11 +48,13 @@ fi
 
 # END =================================
 
-
 # Screenshort detail convert: https://gist.github.com/dergachev/4627207
 function gif() {
-  movPath=`jc \ls -lt $HOME/Downloads/*.mov | jq '.[0].filename' | xargs -I{} echo {}`
-  gifski -r 12 -W 2048 -o "$HOME/Downloads/screenshort_$(date '+%Y%m%d-%H%M%S').gif" $movPath
+  # 录屏保存地址（可在设置面板配置）
+  basePath="$HOME/Downloads"
+  # 获取下载文件夹的第一个 mov 视频文件
+  movPath=`ls -t $basePath/*.mov | head -n 1 | xargs -I{} echo {}`
+  gifski -r 12 -W 2048 -o "$basePath/screenrecording_$(date '+%Y%m%d-%H%M%S').gif" $movPath
 }
 
 # idea cli
