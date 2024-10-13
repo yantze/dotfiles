@@ -62,7 +62,7 @@ if [[ -n "$ZSH_VERSION" ]]; then
   test -e "$ZSH/oh-my-zsh.sh" && source "$ZSH/oh-my-zsh.sh"
 
   # zsh plugin manager
-  # git clone https://github.com/zsh-users/antigen.git
+  # git clone https://github.com/zsh-users/antigen.git "$HOME/.local/antigen"
   if [[ -s "$HOME/.local/antigen/antigen.zsh" ]]; then
     source $HOME/.local/antigen/antigen.zsh
     # antigen bundle Tarrasch/zsh-autoenv
