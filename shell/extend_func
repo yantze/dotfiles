@@ -1,19 +1,17 @@
 # fname 递归查找当前目录下指定文件
 function fname() { find . -iname "*$@*"; }
 
-function psgrep() {
-    ps aux | grep -v grep | grep "$@" -i --color=auto
-}
-
-
 # cd and ls
 if [[ `uname` = "Darwin" ]];  then # mac
     export GENERAL_EXECUTE_PATH='/bin'
+
     function cdlist() {
         [[ "" = "${argv[-1]}" ]] && builtin cd ~ || builtin cd "${argv[-1]}" && command ls "${(@)argv[1,-2]}"
     }
+
 elif [[ `uname` = "Linux" ]]; then # linux
     export GENERAL_EXECUTE_PATH='/usr/bin'
+
     # origin: function cl() { builtin cd "$argv[-1]" && ls --group-directories-first --color=auto "${(@)argv[1,-2]}" }
     function cdlist() {
         argv=$@
@@ -21,35 +19,12 @@ elif [[ `uname` = "Linux" ]]; then # linux
     }
 fi
 
-
-
-# simple git clone
-function dl()
-{
-    git_url=$1
-    local_dir=$2
-    if [[ -z $1 ]]; then
-        # echo "fatal: You must specify a repository to clone."
-        builtin cd ~/dl
-        return
-    fi
-    if [[ -z $2 ]]; then
-        local_dir=${git_url#*\.com\/*\/}
-    fi
-
-    builtin cd ~/dl
-    git clone $git_url $local_dir
-    cd $local_dir
-    pwdc
-}
-
 function pwdc() {
     pathfile="`pwd`/$1"
     echo -n $pathfile | scopy
     # echo -n $pathfile | xcopy
     echo $pathfile
 }
-
 
 # 创建文件夹并且cd进去, 可以顺带把后面的文件放入文件夹中
 function take() {
@@ -61,7 +36,6 @@ function take() {
     # mv $files $1; # 这里会把 $files 当作一个整体,导致问题
     cd $1;
 }
-
 
 # get pure ip from url
 function ipurl() {
@@ -99,12 +73,6 @@ function put() {
         # RM_DIR=$(dirname ${RM_PATH})
         RM_BASENAME=$(basename "$single")
 
-        # 删除已经存在的文件目录
-        # if [[ -e "$TRASH/$RM_BASENAME" ]]; then
-        #     echo "Delete... $TRASH/$single"
-        #     "$GENERAL_EXECUTE_PATH/rm" -rf "$TRASH/$single"
-        # fi
-
         TRASH_TMP="$TRASH/$(date +'%m%d-%H%M%S')"
         if [[ ! -d $TRASH_TMP ]]; then
             mkdir $TRASH_TMP
@@ -116,33 +84,6 @@ function put() {
         echo "To    ... $TRASH_TMP"
         echo ""
     done
-    # mv $* $TRASH
-}
-
-hash extract 2>/dev/null || extract () {
-  if [ -f $1 ] ; then
-      case $1 in
-          *.tar.bz2)   tar xvjf $1    ;;
-          *.tar.gz)    tar xvzf $1    ;;
-          *.tar.xz)    tar -Jxvf $1   ;;
-          *.tar.Z)     tar zxvf $1    ;;
-          *.bz2)       bunzip2 $1     ;;
-          *.rar)       unrar x $1     ;;
-          *.gz)        gunzip $1      ;;
-          *.tar)       tar xvf $1     ;;
-          *.tbz2)      tar xvjf $1    ;;
-          *.tgz)       tar xvzf $1    ;;
-          *.zip)       unzip $1       ;;
-          *.Z)         uncompress $1  ;;
-          *.7z)        7za x $1        ;;
-          *.cab)       cabextract $1  ;;
-          *.arj)       unarj $1       ;;
-          *.lzh)       lha e $1       ;;
-          *)           echo "don't know how to extract '$1'…" ;;
-      esac
-  else
-      echo "'$1' is not a valid file!"
-  fi
 }
 
 # add url to safari reading list
@@ -152,20 +93,6 @@ function toread() {
 
 function gitweb() {
     git remote -v | awk '{print $2}' | head -n 1
-}
-
-# ag result to vim in current path
-function agk() {
-    [[ -n $1 ]] && vim +Ack\ $1\ $(pwd)
-}
-
-# start a web server by php
-function phphttp() {
-    if [ -z $* ]; then
-        php -S 127.0.0.1:3000
-    else
-        php -S 127.0.0.1:$*
-    fi
 }
 
 proxyon () {
@@ -208,14 +135,6 @@ function proxy_sys_off() {
     echo networksetup -setsecurewebproxystate $NETWORK off
 }
 
-
-
-# copy by pipe first line without newline symboy
-function scopy() {
-    read line
-    echo -n $line | tr -d '\n' | xcopy
-}
-
 function notify() {
     # https://apple.stackexchange.com/questions/57412/how-can-i-trigger-a-notification-center-notification-from-an-applescript-or-shel
     # https://code-maven.com/display-notification-from-the-mac-command-line
@@ -228,7 +147,7 @@ function rrg() {
     search_string="$1"
     # 如果没有第二个参数，就在当前文件夹查找
     search_path=`[[ $2 == "" ]] && echo "." || echo "$2"`
-    grep -RIi --byte-offset --exclude-dir={dist,.bzr,CVS,.git,.hg,.svn,.node_modules} -E $search_string $search_path $3 $4
+    grep -RIi --byte-offset --exclude-dir={dist,.bzr,CVS,.git,.hg,.svn,node_modules} -E $search_string $search_path $3 $4
     # -R 递归查找，相比 -r 可以查找软链
     # -I 忽略二进制文件
     # -i 忽略大小写
@@ -248,6 +167,7 @@ function repeatCount() {
     eval "$2"
   done
 }
+
 # v - open recent files from ~/.viminfo
 function viminfo() {
   local files
@@ -256,12 +176,6 @@ function viminfo() {
             [ -f "${line/\~/$HOME}" ] && echo "$line"
           done | fzf -d -m -q "$*" -1) && vim ${files//\~/$HOME}
 }
-# https://stackoverflow.com/a/18787544/755334
-function rpmx() {
-  # brew install rpm2cpio
-  rpm2cpio.pl "$1" | cpio -idmv
-}
-
 
 # c - browse chrome history
 c() {
@@ -292,3 +206,14 @@ killport() {
     lsof -i tcp:$port | awk 'NR!=1 {print $2}' | xargs kill -9
   done
 }
+
+# Screenshort detail convert: https://gist.github.com/dergachev/4627207
+function gif() {
+  # 录屏保存地址（可在设置面板配置）
+  basePath="$HOME/Downloads"
+  # 获取下载文件夹的第一个 mov 视频文件
+  movPath=`ls -t $basePath/*.mov | head -n 1 | xargs -I{} echo {}`
+  gifski -r 12 -W 2048 -o "$basePath/screenrecording_$(date '+%Y%m%d-%H%M%S').gif" $movPath
+}
+
+

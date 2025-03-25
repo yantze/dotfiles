@@ -13,7 +13,7 @@ end)
 function normal:entered() hs.alert.show('Enter (Next Mode)') end
 
 -- <esc> - exit Normal mode
-normal:bind({}, 'escape', function()
+normal:bind({"shift"}, 'escape', function()
     normal:exit()
     hs.alert.show('Exit (Next Mode)')
 end)
@@ -39,8 +39,9 @@ normal:bind({}, 'j', down, nil, down)
 
 -- Next Key index
 dict = {
-  scrollDown = function() hs.eventtap.scrollWheel({0, 40}, {}, 'line') end,
-  scrollUp = function() hs.eventtap.scrollWheel({0, -40}, {}, 'line') end,
+  scrollDown = function() hs.eventtap.scrollWheel({0, 20}, {}, 'line') end,
+  scrollHalf = function() hs.eventtap.scrollWheel({0, 20}, {}, 'line') end,
+  scrollUp = function() hs.eventtap.scrollWheel({0, -400}, {}, 'line') end,
   right = function() hs.eventtap.keyStroke({}, "right") end,
 }
 
@@ -51,6 +52,6 @@ normal:bind({"shift"}, 'space', function() dict["scrollUp"]() end, nil, nil)
 
 -- More Info
 normal:bind({}, '1', function() nextType = 'scrollDown' end, nil, nil)
-normal:bind({}, '2', function() nextType = 'scrollUp' end, nil, nil)
+normal:bind({}, '2', function() nextType = 'scrollHalf' end, nil, nil)
 normal:bind({}, '3', function() nextType = 'right' end, nil, nil)
 

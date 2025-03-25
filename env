@@ -1,3 +1,5 @@
 # 可用的功能标识量
-
 export SHELL_EXTEND=true
+
+# 环境变量
+PATH="$HOME/.dotfiles/bin:$HOME/.local/bin:$HOME/.bin:$PATH"

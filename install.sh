@@ -23,6 +23,8 @@ ln -s ~/.dotfiles/shell/inputrc ~/.inputrc
 
 # tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+# !!! prefix + I Install plugiin
+#
 ln -s ~/.dotfiles/tmux/tmux.conf ~/.tmux.conf
 
 # autojump / z for bash

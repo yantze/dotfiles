@@ -1,6 +1,5 @@
 ### default
 alias s='ls -G'
-alias javac="javac -J-Dfile.encoding=utf8"
 alias grep="grep --color=auto"
 alias less="less -R" # raw control character
 alias cls='clear'
@@ -15,19 +14,12 @@ alias lld='ls -al -pt | egrep /$' # | head -n 20'
 alias p="ps -ef"
 
 ### app ###
-alias n='npm run'
-alias ns='cat package.json | jq .scripts'
-alias bashrc='vim ~/.bashrc'
-alias zshrc='vim ~/.zshrc'
-alias zshreload='source ~/.zshrc'
-alias zshrclocal='vim ~/.zshrc_local'
+alias bashrc='${=EDITOR} ~/.bashrc'
+alias zshrc='${=EDITOR} ~/.zshrc'
 alias vimrc='[[ -s `echo ~/.vimrc` ]] && vim ~/.vimrc || vim ~/.vim/vimrc'
 alias tmuxconf='vim ~/.tmux.conf'
-alias rsyn='rsync -arvuzp'
 alias histsum='zsh_stats'
 alias mcd='take'
-alias sp='~/soft/sh-toolkits-lib/sp.sh'
-alias ngtop='ngxtop -l /usr/local/nginx/logs/access.log'
 # the yasm is a rewrite interface for nasm
 # alias nasm='yasm'
 
@@ -43,14 +35,6 @@ alias cf='egrep -v "^[[:cntrl:] ]*[#;]|^[[:cntrl:] ]*$"'
 
 # 重新运行上一条命令，并将输出复制到剪贴板，cl = copy last
 alias cl='bash -c "$(fc -ln -1)" | pbcopy'
-
-# 复制上一条命令
-# alias last='fc -ln -1 | pbcopy'
-alias last='fc -ln -1 | scopy'
-
-# 将当前剪贴板里的内容保存到某个文件里
-alias new='pbpaste | cat >'
-alias save='pbpaste | cat >'
 
 alias plist="/usr/libexec/PlistBuddy -c 'Print'"
 
@@ -101,47 +85,8 @@ alias grep='grep -i --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 alias v='vim --cmd "let g:no_vimrc_bundles=1"'
 alias vi='vim'
 
-# Emacs
-if [[ `uname` = "Darwin" ]]; then #if mac
-  alias ec='emacsclient -a ""'
-else
-  alias ec='emacsclient -a "" -c'
-fi
-alias et='emacsclient -t'  # 适合 GUI 时，启动一个新的 frame (-n)
-alias en='emacsclient -n'  # 适合 终端运行(emacs --daemon) 后
-# alias e='command emacs -nw' # emacs command line
-
-if [[ $TERM = "screen" || $TERM_MANAGER = "screen" ]]; then
-  # screen
-  # C-a D D (quick exit)
-  alias t='screen -R hi'
-  alias ta='screen -R'
-  alias tn='screen -S'
-  alias tl='screen -list'
-  alias st='screen -t'
-  # 随便个可以attach的
-  alias tt='screen -dRR'
-else
-  # Tmux
-  #设置窗口的名字为hi
-  alias t='tmux -2 -u attach || tmux -2 -u new-session -s hi'
-  #新建一個有名字的窗口
-  alias tn='tmux -2 -u new-session -s'
-  # alias tmn='tmux new -s $(basename $(pwd))'
-  alias tl='tmux list-sessions'
-  #附上一個有名字的窗口
-  # alias ta='tmux attach -t'
-  alias ta='tmux attach -d -t'
-  #设置tmux标签的名字，直到退出为止
-  alias st='set-window-title'
-fi
-
-if [ -x "$(command -v exa)" ]; then
-  alias ls="exa"
-  alias la="exa --long --all --group"
-  alias ll="exa --long -s=newest"
-fi
+alias rsyn='rsync -arvuzp'
 
 # }}}
 
-# vim: set ts=2 sw=2 tw=0 et ft=zsh fdm=marker foldlevel=0 foldenable foldlevelstart=99
+# vim: set ts=2 sw=2 tw=0 et ft=zsh fdm=marker foldlevel=0 foldenable foldlevelstart=99 :

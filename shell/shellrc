@@ -51,11 +51,8 @@ if [[ -n "$ZSH_VERSION" ]]; then
   # plugins/zsh-autoenv
   # AUTOENV_FILE_ENTER=".env"
 
-  # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-  # custom plugin1
   # git clone --depth=1 https://github.com/mbenford/zsh-tmux-auto-title ${ZSH_CUSTOM}/plugins/zsh-tmux-auto-title
-  plugins=(bundler macos git common-aliases dirhistory extract zsh-navigation-tools copyfile)
-  # valid: rake ruby emoji fancy-ctrl-z web-search npm sudo nvm autojump
+  plugins=(macos git common-aliases extract zsh-navigation-tools)
 
   # configuration
   ZSH="${HOME}/.antigen/bundles/robbyrussell/oh-my-zsh"
@@ -65,73 +62,28 @@ if [[ -n "$ZSH_VERSION" ]]; then
   # git clone https://github.com/zsh-users/antigen.git "$HOME/.local/antigen"
   if [[ -s "$HOME/.local/antigen/antigen.zsh" ]]; then
     source $HOME/.local/antigen/antigen.zsh
-    # antigen bundle Tarrasch/zsh-autoenv
-    # antigen bundle zsh-users/zsh-syntax-highlighting
     antigen bundle robbyrussell/oh-my-zsh plugins/z
     antigen bundle zsh-users/zsh-autosuggestions
     antigen apply
   fi
 
-  # typeset -U PATH
-
 elif [[ -n "$BASH_VERSION" ]]; then
-
-  [ -f /etc/bashrc ] && . /etc/bashrc
-
-  # Append to the history file
-  shopt -s histappend
-
-  # Check the window size after each command ($LINES, $COLUMNS)
-  shopt -s checkwinsize
-
-  # Better-looking less for binary files
-  [ -x /usr/bin/lesspipe    ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-  # Bash completion
-  [ -f /etc/bash_completion ] && . /etc/bash_completion
-
-  # Disable CTRL-S and CTRL-Q
-  [[ $- =~ i ]] && stty -ixoff -ixon
-
-  [ -z "$TMPDIR" ] && TMPDIR=/tmp
-
-  if [ "$PLATFORM" = Linux ]; then
-    PS1="\[\e[1;38m\]\u\[\e[1;34m\]@\[\e[1;31m\]\h\[\e[1;30m\]:"
-    PS1="$PS1\[\e[0;38m\]\w\[\e[1;35m\]> \[\e[0m\]"
-  else
-    # git-prompt
-    __git_ps1() { :;}
-    if [ -e ~/.git-prompt.sh ]; then
-      source ~/.git-prompt.sh
-    fi
-    PS1='\[\e[34m\]\u\[\e[1;32m\]@\[\e[0;33m\]\h\[\e[35m\]:\[\e[m\]\w\[\e[1;30m\]$(__git_ps1)\[\e[1;31m\]> \[\e[0m\]'
-  fi
-
-  [[ -r /usr/local/etc/profile.d/bash_completion.sh ]] && . /usr/local/etc/profile.d/bash_completion.sh
-  if [[ $- == *i* ]]; then
-    _fzf_setup_completion path git
-    _fzf_setup_completion host tssh
-  fi
-
+  source $HOME/.dotfiles/shell/bash.sh
 # else
 fi
 
-if [[ -n $TMUX ]]; then
-  # support italic with terminfo
-  # set -g default-terminal "tmux-256color"
-  # export TERM='screen-256color'
-
-  # count tmux current window panes
-  # pane_count=$(tmux display-message -p '#{window_panes}')
-  # if [[ $pane_count = 1 ]]; then
-  #   # auto rename tmux window is off
-  #   # tmux rename-window ''
-  # fi
-  echo in tmux
-fi
+# 第一次 source zshrc 之后，接着进入 tmux 后，设置的 Shell 扩展功能才会开启
+source $HOME/.dotfiles/env
 
 source $HOME/.dotfiles/shell/extend_func
 source $HOME/.dotfiles/shell/extend_alias
-test -e "$HOME/.zshrc_local" && source ~/.zshrc_local
+source $HOME/.dotfiles/shell/fzf.sh
+source $HOME/.dotfiles/shell/node.sh
+source $HOME/.dotfiles/shell/pyenv.sh
+source $HOME/.dotfiles/shell/java.sh
+source $HOME/.dotfiles/shell/brew.sh
+source $HOME/.dotfiles/shell/tmux.sh
+# source $HOME/.dotfiles/shell/p10k.sh
+# source $HOME/.dotfiles/shell/go.sh
 
 # vim: set ts=4 sw=2 tw=0 et ft=zsh fdm=indent foldmarker={,} foldlevel=0 foldenable foldlevelstart=99 :
