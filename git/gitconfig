@@ -1,6 +1,6 @@
 [user]
-    name = yantze
-    email = yantze@126.com
+	name = yantze
+	email = yantze@126.com
 
 [core]
     excludesfile = ~/.gitignore_global
@@ -28,6 +28,15 @@
     br = "for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
     # 向上游新建远程分支
     pus = !git push --set-upstream origin $(git symbolic-ref --short HEAD)
+    http = "!f() { \
+        REMOTE_NAME=${1:-origin}; \
+        REPO_URL=$(git remote get-url \"${REMOTE_NAME}\" 2>/dev/null); \
+        if [ -z \"${REPO_URL}\" ]; then \
+            echo \"Error: Remote '${REMOTE_NAME}' not found.\"; \
+            return 1; \
+        fi; \
+        echo \"${REPO_URL}\" | sed -E 's/^git@([^:]+):(.*)$/https:\\/\\/\\1\\/\\2/' | sed -E 's/^ssh:\\/\\/git@([^\\/]+)\\/(.*)$/https:\\/\\/\\1\\/\\2/' | sed 's/\\.git$//'; \
+    }; f"
 
 [filter "lfs"]
     process = git-lfs filter-process
