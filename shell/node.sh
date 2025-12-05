@@ -86,7 +86,7 @@ auto-switch-node-version() {
 alias n='npm run'
 alias ns='cat package.json | jq .scripts'
 
-export PATH="$PATH:$HOME/.nvm/versions/node/v18.20.2/bin"
+export PATH="$PATH:$HOME/.nvm/versions/node/v22.14.0/bin"
 
 # nvm
 nvm() {
