@@ -3,38 +3,8 @@
 # - https://github.com/yantze/dotfiles
 # - ivastiny@gmail.com
 
-# System default
-# --------------------------------------------------------------------
-
-[ -z ${PLATFORM+x} ] && export PLATFORM=$(uname -s)
-
-
-# Options
-# --------------------------------------------------------------------
-
-# ENABLE_CORRECTION="true"
-COMPLETION_WAITING_DOTS="true"
-DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# history max num
-export HISTSIZE=100000
-# history max save
-export SAVEHIST=100000
-# export HISTFILE=~/.histfile
-export EDITOR=vim
-export VISUAL=vim # for c-x c-e
-
-# display language
-export LANG="en_US.UTF-8"
-export LANGUAGE="en_US"
-export LC_COLLATE="en_US.UTF-8"
-export LC_CTYPE="en_US.UTF-8"
-export LC_MESSAGES="en_US.UTF-8"
-export LC_MONETARY="en_US.UTF-8"
-export LC_NUMERIC="en_US.UTF-8"
-export LC_TIME="en_US.UTF-8"
-# export LC_ALL=
-# locale -v
+# 第一次 source zshrc 之后，接着进入 tmux 后，设置的 Shell 扩展功能才会开启
+source $HOME/.dotfiles/env
 
 if [[ -n $SSH_CONNECTION ]]; then
   # export TERM='screen-256color'
@@ -72,9 +42,6 @@ elif [[ -n "$BASH_VERSION" ]]; then
 # else
 fi
 
-# 第一次 source zshrc 之后，接着进入 tmux 后，设置的 Shell 扩展功能才会开启
-source $HOME/.dotfiles/env
-
 source $HOME/.dotfiles/shell/extend_func
 source $HOME/.dotfiles/shell/extend_alias
 source $HOME/.dotfiles/shell/fzf.sh
@@ -84,6 +51,7 @@ source $HOME/.dotfiles/shell/java.sh
 source $HOME/.dotfiles/shell/brew.sh
 source $HOME/.dotfiles/shell/tmux.sh
 # source $HOME/.dotfiles/shell/p10k.sh
-# source $HOME/.dotfiles/shell/go.sh
+source $HOME/.dotfiles/shell/go.sh
+source $HOME/.dotfiles/shell/rdp.sh
 
 # vim: set ts=4 sw=2 tw=0 et ft=zsh fdm=indent foldmarker={,} foldlevel=0 foldenable foldlevelstart=99 :

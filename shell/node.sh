@@ -86,6 +86,7 @@ auto-switch-node-version() {
 alias n='npm run'
 alias ns='cat package.json | jq .scripts'
 
+export NODE_OPTIONS=--max_old_space_size=8192
 export PATH="$PATH:$HOME/.nvm/versions/node/v22.14.0/bin"
 
 # nvm

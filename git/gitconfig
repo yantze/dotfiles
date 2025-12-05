@@ -29,7 +29,7 @@
     br = "for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
     # 向上游新建远程分支
     pus = !git push --set-upstream origin $(git symbolic-ref --short HEAD)
-    http = "!f() { \
+    url = "!f() { \
         REMOTE_NAME=${1:-origin}; \
         REPO_URL=$(git remote get-url \"${REMOTE_NAME}\" 2>/dev/null); \
         if [ -z \"${REPO_URL}\" ]; then \
