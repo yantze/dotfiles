@@ -1,6 +1,7 @@
 # fzf config
 # --------------------------------------------------------------------
-export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --bind 'ctrl-y:execute-silent(echo -n {} | pbcopy)+abort'"
+export FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build} --type f"
+export FZF_DEFAULT_OPTS="--height ~40% --layout=reverse"
 
 export FZF_TMUX_OPTS='-p80%,60%'
 export FZF_CTRL_R_OPTS="
@@ -20,10 +21,12 @@ command -v bat  > /dev/null && export FZF_CTRL_T_OPTS="--preview 'bat -n --color
 command -v blsd > /dev/null && export FZF_ALT_C_COMMAND='blsd'
 command -v tree > /dev/null && export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
 
-if [[ -n "$ZSH_VERSION" ]]; then
-  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-elif [[ -n "$BASH_VERSION" ]]; then
-  [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+if command -v fzf > /dev/null; then
+  if [[ -n "$ZSH_VERSION" ]]; then
+    eval "$(fzf --zsh)"
+  elif [[ -n "$BASH_VERSION" ]]; then
+    eval "$(fzf --bash)"
+  fi
 fi
 
 

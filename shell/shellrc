@@ -47,7 +47,7 @@ fi
 
 source $HOME/.dotfiles/shell/extend_func
 source $HOME/.dotfiles/shell/extend_alias
-# source $HOME/.dotfiles/shell/fzf.sh
+source $HOME/.dotfiles/shell/fzf.sh
 source $HOME/.dotfiles/shell/node.sh
 source $HOME/.dotfiles/shell/pyenv.sh
 source $HOME/.dotfiles/shell/java.sh
