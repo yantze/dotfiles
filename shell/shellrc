@@ -11,30 +11,39 @@ if [[ -n $SSH_CONNECTION ]]; then
 fi
 
 if [[ -n "$ZSH_VERSION" ]]; then
-  # Look in ~/.oh-my-zsh/themes/
-  ZSH_THEME="robbyrussell"
+  # --- zinit 插件管理器 ---
+  ZINIT_HOME="${HOME}/.local/share/zinit/zinit.git"
+  if [[ ! -d $ZINIT_HOME ]]; then
+    mkdir -p "$(dirname $ZINIT_HOME)"
+    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+  fi
+  source "${ZINIT_HOME}/zinit.zsh"
 
-  # plugins/z
   _Z_CMD=j
 
-  # plugins/zsh-autoenv
-  # AUTOENV_FILE_ENTER=".env"
+  # 主题 (同步加载，确保 prompt 立即可见)
+  setopt promptsubst
+  zinit snippet OMZL::git.zsh
+  zinit snippet OMZL::prompt_info_functions.zsh
+  zinit snippet OMZT::robbyrussell
 
-  # git clone --depth=1 https://github.com/mbenford/zsh-tmux-auto-title ${ZSH_CUSTOM}/plugins/zsh-tmux-auto-title
-  plugins=(macos git extract zsh-navigation-tools)
+  # oh-my-zsh 插件 (Turbo 延迟加载，不阻塞启动)
+  zinit wait lucid for \
+    OMZP::git \
+    OMZP::macos \
+    OMZP::extract \
+    OMZP::z
 
-  # zsh plugin manager
-  # git clone https://github.com/zsh-users/antigen.git "$HOME/.local/antigen"
-  # if [[ -s "$HOME/.local/antigen/antigen.zsh" ]]; then
-  #   source $HOME/.local/antigen/antigen.zsh
-  #   antigen bundle robbyrussell/oh-my-zsh plugins/z
-  #   antigen bundle zsh-users/zsh-autosuggestions
-  #   antigen apply
-  # fi
+  # 第三方插件 (Turbo 延迟加载)
+  zinit wait lucid for \
+    light-mode zsh-users/zsh-autosuggestions
+
+  # 补全 + 语法高亮
+  zinit wait lucid atinit"zicompinit; zicdreplay" for \
+    zdharma-continuum/fast-syntax-highlighting
 
 elif [[ -n "$BASH_VERSION" ]]; then
   source $HOME/.dotfiles/shell/bash.sh
-# else
 fi
 
 source $HOME/.dotfiles/shell/extend_func
