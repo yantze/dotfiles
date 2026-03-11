@@ -15,8 +15,8 @@ create_windows() {
 
   # 全新镜像 win2025_24H2_x64_dtc_zh-cn_40G_uefi_alibase_20250113.vhd
   response=$(aliyun ecs RunInstances --region cn-hangzhou --InstanceChargeType PostPaid --RegionId 'cn-hangzhou' --ZoneId 'cn-hangzhou-h' \
-    --InstanceType 'ecs.t5-c1m2.xlarge' --IoOptimized optimized --SpotStrategy SpotAsPriceGo --SpotInterruptionBehavior Stop \
-    --ImageId "$RDP_IMAGE_ID" --SecurityEnhancementStrategy Deactive --SystemDisk.Size 40 --SystemDisk.Category cloud_efficiency \
+    --InstanceType 'ecs.t5-c1m1.xlarge' --IoOptimized optimized --SpotStrategy SpotAsPriceGo --SpotInterruptionBehavior Stop \
+    --ImageId "$RDP_IMAGE_ID" --SecurityEnhancementStrategy Deactive --SystemDisk.Size 40 --SystemDisk.Category 'cloud_efficiency' \
     --InternetChargeType PayByTraffic --InternetMaxBandwidthOut 50 --VSwitchId "$RDP_VSWITCH_ID" --SecurityGroupId "$RDP_SECURITY_GROUP_ID" --ImageOptions.LoginAsNonRoot false --InstanceName 'launch-advisor-20250217' \
     --PrivateDnsNameOptions.HostnameType Custom --UniqueSuffix false --HttpTokens optional --Tenancy default --Affinity default --Amount 1 --Password "$RDP_PASSWORD" --method POST --force)
 
