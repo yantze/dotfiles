@@ -9,3 +9,8 @@ jdk11() {
   export JAVA_HOME="$(/usr/libexec/java_home -v11)"
   export PATH="$JAVA_HOME/bin:$PATH"
 }
+
+jdk23() {
+  export JAVA_HOME="$(/usr/libexec/java_home -v23)"
+  export PATH="$JAVA_HOME/bin:$PATH"
+}

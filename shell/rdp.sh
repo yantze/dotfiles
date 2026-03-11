@@ -8,7 +8,8 @@
 : ${RDP_SECURITY_GROUP_ID:=SecurityGroupId}
 : ${RDP_VSWITCH_ID:=VSwitchId}
 
-# 创建并启动一台 windows 电脑：型号 t5-c1m2.xlarge 价格 0.16 cny/h
+# 创建并启动一台 windows 电脑：型号 ecs.t5-c1m2.xlarge 价格 0.16 cny/h
+# ecs.t6-c1m1.large 0.03 cny/h
 create_windows() {
   echo "正在启动实例..."
 

@@ -8,9 +8,7 @@ git clone https://github.com/yantze/dotfiles ~/.dotfiles
 ln -s ~/.dotfiles/bin ~/.bin
 
 # brew
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-brew tap Homebrew/bundle
-brew bundle
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # zsh
 git clone https://github.com/zsh-users/antigen ~/.local/antigen

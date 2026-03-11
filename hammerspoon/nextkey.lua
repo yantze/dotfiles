@@ -55,3 +55,8 @@ normal:bind({}, '1', function() nextType = 'scrollDown' end, nil, nil)
 normal:bind({}, '2', function() nextType = 'scrollHalf' end, nil, nil)
 normal:bind({}, '3', function() nextType = 'right' end, nil, nil)
 
+-- 支持回测提供发送信息
+hs.hotkey.bind({"shift", "cmd"}, "return", function()
+  hs.eventtap.keyStrokes("开始实现")
+  hs.eventtap.keyStroke({}, "return")
+end)

@@ -13,7 +13,7 @@
 #   prints a clear warning, so you can decide whether you want to run `nvm install`.
 #
 # - If no .nvmrc is found, it does `nvm use default`.
-# 
+#
 # Recommended: leave your default as something generic,
 # e.g. do `nvm alias default stable`
 ####
@@ -84,10 +84,10 @@ auto-switch-node-version() {
 # ------------------------------------
 
 alias n='npm run'
-alias ns='cat package.json | jq .scripts'
+alias ns='jq .scripts package.json'
 
 # export NODE_OPTIONS=--max_old_space_size=8192
-export PATH="$PATH:$HOME/.nvm/versions/node/v22.14.0/bin"
+# export PATH="$PATH:$HOME/.nvm/versions/node/v24.14.0/bin"
 
 # nvm
 nvm() {

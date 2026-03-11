@@ -1,6 +1,6 @@
 ### default
 alias s='ls -G'
-alias grep="grep --color=auto"
+alias grep='grep -i --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 alias less="less -R" # raw control character
 alias cls='clear'
 alias q='exit'
@@ -39,7 +39,7 @@ alias cl='bash -c "$(fc -ln -1)" | pbcopy'
 alias plist="/usr/libexec/PlistBuddy -c 'Print'"
 
 #if mac
-if [[ `uname -s` = "Darwin" ]]; then
+if [[ $PLATFORM = "Darwin" ]]; then
   alias play='afplay'
 
   export DOCKER_HOST=tcp://localhost:4243
@@ -75,8 +75,6 @@ fi
 if [[ -n $SHELL_EXTEND ]]; then
   alias rm='put'
 fi
-
-alias grep='grep -i --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 
 # app {{{
 

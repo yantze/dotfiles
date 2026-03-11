@@ -1,7 +1,6 @@
 # fzf config
 # --------------------------------------------------------------------
-export FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build} --type f"
-export FZF_DEFAULT_OPTS="--height 40% --layout=reverse 2> /dev/null | head -500'"
+export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --bind 'ctrl-y:execute-silent(echo -n {} | pbcopy)+abort'"
 
 export FZF_TMUX_OPTS='-p80%,60%'
 export FZF_CTRL_R_OPTS="

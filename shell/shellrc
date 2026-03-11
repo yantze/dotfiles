@@ -7,7 +7,6 @@
 source $HOME/.dotfiles/env
 
 if [[ -n $SSH_CONNECTION ]]; then
-  # export TERM='screen-256color'
   echo "in ssh"
 fi
 
@@ -22,20 +21,16 @@ if [[ -n "$ZSH_VERSION" ]]; then
   # AUTOENV_FILE_ENTER=".env"
 
   # git clone --depth=1 https://github.com/mbenford/zsh-tmux-auto-title ${ZSH_CUSTOM}/plugins/zsh-tmux-auto-title
-  plugins=(macos git common-aliases extract zsh-navigation-tools)
-
-  # configuration
-  ZSH="${HOME}/.antigen/bundles/robbyrussell/oh-my-zsh"
-  test -e "$ZSH/oh-my-zsh.sh" && source "$ZSH/oh-my-zsh.sh"
+  plugins=(macos git extract zsh-navigation-tools)
 
   # zsh plugin manager
   # git clone https://github.com/zsh-users/antigen.git "$HOME/.local/antigen"
-  if [[ -s "$HOME/.local/antigen/antigen.zsh" ]]; then
-    source $HOME/.local/antigen/antigen.zsh
-    antigen bundle robbyrussell/oh-my-zsh plugins/z
-    antigen bundle zsh-users/zsh-autosuggestions
-    antigen apply
-  fi
+  # if [[ -s "$HOME/.local/antigen/antigen.zsh" ]]; then
+  #   source $HOME/.local/antigen/antigen.zsh
+  #   antigen bundle robbyrussell/oh-my-zsh plugins/z
+  #   antigen bundle zsh-users/zsh-autosuggestions
+  #   antigen apply
+  # fi
 
 elif [[ -n "$BASH_VERSION" ]]; then
   source $HOME/.dotfiles/shell/bash.sh
@@ -44,14 +39,16 @@ fi
 
 source $HOME/.dotfiles/shell/extend_func
 source $HOME/.dotfiles/shell/extend_alias
-source $HOME/.dotfiles/shell/fzf.sh
+# source $HOME/.dotfiles/shell/fzf.sh
 source $HOME/.dotfiles/shell/node.sh
 source $HOME/.dotfiles/shell/pyenv.sh
 source $HOME/.dotfiles/shell/java.sh
 source $HOME/.dotfiles/shell/brew.sh
 source $HOME/.dotfiles/shell/tmux.sh
-# source $HOME/.dotfiles/shell/p10k.sh
 source $HOME/.dotfiles/shell/go.sh
 source $HOME/.dotfiles/shell/rdp.sh
+
+# zsh 内建功能，可以自动去除 PATH 中的重复项，开销极小
+typeset -U PATH
 
 # vim: set ts=4 sw=2 tw=0 et ft=zsh fdm=indent foldmarker={,} foldlevel=0 foldenable foldlevelstart=99 :
