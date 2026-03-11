@@ -18,14 +18,15 @@ if [[ -n "$ZSH_VERSION" ]] && [[ -z "$KAKU_ZSH_DIR" ]]; then
   fi
   source "${ZINIT_HOME}/zinit.zsh"
 
-  _Z_CMD=j
-
   # 主题 (同步加载，确保 prompt 立即可见)
   setopt promptsubst
   zinit snippet OMZL::git.zsh
   zinit snippet OMZL::prompt_info_functions.zsh
   zinit snippet OMZL::completion.zsh
   zinit snippet OMZT::robbyrussell
+
+  # z 改为 j
+  _Z_CMD=j
 
   # oh-my-zsh 插件 (Turbo 延迟加载，不阻塞启动)
   zinit wait lucid for \
