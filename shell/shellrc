@@ -1,7 +1,5 @@
 # .zshrc .bashrc for macOS and Ubuntu
 # ====================================================================
-# - https://github.com/yantze/dotfiles
-# - ivastiny@gmail.com
 
 # 第一次 source zshrc 之后，接着进入 tmux 后，设置的 Shell 扩展功能才会开启
 source $HOME/.dotfiles/env
@@ -26,6 +24,7 @@ if [[ -n "$ZSH_VERSION" ]] && [[ -z "$KAKU_ZSH_DIR" ]]; then
   setopt promptsubst
   zinit snippet OMZL::git.zsh
   zinit snippet OMZL::prompt_info_functions.zsh
+  zinit snippet OMZL::completion.zsh
   zinit snippet OMZT::robbyrussell
 
   # oh-my-zsh 插件 (Turbo 延迟加载，不阻塞启动)
