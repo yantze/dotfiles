@@ -8,6 +8,9 @@ if [[ -n $SSH_CONNECTION ]]; then
   echo "in ssh"
 fi
 
+# z 改为 j
+_Z_CMD=j
+
 # 如果加载了 kaku 无须加载 zsh
 if [[ -n "$ZSH_VERSION" ]] && [[ -z "$KAKU_ZSH_DIR" ]]; then
   # --- zinit 插件管理器 ---
@@ -24,9 +27,6 @@ if [[ -n "$ZSH_VERSION" ]] && [[ -z "$KAKU_ZSH_DIR" ]]; then
   zinit snippet OMZL::prompt_info_functions.zsh
   zinit snippet OMZL::completion.zsh
   zinit snippet OMZT::robbyrussell
-
-  # z 改为 j
-  _Z_CMD=j
 
   # oh-my-zsh 插件 (Turbo 延迟加载，不阻塞启动)
   zinit wait lucid for \
