@@ -198,3 +198,8 @@ node_modules/
 api.http
 .qoder
 .claude
+.cursor
+
+# 忽略 增量编译缓存
+tsconfig.tsbuildinfo
+
