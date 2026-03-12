@@ -12,7 +12,7 @@ fi
 _Z_CMD=j
 
 # 如果加载了 kaku 无须加载 zsh
-if [[ -n "$ZSH_VERSION" ]] && [[ -z "$KAKU_ZSH_DIR" ]]; then
+if [[ -n "$ZSH_VERSION" ]]; then
   # --- zinit 插件管理器 ---
   ZINIT_HOME="${HOME}/.local/share/zinit/zinit.git"
   if [[ ! -d $ZINIT_HOME ]]; then
@@ -26,6 +26,7 @@ if [[ -n "$ZSH_VERSION" ]] && [[ -z "$KAKU_ZSH_DIR" ]]; then
   zinit snippet OMZL::git.zsh
   zinit snippet OMZL::prompt_info_functions.zsh
   zinit snippet OMZL::completion.zsh
+  zinit snippet OMZL::key-bindings.zsh
   zinit snippet OMZT::robbyrussell
 
   # oh-my-zsh 插件 (Turbo 延迟加载，不阻塞启动)
@@ -55,7 +56,7 @@ source $HOME/.dotfiles/shell/pyenv.sh
 source $HOME/.dotfiles/shell/java.sh
 source $HOME/.dotfiles/shell/brew.sh
 source $HOME/.dotfiles/shell/tmux.sh
-source $HOME/.dotfiles/shell/go.sh
+# source $HOME/.dotfiles/shell/go.sh
 source $HOME/.dotfiles/shell/rdp.sh
 
 # zsh 内建功能，可以自动去除 PATH 中的重复项，开销极小
