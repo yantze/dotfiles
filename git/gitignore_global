@@ -196,3 +196,5 @@ node_modules/
 
 # restful
 api.http
+.qoder
+.claude
