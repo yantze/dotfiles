@@ -24,23 +24,49 @@ if [[ -n "$ZSH_VERSION" ]]; then
   # 主题 (同步加载，确保 prompt 立即可见)
   setopt promptsubst
   zinit snippet OMZL::git.zsh
-  zinit snippet OMZL::prompt_info_functions.zsh
+  # zinit snippet OMZL::prompt_info_functions.zsh  # 与 starship 冲突，移除
   zinit snippet OMZL::completion.zsh
   zinit snippet OMZL::key-bindings.zsh
-  zinit snippet OMZT::robbyrussell
+  # zinit snippet OMZT::robbyrussell  # 使用 kaku/starship，注释掉
 
   # oh-my-zsh 插件 (Turbo 延迟加载，不阻塞启动)
   zinit wait lucid for \
     OMZP::git \
     OMZP::extract \
     OMZP::z \
-    OMZP::macos
-
-  zinit for OMZP::zsh-navigation-tools
+    OMZP::macos \
+    OMZP::zsh-navigation-tools
 
   # 第三方插件 (Turbo 延迟加载)
   zinit wait lucid for \
     light-mode zsh-users/zsh-autosuggestions
+
+  # zsh-navigation-tools 懒加载 (只用 n-history 和 n-cd)
+  # _znt_dir="$HOME/.local/share/zinit/plugins/psprint---zsh-navigation-tools"
+  # _znt_loaded=0
+  # _znt_init() {
+  #   [[ $_znt_loaded -eq 1 ]] && return
+  #   _znt_loaded=1
+  #   # 先移除包装函数
+  #   unfunction n-history n-cd 2>/dev/null
+  #   # 添加到 fpath 并注册必要的 autoload 函数
+  #   [[ -d $_znt_dir ]] && fpath=($_znt_dir $fpath)
+  #   autoload -Uz n-history n-cd n-list n-list-draw n-list-input znt-usetty-wrapper znt-history-widget znt-cd-widget
+  #   # 设置环境变量
+  #   export ZNT_REPO_DIR=$_znt_dir ZNT_CONFIG_DIR=$HOME/.config/znt
+  #   # 复制配置文件
+  #   [[ -d $HOME/.config/znt ]] || mkdir -p $HOME/.config/znt
+  #   for f in n-history.conf n-list.conf n-cd.conf; do
+  #     [[ -f $HOME/.config/znt/$f ]] || cp $_znt_dir/.config/znt/$f $HOME/.config/znt/ 2>/dev/null
+  #   done
+  #   # znt 键绑定 (Ctrl+R 历史搜索)
+  #   zle -N znt-history-widget 2>/dev/null
+  #   bindkey '^R' znt-history-widget 2>/dev/null
+  #   setopt AUTO_PUSHD HIST_IGNORE_DUPS PUSHD_IGNORE_DUPS 2>/dev/null
+  # }
+  # # 包装函数
+  # n-history() { _znt_init; n-history "$@"; }
+  # n-cd() { _znt_init; n-cd "$@"; }
 
   # 补全 + 语法高亮
   zinit wait lucid atinit"zicompinit; zicdreplay" for \
