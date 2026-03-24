@@ -20,8 +20,6 @@ alias vimrc='[[ -s `echo ~/.vimrc` ]] && vim ~/.vimrc || vim ~/.vim/vimrc'
 alias tmuxconf='vim ~/.tmux.conf'
 alias histsum='zsh_stats'
 alias mcd='take'
-# the yasm is a rewrite interface for nasm
-# alias nasm='yasm'
 
 # ~/.bin/m search wiki
 alias mw='m web'  # search web
