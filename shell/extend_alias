@@ -13,30 +13,31 @@ alias llf='ls -al -pt | egrep -v /$' # | head -n 20'
 alias lld='ls -al -pt | egrep /$' # | head -n 20'
 alias p="ps -ef"
 
-### app ###
-alias bashrc='${=EDITOR} ~/.bashrc'
-alias zshrc='${=EDITOR} ~/.zshrc'
-alias vimrc='[[ -s `echo ~/.vimrc` ]] && vim ~/.vimrc || vim ~/.vim/vimrc'
-alias tmuxconf='vim ~/.tmux.conf'
-alias histsum='zsh_stats'
-alias mcd='take'
-
-# ~/.bin/m search wiki
-alias mw='m web'  # search web
-alias mf='m file'  # search file and open it
-alias mm='m man'  # search cheat manual
-alias ms='m vim' # search keyword by vim ack
-
 # view config file whitout empty line(s),spaces(s) ,tab(s) ,'#' or ;
 # there have another:egrep -v '^#|^$' /etc/ntp.conf
 alias cf='egrep -v "^[[:cntrl:] ]*[#;]|^[[:cntrl:] ]*$"'
 
+if [[ -n "$ZSH_VERSION" ]]; then
+  alias -g ND=' -pt | egrep -v /$ | head -n 20' # 配合 ls 或者 ll 使用
+  alias -g HD=' -pt | egrep /$ | head -n 20' # 配合 ls 或者 ll 使用
+  alias -g O=' | xargs open'
+fi
+
+# fast foward
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+
+if [[ -n $SHELL_EXTEND ]]; then
+  alias rm='put'
+fi
+
+# app {{{
+
 # 重新运行上一条命令，并将输出复制到剪贴板，cl = copy last
 alias cl='bash -c "$(fc -ln -1)" | pbcopy'
 
-alias plist="/usr/libexec/PlistBuddy -c 'Print'"
-
-#if mac
 if [[ $PLATFORM = "Darwin" ]]; then
   alias play='afplay'
 
@@ -52,36 +53,27 @@ if [[ $PLATFORM = "Darwin" ]]; then
 else
   alias sctl='systemctl'
   alias play='mpg123'
-  # if linux-centos6.7
-  # alias cmake='cmake28'
-  # alias ccmake='ccmake28'
 fi
-
-if [[ -n "$ZSH_VERSION" ]]; then
-  alias -g ND=' -pt | egrep -v /$ | head -n 20' # 配合 ls 或者 ll 使用
-  alias -g HD=' -pt | egrep /$ | head -n 20' # 配合 ls 或者 ll 使用
-  alias -g O=' | xargs open'
-fi
-
-if [[ -n "$BASH_VERSION" ]]; then
-  alias ..='cd ..'
-  alias ...='cd ../..'
-  alias ....='cd ../../..'
-  alias .....='cd ../../../..'
-fi
-
-if [[ -n $SHELL_EXTEND ]]; then
-  alias rm='put'
-fi
-
-# app {{{
 
 # Vim
 # 让vim不带插件的运行,速度非常快
 alias v='vim --cmd "let g:no_vimrc_bundles=1"'
 alias vi='vim'
 
-alias rsyn='rsync -arvuzp'
+alias bashrc='${=EDITOR} ~/.bashrc'
+alias zshrc='${=EDITOR} ~/.zshrc'
+alias vimrc='[[ -s `echo ~/.vimrc` ]] && vim ~/.vimrc || vim ~/.vim/vimrc'
+alias tmuxconf='vim ~/.tmux.conf'
+alias histsum='zsh_stats'
+alias mcd='take'
+
+alias plist="/usr/libexec/PlistBuddy -c 'Print'"
+
+# ~/.bin/m search wiki
+alias mw='m web'  # search web
+alias mf='m file'  # search file and open it
+alias mm='m man'  # search cheat manual
+alias ms='m vim' # search keyword by vim ack
 
 # }}}
 

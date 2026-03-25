@@ -35,8 +35,7 @@ if [[ -n "$ZSH_VERSION" ]]; then
     OMZP::git \
     OMZP::extract \
     OMZP::z \
-    OMZP::macos \
-    OMZP::zsh-navigation-tools
+    OMZP::macos
 
   # 第三方插件 (Turbo 延迟加载)
   zinit wait lucid for \
