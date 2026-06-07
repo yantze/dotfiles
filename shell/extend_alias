@@ -36,7 +36,7 @@ fi
 # app {{{
 
 # 重新运行上一条命令，并将输出复制到剪贴板，cl = copy last
-alias cl='bash -c "$(fc -ln -1)" | pbcopy'
+alias cl='fc -ln -1 | pbcopy'
 
 if [[ $PLATFORM = "Darwin" ]]; then
   alias play='afplay'

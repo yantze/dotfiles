@@ -11,8 +11,7 @@ ln -s ~/.dotfiles/bin ~/.bin
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # zsh
-git clone https://github.com/zsh-users/antigen ~/.local/antigen
-echo '. ~/.dotfiles/shell/zshrc' >> ~/.zshrc
+echo '. ~/.dotfiles/shell/shellrc' >> ~/.zshrc
 chsh -s /bin/zsh
 
 # bash
