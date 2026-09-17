@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>极速 · 赛车小游戏</title>
+<meta name="description" content="零依赖的 Canvas 赛车躲避小游戏" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8F%8E%3C/text%3E%3C/svg%3E" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; overflow: hidden; background: #101418; }
+  body {
+    font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    color: #eef2f6; -webkit-user-select: none; user-select: none;
+  }
+  #wrap { position: fixed; inset: 0; }
+  canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+
+  .chip {
+    background: rgba(10, 14, 20, .55);
+    border: 1px solid rgba(255, 255, 255, .14);
+    -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+    border-radius: 10px; padding: 6px 12px;
+    font-size: 14px; font-weight: 600; letter-spacing: .5px;
+  }
+  #hud {
+    position: absolute; top: 10px; left: 0; right: 0;
+    display: flex; justify-content: space-between;
+    padding: 0 12px; pointer-events: none;
+  }
+  #hud .group { display: flex; gap: 8px; }
+  #hud b { color: #ffd54f; }
+
+  #flash {
+    position: absolute; top: 64px; left: 0; right: 0; text-align: center;
+    pointer-events: none; font-weight: 700; font-size: 18px; color: #7cffb2;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, .6); opacity: 0;
+  }
+  #flash.show { animation: pop .8s ease-out; }
+  @keyframes pop {
+    0% { opacity: 0; transform: translateY(8px) scale(.9); }
+    15% { opacity: 1; transform: translateY(0) scale(1); }
+    70% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+  #overlay {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    background: rgba(8, 10, 14, .55);
+    -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+    z-index: 5;
+  }
+  #overlay.hidden { display: none; }
+  .panel {
+    text-align: center; background: rgba(16, 20, 28, .92);
+    border: 1px solid rgba(255, 255, 255, .12); border-radius: 16px;
+    padding: 28px 34px; max-width: min(86vw, 420px);
+    box-shadow: 0 18px 60px rgba(0, 0, 0, .5);
+  }
+  .panel h1 { font-size: 26px; margin-bottom: 6px; letter-spacing: 2px; }
+  .panel h1 span { color: #ff5252; }
+  .panel .sub { color: #9fb0c0; font-size: 13px; margin-bottom: 16px; }
+  .panel .keys {
+    display: grid; grid-template-columns: auto auto; gap: 6px 14px;
+    font-size: 13px; color: #c7d3de; text-align: left;
+    margin: 0 auto 18px; width: fit-content;
+  }
+  kbd {
+    background: #232b36; border: 1px solid #39424e; border-bottom-width: 2px;
+    border-radius: 5px; padding: 1px 7px; font-size: 12px; font-family: inherit;
+  }
+  .btn {
+    pointer-events: auto; cursor: pointer; border: 0; border-radius: 12px;
+    padding: 12px 34px; font-size: 17px; font-weight: 700; color: #fff;
+    background: linear-gradient(135deg, #ff5252, #d32f2f);
+    box-shadow: 0 8px 24px rgba(255, 82, 82, .35);
+  }
+  .btn:active { transform: translateY(1px); }
+  .stat { font-size: 15px; margin-bottom: 14px; color: #c7d3de; line-height: 1.9; }
+  .stat b { color: #ffd54f; font-size: 22px; }
+
+  #touch {
+    position: absolute; bottom: 18px; left: 0; right: 0;
+    display: none; justify-content: space-between; padding: 0 22px;
+    pointer-events: none; z-index: 4;
+  }
+  #touch button {
+    pointer-events: auto; width: 74px; height: 74px; border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, .25);
+    background: rgba(20, 26, 34, .45); color: #fff; font-size: 26px;
+    -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+    touch-action: none;
+  }
+  body.touch #touch.playing { display: flex; }
+</style>
+</head>
+<body>
+<div id="wrap">
+  <canvas id="game"></canvas>
+  <div id="hud">
+    <div class="group"><div class="chip">得分 <b id="score">0</b></div></div>
+    <div class="group">
+      <div class="chip">最佳 <b id="best">0</b></div>
+      <div class="chip"><b id="speed">0</b> km/h</div>
+    </div>
+  </div>
+  <div id="flash"></div>
+  <div id="touch"><button id="tL" aria-label="向左">◀</button><button id="tR" aria-label="向右">▶</button></div>
+  <div id="overlay"><div class="panel" id="panel"></div></div>
+</div>
+
+<script>
+(() => {
+'use strict';
+
+const canvas = document.getElementById('game');
+const ctx = canvas.getContext('2d');
+const $ = id => document.getElementById(id);
+const elScore = $('score'), elBest = $('best'), elSpeed = $('speed');
+const elOverlay = $('overlay'), elPanel = $('panel'), elFlash = $('flash');
+const elTouch = $('touch');
+
+const LANES = 4;
+const LS_KEY = 'racer.best.v1';
+const CAR_COLORS = ['#4fc3f7', '#ffd54f', '#81c784', '#ba68c8', '#f06292', '#eceff1', '#ff8a65'];
+
+let W = 0, H = 0;                 // 逻辑像素尺寸
+let roadX = 0, roadW = 0, laneW = 0, shoulder = 0;
+let mode = 'ready';               // ready | playing | paused | over
+let worldY = 0;                   // 累计滚动距离（决定路面纹理相位）
+let elapsed = 0, cruise = 0, mult = 1, score = 0, best = 0;
+let shake = 0, spawnIn = 0.6;
+let traffic = [];
+let trees = [];
+
+const player = { x: 0, y: 0, w: 40, h: 74, braking: false };
+
+try { best = Number(localStorage.getItem(LS_KEY)) || 0; } catch (e) { best = 0; }
+
+/* ---------------- 布局与尺寸 ---------------- */
+function layout() {
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  W = window.innerWidth; H = window.innerHeight;
+  canvas.width = Math.round(W * dpr);
+  canvas.height = Math.round(H * dpr);
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  roadW = Math.min(W - 20, 480);
+  roadX = (W - roadW) / 2;
+  laneW = roadW / LANES;
+  shoulder = roadX;
+
+  player.w = laneW * 0.56;
+  player.h = player.w * 1.85;
+  player.y = H - player.h * 1.05 - 26;
+  if (mode === 'ready') player.x = roadX + roadW / 2;
+  player.x = Math.min(Math.max(player.x, roadX + player.w / 2 + 10),
+                      roadX + roadW - player.w / 2 - 10);
+
+  for (const c of traffic) {
+    c.w = laneW * 0.6; c.h = c.w * 1.85;
+    c.x = roadX + laneW * (c.lane + 0.5);
+  }
+  buildTrees();
+}
+
+function buildTrees() {
+  trees.length = 0;
+  if (shoulder < 46) return;      // 窄屏没有路肩就不画树
+  const n = 12;
+  for (let i = 0; i < n; i++) {
+    trees.push({
+      side: i % 2 ? 1 : -1,
+      y: (i / n) * (H + 300),
+      off: 14 + Math.random() * (shoulder - 42),
+      r: 10 + Math.random() * 9
+    });
+  }
+}
+
+/* ---------------- 输入 ---------------- */
+const keys = { left: false, right: false, up: false, down: false };
+let dragging = false, dragX = 0;
+
+window.addEventListener('keydown', e => {
+  const k = e.key;
+  if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', ' '].includes(k)) e.preventDefault();
+  if (k === 'ArrowLeft' || k === 'a' || k === 'A') keys.left = true;
+  if (k === 'ArrowRight' || k === 'd' || k === 'D') keys.right = true;
+  if (k === 'ArrowUp' || k === 'w' || k === 'W') keys.up = true;
+  if (k === 'ArrowDown' || k === 's' || k === 'S') keys.down = true;
+  if (k === ' ' || k === 'Enter') { if (mode === 'ready' || mode === 'over') start(); }
+  if (k === 'p' || k === 'P' || k === 'Escape') togglePause();
+  if (k === 'r' || k === 'R') { if (mode !== 'ready') start(); }
+});
+window.addEventListener('keyup', e => {
+  const k = e.key;
+  if (k === 'ArrowLeft' || k === 'a' || k === 'A') keys.left = false;
+  if (k === 'ArrowRight' || k === 'd' || k === 'D') keys.right = false;
+  if (k === 'ArrowUp' || k === 'w' || k === 'W') keys.up = false;
+  if (k === 'ArrowDown' || k === 's' || k === 'S') keys.down = false;
+});
+
+canvas.addEventListener('pointerdown', e => {
+  if (mode !== 'playing') return;
+  dragging = true; dragX = e.clientX;
+  try { canvas.setPointerCapture(e.pointerId); } catch (err) {}
+});
+canvas.addEventListener('pointermove', e => { if (dragging) dragX = e.clientX; });
+canvas.addEventListener('pointerup', () => { dragging = false; });
+canvas.addEventListener('pointercancel', () => { dragging = false; });
+
+function bindHold(btn, prop) {
+  const on = e => { e.preventDefault(); keys[prop] = true; };
+  const off = () => { keys[prop] = false; };
+  btn.addEventListener('pointerdown', on);
+  btn.addEventListener('pointerup', off);
+  btn.addEventListener('pointerleave', off);
+  btn.addEventListener('pointercancel', off);
+}
+bindHold($('tL'), 'left');
+bindHold($('tR'), 'right');
+if ('ontouchstart' in window || navigator.maxTouchPoints > 0) document.body.classList.add('touch');
+
+window.addEventListener('resize', layout);
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden && mode === 'playing') togglePause();
+});
+
+/* ---------------- 游戏流程 ---------------- */
+function start() {
+  traffic.length = 0;
+  score = 0; elapsed = 0; mult = 1; cruise = 240;
+  worldY = 0; spawnIn = 0.7; shake = 0;
+  player.x = roadX + roadW / 2;
+  player.braking = false;
+  mode = 'playing';
+  hideOverlay();
+  elTouch.classList.add('playing');
+}
+
+function togglePause() {
+  if (mode === 'playing') { mode = 'paused'; showPaused(); }
+  else if (mode === 'paused') { mode = 'playing'; hideOverlay(); }
+}
+
+function crash() {
+  mode = 'over'; shake = 14;
+  if (score > best) {
+    best = score;
+    try { localStorage.setItem(LS_KEY, String(Math.floor(best))); } catch (e) {}
+  }
+  showOver();
+}
+
+/* ---------------- 逻辑更新 ---------------- */
+function trySpawn() {
+  const near = traffic.filter(c => c.y < H * 0.45);
+  if (near.length >= 2) return;                 // 顶部区域最多 2 辆车，保证有路可走
+  const ok = [];
+  for (let l = 0; l < LANES; l++) {
+    if (!traffic.some(c => c.lane === l && c.y < H * 0.6)) ok.push(l);
+  }
+  if (!ok.length) return;
+  const lane = ok[(Math.random() * ok.length) | 0];
+  const w = laneW * 0.6, h = w * 1.85;
+  traffic.push({
+    lane,
+    x: roadX + laneW * (lane + 0.5),
+    y: -h - Math.random() * 120,
+    w, h,
+    speed: cruise * (0.42 + Math.random() * 0.3),
+    color: CAR_COLORS[(Math.random() * CAR_COLORS.length) | 0],
+    passed: false
+  });
+}
+
+function moveRoadside(scroll) {
+  const span = H + 300;
+  for (const t of trees) {
+    t.y += scroll;
+    if (t.y > H + 150) {
+      t.y -= span;
+      t.off = 14 + Math.random() * Math.max(1, shoulder - 42);
+      t.r = 10 + Math.random() * 9;
+    }
+  }
+}
+
+function update(dt) {
+  shake = Math.max(0, shake - dt * 30);
+
+  if (mode === 'ready') {                        // 待机时路面缓缓滚动
+    const scroll = 140 * dt;
+    worldY += scroll;
+    moveRoadside(scroll);
+    return;
+  }
+  if (mode !== 'playing') return;
+
+  elapsed += dt;
+  const base = 240 + Math.min(elapsed * 7, 460); // 基础速度随时间提升
+  if (keys.up) mult = Math.min(1.18, mult + 0.28 * dt);
+  if (keys.down) mult = Math.max(0.55, mult - 0.4 * dt);
+  player.braking = keys.down;
+  cruise += (base * mult - cruise) * Math.min(1, dt * 2);
+
+  const scroll = cruise * dt;
+  worldY += scroll;
+  score += scroll * 0.012;
+  moveRoadside(scroll);
+
+  // 转向：拖动跟随指针，否则键盘横向速度
+  const steer = 320 + cruise * 0.34;
+  if (dragging) player.x += (dragX - player.x) * Math.min(1, dt * 10);
+  else player.x += ((keys.right ? 1 : 0) - (keys.left ? 1 : 0)) * steer * dt;
+  const minX = roadX + player.w / 2 + 10, maxX = roadX + roadW - player.w / 2 - 10;
+  player.x = Math.min(Math.max(player.x, minX), maxX);
+
+  // 车流（同向，玩家超车）
+  for (const c of traffic) c.y += (cruise - c.speed) * dt;
+  traffic = traffic.filter(c => c.y < H + 240 && c.y > -700);
+
+  spawnIn -= dt;
+  if (spawnIn <= 0) {
+    trySpawn();
+    const gap = Math.max(0.45, 1.2 - elapsed * 0.011);
+    spawnIn = gap * (0.75 + Math.random() * 0.5);
+  }
+
+  // 碰撞与贴身超车
+  for (const c of traffic) {
+    const dx = Math.abs(c.x - player.x), dy = Math.abs(c.y - player.y);
+    const hw = (c.w + player.w) / 2 - 9, hh = (c.h + player.h) / 2 - 12;
+    if (dx < hw && dy < hh) { crash(); return; }
+    if (!c.passed && c.y - player.y > (c.h + player.h) / 2) {
+      c.passed = true;
+      if (dx < hw + laneW * 0.55) { score += 50; flash('贴身超车 +50'); }
+    }
+  }
+}
+
+/* ---------------- 渲染 ---------------- */
+function rr(x, y, w, h, r) {
+  r = Math.min(r, w / 2, h / 2);
+  ctx.beginPath();
+  if (ctx.roundRect) { ctx.roundRect(x, y, w, h, r); return; }
+  ctx.moveTo(x + r, y);
+  ctx.arcTo(x + w, y, x + w, y + h, r);
+  ctx.arcTo(x + w, y + h, x, y + h, r);
+  ctx.arcTo(x, y + h, x, y, r);
+  ctx.arcTo(x, y, x + w, y, r);
+  ctx.closePath();
+}
+
+function drawTree(x, y, r) {
+  ctx.fillStyle = 'rgba(0,0,0,0.2)';
+  ctx.beginPath(); ctx.ellipse(x + 3, y + r * 0.5, r, r * 0.5, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#4e342e';
+  ctx.fillRect(x - 2, y - r * 0.2, 4, r * 0.7);
+  ctx.fillStyle = '#1b5e20';
+  ctx.beginPath(); ctx.arc(x, y - r * 0.35, r, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#2e7d32';
+  ctx.beginPath(); ctx.arc(x - r * 0.3, y - r * 0.6, r * 0.6, 0, Math.PI * 2); ctx.fill();
+}
+
+function drawCar(cx, cy, w, h, color, isPlayer) {
+  // 投影
+  ctx.fillStyle = 'rgba(0,0,0,0.28)';
+  rr(cx - w / 2 + 3, cy - h / 2 + 5, w, h, 9); ctx.fill();
+  // 车轮
+  ctx.fillStyle = '#15181d';
+  const ww = w * 0.14, wh = h * 0.2;
+  rr(cx - w / 2 - ww * 0.55, cy - h * 0.32, ww, wh, 2); ctx.fill();
+  rr(cx + w / 2 - ww * 0.45, cy - h * 0.32, ww, wh, 2); ctx.fill();
+  rr(cx - w / 2 - ww * 0.55, cy + h * 0.13, ww, wh, 2); ctx.fill();
+  rr(cx + w / 2 - ww * 0.45, cy + h * 0.13, ww, wh, 2); ctx.fill();
+  // 车身
+  ctx.fillStyle = color;
+  rr(cx - w / 2, cy - h / 2, w, h, 9); ctx.fill();
+  // 车顶玻璃
+  ctx.fillStyle = 'rgba(18,24,34,0.85)';
+  rr(cx - w * 0.32, cy - h * 0.26, w * 0.64, h * 0.42, 6); ctx.fill();
+  // 尾灯
+  ctx.fillStyle = isPlayer ? '#ff1744' : '#d32f2f';
+  rr(cx - w * 0.38, cy + h * 0.38, w * 0.18, h * 0.07, 2); ctx.fill();
+  rr(cx + w * 0.2, cy + h * 0.38, w * 0.18, h * 0.07, 2); ctx.fill();
+  if (isPlayer && player.braking) {
+    ctx.fillStyle = 'rgba(255,23,68,0.35)';
+    rr(cx - w * 0.5, cy + h * 0.33, w, h * 0.16, 6); ctx.fill();
+  }
+  // 车头高光
+  ctx.fillStyle = 'rgba(255,255,255,0.18)';
+  rr(cx - w * 0.3, cy - h * 0.46, w * 0.6, h * 0.1, 4); ctx.fill();
+}
+
+function render() {
+  ctx.save();
+  if (shake > 0) ctx.translate((Math.random() - 0.5) * shake, (Math.random() - 0.5) * shake);
+
+  // 草地（明暗条纹随滚动下移）
+  const stripeH = 90;
+  ctx.fillStyle = '#245c28';
+  ctx.fillRect(0, 0, W, H);
+  ctx.fillStyle = '#2a682e';
+  const gphase = worldY % (stripeH * 2);
+  for (let y = gphase - stripeH * 2; y < H + stripeH; y += stripeH * 2) ctx.fillRect(0, y, W, stripeH);
+
+  // 路肩树木
+  for (const t of trees) drawTree(t.side < 0 ? t.off : W - t.off, t.y, t.r);
+
+  // 路面
+  ctx.fillStyle = '#343a43';
+  ctx.fillRect(roadX, 0, roadW, H);
+  ctx.fillStyle = 'rgba(255,255,255,0.03)';
+  const rphase = worldY % 260;
+  for (let y = rphase - 260; y < H + 260; y += 260) ctx.fillRect(roadX, y, roadW, 130);
+
+  // 红白路缘
+  const edge = 10, blockH = 26;
+  const bphase = worldY % (blockH * 2);
+  for (let y = bphase - blockH * 2; y < H + blockH; y += blockH * 2) {
+    ctx.fillStyle = '#c62828';
+    ctx.fillRect(roadX, y, edge, blockH);
+    ctx.fillRect(roadX + roadW - edge, y, edge, blockH);
+    ctx.fillStyle = '#f5f5f5';
+    ctx.fillRect(roadX, y + blockH, edge, blockH);
+    ctx.fillRect(roadX + roadW - edge, y + blockH, edge, blockH);
+  }
+
+  // 路缘实线
+  ctx.fillStyle = 'rgba(255,255,255,0.85)';
+  ctx.fillRect(roadX + edge, 0, 3, H);
+  ctx.fillRect(roadX + roadW - edge - 3, 0, 3, H);
+
+  // 车道虚线
+  const dashH = 34, period = dashH + 42;
+  const dphase = worldY % period;
+  ctx.fillStyle = 'rgba(255,255,255,0.8)';
+  for (let l = 1; l < LANES; l++) {
+    const x = roadX + laneW * l - 3;
+    for (let y = dphase - period; y < H + period; y += period) ctx.fillRect(x, y, 6, dashH);
+  }
+
+  for (const c of traffic) drawCar(c.x, c.y, c.w, c.h, c.color, false);
+  drawCar(player.x, player.y, player.w, player.h, '#e53935', true);
+
+  ctx.restore();
+}
+
+/* ---------------- HUD 与遮罩 ---------------- */
+let hudTimer = 0;
+function updateHud(dt) {
+  hudTimer -= dt;
+  if (hudTimer > 0) return;
+  hudTimer = 0.12;
+  elScore.textContent = String(Math.floor(score));
+  elBest.textContent = String(Math.floor(best));
+  elSpeed.textContent = String(Math.round(cruise * 0.42));
+}
+
+function flash(text) {
+  elFlash.textContent = text;
+  elFlash.classList.remove('show');
+  void elFlash.offsetWidth;      // 重新触发动画
+  elFlash.classList.add('show');
+}
+
+function hideOverlay() { elOverlay.classList.add('hidden'); }
+
+function showReady() {
+  elPanel.innerHTML = `
+    <h1>极速 <span>赛车</span></h1>
+    <div class="sub">躲开车流，活得越久跑得越远</div>
+    <div class="keys">
+      <span><kbd>←</kbd> <kbd>→</kbd></span><span>左右转向</span>
+      <span><kbd>↑</kbd> <kbd>↓</kbd></span><span>加速 / 刹车</span>
+      <span><kbd>P</kbd></span><span>暂停</span>
+      <span><kbd>空格</kbd></span><span>开始 / 重开</span>
+    </div>
+    <div class="sub">手机：按住左右按钮，或直接拖动屏幕</div>
+    <button class="btn" id="btnStart">开始比赛</button>`;
+  elOverlay.classList.remove('hidden');
+  $('btnStart').addEventListener('click', start);
+}
+
+function showPaused() {
+  elPanel.innerHTML = `
+    <h1>已暂停</h1>
+    <div class="sub">按 <kbd>P</kbd> 或点击按钮继续</div>
+    <button class="btn" id="btnResume">继续</button>`;
+  elOverlay.classList.remove('hidden');
+  $('btnResume').addEventListener('click', togglePause);
+}
+
+function showOver() {
+  elPanel.innerHTML = `
+    <h1>撞车了！</h1>
+    <div class="stat">本次得分 <b>${Math.floor(score)}</b><br>历史最佳 <b>${Math.floor(best)}</b></div>
+    <button class="btn" id="btnRetry">再来一局</button>`;
+  elOverlay.classList.remove('hidden');
+  $('btnRetry').addEventListener('click', start);
+}
+
+/* ---------------- 主循环 ---------------- */
+let last = performance.now();
+function frame(now) {
+  const dt = Math.min(0.05, (now - last) / 1000);
+  last = now;
+  update(dt);
+  render();
+  updateHud(dt);
+  requestAnimationFrame(frame);
+}
+
+layout();
+showReady();
+requestAnimationFrame(frame);
+
+// 调试/自动化测试钩子
+window.__racer = { get player() { return player; }, get traffic() { return traffic; },
+                   get roadX() { return roadX; }, get laneW() { return laneW; },
+                   get cruise() { return cruise; }, get mode() { return mode; } };
+})();
+</script>
+</body>
+</html>
